@@ -1,0 +1,28 @@
+{
+  "name": "dontstarve-typescript-definition-files-generator",
+  "description": "",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "bin": {
+    "dsdts": "lib/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepare": "tsc",
+    "test": "ts-node -T src/cli.ts tests/base.lua > tests/out.d.ts && diff tests/out.d.ts tests/expected.d.ts"
+  },
+  "keywords": [],
+  "author": "Daniel Perez Alvarez <danielpza@protonmail.com> (https://github.com/danielpza)",
+  "license": "MIT",
+  "dependencies": {
+    "globby": "^10.0.1",
+    "luaparse": "^0.2.1"
+  },
+  "devDependencies": {
+    "@types/globby": "^9.1.0",
+    "@types/node": "^12.6.8",
+    "typescript": "^3.5.3"
+  }
+}
