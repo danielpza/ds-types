@@ -1,7 +1,7 @@
 import * as Lua from "luaparse";
 
 export class Builder {
-  classes: Record<
+  definitions: Record<
     string,
     { properties: Record<string, string>; methods: Record<string, string> }
   > = {};
@@ -12,47 +12,77 @@ export class Builder {
     }
   }
   public getDefinitions() {
-    return Object.entries(this.classes)
-      .map(
-        ([className, { properties, methods }]) => `declare class ${className} {
+    return `\
+declare namespace Component {
+${Object.entries(this.definitions)
+  .map(
+    ([intefaceName, { properties, methods }]) => `interface ${intefaceName} {
 ${Object.entries(properties)
-  .map(([name, value]) => `  ${name}: ${value};`)
+  .map(([name, value]) => `${name}: ${value};`)
   .join("\n")}
 ${Object.entries(methods)
-  .map(([name, value]) => `  ${name}${value};`)
+  .map(([name, value]) => `${name}${value};`)
   .join("\n")}
 }
 `
-      )
-      .join("\n");
+  )
+  .join("\n")}
+}
+
+declare interface Component {
+${Object.keys(this.definitions)
+  .map(name => `${name.toLowerCase()}: Component.${name};`)
+  .join("\n")}
+}
+`;
   }
-  protected ensure(className: string) {
-    if (!this.classes[className]) {
-      this.classes[className] = { properties: {}, methods: {} };
+  protected ensure(intefaceName: string) {
+    if (!this.definitions[intefaceName]) {
+      this.definitions[intefaceName] = { properties: {}, methods: {} };
     }
   }
-  protected addProperty(className: string, name: string, type: string) {
-    this.ensure(className);
-    this.classes[className].properties[name] = type;
+  protected addProperty(intefaceName: string, name: string, type: string) {
+    this.ensure(intefaceName);
+    if (
+      this.definitions[intefaceName].properties[name] !== undefined &&
+      this.definitions[intefaceName].properties[name] !== "any"
+    )
+      return;
+    this.definitions[intefaceName].properties[name] = type;
   }
   protected addMethod(
-    className: string,
+    intefaceName: string,
     name: string,
     parameters: string[],
     retType?: string
   ) {
-    this.ensure(className);
-    this.classes[className].methods[name] = `(${parameters
-      .map(p => `${p}: any`)
+    this.ensure(intefaceName);
+    this.definitions[intefaceName].methods[name] = `(${parameters
+      .map(p => `${p === "new" ? "_new" : p}: any`)
       .join(", ")})${retType ? `: ${retType}` : ""}`;
   }
-  protected inferType(node: Lua.ExpressionKind, className?: string) {
+  protected inferType(node: Lua.ExpressionKind, intefaceName?: string) {
     if (node.type === "NumericLiteral") return "number";
     if (node.type === "StringLiteral") return "string";
     if (node.type === "BooleanLiteral") return "boolean";
     return "any";
   }
-  protected visitClassStatement(className: string, node: Lua.StatementKind) {
+  protected visitIntefaceStatement(
+    intefaceName: string,
+    node: Lua.StatementKind
+  ) {
+    if (node.type === "LocalStatement") {
+      const variables = mergeArrays(node.variables, node.init);
+      variables.forEach(([variable, init]) => {
+        if (variable.type === "Identifier") {
+          this.addProperty(
+            intefaceName,
+            variable.name,
+            init ? this.inferType(init) : "any"
+          );
+        }
+      });
+    }
     if (node.type === "AssignmentStatement") {
       const variables = mergeArrays(node.variables, node.init);
       variables.forEach(([variable, init]) => {
@@ -60,7 +90,7 @@ ${Object.entries(methods)
           const base = this.getBase(variable);
           if (base && base.name === "self") {
             this.addProperty(
-              className,
+              intefaceName,
               variable.identifier.name,
               init ? this.inferType(init) : "any"
             );
@@ -82,18 +112,18 @@ ${Object.entries(methods)
       ) {
         const firstArgument = init.arguments[0];
         if (firstArgument.type === "FunctionDeclaration") {
-          // It is a class declaration!!!
+          // It is a inteface declaration!!!
           // constructor
-          const parameters = firstArgument.parameters
-            .filter(
-              (p): p is Lua.Identifier =>
-                p.type === "Identifier" && p.name !== "self"
-            )
-            .map(p => p.name);
-          this.addMethod(iden.name, "constructor", parameters);
+          // const parameters = firstArgument.parameters
+          //   .filter(
+          //     (p): p is Lua.Identifier =>
+          //       p.type === "Identifier" && p.name !== "self"
+          //   )
+          //   .map(p => p.name);
+          // this.addMethod(iden.name, "constructor", parameters);
           // body
           firstArgument.body.forEach(statement =>
-            this.visitClassStatement(iden.name, statement)
+            this.visitIntefaceStatement(iden.name, statement)
           );
         }
       }
@@ -104,20 +134,20 @@ ${Object.entries(methods)
       node.identifier.base.type === "Identifier" &&
       node.identifier.indexer === ":"
     ) {
-      // class method
-      const className = node.identifier.base.name;
+      // inteface method
+      const intefaceName = node.identifier.base.name;
       const parameters = node.parameters
         .filter((p): p is Lua.Identifier => p.type === "Identifier")
         .map(p => p.name);
       this.addMethod(
-        className,
+        intefaceName,
         node.identifier.identifier.name,
         parameters,
         "any"
       );
       // body
       node.body.forEach(statement =>
-        this.visitClassStatement(className, statement)
+        this.visitIntefaceStatement(intefaceName, statement)
       );
     }
   }
