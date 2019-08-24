@@ -1,16 +1,30 @@
 {
   "name": "ds-types",
-  "description": "Generate Don't Starve types definitions for typescript",
   "version": "0.1.0",
-  "files": ["lib"],
+  "description": "Generate Don't Starve types definitions for typescript",
+  "keywords": ["ds", "dst", "don't starve", "types"],
+  "homepage": "https://github.com/danielpza/ds-types#readme",
+  "bugs": {
+    "url": "https://github.com/danielpza/ds-types/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielpza/ds-types.git"
+  },
+  "license": "MIT",
+  "author": "Daniel Perez Alvarez <danielpza@protonmail.com> (https://github.com/danielpza)",
+  "files": [
+    "lib"
+  ],
   "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
   "scripts": {
     "prebuild": "rm -f lib/components.d.ts && mkdir lib",
     "build": "ts-node -T src/index.ts"
   },
-  "keywords": [],
-  "author": "Daniel Perez Alvarez <danielpza@protonmail.com> (https://github.com/danielpza)",
-  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "@types/globby": "^9.1.0",
