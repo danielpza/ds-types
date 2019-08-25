@@ -598,19 +598,15 @@ declare namespace Component {
     totalWetness: number;
     totalItems: number;
     has_tech: boolean;
-    classified: any;
-    ondetachclassified: any;
-    inventory: any;
-    overflow: any;
     ActivateCurrentResearchMachine(recipe: any): any;
     OnSave(): any;
     OnLoad(data: any): any;
-    IsBuildBuffered(recipename: any): any;
+    IsBuildBuffered(recname: any): any;
     OnUpdate(): any;
     GiveAllRecipes(): any;
     UnlockRecipesForTech(tech: any): any;
     EvaluateTechTrees(): any;
-    AddRecipe(recipename: any): any;
+    AddRecipe(recname: any): any;
     UnlockRecipe(recname: any): any;
     GetIngredientWetness(ingredients: any): any;
     GetIngredients(recname: any): any;
@@ -619,33 +615,13 @@ declare namespace Component {
     HasTechIngredient(ingredient: any): any;
     MakeRecipe(recipe: any, pt: any, rot: any, skin: any, onsuccess: any): any;
     DoBuild(recname: any, pt: any, rotation: any, skin: any): any;
-    KnowsRecipe(recipename: any): any;
-    CanBuild(recipename: any): any;
-    CanLearn(recipename: any): any;
+    KnowsRecipe(recname: any): any;
+    CanBuild(recname: any): any;
+    CanLearn(recname: any): any;
     LongUpdate(dt: any): any;
     MakeRecipeFromMenu(recipe: any, skin: any): any;
     MakeRecipeAtPoint(recipe: any, pt: any, rot: any, skin: any): any;
-    BufferBuild(recipename: any): any;
-    OnRemoveFromEntity(): any;
-    AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    SetScienceBonus(sciencebonus: any): any;
-    ScienceBonus(): any;
-    SetMagicBonus(magicbonus: any): any;
-    MagicBonus(): any;
-    SetAncientBonus(ancientbonus: any): any;
-    AncientBonus(): any;
-    SetShadowBonus(shadowbonus: any): any;
-    ShadowBonus(): any;
-    SetIngredientMod(ingredientmod: any): any;
-    IngredientMod(): any;
-    SetIsFreeBuildMode(isfreebuildmode: any): any;
-    SetTechTrees(techlevels: any): any;
-    GetTechTrees(): any;
-    RemoveRecipe(recipename: any): any;
-    SetIsBuildBuffered(recipename: any, isbuildbuffered: any): any;
-    CanBuildAtPoint(pt: any, recipe: any, rot: any): any;
-    IsBusy(): any;
+    BufferBuild(recname: any): any;
   }
 
   interface BundleMaker {
@@ -1034,14 +1010,6 @@ declare namespace Component {
     reflect_list: any;
     lastdoattacktime: any;
     hitcount: number;
-    _target: any;
-    _ispanic: any;
-    _attackrange: any;
-    _laststartattacktime: number;
-    classified: any;
-    ondetachclassified: any;
-    follower: any;
-    leader: any;
     SetLastTarget(target: any): any;
     SetAttackPeriod(period: any): any;
     TargetIs(target: any): any;
@@ -1110,7 +1078,7 @@ declare namespace Component {
     CalcHitRangeSq(target: any): any;
     CanExtinguishTarget(target: any, weapon: any): any;
     CanLightTarget(target: any, weapon: any): any;
-    CanHitTarget(target: any): any;
+    CanHitTarget(target: any, weapon: any): any;
     DoAttack(
       targ: any,
       weapon: any,
@@ -1132,15 +1100,6 @@ declare namespace Component {
     OnSave(): any;
     LoadPostPass(newents: any, data: any): any;
     OnRemoveFromEntity(): any;
-    AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    GetTarget(): any;
-    SetIsPanic(ispanic: any): any;
-    SetAttackRange(attackrange: any): any;
-    GetAttackRangeWithWeapon(): any;
-    SetMinAttackPeriod(minattackperiod: any): any;
-    MinAttackPeriod(): any;
-    SetCanAttack(canattack: any): any;
   }
 
   interface Commander {
@@ -1267,8 +1226,6 @@ declare namespace Component {
     z: any;
     material: any;
     str: any;
-    classified: any;
-    ondetachclassified: any;
     SetConstructionPrefab(prefab: any): any;
     SetOnStartConstructionFn(fn: any): any;
     SetOnStopConstructionFn(fn: any): any;
@@ -1284,12 +1241,6 @@ declare namespace Component {
     OnSave(): any;
     OnLoad(data: any): any;
     GetDebugString(): any;
-    OnRemoveFromEntity(): any;
-    AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    SetBuilder(builder: any): any;
-    SetSlotCount(slot: any, num: any): any;
-    GetIngredients(): any;
   }
 
   interface Container {
@@ -1317,13 +1268,6 @@ declare namespace Component {
     prevslot: any;
     inventory: any;
     active_item: any;
-    _cannotbeopened: any;
-    _isopen: boolean;
-    _numslots: number;
-    opentask: any;
-    classified: any;
-    ondetachclassified: any;
-    inv: any;
     WidgetSetup(prefab: any, data: any): any;
     GetWidget(): any;
     NumItems(): any;
@@ -1351,7 +1295,7 @@ declare namespace Component {
     IsHolding(item: any, checkcontainer: any): any;
     FindItem(fn: any): any;
     FindItems(fn: any): any;
-    Has(prefab: any, amount: any): any;
+    Has(item: any, amount: any): any;
     GetItemByName(item: any, amount: any): any;
     ConsumeByName(item: any, amount: any): any;
     OnSave(): any;
@@ -1368,14 +1312,6 @@ declare namespace Component {
     MoveItemFromAllOfSlot(slot: any, container: any): any;
     MoveItemFromHalfOfSlot(slot: any, container: any): any;
     ReferenceAllItems(): any;
-    OnRemoveFromEntity(): any;
-    AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    SetCanBeOpened(canbeopened: any): any;
-    CanBeOpened(): any;
-    SetOpener(opener: any): any;
-    GetItems(): any;
-    IsBusy(): any;
   }
 
   interface Cookable {
@@ -2082,8 +2018,6 @@ declare namespace Component {
     equippedmoisture: number;
     maxequippedmoisture: number;
     inventoryitem: any;
-    _equipslot: any;
-    restrictedtag: any;
     OnRemoveFromEntity(): any;
     IsInsulated(): any;
     SetOnEquip(fn: any): any;
@@ -2097,8 +2031,6 @@ declare namespace Component {
     IsRestricted(target: any): any;
     GetDapperness(owner: any): any;
     GetEquippedMoisture(): any;
-    SetEquipSlot(eslot: any): any;
-    EquipSlot(): any;
   }
 
   interface Explosive {
@@ -2403,9 +2335,6 @@ declare namespace Component {
     maxstraintime: number;
     fishtask: any;
     str: any;
-    _target: any;
-    _hashookedfish: any;
-    _hascaughtfish: any;
     GetDebugString(): any;
     SetWaitTimes(min: any, max: any): any;
     SetStrainTimes(min: any, max: any): any;
@@ -2422,10 +2351,6 @@ declare namespace Component {
     Release(): any;
     Reel(): any;
     Collect(): any;
-    SetTarget(target: any): any;
-    GetTarget(): any;
-    SetHookedFish(hookedfish: any): any;
-    SetCaughtFish(caughtfish: any): any;
   }
 
   interface FishSchool {
@@ -2518,12 +2443,11 @@ declare namespace Component {
     time: any;
     othercmp: any;
     keepleaderonattacked: boolean;
-    _leader: any;
     GetDebugString(): any;
     GetLeader(): any;
     StartLeashing(): any;
     StopLeashing(): any;
-    SetLeader(leader: any): any;
+    SetLeader(inst: any): any;
     GetLoyaltyPercent(): any;
     AddLoyaltyTime(time: any): any;
     StopFollowing(): any;
@@ -3048,12 +2972,6 @@ declare namespace Component {
     min_health: any;
     old_percent: any;
     new_percent: any;
-    _isdead: any;
-    _isnotfull: any;
-    _cannotheal: any;
-    _cannotmurder: any;
-    classified: any;
-    ondetachclassified: any;
     OnRemoveFromEntity(): any;
     RecalculatePenalty(): any;
     SetInvincible(val: any): any;
@@ -3090,25 +3008,6 @@ declare namespace Component {
       afflicter: any,
       ignore_absorb: any
     ): any;
-    AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    SetCurrent(current: any): any;
-    SetMax(max: any): any;
-    Max(): any;
-    MaxWithPenalty(): any;
-    GetCurrent(): any;
-    SetIsFull(isfull: any): any;
-    IsFull(): any;
-    SetIsDead(isdead: any): any;
-    SetIsTakingFireDamage(istakingfiredamage: any): any;
-    IsTakingFireDamage(): any;
-    SetIsTakingFireDamageLow(istakingfiredamagelow: any): any;
-    IsTakingFireDamageLow(): any;
-    IsTakingFireDamageFull(): any;
-    SetCanHeal(canheal: any): any;
-    CanHeal(): any;
-    SetCanMurder(canmurder: any): any;
-    CanMurder(): any;
   }
 
   interface HealthBar {
@@ -3396,8 +3295,6 @@ declare namespace Component {
     burnratemodifiers: any;
     period: number;
     old: any;
-    classified: any;
-    ondetachclassified: any;
     OnSave(): any;
     OnLoad(data: any): any;
     SetOverrideStarveFn(fn: any): any;
@@ -3406,7 +3303,7 @@ declare namespace Component {
     Resume(): any;
     IsPaused(): any;
     GetDebugString(): any;
-    SetMax(max: any): any;
+    SetMax(amount: any): any;
     IsStarving(): any;
     DoDelta(delta: any, overtime: any, ignore_invincible: any): any;
     GetPercent(): any;
@@ -3414,12 +3311,6 @@ declare namespace Component {
     DoDec(dt: any, ignore_damage: any): any;
     SetKillRate(rate: any): any;
     SetRate(rate: any): any;
-    OnRemoveFromEntity(): any;
-    AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    SetCurrent(current: any): any;
-    Max(): any;
-    GetCurrent(): any;
   }
 
   interface IncrementalProducer {
@@ -3533,9 +3424,6 @@ declare namespace Component {
     moisture: number;
     max: number;
     waterproofness: number;
-    opentask: any;
-    classified: any;
-    ondetachclassified: any;
     EnableDropOnDeath(): any;
     DisableDropOnDeath(): any;
     NumItems(): any;
@@ -3557,7 +3445,7 @@ declare namespace Component {
     SelectActiveItemFromEquipSlot(slot: any): any;
     CombineActiveStackWithSlot(slot: any, stack_mod: any): any;
     SelectActiveItemFromSlot(slot: any): any;
-    ReturnActiveItem(): any;
+    ReturnActiveItem(slot: any, stack_mod: any): any;
     GetNumSlots(): any;
     GetItemSlot(item: any): any;
     IsHolding(item: any, checkcontainer: any): any;
@@ -3578,7 +3466,7 @@ declare namespace Component {
     Equip(item: any, old_to_active: any): any;
     RemoveItem(item: any, wholestack: any): any;
     GetOverflowContainer(): any;
-    Has(prefab: any, amount: any): any;
+    Has(item: any, amount: any): any;
     GetItemByName(item: any, amount: any): any;
     ConsumeByName(item: any, amount: any): any;
     DropEverythingWithTag(tag: any): any;
@@ -3600,10 +3488,24 @@ declare namespace Component {
     AddAllOfActiveItemToSlot(slot: any): any;
     SwapActiveItemWithSlot(slot: any): any;
     CanAccessItem(item: any): any;
-    UseItemFromInvTile(item: any): any;
-    ControllerUseItemOnItemFromInvTile(item: any, active_item: any): any;
-    ControllerUseItemOnSelfFromInvTile(item: any): any;
-    ControllerUseItemOnSceneFromInvTile(item: any): any;
+    UseItemFromInvTile(item: any, actioncode: any, mod_name: any): any;
+    ControllerUseItemOnItemFromInvTile(
+      item: any,
+      active_item: any,
+      actioncode: any,
+      mod_name: any
+    ): any;
+    ControllerUseItemOnSelfFromInvTile(
+      item: any,
+      actioncode: any,
+      mod_name: any
+    ): any;
+    ControllerUseItemOnSceneFromInvTile(
+      item: any,
+      target: any,
+      actioncode: any,
+      mod_name: any
+    ): any;
     InspectItemFromInvTile(item: any): any;
     DropItemFromInvTile(item: any, single: any): any;
     EquipActiveItem(): any;
@@ -3616,18 +3518,6 @@ declare namespace Component {
     GetEquippedMoistureRate(slot: any): any;
     GetWaterproofness(slot: any): any;
     IsWaterproof(): any;
-    OnRemoveEntity(): any;
-    AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    OnOpen(): any;
-    OnClose(): any;
-    OnShow(): any;
-    OnHide(): any;
-    SetHeavyLifting(heavylifting: any): any;
-    IsVisible(): any;
-    GetItems(): any;
-    GetEquips(): any;
-    GetOpenContainers(): any;
   }
 
   interface InventoryItem {
@@ -3649,16 +3539,10 @@ declare namespace Component {
     pushlandedevents: boolean;
     ondropfn: any;
     onputininventoryfn: any;
-    x: number;
+    x: any;
     y: any;
     z: any;
     is_landed: any;
-    _cannotbepickedup: any;
-    _iswet: any;
-    classified: any;
-    ondetachclassified: any;
-    percentusedcomponent: any;
-    restrictedtag: any;
     OnRemoveFromEntity(): any;
     EnableMoisture(enable: any): any;
     GetMoisture(): any;
@@ -3693,41 +3577,6 @@ declare namespace Component {
     ShouldSink(): any;
     TryToSink(): any;
     OnUpdate(dt: any): any;
-    AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    SetCanBePickedUp(canbepickedup: any): any;
-    CanBePickedUp(): any;
-    SetCanGoInContainer(cangoincontainer: any): any;
-    CanGoInContainer(): any;
-    SetCanOnlyGoInPocket(canonlygoinpocket: any): any;
-    CanOnlyGoInPocket(): any;
-    SetImage(imagename: any): any;
-    GetImage(): any;
-    SetAtlas(atlasname: any): any;
-    GetAtlas(): any;
-    IsGrandOwner(guy: any): any;
-    SetPickupPos(pos: any): any;
-    GetPickupPos(): any;
-    SerializeUsage(): any;
-    DeserializeUsage(): any;
-    SetChargeTime(t: any): any;
-    SetDeployMode(deploymode: any): any;
-    IsDeployable(deployer: any): any;
-    SetDeploySpacing(deployspacing: any): any;
-    DeploySpacingRadius(): any;
-    SetDeployRestrictedTag(restrictedtag: any): any;
-    CanDeploy(pt: any, mouseover: any, deployer: any): any;
-    SetUseGridPlacer(usegridplacer: any): any;
-    GetDeployPlacerName(): any;
-    SetAttackRange(attackrange: any): any;
-    AttackRange(): any;
-    IsWeapon(): any;
-    SetWalkSpeedMult(walkspeedmult: any): any;
-    GetWalkSpeedMult(): any;
-    SetEquipRestrictedTag(restrictedtag: any): any;
-    GetEquipRestrictedTag(): any;
-    SetMoistureLevel(moisture: any): any;
-    SetIsWet(iswet: any): any;
   }
 
   interface InventoryItemMoisture {
@@ -4556,7 +4405,6 @@ declare namespace Component {
     full: any;
     waterproofmult: any;
     heaterPower: any;
-    _iswet: any;
     ForceDry(force: any, source: any): any;
     GetDebugString(): any;
     AnnounceMoisture(oldSegs: any, newSegs: any): any;
@@ -4581,7 +4429,6 @@ declare namespace Component {
     LongUpdate(dt: any): any;
     OnSave(): any;
     OnLoad(data: any): any;
-    SetIsWet(iswet: any): any;
   }
 
   interface Mood {
@@ -4649,7 +4496,6 @@ declare namespace Component {
     possiblenames: any;
     nameformat: any;
     name: any;
-    _name: any;
     PickNewName(): any;
     SetName(name: any): any;
     OnSave(): any;
@@ -5869,9 +5715,6 @@ declare namespace Component {
     canbepinned: boolean;
     ex_mount: any;
     data: any;
-    _isriding: any;
-    classified: any;
-    ondetachclassified: any;
     OnRemoveFromEntity(): any;
     StartTracking(mount: any): any;
     StopTracking(mount: any): any;
@@ -5883,17 +5726,6 @@ declare namespace Component {
     GetMount(): any;
     OnSave(): any;
     OnLoad(data: any): any;
-    AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    SetActionFilter(riding: any): any;
-    OnIsRiding(riding: any): any;
-    SetRiding(riding: any): any;
-    OnMountHealth(pct: any): any;
-    IsMountHurt(): any;
-    SetMount(mount: any): any;
-    GetMountRunSpeed(): any;
-    GetMountFasterOnRoad(): any;
-    SetSaddle(saddle: any): any;
   }
 
   interface Saddler {
@@ -5948,7 +5780,7 @@ declare namespace Component {
     sanity_penalties: any;
     ghost_drain_mult: number;
     custom_rate_fn: any;
-    _oldissane: boolean;
+    _oldissane: any;
     _oldpercent: any;
     target: any;
     delta: any;
@@ -5965,11 +5797,6 @@ declare namespace Component {
     ents: any;
     mount: any;
     ghost_delta: any;
-    _oldisinsanitymode: boolean;
-    _issane: any;
-    _isinsanitymode: any;
-    classified: any;
-    ondetachclassified: any;
     IsSane(): any;
     IsInsane(): any;
     IsEnlightened(): any;
@@ -5988,7 +5815,7 @@ declare namespace Component {
     GetPercentWithPenalty(): any;
     SetPercent(per: any, overtime: any): any;
     GetDebugString(): any;
-    SetMax(max: any): any;
+    SetMax(amount: any): any;
     GetMaxWithPenalty(): any;
     GetRateScale(): any;
     SetInducedInsanity(src: any, val: any): any;
@@ -5996,19 +5823,6 @@ declare namespace Component {
     OnUpdate(dt: any): any;
     RecalcGhostDrain(): any;
     Recalc(dt: any): any;
-    OnRemoveFromEntity(): any;
-    AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    SetCurrent(current: any): any;
-    SetPenalty(penalty: any): any;
-    Max(): any;
-    MaxWithPenalty(): any;
-    GetPercentNetworked(): any;
-    GetCurrent(): any;
-    SetRateScale(ratescale: any): any;
-    SetIsSane(sane: any): any;
-    SetGhostDrainMult(ghostdrainmult: any): any;
-    IsGhostDrain(): any;
   }
 
   interface SanityAura {
@@ -6159,23 +5973,12 @@ declare namespace Component {
     y: any;
     z: any;
     ents: any;
-    _updating: boolean;
-    _shade: any;
-    _targetshade: any;
-    _shelterspeed: any;
-    _exposespeed: any;
-    _issheltered: any;
-    _task: any;
     OnRemoveFromEntity(): any;
     Start(): any;
     Stop(): any;
     SetSheltered(issheltered: any): any;
     OnUpdate(dt: any): any;
     GetDebugString(): any;
-    StartSheltered(): any;
-    StopSheltered(): any;
-    IsSheltered(): any;
-    CheckShade(): any;
   }
 
   interface Shop {
@@ -6468,20 +6271,16 @@ declare namespace Component {
     old_size: any;
     num_to_get: any;
     ret: any;
-    _stacksize: any;
-    _maxsize: any;
     IsStack(): any;
     StackSize(): any;
     IsFull(): any;
     OnSave(): any;
     OnLoad(data: any): any;
     SetOnDeStack(fn: any): any;
-    SetStackSize(stacksize: any): any;
+    SetStackSize(sz: any): any;
     Get(num: any): any;
     RoomLeft(): any;
     Put(item: any, source_pos: any): any;
-    SetMaxSize(maxsize: any): any;
-    MaxSize(): any;
   }
 
   interface SteeringWheel {
@@ -7606,9 +7405,6 @@ declare namespace Component {
     onclosepopups: any;
     generatorfn: any;
     data: any;
-    opentask: any;
-    classified: any;
-    ondetachclassified: any;
     OnSave(): any;
     OnLoad(data: any): any;
     GetText(viewer: any): any;
@@ -7620,9 +7416,6 @@ declare namespace Component {
     EndWriting(): any;
     OnUpdate(dt: any): any;
     OnRemoveFromEntity(): any;
-    AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    SetWriter(writer: any): any;
   }
 }
 

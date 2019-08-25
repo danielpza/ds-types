@@ -20,6 +20,7 @@ function generateComponents() {
   const componentsGlob = "components/*.lua";
   const files = globby.sync([componentsGlob], { cwd: root });
   const sourceFiles = files
+    .filter(file => !file.match(/\w+_replica/))
     .map(file => readFileSync(resolve(root, file), "utf8").toString())
     .map(parse);
   const builder = new Builder(sourceFiles);
