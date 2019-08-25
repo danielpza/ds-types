@@ -1,9 +1,8 @@
 /// <reference path="./components.d.ts" />
 /// <reference path="./replicas.d.ts" />
+/// <reference path="./entity.d.ts" />
 /** @noSelfInFile **/
 type Slot = "head" | "body" | "hands";
-
-type List<T> = Record<number, T>;
 
 type EnsureProps<T, P extends keyof T = never> = {
   [K in P]: T[K];
@@ -15,24 +14,18 @@ type ComponentBundle<P extends keyof Component = never> = EnsureProps<
   P
 >;
 
-interface PrefabBase {
+interface Prefab<
+  K extends keyof Component = never,
+  L extends keyof Replica = never
+> extends Entity {
+  components: EnsureProps<Component, K>;
+  replica: EnsureProps<Replica, L>;
   prefab: string;
   DoTaskInTime: (time: number, fn: (this: void) => void) => void;
-  ClearBufferedAction(): void;
   ListenForEvent: (
     ev: string,
     fn: (this: void, inst: any, data: any) => void
   ) => void;
-  Remove(): void;
-  HasTag(tag: string): boolean;
-}
-
-interface Prefab<
-  K extends keyof Component = never,
-  L extends keyof Replica = never
-> extends PrefabBase {
-  components: EnsureProps<Component, K>;
-  replica: EnsureProps<Replica, L>;
 }
 
 interface Player extends Prefab<"inventory"> {}

@@ -16,6 +16,7 @@ if (!existsSync(root) || isFileSync(root)) {
 
 generateComponents();
 generateReplicas();
+generateEntity();
 
 function generateComponents() {
   console.log("Generating Components");
@@ -33,10 +34,6 @@ function generateComponents() {
   writeFileSync(resolve("lib/components.d.ts"), result);
 }
 
-function isFileSync(file: string): boolean {
-  return statSync(file).isFile();
-}
-
 function generateReplicas() {
   console.log("Generating Replicas");
   const componentsGlob = "components/*.lua";
@@ -51,4 +48,23 @@ function generateReplicas() {
   builder.analyze();
   const result = builder.getDefinitions();
   writeFileSync(resolve("lib/replicas.d.ts"), result);
+}
+
+function generateEntity() {
+  console.log("Generating Entity");
+  const builder = new Builder("Entity", [
+    parse(readFileSync(resolve(root, "entityscript.lua"), "utf8").toString())
+  ]);
+  builder.analyze();
+  writeFileSync(
+    resolve("lib/entity.d.ts"),
+    `\
+interface Entity {
+${builder.getInterfacePropertiesDefinition("EntityScript")}
+}`
+  );
+}
+
+function isFileSync(file: string): boolean {
+  return statSync(file).isFile();
 }

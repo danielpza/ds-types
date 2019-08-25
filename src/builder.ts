@@ -1,4 +1,5 @@
 import * as Lua from "luaparse";
+import assert from "assert";
 
 export class Builder {
   definitions: Record<
@@ -11,21 +12,33 @@ export class Builder {
       ast.body.forEach(statement => this.visitStatement(statement));
     }
   }
-  public getDefinitions() {
-    return `\
-declare namespace ${this.ns} {
-${Object.entries(this.definitions)
-  .map(
-    ([intefaceName, { properties, methods }]) => `interface ${intefaceName} {
+  public getInterfacePropertiesDefinition(interfaceName: string) {
+    assert(
+      this.definitions[interfaceName],
+      `Class "${interfaceName}" doesn't exist`
+    );
+    const { properties, methods } = this.definitions[interfaceName];
+    return `
 ${Object.entries(properties)
   .map(([name, value]) => `${name}: ${value};`)
   .join("\n")}
 ${Object.entries(methods)
   .map(([name, value]) => `${name}${value};`)
   .join("\n")}
+`;
+  }
+  public getInterfaceDefinition(interfaceName: string) {
+    return `
+interface ${interfaceName} {
+${this.getInterfacePropertiesDefinition(interfaceName)}
 }
-`
-  )
+`;
+  }
+  public getDefinitions() {
+    return `\
+declare namespace ${this.ns} {
+${Object.keys(this.definitions)
+  .map(key => this.getInterfaceDefinition(key))
   .join("\n")}
 }
 
@@ -56,14 +69,19 @@ ${Object.keys(this.definitions)
     parameters: string[],
     retType?: string
   ) {
+    const reservedWords = ["new", "var", "default"];
     this.ensure(intefaceName);
     this.definitions[intefaceName].methods[name] = `(${parameters
-      .map(p => `${p === "new" ? "_new" : p}: any`)
+      .map(p => `${reservedWords.includes(p) ? `_${p}` : p}: any`)
       .join(", ")})${retType ? `: ${retType}` : ""}`;
   }
   protected inferTypeFromIdentifier(id: string) {
     const match = id.match(/^[A-Z][a-z]+/);
-    if (match && ["is", "has", "can", "accepts", "knows"].includes(match[0].toLowerCase())) return "boolean";
+    if (
+      match &&
+      ["is", "has", "can", "accepts", "knows"].includes(match[0].toLowerCase())
+    )
+      return "boolean";
     return null;
   }
   protected inferType(node: Lua.ExpressionKind, intefaceName?: string) {
