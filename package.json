@@ -22,8 +22,8 @@
     "test": "tests"
   },
   "scripts": {
-    "prebuild": "rm -f lib/components.d.ts && mkdir lib",
-    "build": "ts-node -T src/index.ts"
+    "prepublishOnly": "npm run build",
+    "build": "ts-node -T src/index.ts && prettier --write 'lib/*.ts'"
   },
   "dependencies": {},
   "devDependencies": {
