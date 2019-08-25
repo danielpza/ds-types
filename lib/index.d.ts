@@ -1,3 +1,5 @@
+/// <reference path="./components.d.ts" />
+/// <reference path="./replicas.d.ts" />
 /** @noSelfInFile **/
 type Slot = "head" | "body" | "hands";
 
