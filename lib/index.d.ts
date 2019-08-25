@@ -3,20 +3,15 @@ type Slot = "head" | "body" | "hands";
 
 type List<T> = Record<number, T>;
 
-type ComponentBundle<T extends keyof Component = never> = {
-  [K in T]: Component[K];
+type EnsureProps<T, P extends keyof T = never> = {
+  [K in P]: T[P];
 } &
-  { [K in Exclude<keyof Component, T>]?: Component[K] };
+  { [K in Exclude<keyof T, P>]?: T[P] };
 
-interface ReplicaBase {
-  inventoryitem?: {
-    classified: {
-      percentused?: {
-        value(): number;
-      };
-    };
-  };
-}
+type ComponentBundle<P extends keyof Component = never> = EnsureProps<
+  Component,
+  P
+>;
 
 interface PrefabBase {
   prefab: string;
@@ -30,9 +25,12 @@ interface PrefabBase {
   HasTag(tag: string): boolean;
 }
 
-interface Prefab<T extends keyof Component = never> extends PrefabBase {
-  components: ComponentBundle<T>;
-  replica: ComponentBundle<T> & ReplicaBase;
+interface Prefab<
+  K extends keyof Component = never,
+  L extends keyof Replica = never
+> extends PrefabBase {
+  components: EnsureProps<Component, K>;
+  replica: EnsureProps<Replica, L>;
 }
 
 interface Player extends Prefab<"inventory"> {}

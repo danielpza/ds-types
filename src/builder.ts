@@ -5,7 +5,7 @@ export class Builder {
     string,
     { properties: Record<string, string>; methods: Record<string, string> }
   > = {};
-  constructor(public files: Lua.Chunk[]) {}
+  constructor(public ns: string, public files: Lua.Chunk[]) {}
   public analyze() {
     for (const ast of this.files) {
       ast.body.forEach(statement => this.visitStatement(statement));
@@ -13,7 +13,7 @@ export class Builder {
   }
   public getDefinitions() {
     return `\
-declare namespace Component {
+declare namespace ${this.ns} {
 ${Object.entries(this.definitions)
   .map(
     ([intefaceName, { properties, methods }]) => `interface ${intefaceName} {
@@ -29,9 +29,9 @@ ${Object.entries(methods)
   .join("\n")}
 }
 
-declare interface Component {
+declare interface ${this.ns} {
 ${Object.keys(this.definitions)
-  .map(name => `${name.toLowerCase()}: Component.${name};`)
+.map(name => `${name.toLowerCase()}: ${this.ns}.${name};`)
   .join("\n")}
 }
 `;
