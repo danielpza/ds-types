@@ -6,9 +6,9 @@ type Slot = "head" | "body" | "hands";
 type List<T> = Record<number, T>;
 
 type EnsureProps<T, P extends keyof T = never> = {
-  [K in P]: T[P];
+  [K in P]: T[K];
 } &
-  { [K in Exclude<keyof T, P>]?: T[P] };
+  { [K in Exclude<keyof T, P>]?: T[K] };
 
 type ComponentBundle<P extends keyof Component = never> = EnsureProps<
   Component,
