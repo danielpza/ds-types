@@ -31,7 +31,7 @@ ${Object.entries(methods)
 
 declare interface ${this.ns} {
 ${Object.keys(this.definitions)
-.map(name => `${name.toLowerCase()}: ${this.ns}.${name};`)
+  .map(name => `${name.toLowerCase()}: ${this.ns}.${name};`)
   .join("\n")}
 }
 `;
@@ -61,11 +61,16 @@ ${Object.keys(this.definitions)
       .map(p => `${p === "new" ? "_new" : p}: any`)
       .join(", ")})${retType ? `: ${retType}` : ""}`;
   }
+  protected inferTypeFromIdentifier(id: string) {
+    const match = id.match(/^[A-Z][a-z]+/);
+    if (match && ["is", "has", "can", "accepts", "knows"].includes(match[0].toLowerCase())) return "boolean";
+    return null;
+  }
   protected inferType(node: Lua.ExpressionKind, intefaceName?: string) {
     if (node.type === "NumericLiteral") return "number";
     if (node.type === "StringLiteral") return "string";
     if (node.type === "BooleanLiteral") return "boolean";
-    return "any";
+    return null;
   }
   protected visitIntefaceStatement(
     intefaceName: string,
@@ -78,7 +83,9 @@ ${Object.keys(this.definitions)
           this.addProperty(
             intefaceName,
             variable.name,
-            init ? this.inferType(init) : "any"
+            (init && this.inferType(init)) ||
+              this.inferTypeFromIdentifier(variable.name) ||
+              "any"
           );
         }
       });
@@ -92,7 +99,9 @@ ${Object.keys(this.definitions)
             this.addProperty(
               intefaceName,
               variable.identifier.name,
-              init ? this.inferType(init) : "any"
+              (init && this.inferType(init)) ||
+                this.inferTypeFromIdentifier(variable.identifier.name) ||
+                "any"
             );
           }
         }
@@ -143,7 +152,7 @@ ${Object.keys(this.definitions)
         intefaceName,
         node.identifier.identifier.name,
         parameters,
-        "any"
+        this.inferTypeFromIdentifier(node.identifier.identifier.name) || "any"
       );
       // body
       node.body.forEach(statement =>

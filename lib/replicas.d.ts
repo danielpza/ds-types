@@ -25,16 +25,16 @@ declare namespace Replica {
     RemoveRecipe(recipename: any): any;
     BufferBuild(recipename: any): any;
     SetIsBuildBuffered(recipename: any, isbuildbuffered: any): any;
-    IsBuildBuffered(recipename: any): any;
-    HasCharacterIngredient(ingredient: any): any;
-    HasTechIngredient(ingredient: any): any;
-    KnowsRecipe(recipename: any): any;
-    CanBuild(recipename: any): any;
-    CanLearn(recipename: any): any;
-    CanBuildAtPoint(pt: any, recipe: any, rot: any): any;
+    IsBuildBuffered(recipename: any): boolean;
+    HasCharacterIngredient(ingredient: any): boolean;
+    HasTechIngredient(ingredient: any): boolean;
+    KnowsRecipe(recipename: any): boolean;
+    CanBuild(recipename: any): boolean;
+    CanLearn(recipename: any): boolean;
+    CanBuildAtPoint(pt: any, recipe: any, rot: any): boolean;
     MakeRecipeFromMenu(recipe: any, skin: any): any;
     MakeRecipeAtPoint(recipe: any, pt: any, rot: any, skin: any): any;
-    IsBusy(): any;
+    IsBusy(): boolean;
   }
 
   interface Combat {
@@ -54,7 +54,7 @@ declare namespace Replica {
     SetTarget(target: any): any;
     GetTarget(): any;
     SetLastTarget(target: any): any;
-    IsRecentTarget(target: any): any;
+    IsRecentTarget(target: any): boolean;
     SetIsPanic(ispanic: any): any;
     SetAttackRange(attackrange: any): any;
     GetAttackRangeWithWeapon(): any;
@@ -64,14 +64,14 @@ declare namespace Replica {
     SetCanAttack(canattack: any): any;
     StartAttack(): any;
     CancelAttack(): any;
-    CanAttack(target: any): any;
-    CanExtinguishTarget(target: any, weapon: any): any;
-    CanLightTarget(target: any, weapon: any): any;
-    CanHitTarget(target: any): any;
-    IsValidTarget(target: any): any;
-    CanTarget(target: any): any;
-    IsAlly(guy: any): any;
-    CanBeAttacked(attacker: any): any;
+    CanAttack(target: any): boolean;
+    CanExtinguishTarget(target: any, weapon: any): boolean;
+    CanLightTarget(target: any, weapon: any): boolean;
+    CanHitTarget(target: any): boolean;
+    IsValidTarget(target: any): boolean;
+    CanTarget(target: any): boolean;
+    IsAlly(guy: any): boolean;
+    CanBeAttacked(attacker: any): boolean;
   }
 
   interface ConstructionSite {
@@ -83,7 +83,7 @@ declare namespace Replica {
     DetachClassified(): any;
     SetBuilder(builder: any): any;
     SetSlotCount(slot: any, num: any): any;
-    IsBuilder(guy: any): any;
+    IsBuilder(guy: any): boolean;
     GetSlotCount(slot: any): any;
     GetIngredients(): any;
   }
@@ -111,22 +111,22 @@ declare namespace Replica {
     SetNumSlots(numslots: any): any;
     GetNumSlots(): any;
     SetCanBeOpened(canbeopened: any): any;
-    CanBeOpened(): any;
-    CanTakeItemInSlot(item: any, slot: any): any;
+    CanBeOpened(): boolean;
+    CanTakeItemInSlot(item: any, slot: any): boolean;
     GetSpecificSlotForItem(item: any): any;
-    AcceptsStacks(): any;
-    IsSideWidget(): any;
+    AcceptsStacks(): boolean;
+    IsSideWidget(): boolean;
     SetOpener(opener: any): any;
-    IsOpenedBy(guy: any): any;
-    IsHolding(item: any, checkcontainer: any): any;
+    IsOpenedBy(guy: any): boolean;
+    IsHolding(item: any, checkcontainer: any): boolean;
     GetItemInSlot(slot: any): any;
     GetItems(): any;
-    IsEmpty(): any;
-    IsFull(): any;
-    Has(prefab: any, amount: any): any;
+    IsEmpty(): boolean;
+    IsFull(): boolean;
+    Has(prefab: any, amount: any): boolean;
     Open(doer: any): any;
     Close(): any;
-    IsBusy(): any;
+    IsBusy(): boolean;
     PutOneOfActiveItemInSlot(slot: any): any;
     PutAllOfActiveItemInSlot(slot: any): any;
     TakeActiveItemFromHalfOfSlot(slot: any): any;
@@ -144,8 +144,8 @@ declare namespace Replica {
     restrictedtag: any;
     SetEquipSlot(eslot: any): any;
     EquipSlot(): any;
-    IsEquipped(): any;
-    IsRestricted(target: any): any;
+    IsEquipped(): boolean;
+    IsRestricted(target: any): boolean;
   }
 
   interface FishingRod {
@@ -156,9 +156,9 @@ declare namespace Replica {
     SetTarget(target: any): any;
     GetTarget(): any;
     SetHookedFish(hookedfish: any): any;
-    HasHookedFish(): any;
+    HasHookedFish(): boolean;
     SetCaughtFish(caughtfish: any): any;
-    HasCaughtFish(): any;
+    HasCaughtFish(): boolean;
   }
 
   interface Follower {
@@ -187,20 +187,20 @@ declare namespace Replica {
     GetPercent(): any;
     GetCurrent(): any;
     GetPenaltyPercent(): any;
-    IsHurt(): any;
+    IsHurt(): boolean;
     SetIsFull(isfull: any): any;
-    IsFull(): any;
+    IsFull(): boolean;
     SetIsDead(isdead: any): any;
-    IsDead(): any;
+    IsDead(): boolean;
     SetIsTakingFireDamage(istakingfiredamage: any): any;
-    IsTakingFireDamage(): any;
+    IsTakingFireDamage(): boolean;
     SetIsTakingFireDamageLow(istakingfiredamagelow: any): any;
-    IsTakingFireDamageLow(): any;
-    IsTakingFireDamageFull(): any;
+    IsTakingFireDamageLow(): boolean;
+    IsTakingFireDamageFull(): boolean;
     SetCanHeal(canheal: any): any;
-    CanHeal(): any;
+    CanHeal(): boolean;
     SetCanMurder(canmurder: any): any;
-    CanMurder(): any;
+    CanMurder(): boolean;
   }
 
   interface Hunger {
@@ -215,7 +215,7 @@ declare namespace Replica {
     Max(): any;
     GetPercent(): any;
     GetCurrent(): any;
-    IsStarving(): any;
+    IsStarving(): boolean;
   }
 
   interface Inventory {
@@ -232,14 +232,14 @@ declare namespace Replica {
     OnHide(): any;
     SetHeavyLifting(heavylifting: any): any;
     GetNumSlots(): any;
-    CanTakeItemInSlot(item: any, slot: any): any;
-    AcceptsStacks(): any;
+    CanTakeItemInSlot(item: any, slot: any): boolean;
+    AcceptsStacks(): boolean;
     IgnoresCanGoInContainer(): any;
     EquipHasTag(tag: any): any;
-    IsHeavyLifting(): any;
-    IsVisible(): any;
-    IsOpenedBy(guy: any): any;
-    IsHolding(item: any, checkcontainer: any): any;
+    IsHeavyLifting(): boolean;
+    IsVisible(): boolean;
+    IsOpenedBy(guy: any): boolean;
+    IsHolding(item: any, checkcontainer: any): boolean;
     GetActiveItem(): any;
     GetItemInSlot(slot: any): any;
     GetEquippedItem(eslot: any): any;
@@ -247,8 +247,8 @@ declare namespace Replica {
     GetEquips(): any;
     GetOpenContainers(): any;
     GetOverflowContainer(): any;
-    IsFull(): any;
-    Has(prefab: any, amount: any): any;
+    IsFull(): boolean;
+    Has(prefab: any, amount: any): boolean;
     ReturnActiveItem(): any;
     PutOneOfActiveItemInSlot(slot: any): any;
     PutAllOfActiveItemInSlot(slot: any): any;
@@ -284,35 +284,35 @@ declare namespace Replica {
     AttachClassified(classified: any): any;
     DetachClassified(): any;
     SetCanBePickedUp(canbepickedup: any): any;
-    CanBePickedUp(): any;
+    CanBePickedUp(): boolean;
     SetCanGoInContainer(cangoincontainer: any): any;
-    CanGoInContainer(): any;
+    CanGoInContainer(): boolean;
     SetCanOnlyGoInPocket(canonlygoinpocket: any): any;
-    CanOnlyGoInPocket(): any;
+    CanOnlyGoInPocket(): boolean;
     SetImage(imagename: any): any;
     GetImage(): any;
     SetAtlas(atlasname: any): any;
     GetAtlas(): any;
     SetOwner(owner: any): any;
-    IsHeld(): any;
-    IsHeldBy(guy: any): any;
-    IsGrandOwner(guy: any): any;
+    IsHeld(): boolean;
+    IsHeldBy(guy: any): boolean;
+    IsGrandOwner(guy: any): boolean;
     SetPickupPos(pos: any): any;
     GetPickupPos(): any;
     SerializeUsage(): any;
     DeserializeUsage(): any;
     SetChargeTime(t: any): any;
     SetDeployMode(deploymode: any): any;
-    IsDeployable(deployer: any): any;
+    IsDeployable(deployer: any): boolean;
     SetDeploySpacing(deployspacing: any): any;
     DeploySpacingRadius(): any;
     SetDeployRestrictedTag(restrictedtag: any): any;
-    CanDeploy(pt: any, mouseover: any, deployer: any): any;
+    CanDeploy(pt: any, mouseover: any, deployer: any): boolean;
     SetUseGridPlacer(usegridplacer: any): any;
     GetDeployPlacerName(): any;
     SetAttackRange(attackrange: any): any;
     AttackRange(): any;
-    IsWeapon(): any;
+    IsWeapon(): boolean;
     SetWalkSpeedMult(walkspeedmult: any): any;
     GetWalkSpeedMult(): any;
     SetEquipRestrictedTag(restrictedtag: any): any;
@@ -320,14 +320,14 @@ declare namespace Replica {
     SetMoistureLevel(moisture: any): any;
     GetMoisture(): any;
     SetIsWet(iswet: any): any;
-    IsWet(): any;
+    IsWet(): boolean;
   }
 
   interface Moisture {
     inst: any;
     _iswet: any;
     SetIsWet(iswet: any): any;
-    IsWet(): any;
+    IsWet(): boolean;
   }
 
   interface Named {
@@ -348,9 +348,9 @@ declare namespace Replica {
     SetActionFilter(riding: any): any;
     OnIsRiding(riding: any): any;
     SetRiding(riding: any): any;
-    IsRiding(): any;
+    IsRiding(): boolean;
     OnMountHealth(pct: any): any;
-    IsMountHurt(): any;
+    IsMountHurt(): boolean;
     SetMount(mount: any): any;
     GetMount(): any;
     GetMountRunSpeed(): any;
@@ -384,15 +384,15 @@ declare namespace Replica {
     GetRateScale(): any;
     SetSanityMode(mode: any): any;
     SetIsSane(sane: any): any;
-    IsSane(): any;
-    IsInsane(): any;
-    IsEnlightened(): any;
-    IsCrazy(): any;
+    IsSane(): boolean;
+    IsInsane(): boolean;
+    IsEnlightened(): boolean;
+    IsCrazy(): boolean;
     GetSanityMode(): any;
-    IsInsanityMode(): any;
-    IsLunacyMode(): any;
+    IsInsanityMode(): boolean;
+    IsLunacyMode(): boolean;
     SetGhostDrainMult(ghostdrainmult: any): any;
-    IsGhostDrain(): any;
+    IsGhostDrain(): boolean;
   }
 
   interface Sheltered {
@@ -407,7 +407,7 @@ declare namespace Replica {
     OnRemoveFromEntity(): any;
     StartSheltered(): any;
     StopSheltered(): any;
-    IsSheltered(): any;
+    IsSheltered(): boolean;
     CheckShade(): any;
     OnUpdate(dt: any): any;
   }
@@ -420,8 +420,8 @@ declare namespace Replica {
     SetMaxSize(maxsize: any): any;
     StackSize(): any;
     MaxSize(): any;
-    IsStack(): any;
-    IsFull(): any;
+    IsStack(): boolean;
+    IsFull(): boolean;
   }
 
   interface Writeable {

@@ -6,7 +6,7 @@ declare namespace Component {
     standingaction: boolean;
     quickaction: boolean;
     OnRemoveFromEntity(): any;
-    CanActivate(doer: any): any;
+    CanActivate(doer: any): boolean;
     DoActivate(doer: any): any;
   }
 
@@ -110,7 +110,7 @@ declare namespace Component {
     alwaysvalid: boolean;
     range: number;
     enabled: any;
-    IsEnabled(): any;
+    IsEnabled(): boolean;
     SetEnabled(enabled: any): any;
     SetTargetFX(prefab: any): any;
     SetAlwaysValid(val: any): any;
@@ -171,7 +171,7 @@ declare namespace Component {
     damage: number;
     InitCondition(amount: any, absorb_percent: any): any;
     InitIndestructible(absorb_percent: any): any;
-    IsIndestructible(): any;
+    IsIndestructible(): boolean;
     GetPercent(amount: any): any;
     SetTags(tags: any): any;
     AddWeakness(tag: any, bonus_damage: any): any;
@@ -181,7 +181,7 @@ declare namespace Component {
     SetCondition(amount: any): any;
     OnSave(): any;
     OnLoad(data: any): any;
-    CanResist(attacker: any, weapon: any): any;
+    CanResist(attacker: any, weapon: any): boolean;
     GetAbsorption(attacker: any, weapon: any): any;
     GetBonusDamage(attacker: any, weapon: any): any;
     TakeDamage(damage_amount: any): any;
@@ -207,8 +207,8 @@ declare namespace Component {
     SetOnAttuneCostFn(fn: any): any;
     SetOnLinkFn(fn: any): any;
     SetOnUnlinkFn(fn: any): any;
-    IsAttuned(player: any): any;
-    CanAttune(player: any): any;
+    IsAttuned(player: any): boolean;
+    CanAttune(player: any): boolean;
     LinkToPlayer(player: any, isloading: any): any;
     UnlinkFromPlayer(player: any, isloading: any): any;
     OnSave(): any;
@@ -221,8 +221,8 @@ declare namespace Component {
     ismastersim: any;
     attuned: any;
     str: string;
-    IsAttunedTo(target: any): any;
-    HasAttunement(tag: any): any;
+    IsAttunedTo(target: any): boolean;
+    HasAttunement(tag: any): boolean;
     GetAttunedTarget(tag: any): any;
     RegisterAttunedSource(proxy: any): any;
     UnregisterAttunedSource(proxy: any): any;
@@ -250,7 +250,7 @@ declare namespace Component {
     trap: any;
     OnRemoveFromEntity(): any;
     GetDebugString(): any;
-    IsFree(): any;
+    IsFree(): boolean;
   }
 
   interface BalloonMaker {
@@ -274,7 +274,7 @@ declare namespace Component {
     OnBathBombed(bathbomb_inst: any): any;
     SetCanBeBathBombedFn(new_fn: any): any;
     SetCanBeBathBombed(can_be_bathbombed: any): any;
-    CanBeBathBombed(bathbomb_inst: any): any;
+    CanBeBathBombed(bathbomb_inst: any): boolean;
   }
 
   interface BatSpawner {
@@ -326,7 +326,7 @@ declare namespace Component {
     time_effect_multiplier: number;
     task: any;
     old: any;
-    IsStarving(): any;
+    IsStarving(): boolean;
     StartTimeEffect(dt: any, delta_b: any): any;
     StopTimeEffect(): any;
     SetTimeEffectMultiplier(multiplier: any): any;
@@ -601,7 +601,7 @@ declare namespace Component {
     ActivateCurrentResearchMachine(recipe: any): any;
     OnSave(): any;
     OnLoad(data: any): any;
-    IsBuildBuffered(recname: any): any;
+    IsBuildBuffered(recname: any): boolean;
     OnUpdate(): any;
     GiveAllRecipes(): any;
     UnlockRecipesForTech(tech: any): any;
@@ -611,13 +611,13 @@ declare namespace Component {
     GetIngredientWetness(ingredients: any): any;
     GetIngredients(recname: any): any;
     RemoveIngredients(ingredients: any, recname: any): any;
-    HasCharacterIngredient(ingredient: any): any;
-    HasTechIngredient(ingredient: any): any;
+    HasCharacterIngredient(ingredient: any): boolean;
+    HasTechIngredient(ingredient: any): boolean;
     MakeRecipe(recipe: any, pt: any, rot: any, skin: any, onsuccess: any): any;
     DoBuild(recname: any, pt: any, rotation: any, skin: any): any;
-    KnowsRecipe(recname: any): any;
-    CanBuild(recname: any): any;
-    CanLearn(recname: any): any;
+    KnowsRecipe(recname: any): boolean;
+    CanBuild(recname: any): boolean;
+    CanLearn(recname: any): boolean;
     LongUpdate(dt: any): any;
     MakeRecipeFromMenu(recipe: any, skin: any): any;
     MakeRecipeAtPoint(recipe: any, pt: any, rot: any, skin: any): any;
@@ -640,8 +640,8 @@ declare namespace Component {
     itemprefab: any;
     wrappedprefab: any;
     data: any;
-    CanStartBundling(): any;
-    IsBundling(bundlinginst: any): any;
+    CanStartBundling(): boolean;
+    IsBundling(bundlinginst: any): boolean;
     StartBundling(item: any): any;
     StopBundling(): any;
     FinishBundling(): any;
@@ -680,8 +680,8 @@ declare namespace Component {
     SetOnExtinguishFn(fn: any): any;
     SetBurningFX(name: any): any;
     SetBurnTime(time: any): any;
-    IsBurning(): any;
-    IsSmoldering(): any;
+    IsBurning(): boolean;
+    IsSmoldering(): boolean;
     AddBurnFX(
       prefab: any,
       offset: any,
@@ -706,8 +706,8 @@ declare namespace Component {
     SpawnFX(immediate: any): any;
     FixFX(): any;
     KillFX(): any;
-    HasEndothermicHeat(): any;
-    HasExothermicHeat(): any;
+    HasEndothermicHeat(): boolean;
+    HasExothermicHeat(): boolean;
     OnRemoveFromEntity(): any;
   }
 
@@ -725,7 +725,7 @@ declare namespace Component {
     OnRemoveFromEntity(): any;
     SetCarefulWalkingSpeedMultiplier(mult: any): any;
     TrackTarget(target: any, radius: any, duration: any): any;
-    IsCarefulWalking(): any;
+    IsCarefulWalking(): boolean;
     ToggleCareful(careful: any): any;
     OnUpdate(dt: any): any;
   }
@@ -743,7 +743,7 @@ declare namespace Component {
     SetCatchDistance(dist: any): any;
     StartWatching(projectile: any): any;
     StopWatching(projectile: any): any;
-    CanCatch(): any;
+    CanCatch(): boolean;
     OnUpdate(): any;
   }
 
@@ -755,7 +755,7 @@ declare namespace Component {
     onstopchannelingfn: any;
     SetEnabled(enabled: any): any;
     SetChannelingFn(startfn: any, stopfn: any): any;
-    IsChanneling(): any;
+    IsChanneling(): boolean;
     StartChanneling(channeler: any): any;
     StopChanneling(aborted: any): any;
     OnUpdate(dt: any): any;
@@ -814,7 +814,7 @@ declare namespace Component {
     SetSpawnPeriod(period: any, variance: any): any;
     SetRegenPeriod(period: any, variance: any): any;
     SetEmergencyRadius(rad: any): any;
-    IsFull(): any;
+    IsFull(): boolean;
     NumChildren(): any;
     OnUpdate(dt: any): any;
     StartUpdate(dt: any): any;
@@ -842,8 +842,8 @@ declare namespace Component {
     UpdateMaxEmergencyCommit(): any;
     TrySpawnEmergencyChild(): any;
     GoHome(child: any): any;
-    CanSpawn(): any;
-    CanEmergencySpawn(): any;
+    CanSpawn(): boolean;
+    CanEmergencySpawn(): boolean;
     OnChildKilled(child: any): any;
     ReleaseAllChildren(target: any, prefab: any): any;
     AddChildrenInside(count: any): any;
@@ -895,8 +895,8 @@ declare namespace Component {
     nodes: any;
     onconnectfn: any;
     OnRemoveEntity(): any;
-    IsEnabled(): any;
-    IsConnected(): any;
+    IsEnabled(): boolean;
+    IsConnected(): boolean;
     NumConnectedNodes(): any;
     ConnectTo(tag: any): any;
     Disconnect(): any;
@@ -946,7 +946,7 @@ declare namespace Component {
     tweening: boolean;
     i_colour: any;
     t: any;
-    IsTweening(): any;
+    IsTweening(): boolean;
     EndTween(): any;
     StartTween(colour: any, time: any, callback: any): any;
     OnUpdate(dt: any): any;
@@ -1038,13 +1038,13 @@ declare namespace Component {
     OnEntitySleep(): any;
     OnEntityWake(): any;
     OnUpdate(dt: any): any;
-    IsRecentTarget(target: any): any;
+    IsRecentTarget(target: any): boolean;
     StartTrackingTarget(target: any): any;
     StopTrackingTarget(target: any): any;
     DropTarget(hasnexttarget: any): any;
     EngageTarget(target: any): any;
     SetTarget(target: any): any;
-    IsValidTarget(target: any): any;
+    IsValidTarget(target: any): boolean;
     ValidateTarget(): any;
     GetDebugString(): any;
     GetGiveUpString(target: any): any;
@@ -1057,9 +1057,9 @@ declare namespace Component {
     GetImpactSound(target: any, weapon: any): any;
     StartAttack(): any;
     CancelAttack(): any;
-    CanTarget(target: any): any;
-    HasTarget(): any;
-    CanAttack(target: any): any;
+    CanTarget(target: any): boolean;
+    HasTarget(): boolean;
+    CanAttack(target: any): boolean;
     TryAttack(target: any): any;
     ForceAttack(): any;
     GetWeapon(): any;
@@ -1076,9 +1076,9 @@ declare namespace Component {
     CalcAttackRangeSq(target: any): any;
     GetHitRange(): any;
     CalcHitRangeSq(target: any): any;
-    CanExtinguishTarget(target: any, weapon: any): any;
-    CanLightTarget(target: any, weapon: any): any;
-    CanHitTarget(target: any, weapon: any): any;
+    CanExtinguishTarget(target: any, weapon: any): boolean;
+    CanLightTarget(target: any, weapon: any): boolean;
+    CanHitTarget(target: any, weapon: any): boolean;
     DoAttack(
       targ: any,
       weapon: any,
@@ -1095,8 +1095,8 @@ declare namespace Component {
       stimuli: any,
       excludetags: any
     ): any;
-    IsAlly(guy: any): any;
-    CanBeAttacked(attacker: any): any;
+    IsAlly(guy: any): boolean;
+    CanBeAttacked(attacker: any): boolean;
     OnSave(): any;
     LoadPostPass(newents: any, data: any): any;
     OnRemoveFromEntity(): any;
@@ -1114,10 +1114,10 @@ declare namespace Component {
     OnRemoveFromEntity(): any;
     GetNumSoldiers(): any;
     GetAllSoldiers(): any;
-    IsSoldier(ent: any): any;
+    IsSoldier(ent: any): boolean;
     ShareTargetToAllSoldiers(target: any): any;
     DropAllSoldierTargets(): any;
-    IsAnySoldierNotAlert(): any;
+    IsAnySoldierNotAlert(): boolean;
     AlertAllSoldiers(): any;
     PushEventToAllSoldiers(ev: any, data: any): any;
     AddSoldier(ent: any): any;
@@ -1178,9 +1178,9 @@ declare namespace Component {
     constructioninst: any;
     constructionsite: any;
     _onremoveconstructionsite: any;
-    CanStartConstruction(): any;
-    IsConstructing(constructioninst: any): any;
-    IsConstructingAny(): any;
+    CanStartConstruction(): boolean;
+    IsConstructing(constructioninst: any): boolean;
+    IsConstructingAny(): boolean;
     StartConstruction(target: any): any;
     StopConstruction(): any;
     FinishConstruction(): any;
@@ -1233,8 +1233,8 @@ declare namespace Component {
     OnStartConstruction(doer: any): any;
     OnStopConstruction(doer: any): any;
     OnConstruct(doer: any, items: any): any;
-    HasBuilder(): any;
-    IsBuilder(guy: any): any;
+    HasBuilder(): boolean;
+    IsBuilder(guy: any): boolean;
     AddMaterial(prefab: any, num: any): any;
     GetMaterialCount(prefab: any): any;
     GetSlotCount(slot: any): any;
@@ -1271,17 +1271,17 @@ declare namespace Component {
     WidgetSetup(prefab: any, data: any): any;
     GetWidget(): any;
     NumItems(): any;
-    IsFull(): any;
-    IsEmpty(): any;
+    IsFull(): boolean;
+    IsEmpty(): boolean;
     SetNumSlots(numslots: any): any;
     DropItemBySlot(slot: any): any;
     DropEverythingWithTag(tag: any): any;
     DropEverything(): any;
     DropItem(itemtodrop: any): any;
-    CanTakeItemInSlot(item: any, slot: any): any;
+    CanTakeItemInSlot(item: any, slot: any): boolean;
     GetSpecificSlotForItem(item: any): any;
-    AcceptsStacks(): any;
-    IsSideWidget(): any;
+    AcceptsStacks(): boolean;
+    IsSideWidget(): boolean;
     DestroyContents(): any;
     GiveItem(item: any, slot: any, src_pos: any, drop_on_fail: any): any;
     RemoveItemBySlot(slot: any): any;
@@ -1290,12 +1290,12 @@ declare namespace Component {
     GetItemSlot(item: any): any;
     Open(doer: any): any;
     Close(): any;
-    IsOpen(): any;
-    IsOpenedBy(guy: any): any;
-    IsHolding(item: any, checkcontainer: any): any;
+    IsOpen(): boolean;
+    IsOpenedBy(guy: any): boolean;
+    IsHolding(item: any, checkcontainer: any): boolean;
     FindItem(fn: any): any;
     FindItems(fn: any): any;
-    Has(item: any, amount: any): any;
+    Has(item: any, amount: any): boolean;
     GetItemByName(item: any, amount: any): any;
     ConsumeByName(item: any, amount: any): any;
     OnSave(): any;
@@ -1326,7 +1326,7 @@ declare namespace Component {
   interface Cooker {
     inst: any;
     OnRemoveFromEntity(): any;
-    CanCook(item: any, chef: any): any;
+    CanCook(item: any, chef: any): boolean;
     CookItem(item: any, chef: any): any;
   }
 
@@ -1342,8 +1342,8 @@ declare namespace Component {
     StartCharging(time: any): any;
     FinishCharging(): any;
     GetTimeToCharged(): any;
-    IsCharged(): any;
-    IsCharging(): any;
+    IsCharged(): boolean;
+    IsCharging(): boolean;
     OnSave(): any;
     GetDebugString(): any;
     LongUpdate(dt: any): any;
@@ -1355,7 +1355,7 @@ declare namespace Component {
     items: any;
     recipes: any;
     LearnItem(itemname: any, recipetouse: any): any;
-    KnowsItem(itemname: any): any;
+    KnowsItem(itemname: any): boolean;
     GetItems(): any;
     GetRecipes(): any;
     ForgetItem(itemname: any): any;
@@ -1379,7 +1379,7 @@ declare namespace Component {
     IncTracker(name: any, multiplier: any): any;
     DecayTraits(): any;
     SetDominantTrait(trait: any): any;
-    IsDominantTrait(trait: any): any;
+    IsDominantTrait(trait: any): boolean;
     RefreshDominantTrait(): any;
     OnSave(): any;
     OnLoad(data: any): any;
@@ -1414,7 +1414,7 @@ declare namespace Component {
     Harvest(harvester: any): any;
     Mature(): any;
     MakeWithered(): any;
-    IsReadyForHarvest(): any;
+    IsReadyForHarvest(): boolean;
     LongUpdate(dt: any): any;
   }
 
@@ -1472,11 +1472,11 @@ declare namespace Component {
     debuff: any;
     data: any;
     str: any;
-    IsEnabled(): any;
+    IsEnabled(): boolean;
     Enable(enable: any): any;
     RemoveOnDespawn(): any;
     SetFollowSymbol(symbol: any, x: any, y: any, z: any): any;
-    HasDebuff(name: any): any;
+    HasDebuff(name: any): boolean;
     GetDebuff(name: any): any;
     AddDebuff(name: any, prefab: any): any;
     RemoveDebuff(name: any): any;
@@ -1562,16 +1562,16 @@ declare namespace Component {
     SetValidAareaCheckFn(fn: any): any;
     CalcHerdCenterPoint(detailedinfo: any): any;
     UpdateHerdLocation(radius: any): any;
-    IsActiveInHerd(deer: any): any;
+    IsActiveInHerd(deer: any): boolean;
     UpdateDeerHerdingStatus(): any;
     CalcIsHerdSpooked(): any;
-    IsAnyEntityAsleep(): any;
+    IsAnyEntityAsleep(): boolean;
     OnUpdate(dt: any): any;
-    IsGrazing(): any;
+    IsGrazing(): boolean;
     SetHerdAlertTarget(deer: any, target: any): any;
     GetClosestHerdAlertTarget(deer: any): any;
     HerdHasAlertTarget(): any;
-    IsAHerdAlertTarget(target: any): any;
+    IsAHerdAlertTarget(target: any): boolean;
     OnSave(): any;
     OnLoad(data: any): any;
     LoadPostPass(newents: any, data: any): any;
@@ -1591,8 +1591,8 @@ declare namespace Component {
     SetDeploySpacing(spacing: any): any;
     SetUseGridPlacer(usegridplacer: any): any;
     DeploySpacingRadius(): any;
-    IsDeployable(deployer: any): any;
-    CanDeploy(pt: any, mouseover: any, deployer: any): any;
+    IsDeployable(deployer: any): boolean;
+    CanDeploy(pt: any, mouseover: any, deployer: any): boolean;
     Deploy(pt: any, deployer: any, rot: any): any;
   }
 
@@ -1657,8 +1657,8 @@ declare namespace Component {
     z: any;
     ents: any;
     OnRemoveFromEntity(): any;
-    IsDiseased(): any;
-    IsBecomingDiseased(): any;
+    IsDiseased(): boolean;
+    IsBecomingDiseased(): boolean;
     SetDiseasedFn(fn: any): any;
     Disease(): any;
     Spread(): any;
@@ -1705,7 +1705,7 @@ declare namespace Component {
     CancelTask(): any;
     CheckAndStartTask(): any;
     SetDomesticated(domesticated: any): any;
-    IsDomesticated(): any;
+    IsDomesticated(): boolean;
     SetMinObedience(min: any): any;
     OnSave(): any;
     OnLoad(data: any): any;
@@ -1722,7 +1722,7 @@ declare namespace Component {
     ondrawnfn: any;
     OnRemoveFromEntity(): any;
     SetCanDraw(candraw: any): any;
-    CanDraw(): any;
+    CanDraw(): boolean;
     SetOnDrawnFn(fn: any): any;
     OnDrawn(
       imagename: any,
@@ -1824,12 +1824,12 @@ declare namespace Component {
     SetStartDryingFn(fn: any): any;
     SetDoneDryingFn(fn: any): any;
     SetOnHarvestFn(fn: any): any;
-    CanDry(dryable: any): any;
-    IsDrying(): any;
-    IsDone(): any;
+    CanDry(dryable: any): boolean;
+    IsDrying(): boolean;
+    IsDone(): boolean;
     GetTimeToDry(): any;
     GetTimeToSpoil(): any;
-    IsPaused(): any;
+    IsPaused(): boolean;
     StartDrying(dryable: any): any;
     StopDrying(reason: any): any;
     Pause(): any;
@@ -1860,7 +1860,7 @@ declare namespace Component {
     SetDiet(caneat: any, preferseating: any): any;
     SetAbsorptionModifiers(health: any, hunger: any, sanity: any): any;
     TimeSinceLastEating(): any;
-    HasBeen(time: any): any;
+    HasBeen(time: any): boolean;
     OnSave(): any;
     OnLoad(data: any): any;
     SetCanEatHorrible(): any;
@@ -1873,7 +1873,7 @@ declare namespace Component {
     Eat(food: any, feeder: any): any;
     TestFood(food: any, testvalues: any): any;
     PrefersToEat(inst: any): any;
-    CanEat(inst: any): any;
+    CanEat(inst: any): boolean;
   }
 
   interface Edible {
@@ -1948,7 +1948,7 @@ declare namespace Component {
     SetDisembarkActionPos(pos_x: any, pos_z: any): any;
     StartMoving(): any;
     OnWallUpdate(dt: any): any;
-    HasDestination(): any;
+    HasDestination(): boolean;
     GetEmbarkPosition(): any;
     Embark(): any;
     Cancel(): any;
@@ -2019,16 +2019,16 @@ declare namespace Component {
     maxequippedmoisture: number;
     inventoryitem: any;
     OnRemoveFromEntity(): any;
-    IsInsulated(): any;
+    IsInsulated(): boolean;
     SetOnEquip(fn: any): any;
     SetOnPocket(fn: any): any;
     SetOnUnequip(fn: any): any;
-    IsEquipped(): any;
+    IsEquipped(): boolean;
     Equip(owner: any): any;
     ToPocket(owner: any): any;
     Unequip(owner: any): any;
     GetWalkSpeedMult(): any;
-    IsRestricted(target: any): any;
+    IsRestricted(target: any): boolean;
     GetDapperness(owner: any): any;
     GetEquippedMoisture(): any;
   }
@@ -2096,7 +2096,7 @@ declare namespace Component {
     SetOnUseFn(fn: any): any;
     SetOnChannelingFn(fn: any): any;
     SetOverrideSymbol(symbol: any): any;
-    IsChanneling(): any;
+    IsChanneling(): boolean;
     Channel(target: any): any;
     Fan(target: any): any;
   }
@@ -2189,7 +2189,7 @@ declare namespace Component {
     OnRemoveFromEntity(): any;
     Activate(randomizedStartTime: any): any;
     ActivateEmergencyMode(randomizedStartTime: any): any;
-    IsEmergency(): any;
+    IsEmergency(): boolean;
     GetEmergencyLevel(): any;
     GetMaxEmergencyLevel(): any;
     ResetEmergencyCooldown(): any;
@@ -2256,7 +2256,7 @@ declare namespace Component {
     HookFish(): any;
     ReleaseFish(fish: any): any;
     RemoveFish(fish: any): any;
-    IsFrozenOver(): any;
+    IsFrozenOver(): boolean;
     Freeze(): any;
     Unfreeze(): any;
     RefreshFish(): any;
@@ -2339,9 +2339,9 @@ declare namespace Component {
     SetWaitTimes(min: any, max: any): any;
     SetStrainTimes(min: any, max: any): any;
     OnUpdate(dt: any): any;
-    IsFishing(): any;
-    HasHookedFish(): any;
-    HasCaughtFish(): any;
+    IsFishing(): boolean;
+    HasHookedFish(): boolean;
+    HasCaughtFish(): boolean;
     FishIsBiting(): any;
     StartFishing(target: any, fisherman: any): any;
     WaitForFish(): any;
@@ -2393,7 +2393,7 @@ declare namespace Component {
     ): any;
     ShouldShowEffect(): any;
     AttachEffect(effect: any): any;
-    IsFloating(): any;
+    IsFloating(): boolean;
     OnLandedServer(): any;
     OnLandedClient(): any;
     OnNoLongerLandedServer(): any;
@@ -2451,10 +2451,10 @@ declare namespace Component {
     GetLoyaltyPercent(): any;
     AddLoyaltyTime(time: any): any;
     StopFollowing(): any;
-    IsNearLeader(dist: any): any;
+    IsNearLeader(dist: any): boolean;
     OnSave(): any;
     OnLoad(data: any): any;
-    IsLeaderSame(otherfollower: any): any;
+    IsLeaderSame(otherfollower: any): boolean;
     KeepLeaderOnAttacked(): any;
     LongUpdate(dt: any): any;
     OnRemoveFromEntity(): any;
@@ -2496,8 +2496,8 @@ declare namespace Component {
     AddShatterFX(prefab: any, offset: any, followsymbol: any): any;
     SetShatterFXLevel(level: any, percent: any): any;
     SpawnShatterFX(): any;
-    IsFrozen(): any;
-    IsThawing(): any;
+    IsFrozen(): boolean;
+    IsThawing(): boolean;
     GetDebugString(): any;
     AddColdness(coldness: any, freezetime: any, nofreeze: any): any;
     StartWearingOff(wearofftime: any): any;
@@ -2576,9 +2576,9 @@ declare namespace Component {
     OnLoad(data: any): any;
     SetSectionCallback(fn: any): any;
     SetDepletedFn(fn: any): any;
-    IsEmpty(): any;
+    IsEmpty(): boolean;
     SetSections(num: any): any;
-    CanAcceptFuelItem(item: any): any;
+    CanAcceptFuelItem(item: any): boolean;
     GetCurrentSection(): any;
     ChangeSection(amount: any): any;
     SetTakeFuelFn(fn: any): any;
@@ -2611,7 +2611,7 @@ declare namespace Component {
     inst: any;
     giftcount: number;
     giftmachine: any;
-    HasGift(): any;
+    HasGift(): boolean;
     RefreshGiftCount(): any;
     SetGiftMachine(inst: any): any;
     OpenNextGift(): any;
@@ -2640,9 +2640,9 @@ declare namespace Component {
     SetResistance(resist: any): any;
     SetDecayRate(rate: any): any;
     SetWearOffDuration(duration: any): any;
-    IsKnockedOut(): any;
-    IsGroggy(): any;
-    HasGrogginess(): any;
+    IsKnockedOut(): boolean;
+    IsGroggy(): boolean;
+    HasGrogginess(): boolean;
     GetDebugString(): any;
     AddGrogginess(grogginess: any, knockoutduration: any): any;
     ExtendKnockout(knockoutduration: any): any;
@@ -2730,7 +2730,7 @@ declare namespace Component {
     AddTarget(target: any): any;
     RemoveTarget(target: any): any;
     GetTargets(): any;
-    IsTargeting(target: any): any;
+    IsTargeting(target: any): boolean;
     TryGetNewTarget(): any;
     SelectTarget(): any;
   }
@@ -2778,10 +2778,10 @@ declare namespace Component {
     prefab: any;
     pos: any;
     OnRemoveFromEntity(): any;
-    IsEmpty(): any;
-    IsFullFertile(): any;
+    IsEmpty(): boolean;
+    IsFullFertile(): boolean;
     GetFertilePercent(): any;
-    IsFertile(): any;
+    IsFertile(): boolean;
     OnSave(): any;
     Fertilize(obj: any, doer: any): any;
     OnLoad(data: any, newents: any): any;
@@ -2839,7 +2839,7 @@ declare namespace Component {
     SummonGuardian(override: any): any;
     OnGuardianDeath(data: any): any;
     DismissGuardian(): any;
-    HasGuardian(): any;
+    HasGuardian(): boolean;
     OnSave(): any;
     OnLoad(data: any): any;
     LoadPostPass(ents: any, data: any): any;
@@ -2862,7 +2862,7 @@ declare namespace Component {
     SetOnHarvestFn(fn: any): any;
     SetProduct(product: any, max: any): any;
     SetGrowTime(time: any): any;
-    CanBeHarvested(): any;
+    CanBeHarvested(): boolean;
     OnSave(): any;
     OnLoad(data: any): any;
     GetDebugString(): any;
@@ -2989,15 +2989,15 @@ declare namespace Component {
     DeltaPenalty(delta: any): any;
     GetPenaltyPercent(): any;
     GetPercent(): any;
-    IsInvincible(): any;
+    IsInvincible(): boolean;
     GetDebugString(): any;
     SetCurrentHealth(amount: any): any;
     SetMaxHealth(amount: any): any;
     SetMinHealth(amount: any): any;
-    IsHurt(): any;
+    IsHurt(): boolean;
     GetMaxWithPenalty(): any;
     Kill(): any;
-    IsDead(): any;
+    IsDead(): boolean;
     SetPercent(percent: any, overtime: any, cause: any): any;
     SetVal(val: any, cause: any, afflicter: any): any;
     DoDelta(
@@ -3063,8 +3063,8 @@ declare namespace Component {
     endothermic: boolean;
     OnRemoveFromEntity(): any;
     SetThermics(exo: any, endo: any): any;
-    IsEndothermic(): any;
-    IsExothermic(): any;
+    IsEndothermic(): boolean;
+    IsExothermic(): boolean;
     GetHeat(observer: any): any;
     GetEquippedHeat(observer: any): any;
     GetCarriedHeat(observer: any): any;
@@ -3089,9 +3089,9 @@ declare namespace Component {
     MakeSmallObstacle(): any;
     AddFallingStates(): any;
     GetPhysicsState(): any;
-    IsItem(): any;
-    IsObstacle(): any;
-    IsFalling(): any;
+    IsItem(): boolean;
+    IsObstacle(): boolean;
+    IsFalling(): boolean;
     SetOnPhysicsStateChangedFn(fn: any): any;
     SetOnChangeToItemFn(fn: any): any;
     SetOnChangeToObstacleFn(fn: any): any;
@@ -3129,7 +3129,7 @@ declare namespace Component {
     SetOnEmptyFn(fn: any): any;
     SetOnFullFn(fn: any): any;
     SetAddMemberFn(fn: any): any;
-    IsFull(): any;
+    IsFull(): boolean;
     AddMember(inst: any): any;
     RemoveMember(inst: any): any;
     GatherNearbyMembers(): any;
@@ -3189,7 +3189,7 @@ declare namespace Component {
     DoReleaseChild(target: any, child: any, radius: any): any;
     ReleaseChild(target: any, prefab: any, radius: any): any;
     GoHome(child: any): any;
-    CanRelease(): any;
+    CanRelease(): boolean;
     ReleaseAllChildren(target: any, prefab: any): any;
     LongUpdate(dt: any): any;
     GetDebugString(): any;
@@ -3220,7 +3220,7 @@ declare namespace Component {
     inst: any;
     onhomeremoved: any;
     home: any;
-    HasHome(): any;
+    HasHome(): boolean;
     GetDebugString(): any;
     SetHome(home: any): any;
     GoHome(shouldrun: any): any;
@@ -3301,10 +3301,10 @@ declare namespace Component {
     LongUpdate(dt: any): any;
     Pause(): any;
     Resume(): any;
-    IsPaused(): any;
+    IsPaused(): boolean;
     GetDebugString(): any;
     SetMax(amount: any): any;
-    IsStarving(): any;
+    IsStarving(): boolean;
     DoDelta(delta: any, overtime: any, ignore_invincible: any): any;
     GetPercent(): any;
     SetPercent(p: any, overtime: any): any;
@@ -3325,7 +3325,7 @@ declare namespace Component {
     toproduce: number;
     lastproduction: number;
     count: any;
-    CanProduce(): any;
+    CanProduce(): boolean;
     TryProduce(): any;
     DoProduce(): any;
     GetDebugString(): any;
@@ -3361,7 +3361,7 @@ declare namespace Component {
     SetSummer(): any;
     SetWinter(): any;
     GetType(): any;
-    IsType(type: any): any;
+    IsType(type: any): boolean;
     SetInsulation(val: any): any;
     GetInsulation(): any;
   }
@@ -3429,36 +3429,36 @@ declare namespace Component {
     NumItems(): any;
     TransferInventory(receiver: any): any;
     OnSave(): any;
-    CanTakeItemInSlot(item: any, slot: any): any;
-    AcceptsStacks(): any;
+    CanTakeItemInSlot(item: any, slot: any): boolean;
+    AcceptsStacks(): boolean;
     IgnoresCanGoInContainer(): any;
     OnLoad(data: any, newents: any): any;
     DropActiveItem(): any;
     ReturnActiveActionItem(item: any): any;
-    IsWearingArmor(): any;
+    IsWearingArmor(): boolean;
     ArmorHasTag(tag: any): any;
     EquipHasTag(tag: any): any;
-    IsHeavyLifting(): any;
+    IsHeavyLifting(): boolean;
     ApplyDamage(damage: any, attacker: any, weapon: any): any;
     GetActiveItem(): any;
-    IsItemEquipped(item: any): any;
+    IsItemEquipped(item: any): boolean;
     SelectActiveItemFromEquipSlot(slot: any): any;
     CombineActiveStackWithSlot(slot: any, stack_mod: any): any;
     SelectActiveItemFromSlot(slot: any): any;
     ReturnActiveItem(slot: any, stack_mod: any): any;
     GetNumSlots(): any;
     GetItemSlot(item: any): any;
-    IsHolding(item: any, checkcontainer: any): any;
+    IsHolding(item: any, checkcontainer: any): boolean;
     FindItem(fn: any): any;
     FindItems(fn: any): any;
     RemoveItemBySlot(slot: any): any;
     DropItem(item: any, wholestack: any, randomdir: any, pos: any): any;
-    IsInsulated(): any;
+    IsInsulated(): boolean;
     GetEquippedItem(eslot: any): any;
     GetItemInSlot(slot: any): any;
-    IsFull(): any;
+    IsFull(): boolean;
     GetNextAvailableSlot(item: any): any;
-    CanAcceptCount(item: any, maxcount: any): any;
+    CanAcceptCount(item: any, maxcount: any): boolean;
     GiveActiveItem(inst: any): any;
     GiveItem(inst: any, slot: any, src_pos: any): any;
     Unequip(equipslot: any, slip: any): any;
@@ -3466,7 +3466,7 @@ declare namespace Component {
     Equip(item: any, old_to_active: any): any;
     RemoveItem(item: any, wholestack: any): any;
     GetOverflowContainer(): any;
-    Has(item: any, amount: any): any;
+    Has(item: any, amount: any): boolean;
     GetItemByName(item: any, amount: any): any;
     ConsumeByName(item: any, amount: any): any;
     DropEverythingWithTag(tag: any): any;
@@ -3475,7 +3475,7 @@ declare namespace Component {
     BurnNonpotatableInContainer(container: any): any;
     ReferenceAllItems(): any;
     GetDebugString(): any;
-    IsOpenedBy(guy: any): any;
+    IsOpenedBy(guy: any): boolean;
     Show(): any;
     Open(): any;
     Hide(): any;
@@ -3487,7 +3487,7 @@ declare namespace Component {
     AddOneOfActiveItemToSlot(slot: any): any;
     AddAllOfActiveItemToSlot(slot: any): any;
     SwapActiveItemWithSlot(slot: any): any;
-    CanAccessItem(item: any): any;
+    CanAccessItem(item: any): boolean;
     UseItemFromInvTile(item: any, actioncode: any, mod_name: any): any;
     ControllerUseItemOnItemFromInvTile(
       item: any,
@@ -3517,7 +3517,7 @@ declare namespace Component {
     MoveItemFromHalfOfSlot(slot: any, container: any): any;
     GetEquippedMoistureRate(slot: any): any;
     GetWaterproofness(slot: any): any;
-    IsWaterproof(): any;
+    IsWaterproof(): boolean;
   }
 
   interface InventoryItem {
@@ -3546,7 +3546,7 @@ declare namespace Component {
     OnRemoveFromEntity(): any;
     EnableMoisture(enable: any): any;
     GetMoisture(): any;
-    IsWet(): any;
+    IsWet(): boolean;
     InheritMoisture(moisture: any, iswet: any): any;
     DiluteMoisture(item: any, count: any): any;
     AddMoisture(delta: any): any;
@@ -3566,13 +3566,13 @@ declare namespace Component {
     OnDropped(randomdir: any, speedmult: any): any;
     DoDropPhysics(x: any, y: any, z: any, randomdir: any, speedmult: any): any;
     OnPickup(pickupguy: any, src_pos: any): any;
-    IsHeld(): any;
-    IsHeldBy(guy: any): any;
+    IsHeld(): boolean;
+    IsHeldBy(guy: any): boolean;
     ChangeImageName(newname: any): any;
     RemoveFromOwner(wholestack: any): any;
     OnRemoveEntity(): any;
     GetGrandOwner(): any;
-    IsSheltered(): any;
+    IsSheltered(): boolean;
     SetLanded(is_landed: any, should_poll_for_landing: any): any;
     ShouldSink(): any;
     TryToSink(): any;
@@ -3686,7 +3686,7 @@ declare namespace Component {
     _onfollowerremoved: any;
     count: number;
     OnRemoveFromEntity(): any;
-    IsFollower(guy: any): any;
+    IsFollower(guy: any): boolean;
     OnAttacked(attacker: any): any;
     CountFollowers(tag: any): any;
     OnNewTarget(target: any): any;
@@ -3695,7 +3695,7 @@ declare namespace Component {
     RemoveFollowersByTag(tag: any, validateremovefn: any): any;
     RemoveAllFollowers(): any;
     RemoveAllFollowersOnDeath(): any;
-    IsBeingFollowedBy(prefabName: any): any;
+    IsBeingFollowedBy(prefabName: any): boolean;
     OnSave(): any;
     LoadPostPass(newents: any, savedata: any): any;
     GetDebugString(): any;
@@ -3757,8 +3757,8 @@ declare namespace Component {
     SetOnUnlockedFn(fn: any): any;
     SetOnLockedFn(fn: any): any;
     CompatableKey(keytype: any): any;
-    IsStuck(): any;
-    IsLocked(): any;
+    IsStuck(): boolean;
+    IsLocked(): boolean;
     Unlock(key: any, doer: any): any;
     Lock(doer: any): any;
     SetKey(key: any): any;
@@ -3770,7 +3770,7 @@ declare namespace Component {
   }
 
   interface Dest {
-    IsValid(): any;
+    IsValid(): boolean;
     __tostring(): any;
     GetPoint(): any;
   }
@@ -3882,7 +3882,7 @@ declare namespace Component {
     WalkInDirection(direction: any, should_run: any): any;
     RunInDirection(direction: any, throttle: any): any;
     GetDebugString(): any;
-    HasDestination(): any;
+    HasDestination(): boolean;
     SetShouldRun(should_run: any): any;
     WantsToRun(): any;
     WantsToMoveForward(): any;
@@ -3906,7 +3906,7 @@ declare namespace Component {
       my_z: any,
       dir_x: any,
       dir_z: any
-    ): any;
+    ): boolean;
     ScanForPlatformInDir(
       my_platform: any,
       map: any,
@@ -3980,9 +3980,9 @@ declare namespace Component {
     OnSave(): any;
     OnLoad(data: any): any;
     TurnOn(): any;
-    CanInteract(): any;
+    CanInteract(): boolean;
     TurnOff(): any;
-    IsOn(): any;
+    IsOn(): boolean;
     GetDebugString(): any;
   }
 
@@ -3993,7 +3993,7 @@ declare namespace Component {
     stages: any;
     str: string;
     OnRemoveFromEntity(): any;
-    IsMakingScience(): any;
+    IsMakingScience(): boolean;
     SetStage(stage: any, time_override: any): any;
     StartMakingScience(product: any): any;
     OnSave(): any;
@@ -4027,7 +4027,7 @@ declare namespace Component {
       z: any,
       allow_water: any,
       exclude_boats: any
-    ): any;
+    ): boolean;
     IsPassableAtPointWithPlatformRadiusBias(
       x: any,
       y: any,
@@ -4036,36 +4036,41 @@ declare namespace Component {
       exclude_boats: any,
       platform_radius_bias: any,
       ignore_land_overhang: any
-    ): any;
-    IsAboveGroundAtPoint(x: any, y: any, z: any, allow_water: any): any;
-    IsOceanTileAtPoint(x: any, y: any, z: any): any;
-    IsValidTileAtPoint(x: any, y: any, z: any): any;
-    CanTerraformAtPoint(x: any, y: any, z: any): any;
-    CanPlaceTurfAtPoint(x: any, y: any, z: any): any;
-    CanPlantAtPoint(x: any, y: any, z: any): any;
-    IsPointNearHole(pt: any, range: any): any;
-    IsGroundTargetBlocked(pt: any, range: any): any;
+    ): boolean;
+    IsAboveGroundAtPoint(x: any, y: any, z: any, allow_water: any): boolean;
+    IsOceanTileAtPoint(x: any, y: any, z: any): boolean;
+    IsValidTileAtPoint(x: any, y: any, z: any): boolean;
+    CanTerraformAtPoint(x: any, y: any, z: any): boolean;
+    CanPlaceTurfAtPoint(x: any, y: any, z: any): boolean;
+    CanPlantAtPoint(x: any, y: any, z: any): boolean;
+    IsPointNearHole(pt: any, range: any): boolean;
+    IsGroundTargetBlocked(pt: any, range: any): boolean;
     IsDeployPointClear(
       pt: any,
       inst: any,
       min_spacing: any,
       min_spacing_sq_fn: any,
       near_other_fn: any
-    ): any;
-    CanDeployAtPoint(pt: any, inst: any, mouseover: any): any;
-    CanDeployPlantAtPoint(pt: any, inst: any): any;
-    CanDeployWallAtPoint(pt: any, inst: any): any;
-    CanDeployAtPointInWater(pt: any, inst: any, mouseover: any, data: any): any;
-    CanDeployMastAtPoint(pt: any, inst: any, mouseover: any): any;
-    CanPlacePrefabFilteredAtPoint(x: any, y: any, z: any, prefab: any): any;
-    CanDeployRecipeAtPoint(pt: any, recipe: any, rot: any): any;
-    IsSurroundedByWater(x: any, y: any, z: any, radius: any): any;
+    ): boolean;
+    CanDeployAtPoint(pt: any, inst: any, mouseover: any): boolean;
+    CanDeployPlantAtPoint(pt: any, inst: any): boolean;
+    CanDeployWallAtPoint(pt: any, inst: any): boolean;
+    CanDeployAtPointInWater(
+      pt: any,
+      inst: any,
+      mouseover: any,
+      data: any
+    ): boolean;
+    CanDeployMastAtPoint(pt: any, inst: any, mouseover: any): boolean;
+    CanPlacePrefabFilteredAtPoint(x: any, y: any, z: any, prefab: any): boolean;
+    CanDeployRecipeAtPoint(pt: any, recipe: any, rot: any): boolean;
+    IsSurroundedByWater(x: any, y: any, z: any, radius: any): boolean;
     GetNearestPointOnWater(x: any, z: any, radius: any, iterations: any): any;
     InternalIsPointOnWater(test_x: any, test_z: any): any;
     GetPlatformAtPoint(pos_x: any, pos_z: any): any;
     FindNodeAtPoint(x: any, y: any, z: any): any;
-    IsFarmableSoilAtPoint(x: any, y: any, z: any): any;
-    CanTillSoilAtPoint(pt: any): any;
+    IsFarmableSoilAtPoint(x: any, y: any, z: any): boolean;
+    CanTillSoilAtPoint(pt: any): boolean;
   }
 
   interface MapRecorder {
@@ -4080,8 +4085,8 @@ declare namespace Component {
     MapExplorer: any;
     SetOnTeachFn(fn: any): any;
     SetOnDataChangedFn(fn: any): any;
-    HasData(): any;
-    IsCurrentWorld(): any;
+    HasData(): boolean;
+    IsCurrentWorld(): boolean;
     ClearMap(): any;
     RecordMap(target: any): any;
     TeachMap(target: any): any;
@@ -4201,7 +4206,7 @@ declare namespace Component {
     OnClick(): any;
     StopTalking(): any;
     Initialize(): any;
-    IsTalking(): any;
+    IsTalking(): boolean;
     DoTalk(): any;
     SetSpeech(speech: any): any;
   }
@@ -4227,8 +4232,8 @@ declare namespace Component {
     duration: any;
     rate: any;
     cooldown: any;
-    IsShowering(): any;
-    IsCoolingDown(): any;
+    IsShowering(): boolean;
+    IsCoolingDown(): boolean;
     SpawnMeteor(mod: any): any;
     StartShower(level: any): any;
     StopShower(): any;
@@ -4290,7 +4295,7 @@ declare namespace Component {
     OnRemoveFromEntity(): any;
     SetOnActivatedFn(fn: any): any;
     SetOnDeactivatedFn(fn: any): any;
-    IsActive(): any;
+    IsActive(): boolean;
     Activate(): any;
     Deactivate(): any;
     DoActivePulse(): any;
@@ -4410,7 +4415,7 @@ declare namespace Component {
     AnnounceMoisture(oldSegs: any, newSegs: any): any;
     DoDelta(num: any, no_announce: any): any;
     SetMoistureLevel(num: any): any;
-    IsWet(): any;
+    IsWet(): boolean;
     GetMaxMoisture(): any;
     GetMoisture(): any;
     GetMoisturePercent(): any;
@@ -4455,7 +4460,7 @@ declare namespace Component {
     SetLeaveMoodFn(fn: any): any;
     ResetMood(): any;
     SetIsInMood(inmood: any, entireseason: any): any;
-    IsInMood(): any;
+    IsInMood(): boolean;
     OnSave(): any;
     OnLoad(data: any): any;
   }
@@ -4546,7 +4551,7 @@ declare namespace Component {
     radius: number;
     distsq: any;
     maxradius: any;
-    IsEntityInOasis(ent: any): any;
+    IsEntityInOasis(ent: any): boolean;
     GetProximityLevel(ent: any, range: any): any;
   }
 
@@ -4566,9 +4571,9 @@ declare namespace Component {
     occupant: any;
     occupanttype: any;
     OnRemoveFromEntity(): any;
-    IsOccupied(): any;
+    IsOccupied(): boolean;
     GetOccupant(): any;
-    CanOccupy(occupier: any): any;
+    CanOccupy(occupier: any): boolean;
     Occupy(occupier: any): any;
     Harvest(): any;
     OnSave(): any;
@@ -4658,9 +4663,9 @@ declare namespace Component {
     cur: any;
     OnRemoveFromEntity(): any;
     OnRemoveEntity(): any;
-    IsFresh(): any;
-    IsStale(): any;
-    IsSpoiled(): any;
+    IsFresh(): boolean;
+    IsStale(): boolean;
+    IsSpoiled(): boolean;
     Dilute(number: any, timeleft: any): any;
     SetPerishTime(time: any): any;
     SetLocalMultiplier(newMult: any): any;
@@ -4717,10 +4722,10 @@ declare namespace Component {
     SetMaxPets(num: any): any;
     GetMaxPets(): any;
     GetNumPets(): any;
-    IsFull(): any;
-    HasPetWithTag(tag: any): any;
+    IsFull(): boolean;
+    HasPetWithTag(tag: any): boolean;
     GetPets(): any;
-    IsPet(pet: any): any;
+    IsPet(pet: any): boolean;
     SpawnPetAt(x: any, y: any, z: any, prefaboverride: any, skin: any): any;
     DespawnPet(pet: any): any;
     DespawnAllPets(): any;
@@ -4736,7 +4741,7 @@ declare namespace Component {
     _petrifytask: any;
     _waketask: any;
     OnRemoveFromEntity(): any;
-    IsPetrified(): any;
+    IsPetrified(): boolean;
     SetPetrifiedFn(fn: any): any;
     Petrify(immediate: any): any;
     OnSave(): any;
@@ -4777,7 +4782,7 @@ declare namespace Component {
     wasempty: any;
     OnRemoveFromEntity(): any;
     LongUpdate(dt: any): any;
-    IsWildfireStarter(): any;
+    IsWildfireStarter(): boolean;
     FinishGrowing(): any;
     Resume(): any;
     Pause(): any;
@@ -4787,13 +4792,13 @@ declare namespace Component {
     SetOnRegenFn(fn: any): any;
     SetMakeBarrenFn(fn: any): any;
     SetMakeEmptyFn(fn: any): any;
-    CanBeFertilized(): any;
+    CanBeFertilized(): boolean;
     ChangeProduct(newProduct: any): any;
     Fertilize(fertilizer: any, doer: any): any;
     OnSave(): any;
     OnLoad(data: any): any;
-    IsBarren(): any;
-    CanBePicked(): any;
+    IsBarren(): boolean;
+    CanBePicked(): boolean;
     Regen(): any;
     MakeBarren(): any;
     OnTransplant(): any;
@@ -4820,8 +4825,8 @@ declare namespace Component {
     OnRemoveFromEntity(): any;
     SetDefaultWearOffTime(wearofftime: any): any;
     SpawnShatterFX(ratio: any): any;
-    IsStuck(): any;
-    IsValidPinTarget(): any;
+    IsStuck(): boolean;
+    IsValidPinTarget(): boolean;
     StartWearingOff(wearofftime: any): any;
     Stick(): any;
     UpdateStuckStatus(): any;
@@ -4911,7 +4916,7 @@ declare namespace Component {
     rmb: any;
     RegisterContainer(container: any): any;
     UnregisterContainer(container: any): any;
-    HasContainerWidgetAction(): any;
+    HasContainerWidgetAction(): boolean;
     OnUpdateActionFilterStack(): any;
     PushActionFilter(filterfn: any, priority: any): any;
     PopActionFilter(filterfn: any): any;
@@ -4952,7 +4957,7 @@ declare namespace Component {
     map: any;
     ismastersim: any;
     locomotor: any;
-    HasItemSlots: any;
+    HasItemSlots: boolean;
     attack_buffer: any;
     controller_attack_override: any;
     remote_vector: any;
@@ -5061,10 +5066,10 @@ declare namespace Component {
     ToggleController(val: any): any;
     EnableMapControls(val: any): any;
     SetCanUseMap(val: any): any;
-    IsEnabled(): any;
-    IsMapControlsEnabled(): any;
-    IsControlPressed(control: any): any;
-    IsAnyOfControlsPressed(): any;
+    IsEnabled(): boolean;
+    IsMapControlsEnabled(): boolean;
+    IsControlPressed(control: any): boolean;
+    IsAnyOfControlsPressed(): boolean;
     CooldownRemoteController(dt: any): any;
     OnRemoteStopControl(control: any): any;
     OnRemoteStopAllControls(): any;
@@ -5075,8 +5080,8 @@ declare namespace Component {
     EncodeControlMods(): any;
     DecodeControlMods(code: any): any;
     ClearControlMods(): any;
-    CanLocomote(): any;
-    IsBusy(): any;
+    CanLocomote(): boolean;
+    IsBusy(): boolean;
     GetCursorInventoryObject(): any;
     GetCursorInventorySlotAndContainer(): any;
     DoControllerActionButton(): any;
@@ -5133,8 +5138,8 @@ declare namespace Component {
     CancelDeployPlacement(): any;
     StartBuildPlacementMode(recipe: any, skin: any): any;
     GetAOETargetingPos(): any;
-    IsAOETargeting(): any;
-    HasAOETargeting(): any;
+    IsAOETargeting(): boolean;
+    HasAOETargeting(): boolean;
     TryAOETargeting(): any;
     CancelAOETargeting(): any;
     EchoReticuleAt(x: any, y: any, z: any): any;
@@ -5143,7 +5148,7 @@ declare namespace Component {
     DoAttackButton(retarget: any): any;
     OnRemoteAttackButton(target: any, force_attack: any, noforce: any): any;
     RemoteAttackButton(target: any, force_attack: any): any;
-    IsDoingOrWorking(): any;
+    IsDoingOrWorking(): boolean;
     GetActionButtonAction(force_target: any): any;
     DoActionButton(): any;
     OnRemoteActionButton(
@@ -5167,9 +5172,9 @@ declare namespace Component {
     UpdateControllerTargets(dt: any): any;
     GetControllerTarget(): any;
     GetControllerAttackTarget(): any;
-    IsControllerTargetingModifierDown(): any;
-    IsControllerTargetLockEnabled(): any;
-    IsControllerTargetLocked(): any;
+    IsControllerTargetingModifierDown(): boolean;
+    IsControllerTargetLockEnabled(): boolean;
+    IsControllerTargetLocked(): boolean;
     ControllerTargetLock(enable: any): any;
     CycleControllerAttackTargetForward(): any;
     CycleControllerAttackTargetBack(): any;
@@ -5188,7 +5193,7 @@ declare namespace Component {
     RemotePredictWalking(x: any, z: any): any;
     RemoteStopWalking(): any;
     DoPredictHopping(dt: any): any;
-    IsLocalOrRemoteHopping(): any;
+    IsLocalOrRemoteHopping(): boolean;
     DoPredictWalking(dt: any): any;
     DoDragWalking(dt: any): any;
     DoBoatSteering(dt: any): any;
@@ -5225,7 +5230,7 @@ declare namespace Component {
     GetSceneItemControllerAction(item: any): any;
     GetGroundUseAction(position: any): any;
     GetGroundUseSpecialAction(position: any, right: any): any;
-    HasGroundUseSpecialAction(right: any): any;
+    HasGroundUseSpecialAction(right: any): boolean;
     GetItemUseAction(active_item: any, target: any): any;
     RemoteUseItemFromInvTile(buffaction: any, item: any): any;
     RemoteControllerUseItemOnItemFromInvTile(
@@ -5286,7 +5291,7 @@ declare namespace Component {
     GetDebugString(): any;
     SetOnPlayerNear(fn: any): any;
     SetOnPlayerFar(fn: any): any;
-    IsPlayerClose(): any;
+    IsPlayerClose(): boolean;
     SetDist(near: any, far: any): any;
     SetLostTargetFn(func: any): any;
     SetPlayerAliveMode(alivemode: any): any;
@@ -5325,10 +5330,10 @@ declare namespace Component {
     currentccphasefn: any;
     cctable: any;
     ccphasefn: any;
-    HasGhostVision(): any;
-    HasNightmareVision(): any;
-    HasNightVision(): any;
-    HasGoggleVision(): any;
+    HasGhostVision(): boolean;
+    HasNightmareVision(): boolean;
+    HasNightVision(): boolean;
+    HasGoggleVision(): boolean;
     GetCCPhaseFn(): any;
     GetCCTable(): any;
     UpdateCCTable(): any;
@@ -5351,10 +5356,10 @@ declare namespace Component {
     SubmitVote(sel: any): any;
     SetSelection(sel: any): any;
     GetSelection(): any;
-    HasVoted(): any;
-    CanVote(): any;
+    HasVoted(): boolean;
+    CanVote(): boolean;
     SetSquelched(val: any): any;
-    IsSquelched(): any;
+    IsSquelched(): boolean;
   }
 
   interface Pollinator {
@@ -5370,8 +5375,8 @@ declare namespace Component {
     nearbyentities: any;
     OnRemoveFromEntity(): any;
     Pollinate(flower: any): any;
-    CanPollinate(flower: any): any;
-    HasCollectedEnough(): any;
+    CanPollinate(flower: any): boolean;
+    HasCollectedEnough(): boolean;
     CreateFlower(): any;
     CheckFlowerDensity(): any;
     GetDebugString(): any;
@@ -5454,7 +5459,7 @@ declare namespace Component {
     SetCanCatch(cancatch: any): any;
     SetHoming(homing: any): any;
     SetLaunchOffset(offset: any): any;
-    IsThrown(): any;
+    IsThrown(): boolean;
     Throw(owner: any, target: any, attacker: any): any;
     Catch(catcher: any): any;
     Miss(target: any): any;
@@ -5543,7 +5548,7 @@ declare namespace Component {
     GetSpawnPos(): any;
     GetSpawnRot(): any;
     SpawnEntity(): any;
-    IsActive(): any;
+    IsActive(): boolean;
     Start(): any;
     Stop(): any;
     Reset(): any;
@@ -5568,7 +5573,7 @@ declare namespace Component {
     RemoveAllStock(allow_restock: any): any;
     RemoveStock(recipe: any, allow_restock: any): any;
     FullyRestockItem(recipe: any): any;
-    HasAnyStock(): any;
+    HasAnyStock(): boolean;
     OnItemCrafted(recipe: any): any;
     OnSave(): any;
     OnLoad(data: any): any;
@@ -5614,8 +5619,8 @@ declare namespace Component {
     str: any;
     AddResistance(tag: any): any;
     RemoveResistance(tag: any): any;
-    HasResistance(attacker: any, weapon: any): any;
-    HasResistanceToTag(tag: any): any;
+    HasResistance(attacker: any, weapon: any): boolean;
+    HasResistanceToTag(tag: any): boolean;
     SetOnResistDamageFn(fn: any): any;
     SetShouldResistFn(fn: any): any;
     ShouldResistDamage(): any;
@@ -5659,7 +5664,7 @@ declare namespace Component {
     canberevivedbyfn: any;
     mult: any;
     SetCanBeRevivedByFn(fn: any): any;
-    CanBeRevivedBy(reviver: any): any;
+    CanBeRevivedBy(reviver: any): boolean;
     SetReviveSpeedMult(mult: any): any;
     SetReviveSpeedMultForTag(tag: any, mult: any): any;
     GetReviveSpeedMult(reviver: any): any;
@@ -5687,10 +5692,10 @@ declare namespace Component {
     TestObedience(): any;
     SetSaddle(doer: any, newsaddle: any): any;
     SetSaddleable(saddleable: any): any;
-    IsSaddled(): any;
+    IsSaddled(): boolean;
     SetRider(rider: any): any;
     GetRider(): any;
-    IsBeingRidden(): any;
+    IsBeingRidden(): boolean;
     Buck(gentle: any): any;
     OnSaveDomesticatable(): any;
     OnLoadDomesticatable(data: any): any;
@@ -5722,7 +5727,7 @@ declare namespace Component {
     Mount(target: any, instant: any): any;
     Dismount(): any;
     ActualDismount(): any;
-    IsRiding(): any;
+    IsRiding(): boolean;
     GetMount(): any;
     OnSave(): any;
     OnLoad(data: any): any;
@@ -5797,13 +5802,13 @@ declare namespace Component {
     ents: any;
     mount: any;
     ghost_delta: any;
-    IsSane(): any;
-    IsInsane(): any;
-    IsEnlightened(): any;
-    IsCrazy(): any;
+    IsSane(): boolean;
+    IsInsane(): boolean;
+    IsEnlightened(): boolean;
+    IsCrazy(): boolean;
     SetSanityMode(mode: any): any;
-    IsInsanityMode(): any;
-    IsLunacyMode(): any;
+    IsInsanityMode(): boolean;
+    IsLunacyMode(): boolean;
     GetSanityMode(): any;
     AddSanityPenalty(key: any, mod: any): any;
     RemoveSanityPenalty(key: any): any;
@@ -5880,7 +5885,7 @@ declare namespace Component {
     inst: any;
     searchradius: number;
     stackpartner: any;
-    CanSelfStack(): any;
+    CanSelfStack(): boolean;
     FindItemToStackWith(): any;
     DoStack(): any;
     OnEntityWake(): any;
@@ -6075,9 +6080,9 @@ declare namespace Component {
     OnEntityWake(): any;
     SetResistance(resist: any): any;
     StartTesting(time: any): any;
-    IsAsleep(): any;
-    IsHibernating(): any;
-    IsInDeepSleep(): any;
+    IsAsleep(): boolean;
+    IsHibernating(): boolean;
+    IsInDeepSleep(): boolean;
     GetTimeAwake(): any;
     GetTimeAsleep(): any;
     GetDebugString(): any;
@@ -6142,14 +6147,14 @@ declare namespace Component {
     SetOnlySpawnOffscreen(offscreen: any): any;
     Configure(childname: any, delay: any, startdelay: any): any;
     SpawnWithDelay(delay: any): any;
-    IsSpawnPending(): any;
+    IsSpawnPending(): boolean;
     SetQueueSpawning(queued: any, retryperiod: any): any;
     CancelSpawning(): any;
     OnSave(): any;
     OnLoad(data: any, newents: any): any;
     TakeOwnership(child: any): any;
     LoadPostPass(newents: any, savedata: any): any;
-    IsOccupied(): any;
+    IsOccupied(): boolean;
     ReleaseChild(): any;
     GoHome(child: any): any;
     OnChildKilled(child: any): any;
@@ -6228,7 +6233,7 @@ declare namespace Component {
     SetSpellFn(fn: any): any;
     SetOnSpellCastFn(fn: any): any;
     CastSpell(target: any, pos: any): any;
-    CanCast(doer: any, target: any, pos: any): any;
+    CanCast(doer: any, target: any, pos: any): boolean;
   }
 
   interface Spooked {
@@ -6255,7 +6260,7 @@ declare namespace Component {
     others: any;
     _onotherjoined: any;
     _onotherleft: any;
-    IsInSquad(): any;
+    IsInSquad(): boolean;
     GetSquadName(): any;
     GetOtherMembers(): any;
     JoinSquad(squadname: any): any;
@@ -6271,9 +6276,9 @@ declare namespace Component {
     old_size: any;
     num_to_get: any;
     ret: any;
-    IsStack(): any;
+    IsStack(): boolean;
     StackSize(): any;
-    IsFull(): any;
+    IsFull(): boolean;
     OnSave(): any;
     OnLoad(data: any): any;
     SetOnDeStack(fn: any): any;
@@ -6335,12 +6340,12 @@ declare namespace Component {
     remainingtime: any;
     status: any;
     OnRemoveFromEntity(): any;
-    IsDone(): any;
-    IsSpoiling(): any;
-    IsCooking(): any;
+    IsDone(): boolean;
+    IsSpoiling(): boolean;
+    IsCooking(): boolean;
     GetTimeToCook(): any;
     GetTimeToSpoil(): any;
-    CanCook(): any;
+    CanCook(): boolean;
     GetRecipeForProduct(): any;
     StartCooking(): any;
     StopCooking(reason: any): any;
@@ -6501,20 +6506,20 @@ declare namespace Component {
     GetTeamSize(): any;
     SetUp(target: any, first_member: any): any;
     OrganizeTeams(): any;
-    IsTeamFull(): any;
+    IsTeamFull(): boolean;
     ValidMember(member: any): any;
     DisbandTeam(): any;
     TeamSizeControl(): any;
     NewTeammate(member: any): any;
     BroadcastDistress(member: any): any;
     OnLostTeammate(member: any): any;
-    CanAttack(): any;
+    CanAttack(): boolean;
     CenterLeader(): any;
     GetFormationPositions(): any;
     GiveOrders(order: any, num: any): any;
     GiveOrdersToAllWithOrder(order: any, oldorder: any): any;
     AllInState(state: any): any;
-    IsTeamEmpty(): any;
+    IsTeamEmpty(): boolean;
     SetNewThreat(threat: any): any;
     GetTheta(dt: any): any;
     SetAttackGrpSize(val: any): any;
@@ -6538,9 +6543,9 @@ declare namespace Component {
     travelarrivetime: number;
     _onremoveteleportee: any;
     OnRemoveFromEntity(): any;
-    IsActive(): any;
-    IsBusy(): any;
-    IsTargetBusy(): any;
+    IsActive(): boolean;
+    IsBusy(): boolean;
+    IsTargetBusy(): boolean;
     RegisterTeleportee(doer: any): any;
     UnregisterTeleportee(doer: any): any;
     Activate(doer: any): any;
@@ -6597,8 +6602,8 @@ declare namespace Component {
     SetTemp(temp: any): any;
     SetTemperature(value: any): any;
     GetDebugString(): any;
-    IsFreezing(): any;
-    IsOverheating(): any;
+    IsFreezing(): boolean;
+    IsOverheating(): boolean;
     SetModifier(name: any, value: any): any;
     RemoveModifier(name: any): any;
     GetInsulation(): any;
@@ -6639,7 +6644,7 @@ declare namespace Component {
       initialtime_override: any
     ): any;
     StopTimer(name: any): any;
-    IsPaused(name: any): any;
+    IsPaused(name: any): boolean;
     PauseTimer(name: any): any;
     ResumeTimer(name: any): any;
     GetTimeLeft(name: any): any;
@@ -6656,7 +6661,7 @@ declare namespace Component {
     OnRemoveFromEntity(): any;
     GetEffectiveness(action: any): any;
     SetAction(action: any, effectiveness: any): any;
-    CanDoAction(action: any): any;
+    CanDoAction(action: any): boolean;
   }
 
   interface TouchStoneTracker {
@@ -6667,7 +6672,7 @@ declare namespace Component {
     data: any;
     OnRemoveFromEntity(): any;
     GetDebugString(): any;
-    IsUsed(touchstone: any): any;
+    IsUsed(touchstone: any): boolean;
     OnSave(): any;
     OnLoad(data: any): any;
   }
@@ -6686,7 +6691,7 @@ declare namespace Component {
     abletoaccepttest: any;
     act: any;
     OnRemoveFromEntity(): any;
-    IsTryingToTradeWithMe(inst: any): any;
+    IsTryingToTradeWithMe(inst: any): boolean;
     Enable(): any;
     Disable(): any;
     SetAcceptTest(fn: any): any;
@@ -6777,8 +6782,8 @@ declare namespace Component {
     SetOnSpringFn(fn: any): any;
     GetDebugString(): any;
     SetOnBaitedFn(fn: any): any;
-    IsFree(): any;
-    IsBaited(): any;
+    IsFree(): boolean;
+    IsBaited(): boolean;
     Reset(sprung: any): any;
     Set(): any;
     StopUpdating(): any;
@@ -6790,7 +6795,7 @@ declare namespace Component {
     StartStarvation(): any;
     StopStarvation(): any;
     DoSpring(): any;
-    IsSprung(): any;
+    IsSprung(): boolean;
     Harvest(doer: any): any;
     RemoveBait(): any;
     SetBait(bait: any): any;
@@ -6810,7 +6815,7 @@ declare namespace Component {
     decaycurrenttributetime: number;
     data: any;
     GetDebugString(): any;
-    HasPendingReward(): any;
+    HasPendingReward(): boolean;
     OnGivenReward(): any;
     OnAccept(value: any, tributer: any): any;
     OnRefuse(): any;
@@ -6937,7 +6942,7 @@ declare namespace Component {
     data: any;
     SetStage(num: any): any;
     AdvanceStage(): any;
-    CanUpgrade(): any;
+    CanUpgrade(): boolean;
     Upgrade(obj: any): any;
     OnSave(): any;
     OnLoad(data: any): any;
@@ -6947,7 +6952,7 @@ declare namespace Component {
     inst: any;
     upgradetype: any;
     upgradevalue: number;
-    CanUpgrade(target: any, doer: any): any;
+    CanUpgrade(target: any, doer: any): boolean;
   }
 
   interface UseableItem {
@@ -6959,7 +6964,7 @@ declare namespace Component {
     OnRemoveFromEntity(): any;
     SetOnUseFn(fn: any): any;
     SetOnStopUseFn(fn: any): any;
-    CanInteract(): any;
+    CanInteract(): boolean;
     StartUsingItem(): any;
     StopUsingItem(): any;
   }
@@ -7010,7 +7015,7 @@ declare namespace Component {
     bias: number;
     platform_radius_sq: any;
     OnUpdate(dt: any): any;
-    CanBeWalkedOn(): any;
+    CanBeWalkedOn(): boolean;
     DestroyObjectsOnPlatform(): any;
     GetEntitiesOnPlatform(must_have_tags: any, ignore_tags: any): any;
     GetEmbarkPosition(embarker_x: any, embarker_z: any): any;
@@ -7066,7 +7071,7 @@ declare namespace Component {
     SetCanBeShared(canbeshared: any): any;
     SetRange(range: any): any;
     SetChangeInDelay(delay: any): any;
-    CanBeginChanging(doer: any): any;
+    CanBeginChanging(doer: any): boolean;
     BeginChanging(doer: any): any;
     EndChanging(doer: any): any;
     EndAllChanging(): any;
@@ -7161,7 +7166,7 @@ declare namespace Component {
     SetProjectile(projectile: any): any;
     SetElectric(): any;
     SetOverrideStimuliFn(fn: any): any;
-    CanRangedAttack(): any;
+    CanRangedAttack(): boolean;
     SetAttackCallback(fn: any): any;
     OnAttack(attacker: any, target: any, projectile: any): any;
     LaunchProjectile(attacker: any, target: any): any;
@@ -7184,7 +7189,7 @@ declare namespace Component {
     ResetTriggers(): any;
     SetWere(time: any): any;
     SetNormal(): any;
-    IsInWereState(): any;
+    IsInWereState(): boolean;
     OnSave(): any;
     OnLoad(data: any): any;
     GetDebugString(): any;
@@ -7234,10 +7239,10 @@ declare namespace Component {
     s: any;
     OnRemoveFromEntity(): any;
     Enable(enable: any): any;
-    IsWithered(): any;
-    IsProtected(): any;
-    CanWither(): any;
-    CanRejuvenate(): any;
+    IsWithered(): boolean;
+    IsProtected(): boolean;
+    CanWither(): boolean;
+    CanRejuvenate(): boolean;
     ForceWither(): any;
     ForceRejuvenate(): any;
     DelayWither(delay: any): any;
@@ -7267,7 +7272,7 @@ declare namespace Component {
     Destroy(destroyer: any): any;
     SetWorkable(able: any): any;
     SetWorkLeft(work: any): any;
-    CanBeWorked(): any;
+    CanBeWorked(): boolean;
     SetOnLoadFn(fn: any): any;
     SetMaxWork(work: any): any;
     OnSave(): any;
@@ -7282,7 +7287,7 @@ declare namespace Component {
     actions: any;
     GetEffectiveness(action: any): any;
     SetAction(action: any, effectiveness: any): any;
-    CanDoAction(action: any): any;
+    CanDoAction(action: any): boolean;
   }
 
   interface WorkMultiplier {
@@ -7312,13 +7317,13 @@ declare namespace Component {
     SetReceivedPortal(fromworld: any, fromportal: any): any;
     GetStatusString(): any;
     ValidateAndPushEvents(): any;
-    IsBound(): any;
+    IsBound(): boolean;
     SetID(id: any): any;
-    IsDestinationForPortal(otherWorld: any, otherPortal: any): any;
-    IsAvailableForLinking(): any;
-    IsLinked(): any;
-    IsActive(): any;
-    IsFull(): any;
+    IsDestinationForPortal(otherWorld: any, otherPortal: any): boolean;
+    IsAvailableForLinking(): boolean;
+    IsLinked(): boolean;
+    IsActive(): boolean;
+    IsFull(): boolean;
     Activate(doer: any): any;
     ActivatedByOther(): any;
     OnSave(): any;
@@ -7410,8 +7415,8 @@ declare namespace Component {
     GetText(viewer: any): any;
     SetText(text: any): any;
     BeginWriting(doer: any): any;
-    IsWritten(): any;
-    IsBeingWritten(): any;
+    IsWritten(): boolean;
+    IsBeingWritten(): boolean;
     Write(doer: any, text: any): any;
     EndWriting(): any;
     OnUpdate(dt: any): any;
