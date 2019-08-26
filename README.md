@@ -1,6 +1,6 @@
 # ds-types
 
-Generate Don't Starve types definitions for typescript for [TypescriptToLua](https://github.com/TypeScriptToLua/TypeScriptToLua).
+Don't Starve Together types definitions for [TypescriptToLua](https://github.com/TypeScriptToLua/TypeScriptToLua).
 
 ## Installing
 

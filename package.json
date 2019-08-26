@@ -1,7 +1,7 @@
 {
   "name": "ds-types",
   "version": "0.1.0",
-  "description": "Generate Don't Starve types definitions for typescript",
+  "description": "Don't Starve types definitions",
   "keywords": [
     "don't starve",
     "ds",
