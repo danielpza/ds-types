@@ -5400,7 +5400,7 @@ export namespace Component {
     map: any;
     ismastersim: any;
     locomotor: any;
-    HasItemSlots: boolean;
+    HasItemSlots: any;
     attack_buffer: any;
     controller_attack_override: any;
     remote_vector: any;

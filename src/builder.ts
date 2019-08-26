@@ -37,9 +37,7 @@ function analyseMethod(
         if (variable.type === "Identifier") {
           definition.setProperty(
             variable.name,
-            (init && inferType(init)) ||
-              inferTypeFromIdentifier(variable.name) ||
-              "any"
+            (init && inferType(init)) || "any"
           );
         }
       });
@@ -52,9 +50,7 @@ function analyseMethod(
           if (base && base.name === self) {
             definition.setProperty(
               variable.identifier.name,
-              (init && inferType(init)) ||
-                inferTypeFromIdentifier(variable.identifier.name) ||
-                "any"
+              (init && inferType(init)) || "any"
             );
           }
         }
