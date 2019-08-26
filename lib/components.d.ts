@@ -16,7 +16,6 @@ declare namespace Component {
     paused_time: number;
     spawntime: any;
     last_pause_time: any;
-    _synctask: any;
     CancelPeriodicSync(): any;
     RestartPeriodicSync(): any;
     GetAge(): any;
@@ -153,7 +152,6 @@ declare namespace Component {
     current_area_data: any;
     lastpt: any;
     updatedistsq: number;
-    _ForceUpdate: any;
     x: any;
     z: any;
     y: any;
@@ -250,7 +248,6 @@ declare namespace Component {
     applying: boolean;
     auratestfn: any;
     auraexcludetags: any;
-    _fn: any;
     str: any;
     task: any;
     applied: any;
@@ -338,7 +335,6 @@ declare namespace Component {
     inst: any;
     max: number;
     current: number;
-    _old: any;
     time_effect_multiplier: number;
     task: any;
     old: any;
@@ -390,7 +386,6 @@ declare namespace Component {
     inst: any;
     bloomstack: any;
     children: any;
-    _onremovesource: any;
     fx: any;
     oldfx: any;
     bloom: any;
@@ -855,7 +850,6 @@ declare namespace Component {
     emergencychildreninside: number;
     emergencychildrenoutside: any;
     numemergencychildrenoutside: number;
-    _onchildkilled: any;
     missingchildren: any;
     missingemergencychildren: any;
     dt: any;
@@ -982,7 +976,6 @@ declare namespace Component {
     colourstack: any;
     children: any;
     colour: any;
-    _onremovesource: any;
     r: number;
     g: number;
     b: number;
@@ -1196,8 +1189,6 @@ declare namespace Component {
     numsoldiers: number;
     trackingdist: number;
     trackingperiod: number;
-    _task: any;
-    _onremove: any;
     k: any;
     OnRemoveFromEntity(): any;
     GetNumSoldiers(): any;
@@ -1273,7 +1264,6 @@ declare namespace Component {
     inst: any;
     constructioninst: any;
     constructionsite: any;
-    _onremoveconstructionsite: any;
     persists: boolean;
     constructing: boolean;
     pos: any;
@@ -1293,8 +1283,6 @@ declare namespace Component {
 
   interface ConstructionBuilderUIData {
     inst: any;
-    _containerinst: any;
-    _targetinst: any;
     SetContainer(containerinst: any): any;
     GetContainer(): any;
     SetTarget(targetinst: any): any;
@@ -1816,11 +1804,6 @@ declare namespace Component {
     inst: any;
     onDiseasedFn: any;
     diseased: boolean;
-    _lastfx: number;
-    _fxtask: any;
-    _spreadtask: any;
-    _warningtask: any;
-    _delaytask: any;
     ent: any;
     x: any;
     y: any;
@@ -2101,7 +2084,6 @@ declare namespace Component {
 
   interface ElectricAttacks {
     inst: any;
-    _sources: any;
     AddSource(source: any): any;
     RemoveSource(source: any): any;
   }
@@ -2405,7 +2387,6 @@ declare namespace Component {
     lightsound: any;
     extinguishsound: any;
     light: any;
-    _onremovelighttarget: any;
     old: any;
     time: any;
     isday: any;
@@ -2585,7 +2566,6 @@ declare namespace Component {
     swap_data: any;
     showing_effect: boolean;
     bob_percent: number;
-    _is_landed: any;
     pos_x: any;
     pos_y: any;
     pos_z: any;
@@ -2618,7 +2598,6 @@ declare namespace Component {
   interface FocalPoint {
     inst: any;
     targets: any;
-    _onsourceremoved: any;
     current_focus: any;
     sourcetbl: any;
     params: any;
@@ -2658,7 +2637,6 @@ declare namespace Component {
     canaccepttarget: boolean;
     OnLeaderRemoved: any;
     str: any;
-    _onleaderwake: any;
     porttask: any;
     task: any;
     timeLeft: any;
@@ -2956,7 +2934,6 @@ declare namespace Component {
     max_chance: number;
     chance_delta: number;
     current_chance: number;
-    _ontargetremoved: any;
     totalWeight: number;
     loss: any;
     weighting: number;
@@ -3073,8 +3050,6 @@ declare namespace Component {
     summons: number;
     decaytime: number;
     decaytask: any;
-    _onguardiandeath: any;
-    _onguardianremove: any;
     old: any;
     guard: any;
     cause: any;
@@ -3286,7 +3261,6 @@ declare namespace Component {
     bar_ui_offset: any;
     label_ui_offset: any;
     enabled: boolean;
-    _healthpct: any;
     newwidth: any;
     hp: any;
     Enable(enable: any): any;
@@ -3295,12 +3269,8 @@ declare namespace Component {
 
   interface HealthSyncer {
     inst: any;
-    _status: any;
-    _healthpct: any;
     corrosives: any;
-    _onremovecorrosive: any;
     hots: any;
-    _onremovehots: any;
     val: any;
     down: any;
     up: any;
@@ -3382,7 +3352,6 @@ declare namespace Component {
     updatepos: boolean;
     updateposincombat: boolean;
     task: any;
-    _onmemberkilled: any;
     x: any;
     y: any;
     z: any;
@@ -3858,7 +3827,6 @@ declare namespace Component {
     angle: any;
     is_landed: any;
     px: any;
-    _: any;
     pz: any;
     vely: number;
     vx: any;
@@ -3909,7 +3877,6 @@ declare namespace Component {
     wetnessThreshold: any;
     drynessThreshold: any;
     lastUpdate: any;
-    _replica: any;
     moisture: number;
     iswet: boolean;
     stacksize: any;
@@ -3983,7 +3950,6 @@ declare namespace Component {
     inst: any;
     ents: any;
     count: number;
-    _onremovemob: any;
     ret: any;
     dists: any;
     StartTracking(ent: any): any;
@@ -4006,8 +3972,6 @@ declare namespace Component {
     inst: any;
     followers: any;
     numfollowers: number;
-    _onfollowerdied: any;
-    _onfollowerremoved: any;
     count: number;
     OnRemoveFromEntity(): any;
     IsFollower(guy: any): boolean;
@@ -4097,7 +4061,6 @@ declare namespace Component {
   interface Dest {
     act_pos: any;
     IsValid(): boolean;
-    __tostring(): any;
     GetPoint(): any;
   }
 
@@ -4122,7 +4085,6 @@ declare namespace Component {
     groundspeedmultiplier: number;
     enablegroundspeedmultiplier: boolean;
     isrunning: boolean;
-    _externalspeedmultipliers: any;
     externalspeedmultiplier: number;
     wasoncreep: boolean;
     triggerscreep: boolean;
@@ -4185,7 +4147,6 @@ declare namespace Component {
     platform_dir_x: any;
     platform_dir_z: any;
     platform_x: any;
-    _: any;
     platform_z: any;
     embarker: any;
     tx: any;
@@ -4234,8 +4195,6 @@ declare namespace Component {
     hop_z: any;
     target_platform: any;
     too_early_top_hop: any;
-    _x: any;
-    _z: any;
     temp_x: any;
     temp_z: any;
     temp_platform: any;
@@ -4524,7 +4483,6 @@ declare namespace Component {
     icon: any;
     task: any;
     revealsources: any;
-    _onremovesource: any;
     restriction: any;
     toremove: any;
     SetIcon(iconname: any): any;
@@ -4773,10 +4731,6 @@ declare namespace Component {
     minionpositions: any;
     validtiletypes: any;
     freepositions: any;
-    _onminionattacked: any;
-    _onminionattack: any;
-    _onminiondeath: any;
-    _onminionremoved: any;
     data: any;
     guidtable: any;
     x: any;
@@ -5142,17 +5096,8 @@ declare namespace Component {
   interface PetHealthBar {
     inst: any;
     ismastersim: any;
-    _symbol: any;
-    _status: any;
-    _maxhealth: any;
-    _healthpct: any;
-    _onhealthdelta: any;
     corrosives: any;
-    _onremovecorrosive: any;
-    _onstartcorrsivedebuff: any;
     hots: any;
-    _onremovehots: any;
-    _onstarthealthregen: any;
     val: any;
     k: any;
     pet: any;
@@ -5178,7 +5123,6 @@ declare namespace Component {
     numpets: number;
     onspawnfn: any;
     ondespawnfn: any;
-    _onremovepet: any;
     pet: any;
     toremove: any;
     data: any;
@@ -5204,8 +5148,6 @@ declare namespace Component {
     inst: any;
     onPetrifiedFn: any;
     petrified: boolean;
-    _petrifytask: any;
-    _waketask: any;
     OnRemoveFromEntity(): any;
     IsPetrified(): boolean;
     SetPetrifiedFn(fn: any): any;
@@ -5511,8 +5453,6 @@ declare namespace Component {
     isspecial: any;
     rider: any;
     chainattack_cb: any;
-    _controller: boolean;
-    _predictpos: boolean;
     overridedest: any;
     slot: any;
     container: any;
@@ -5853,7 +5793,6 @@ declare namespace Component {
     target: any;
     losttargetfn: any;
     alivemode: any;
-    _ontargetleft: any;
     originaltargetmode: any;
     targetmode: any;
     GetDebugString(): any;
@@ -5914,7 +5853,6 @@ declare namespace Component {
 
   interface PlayerVoter {
     inst: any;
-    _refreshtask: any;
     classified: any;
     ondetachclassified: any;
     onvoteselectiondirty: any;
@@ -6012,7 +5950,6 @@ declare namespace Component {
     onmiss: any;
     oncaught: any;
     stimuli: any;
-    _ondelaycancel: any;
     dozeOffTask: any;
     delaytask: any;
     launchoffset: any;
@@ -6127,8 +6064,6 @@ declare namespace Component {
     wave_time: number;
     spawning_on: boolean;
     SpawnTask: any;
-    _ondeathfn: any;
-    _onremovefn: any;
     spawn: any;
     data: any;
     refs: any;
@@ -6242,7 +6177,6 @@ declare namespace Component {
     fadealpha: number;
     blipalpha: number;
     pingprefab: any;
-    _oncameraupdate: any;
     pos: any;
     ping: any;
     a: any;
@@ -6290,7 +6224,6 @@ declare namespace Component {
     requiredobedience: any;
     lastridetime: any;
     riddentask: any;
-    _OnRiderDoAttackOtherCB: any;
     pt: any;
     oldrider: any;
     data: any;
@@ -6314,8 +6247,6 @@ declare namespace Component {
     inst: any;
     mount: any;
     saddle: any;
-    _mountannouncetask: any;
-    _onSaddleChanged: any;
     rideable: any;
     saddler: any;
     x: any;
@@ -6362,7 +6293,6 @@ declare namespace Component {
     salted: boolean;
     saltedduration: any;
     uses_per_lick: any;
-    _task: any;
     SetUp(uses_per_lick: any): any;
     Stop(): any;
     OnRemoveFromEntity(): any;
@@ -6394,8 +6324,6 @@ declare namespace Component {
     sanity_penalties: any;
     ghost_drain_mult: number;
     custom_rate_fn: any;
-    _oldissane: any;
-    _oldpercent: any;
     target: any;
     delta: any;
     percent_ignoresinduced: any;
@@ -6514,10 +6442,6 @@ declare namespace Component {
     say_task: any;
     warnlevel: number;
     waslow: boolean;
-    _onfinishedwork: any;
-    _onbeavernessdelta: any;
-    _onstartbeaver: any;
-    _onstopbeaver: any;
     SetOwner(owner: any): any;
     OnFinishedWork(target: any, action: any): any;
     OnBeavernessDelta(old: any, _new: any): any;
@@ -6766,7 +6690,6 @@ declare namespace Component {
     nextspawntime: any;
     queue_spawn: boolean;
     retry_period: any;
-    _onchildkilled: any;
     spawn_in_water: any;
     spawn_on_boats: any;
     childname: any;
@@ -6802,7 +6725,6 @@ declare namespace Component {
 
   interface SpawnFader {
     inst: any;
-    _fade: any;
     fadeval: number;
     updating: boolean;
     k: any;
@@ -6821,7 +6743,6 @@ declare namespace Component {
     priority: number;
     active: boolean;
     updating: boolean;
-    _isspectating: any;
     x: any;
     y: any;
     z: any;
@@ -6911,8 +6832,6 @@ declare namespace Component {
     inst: any;
     squad: string;
     others: any;
-    _onotherjoined: any;
-    _onotherleft: any;
     k: any;
     str: any;
     IsInSquad(): boolean;
@@ -7220,7 +7139,6 @@ declare namespace Component {
     saveenabled: boolean;
     travelcameratime: number;
     travelarrivetime: number;
-    _onremoveteleportee: any;
     target_x: any;
     target_y: any;
     target_z: any;
@@ -7771,7 +7689,6 @@ declare namespace Component {
 
   interface WalkingPlankUser {
     inst: any;
-    _plank_remove_event: any;
     current_plank: any;
     SetCurrentPlank(plank: any): any;
     Dismount(): any;
@@ -7910,8 +7827,6 @@ declare namespace Component {
     weretime: any;
     triggerlimit: any;
     triggeramount: any;
-    _task: any;
-    _reverttask: any;
     remaining: any;
     OnRemoveFromEntity(): any;
     SetOnWereFn(fn: any): any;
@@ -8045,7 +7960,6 @@ declare namespace Component {
     inst: any;
     auto: boolean;
     enabled: boolean;
-    _status: any;
     id: any;
     linkedWorld: any;
     receivedPortal: any;
@@ -8071,10 +7985,6 @@ declare namespace Component {
   interface WorldOverseer {
     inst: any;
     data: any;
-    _seenplayers: any;
-    _cycles: any;
-    _daytime: any;
-    _v2_seenplayers: any;
     last_heartbeat_poll_time: any;
     heartbeat_poll_counter: number;
     playerstats: any;

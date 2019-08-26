@@ -96,7 +96,6 @@ interface Entity {
   IsInLimbo(): boolean;
   RemoveFromScene(): any;
   ReturnToScene(): any;
-  __tostring(): any;
   AddInherentAction(act: any): any;
   RemoveInherentAction(act: any): any;
   GetTimeAlive(): any;

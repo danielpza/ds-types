@@ -46,10 +46,6 @@ declare namespace Replica {
 
   interface Combat {
     inst: any;
-    _target: any;
-    _ispanic: any;
-    _attackrange: any;
-    _laststartattacktime: number;
     classified: any;
     ondetachclassified: any;
     weapon: any;
@@ -91,13 +87,11 @@ declare namespace Replica {
     inst: any;
     classified: {
       inst: any;
-      _slotcounts: any;
       GetSlotCount: any;
       OnEntityReplicated: any;
       SetSlotCount: any;
       persists: boolean;
     };
-    _parent: any;
     ondetachclassified: any;
     OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
@@ -111,9 +105,6 @@ declare namespace Replica {
 
   interface Container {
     inst: any;
-    _cannotbeopened: any;
-    _isopen: boolean;
-    _numslots: number;
     acceptsstacks: boolean;
     usespecificslotsforitems: boolean;
     issidewidget: boolean;
@@ -123,12 +114,6 @@ declare namespace Replica {
     opentask: any;
     classified: {
       inst: any;
-      _refreshtask: any;
-      _busy: boolean;
-      _itemspreview: any;
-      _items: any;
-      _itemspool: any;
-      _slottasks: any;
       InitializeSlots: any;
       OnEntityReplicated: any;
       IsHolding: boolean;
@@ -154,12 +139,6 @@ declare namespace Replica {
       SetSlotItem: any;
       persists: boolean;
     };
-    _onitemget: any;
-    _onitemlose: any;
-    _onputininventory: any;
-    _ondropped: any;
-    _owner: any;
-    _parent: any;
     ondetachclassified: any;
     inv: any;
     OnRemoveFromEntity(): any;
@@ -199,7 +178,6 @@ declare namespace Replica {
 
   interface Equippable {
     inst: any;
-    _equipslot: any;
     restrictedtag: any;
     SetEquipSlot(eslot: any): any;
     EquipSlot(): any;
@@ -209,9 +187,6 @@ declare namespace Replica {
 
   interface FishingRod {
     inst: any;
-    _target: any;
-    _hashookedfish: any;
-    _hascaughtfish: any;
     SetTarget(target: any): any;
     GetTarget(): any;
     SetHookedFish(hookedfish: any): any;
@@ -222,17 +197,12 @@ declare namespace Replica {
 
   interface Follower {
     inst: any;
-    _leader: any;
     SetLeader(leader: any): any;
     GetLeader(): any;
   }
 
   interface Health {
     inst: any;
-    _isdead: any;
-    _isnotfull: any;
-    _cannotheal: any;
-    _cannotmurder: any;
     classified: any;
     ondetachclassified: any;
     OnRemoveFromEntity(): any;
@@ -282,20 +252,8 @@ declare namespace Replica {
     opentask: any;
     classified: {
       inst: any;
-      _refreshtask: any;
-      _busy: boolean;
-      _activeitem: any;
-      _returningitem: any;
-      _returncontainer: any;
-      _returnslot: any;
-      _itemspreview: any;
-      _equipspreview: any;
       visible: any;
       heavylifting: any;
-      _active: any;
-      _items: any;
-      _equips: any;
-      _slottasks: any;
       OnEntityReplicated: any;
       IsHolding: boolean;
       GetActiveItem: any;
@@ -337,7 +295,6 @@ declare namespace Replica {
       SetSlotEquip: any;
       persists: boolean;
     };
-    _parent: any;
     ondetachclassified: any;
     rebuild_pending: boolean;
     rebuild_snapping: boolean;
@@ -392,8 +349,6 @@ declare namespace Replica {
 
   interface InventoryItem {
     inst: any;
-    _cannotbepickedup: any;
-    _iswet: any;
     classified: {
       inst: any;
       image: any;
@@ -425,7 +380,6 @@ declare namespace Replica {
       SerializeRecharge: any;
       SerializeRechargeTime: any;
     };
-    _parent: any;
     ondetachclassified: any;
     src_pos: any;
     percentusedcomponent: any;
@@ -476,23 +430,18 @@ declare namespace Replica {
 
   interface Moisture {
     inst: any;
-    _iswet: any;
     SetIsWet(iswet: any): any;
     IsWet(): boolean;
   }
 
   interface Named {
     inst: any;
-    _name: any;
     SetName(name: any): any;
   }
 
   interface Rider {
     inst: any;
-    _isriding: any;
     classified: any;
-    _onmounthealthdelta: any;
-    _onisriding: any;
     ondetachclassified: any;
     actionbuttonoverride: any;
     old: any;
@@ -516,10 +465,6 @@ declare namespace Replica {
 
   interface Sanity {
     inst: any;
-    _oldissane: boolean;
-    _oldisinsanitymode: boolean;
-    _issane: any;
-    _isinsanitymode: any;
     classified: any;
     ondetachclassified: any;
     OnRemoveFromEntity(): any;
@@ -552,13 +497,6 @@ declare namespace Replica {
 
   interface Sheltered {
     inst: any;
-    _updating: boolean;
-    _shade: any;
-    _targetshade: any;
-    _shelterspeed: any;
-    _exposespeed: any;
-    _issheltered: any;
-    _task: any;
     OnRemoveFromEntity(): any;
     StartSheltered(): any;
     StopSheltered(): any;
@@ -569,8 +507,6 @@ declare namespace Replica {
 
   interface Stackable {
     inst: any;
-    _stacksize: any;
-    _maxsize: any;
     SetStackSize(stacksize: any): any;
     SetMaxSize(maxsize: any): any;
     StackSize(): any;
@@ -584,7 +520,6 @@ declare namespace Replica {
     screen: any;
     opentask: any;
     classified: { inst: any; OnEntityReplicated: any; persists: boolean };
-    _parent: any;
     ondetachclassified: any;
     OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
