@@ -1,7 +1,9 @@
 /** @noSelfInFile **/
-import { Component } from "./components";
-import { Entity } from "./entity";
-import { Replica } from "./replicas";
+type Component = import("./components").Component;
+type Replica = import("./replicas").Replica;
+type Entity = import("./entity").Entity;
+// import { Entity } from "./entity";
+// import { Replica } from "./replicas";
 
 type Slot = "head" | "body" | "hands";
 
