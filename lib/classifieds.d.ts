@@ -12,6 +12,7 @@ declare namespace Classified {
     inst: any;
     _slotcounts: any;
     GetSlotCount: any;
+    OnEntityReplicated: any;
     SetSlotCount: any;
     persists: boolean;
   }
@@ -25,6 +26,27 @@ declare namespace Classified {
     _itemspool: any;
     _slottasks: any;
     InitializeSlots: any;
+    OnEntityReplicated: any;
+    IsHolding: boolean;
+    GetItemInSlot: any;
+    GetItems: any;
+    IsEmpty: boolean;
+    IsFull: boolean;
+    Has: boolean;
+    ReturnActiveItemToSlot: any;
+    PutOneOfActiveItemInSlot: any;
+    PutAllOfActiveItemInSlot: any;
+    TakeActiveItemFromHalfOfSlot: any;
+    TakeActiveItemFromAllOfSlot: any;
+    AddOneOfActiveItemToSlot: any;
+    AddAllOfActiveItemToSlot: any;
+    SwapActiveItemWithSlot: any;
+    MoveItemFromAllOfSlot: any;
+    MoveItemFromHalfOfSlot: any;
+    ReceiveItem: any;
+    ConsumeByName: any;
+    TakeActionItem: any;
+    IsBusy: boolean;
     SetSlotItem: any;
     persists: boolean;
   }
@@ -45,6 +67,42 @@ declare namespace Classified {
     _items: any;
     _equips: any;
     _slottasks: any;
+    OnEntityReplicated: any;
+    IsHolding: boolean;
+    GetActiveItem: any;
+    GetItemInSlot: any;
+    GetEquippedItem: any;
+    GetItems: any;
+    GetEquips: any;
+    GetOverflowContainer: any;
+    IsFull: boolean;
+    Has: boolean;
+    ReturnActiveItem: any;
+    ReturnActiveItemToSlot: any;
+    PutOneOfActiveItemInSlot: any;
+    PutAllOfActiveItemInSlot: any;
+    TakeActiveItemFromHalfOfSlot: any;
+    TakeActiveItemFromAllOfSlot: any;
+    AddOneOfActiveItemToSlot: any;
+    AddAllOfActiveItemToSlot: any;
+    SwapActiveItemWithSlot: any;
+    UseItemFromInvTile: any;
+    ControllerUseItemOnItemFromInvTile: any;
+    ControllerUseItemOnSelfFromInvTile: any;
+    ControllerUseItemOnSceneFromInvTile: any;
+    InspectItemFromInvTile: any;
+    DropItemFromInvTile: any;
+    EquipActiveItem: any;
+    EquipActionItem: any;
+    SwapEquipWithActiveItem: any;
+    TakeActiveItemFromEquipSlot: any;
+    MoveItemFromAllOfSlot: any;
+    MoveItemFromHalfOfSlot: any;
+    QueueRefresh: any;
+    PushNewActiveItem: any;
+    ReceiveItem: any;
+    RemoveIngredients: any;
+    IsBusy: boolean;
     SetActiveItem: any;
     SetSlotItem: any;
     SetSlotEquip: any;
@@ -70,6 +128,11 @@ declare namespace Classified {
     walkspeedmult: any;
     equiprestrictedtag: any;
     moisture: any;
+    DeserializePercentUsed: any;
+    DeserializePerish: any;
+    DeserializeRecharge: any;
+    DeserializeRechargeTime: any;
+    OnEntityReplicated: any;
     persists: boolean;
     SerializePercentUsed: any;
     SerializePerish: any;
@@ -85,6 +148,7 @@ declare namespace Classified {
     sound_override: any;
     enabled: boolean;
     GetTalkSound: any;
+    OnEntityReplicated: any;
     Say: any;
     SetTarget: any;
     timeouttask: any;
@@ -190,6 +254,10 @@ declare namespace Classified {
     iscarefulwalking: any;
     isdeathbypk: any;
     deathcause: any;
+    _refreshtask: any;
+    _bufferedbuildspreview: any;
+    OnEntityReplicated: any;
+    BufferBuild: any;
     SetValue: any;
     PushPausePredictionFrames: any;
     AddMorgueRecord: any;
@@ -206,6 +274,7 @@ declare namespace Classified {
 
   interface writeable_classified {
     inst: any;
+    OnEntityReplicated: any;
     persists: boolean;
   }
 }

@@ -58,6 +58,11 @@ function analyseMethod(
         }
       });
     }
+    if (node.type === "IfStatement") {
+      for (const clause of node.clauses) {
+        analyseMethod(definition, clause.body, self);
+      }
+    }
   }
 }
 

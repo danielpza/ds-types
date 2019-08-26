@@ -3,6 +3,13 @@ declare namespace Replica {
     inst: any;
     classified: any;
     ondetachclassified: any;
+    health: any;
+    current: any;
+    penalty: any;
+    sanity: any;
+    level: any;
+    recipe: any;
+    has_tech: boolean;
     inventory: any;
     overflow: any;
     OnRemoveFromEntity(): any;
@@ -46,8 +53,14 @@ declare namespace Replica {
     classified: any;
     ondetachclassified: any;
     weapon: any;
+    item: any;
+    rider: any;
+    range: any;
+    error_threshold: number;
     follower: any;
     leader: any;
+    combat: any;
+    sanity: any;
     OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
     DetachClassified(): any;
@@ -77,6 +90,7 @@ declare namespace Replica {
   interface ConstructionSite {
     inst: any;
     classified: any;
+    _parent: any;
     ondetachclassified: any;
     OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
@@ -101,6 +115,12 @@ declare namespace Replica {
     itemtestfn: any;
     opentask: any;
     classified: any;
+    _onitemget: any;
+    _onitemlose: any;
+    _onputininventory: any;
+    _ondropped: any;
+    _owner: any;
+    _parent: any;
     ondetachclassified: any;
     inv: any;
     OnRemoveFromEntity(): any;
@@ -222,7 +242,11 @@ declare namespace Replica {
     inst: any;
     opentask: any;
     classified: any;
+    _parent: any;
     ondetachclassified: any;
+    rebuild_pending: boolean;
+    rebuild_snapping: boolean;
+    containers: any;
     OnRemoveEntity(): any;
     AttachClassified(classified: any): any;
     DetachClassified(): any;
@@ -276,7 +300,9 @@ declare namespace Replica {
     _cannotbepickedup: any;
     _iswet: any;
     classified: any;
+    _parent: any;
     ondetachclassified: any;
+    src_pos: any;
     percentusedcomponent: any;
     restrictedtag: any;
     x: number;
@@ -340,7 +366,11 @@ declare namespace Replica {
     inst: any;
     _isriding: any;
     classified: any;
+    _onmounthealthdelta: any;
+    _onisriding: any;
     ondetachclassified: any;
+    actionbuttonoverride: any;
+    old: any;
     mount: any;
     OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
@@ -429,6 +459,7 @@ declare namespace Replica {
     screen: any;
     opentask: any;
     classified: any;
+    _parent: any;
     ondetachclassified: any;
     OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
