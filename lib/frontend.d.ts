@@ -54,42 +54,14 @@ export interface FrontEnd {
   popup: any;
   text: any;
   offline: any;
-  ShowSavingIndicator(): any;
-  HideSavingIndicator(): any;
-  HideTopFade(): any;
-  ShowTopFade(): any;
-  GetFocusWidget(): any;
-  GetIntermediateFocusWidgets(): any;
-  GetHelpText(): any;
-  StopTrackingMouse(autofocus: any): any;
-  IsControlsDisabled(): boolean;
-  OnFocusMove(dir: any, down: any): any;
-  OnControl(control: any, down: any): any;
-  ShowTitle(text: any, subtext: any): any;
-  DoTitleFade(dt: any): any;
-  StartTileFadeIn(): any;
-  StartTileFadeOut(): any;
-  HideTitle(): any;
-  LockFocus(lock: any): any;
-  SendScreenEvent(type: any, message: any): any;
-  GetSound(): any;
-  GetGraphicsOptions(): any;
-  GetTwitchOptions(): any;
-  GetAccountManager(): any;
-  SetFadeLevel(alpha: any, time: any, time_total: any): any;
-  GetFadeLevel(): any;
-  DoFadingUpdate(dt: any): any;
-  UpdateConsoleOutput(): any;
-  Update(dt: any): any;
-  DoHoverFocusUpdate(manual_update: any): any;
-  StartUpdatingWidget(w: any): any;
-  StopUpdatingWidget(w: any): any;
-  InsertScreenUnderTop(screen: any): any;
-  PushScreen(screen: any): any;
+  ClearFocus(): any;
   ClearScreens(): any;
-  ShowConsoleLog(): any;
-  HideConsoleLog(): any;
   DoFadeIn(time_to_take: any): any;
+  DoFadingUpdate(dt: any): any;
+  DoHoverFocusUpdate(manual_update: any): any;
+  DoTitleFade(dt: any): any;
+  EnableEntityDebugging(): any;
+  EnableWidgetDebugging(): any;
   Fade(
     in_or_out: any,
     time_to_take: any,
@@ -98,34 +70,62 @@ export interface FrontEnd {
     delayovercb: any,
     fadeType: any
   ): any;
+  FadeBack(
+    fade_complete_cb: any,
+    fade_type: any,
+    fade_out_complete_cb: any
+  ): any;
   FadeToScreen(
     existing_screen: any,
     new_screen_fn: any,
     fade_complete_cp: any,
     fade_type: any
   ): any;
-  FadeBack(
-    fade_complete_cb: any,
-    fade_type: any,
-    fade_out_complete_cb: any
-  ): any;
-  PopScreen(screen: any): any;
-  ClearFocus(): any;
+  GetAccountManager(): any;
   GetActiveScreen(): any;
+  GetFadeLevel(): any;
+  GetFocusWidget(): any;
+  GetGraphicsOptions(): any;
+  GetHUDScale(): any;
+  GetHelpText(): any;
+  GetIntermediateFocusWidgets(): any;
+  GetIsOfflineMode(): any;
   GetOpenScreenOfType(screenname: any): any;
   GetScreenStackSize(): any;
-  ShowScreen(screen: any): any;
-  SetForceProcessTextInput(takeText: any, widget: any): any;
-  OnRawKey(key: any, down: any): any;
-  OnTextInput(text: any): any;
-  GetHUDScale(): any;
+  GetSound(): any;
+  GetTwitchOptions(): any;
+  HideConsoleLog(): any;
+  HideSavingIndicator(): any;
+  HideTitle(): any;
+  HideTopFade(): any;
+  InsertScreenUnderTop(screen: any): any;
+  IsControlsDisabled(): boolean;
+  IsScreenInStack(screen: any): boolean;
+  LockFocus(lock: any): any;
+  OnControl(control: any, down: any): any;
+  OnFocusMove(dir: any, down: any): any;
   OnMouseButton(button: any, down: any, x: any, y: any): any;
   OnMouseMove(x: any, y: any): any;
+  OnRawKey(key: any, down: any): any;
   OnSaveLoadError(operation: any, filename: any, status: any): any;
-  IsScreenInStack(screen: any): boolean;
+  OnTextInput(text: any): any;
+  PopScreen(screen: any): any;
+  PushScreen(screen: any): any;
+  SendScreenEvent(type: any, message: any): any;
+  SetFadeLevel(alpha: any, time: any, time_total: any): any;
+  SetForceProcessTextInput(takeText: any, widget: any): any;
   SetOfflineMode(isOffline: any): any;
-  GetIsOfflineMode(): any;
-  EnableWidgetDebugging(): any;
-  EnableEntityDebugging(): any;
   SetWidgetDebuggingTarget(widget: any): any;
+  ShowConsoleLog(): any;
+  ShowSavingIndicator(): any;
+  ShowScreen(screen: any): any;
+  ShowTitle(text: any, subtext: any): any;
+  ShowTopFade(): any;
+  StartTileFadeIn(): any;
+  StartTileFadeOut(): any;
+  StartUpdatingWidget(w: any): any;
+  StopTrackingMouse(autofocus: any): any;
+  StopUpdatingWidget(w: any): any;
+  Update(dt: any): any;
+  UpdateConsoleOutput(): any;
 }

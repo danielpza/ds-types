@@ -5,9 +5,9 @@ export namespace Component {
     inactive: boolean;
     standingaction: boolean;
     quickaction: boolean;
-    OnRemoveFromEntity(): any;
     CanActivate(doer: any): boolean;
     DoActivate(doer: any): any;
+    OnRemoveFromEntity(): any;
   }
 
   interface Age {
@@ -17,16 +17,16 @@ export namespace Component {
     spawntime: any;
     last_pause_time: any;
     CancelPeriodicSync(): any;
-    RestartPeriodicSync(): any;
     GetAge(): any;
     GetAgeInDays(): any;
-    GetDisplayAgeInDays(): any;
-    PauseAging(): any;
-    ResumeAging(): any;
-    OnSave(): any;
     GetDebugString(): any;
+    GetDisplayAgeInDays(): any;
     LongUpdate(dt: any): any;
     OnLoad(data: any): any;
+    OnSave(): any;
+    PauseAging(): any;
+    RestartPeriodicSync(): any;
+    ResumeAging(): any;
   }
 
   interface Amorphous {
@@ -35,15 +35,15 @@ export namespace Component {
     currentform: any;
     form: any;
     numforms: any;
+    AddForm(form: any): any;
+    CheckForMorph(): any;
+    FindForm(name: any): any;
+    GetCurrentForm(): any;
+    LoadPostPass(): any;
+    MorphToForm(form: any, instant: any): any;
+    OnLoad(data: any): any;
     OnRemoveFromEntity(): any;
     OnSave(): any;
-    OnLoad(data: any): any;
-    LoadPostPass(): any;
-    GetCurrentForm(): any;
-    AddForm(form: any): any;
-    FindForm(name: any): any;
-    MorphToForm(form: any, instant: any): any;
-    CheckForMorph(): any;
   }
 
   interface AmphibiousCreature {
@@ -61,17 +61,17 @@ export namespace Component {
     is_on_land: any;
     enterwaterfn: any;
     exitwaterfn: any;
+    OnEnterOcean(): any;
     OnEntitySleep(): any;
     OnEntityWake(): any;
-    SetBanks(land: any, ocean: any): any;
-    OnUpdate(dt: any): any;
-    ShouldTransition(x: any, z: any): any;
-    OnEnterOcean(): any;
     OnExitOcean(): any;
-    SetOnTileChangeFn(fn: any): any;
-    SetOnWaterChangeFn(fn: any): any;
+    OnUpdate(dt: any): any;
+    SetBanks(land: any, ocean: any): any;
     SetEnterWaterFn(fn: any): any;
     SetExitWaterFn(fn: any): any;
+    SetOnTileChangeFn(fn: any): any;
+    SetOnWaterChangeFn(fn: any): any;
+    ShouldTransition(x: any, z: any): any;
   }
 
   interface Anchor {
@@ -94,21 +94,21 @@ export namespace Component {
     is_anchor_transitioning: boolean;
     rasing: boolean;
     speed: any;
-    SetVelocityMod(set: any): any;
-    GetVelocityMod(): any;
-    GetDrag(): any;
-    OnSave(): any;
-    GetCurrentDepth(): any;
-    OnLoad(data: any): any;
-    GetBoat(): any;
-    SetIsAnchorLowered(is_lowered: any): any;
-    StartRaisingAnchor(): any;
-    StartLoweringAnchor(): any;
     AddAnchorRaiser(doer: any): any;
-    RemoveAnchorRaiser(doer: any): any;
-    AnchorRaised(): any;
     AnchorLowered(): any;
+    AnchorRaised(): any;
+    GetBoat(): any;
+    GetCurrentDepth(): any;
+    GetDrag(): any;
+    GetVelocityMod(): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
     OnUpdate(dt: any): any;
+    RemoveAnchorRaiser(doer: any): any;
+    SetIsAnchorLowered(is_lowered: any): any;
+    SetVelocityMod(set: any): any;
+    StartLoweringAnchor(): any;
+    StartRaisingAnchor(): any;
   }
 
   interface AOETargeting {
@@ -118,12 +118,12 @@ export namespace Component {
     alwaysvalid: boolean;
     range: number;
     enabled: any;
-    IsEnabled(): boolean;
-    SetEnabled(enabled: any): any;
-    SetTargetFX(prefab: any): any;
-    SetAlwaysValid(val: any): any;
-    SetRange(range: any): any;
     GetRange(): any;
+    IsEnabled(): boolean;
+    SetAlwaysValid(val: any): any;
+    SetEnabled(enabled: any): any;
+    SetRange(range: any): any;
+    SetTargetFX(prefab: any): any;
     StartTargeting(): any;
     StopTargeting(): any;
   }
@@ -132,8 +132,8 @@ export namespace Component {
     inst: any;
     stories: any;
     retune: any;
-    DoOverride(overrides: any): any;
     CheckTrigger(area: any): any;
+    DoOverride(overrides: any): any;
     RegisterTriggers(stories: any): any;
   }
 
@@ -142,8 +142,8 @@ export namespace Component {
     stories: any;
     unlocked: any;
     CheckUnlock(area: any): any;
-    RegisterStory(story: any): any;
     GetUnlocked(): any;
+    RegisterStory(story: any): any;
   }
 
   interface AreaAware {
@@ -158,14 +158,14 @@ export namespace Component {
     node: any;
     s: any;
     checkpositiontask: any;
+    CurrentlyInTag(tag: any): any;
+    GetCurrentArea(): any;
+    GetDebugString(): any;
     OnRemoveFromEntity(): any;
-    UpdatePosition(x: any, y: any, z: any): any;
     OnUpdate(dt: any): any;
     SetUpdateDist(dist: any): any;
-    GetCurrentArea(): any;
-    CurrentlyInTag(tag: any): any;
-    GetDebugString(): any;
     StartCheckingPosition(checkinterval: any): any;
+    UpdatePosition(x: any, y: any, z: any): any;
   }
 
   interface Armor {
@@ -177,21 +177,21 @@ export namespace Component {
     absorb_percent: any;
     indestructible: boolean;
     damage: number;
-    InitCondition(amount: any, absorb_percent: any): any;
-    InitIndestructible(absorb_percent: any): any;
-    IsIndestructible(): boolean;
-    GetPercent(amount: any): any;
-    SetTags(tags: any): any;
     AddWeakness(tag: any, bonus_damage: any): any;
-    RemoveWeakness(tag: any): any;
-    SetAbsorption(absorb_percent: any): any;
-    SetPercent(amount: any): any;
-    SetCondition(amount: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
     CanResist(attacker: any, weapon: any): boolean;
     GetAbsorption(attacker: any, weapon: any): any;
     GetBonusDamage(attacker: any, weapon: any): any;
+    GetPercent(amount: any): any;
+    InitCondition(amount: any, absorb_percent: any): any;
+    InitIndestructible(absorb_percent: any): any;
+    IsIndestructible(): boolean;
+    OnLoad(data: any): any;
+    OnSave(): any;
+    RemoveWeakness(tag: any): any;
+    SetAbsorption(absorb_percent: any): any;
+    SetCondition(amount: any): any;
+    SetPercent(amount: any): any;
+    SetTags(tags: any): any;
     TakeDamage(damage_amount: any): any;
   }
 
@@ -212,19 +212,19 @@ export namespace Component {
     userids: any;
     available_players: any;
     str: string;
-    OnRemoveEntity(): any;
+    CanAttune(player: any): boolean;
     GetAttunableTag(): any;
+    GetDebugString(): any;
+    IsAttuned(player: any): boolean;
+    LinkToPlayer(player: any, isloading: any): any;
+    OnLoad(data: any): any;
+    OnRemoveEntity(): any;
+    OnSave(): any;
     SetAttunableTag(tag: any): any;
     SetOnAttuneCostFn(fn: any): any;
     SetOnLinkFn(fn: any): any;
     SetOnUnlinkFn(fn: any): any;
-    IsAttuned(player: any): boolean;
-    CanAttune(player: any): boolean;
-    LinkToPlayer(player: any, isloading: any): any;
     UnlinkFromPlayer(player: any, isloading: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    GetDebugString(): any;
   }
 
   interface Attuner {
@@ -232,12 +232,12 @@ export namespace Component {
     ismastersim: any;
     attuned: any;
     str: string;
-    IsAttunedTo(target: any): boolean;
-    HasAttunement(tag: any): boolean;
     GetAttunedTarget(tag: any): any;
+    GetDebugString(): any;
+    HasAttunement(tag: any): boolean;
+    IsAttunedTo(target: any): boolean;
     RegisterAttunedSource(proxy: any): any;
     UnregisterAttunedSource(proxy: any): any;
-    GetDebugString(): any;
   }
 
   interface Aura {
@@ -251,17 +251,17 @@ export namespace Component {
     str: any;
     task: any;
     applied: any;
-    GetDebugString(): any;
     Enable(val: any): any;
+    GetDebugString(): any;
     OnTick(): any;
   }
 
   interface Bait {
     inst: any;
     trap: any;
-    OnRemoveFromEntity(): any;
     GetDebugString(): any;
     IsFree(): boolean;
+    OnRemoveFromEntity(): any;
   }
 
   interface BalloonMaker {
@@ -272,20 +272,20 @@ export namespace Component {
 
   interface BathBomb {
     inst: any;
-    OnRemoveFromEntity(): any;
     ApplyBathBomb(bathbombable_target: any): any;
+    OnRemoveFromEntity(): any;
   }
 
   interface BathBombable {
     inst: any;
     onbathbombedfn: any;
     canbebathbombedfn: any;
-    OnRemoveFromEntity(): any;
-    SetOnBathBombedFn(new_fn: any): any;
-    OnBathBombed(bathbomb_inst: any): any;
-    SetCanBeBathBombedFn(new_fn: any): any;
-    SetCanBeBathBombed(can_be_bathbombed: any): any;
     CanBeBathBombed(bathbomb_inst: any): boolean;
+    OnBathBombed(bathbomb_inst: any): any;
+    OnRemoveFromEntity(): any;
+    SetCanBeBathBombed(can_be_bathbombed: any): any;
+    SetCanBeBathBombedFn(new_fn: any): any;
+    SetOnBathBombedFn(new_fn: any): any;
   }
 
   interface BatSpawner {
@@ -300,10 +300,10 @@ export namespace Component {
     ground: any;
     result_offset: any;
     GetDebugString(): any;
-    SetSpawnTimes(times: any): any;
-    SetMaxBats(max: any): any;
-    StartTracking(inst: any): any;
     GetSpawnPoint(pt: any): any;
+    SetMaxBats(max: any): any;
+    SetSpawnTimes(times: any): any;
+    StartTracking(inst: any): any;
   }
 
   interface Beard {
@@ -319,16 +319,16 @@ export namespace Component {
     pass: any;
     reason: any;
     nextevent: any;
-    OnRemoveFromEntity(): any;
-    EnableGrowth(enable: any): any;
-    GetInsulation(): any;
-    ShouldTryToShave(who: any, whithwhat: any): any;
-    Shave(who: any, withwhat: any): any;
     AddCallback(day: any, cb: any): any;
-    Reset(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
+    EnableGrowth(enable: any): any;
     GetDebugString(): any;
+    GetInsulation(): any;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    Reset(): any;
+    Shave(who: any, withwhat: any): any;
+    ShouldTryToShave(who: any, whithwhat: any): any;
   }
 
   interface Beaverness {
@@ -338,16 +338,16 @@ export namespace Component {
     time_effect_multiplier: number;
     task: any;
     old: any;
+    DoDelta(delta: any, overtime: any): any;
+    GetDebugString(): any;
+    GetPercent(): any;
     IsStarving(): boolean;
+    OnLoad(data: any): any;
+    OnSave(): any;
+    SetPercent(percent: any, overtime: any): any;
+    SetTimeEffectMultiplier(multiplier: any): any;
     StartTimeEffect(dt: any, delta_b: any): any;
     StopTimeEffect(): any;
-    SetTimeEffectMultiplier(multiplier: any): any;
-    DoDelta(delta: any, overtime: any): any;
-    GetPercent(): any;
-    SetPercent(percent: any, overtime: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    GetDebugString(): any;
   }
 
   interface BeefaloMetrics {
@@ -355,10 +355,10 @@ export namespace Component {
     lastdomesticator: any;
     lastdomesticator_id: any;
     player: any;
-    SetLastDomesticator(player: any): any;
     GetLastDomesticator(): any;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnSave(): any;
+    SetLastDomesticator(player: any): any;
   }
 
   interface BirdAttractor {
@@ -377,9 +377,9 @@ export namespace Component {
     x: any;
     y: any;
     z: any;
+    Blink(pt: any, caster: any): any;
     SetFX(front: any, back: any): any;
     SpawnEffect(inst: any): any;
-    Blink(pt: any, caster: any): any;
   }
 
   interface Bloomer {
@@ -390,15 +390,15 @@ export namespace Component {
     oldfx: any;
     bloom: any;
     str: string;
-    OnRemoveFromEntity(): any;
     AttachChild(child: any): any;
     DetachChild(child: any): any;
     GetCurrentFX(): any;
-    OnSetBloomEffectHandle(fx: any): any;
-    OnClearBloomEffectHandle(): any;
-    PushBloom(source: any, fx: any, priority: any): any;
-    PopBloom(source: any): any;
     GetDebugString(): any;
+    OnClearBloomEffectHandle(): any;
+    OnRemoveFromEntity(): any;
+    OnSetBloomEffectHandle(fx: any): any;
+    PopBloom(source: any): any;
+    PushBloom(source: any, fx: any, priority: any): any;
   }
 
   interface BlowInWind {
@@ -422,20 +422,20 @@ export namespace Component {
     mult: any;
     soundspeed: any;
     walkspeed: any;
-    OnEntitySleep(): any;
-    OnEntityWake(): any;
-    StartSoundLoop(): any;
-    StopSoundLoop(): any;
-    Start(ang: any, vel: any): any;
-    Stop(): any;
     ChangeDirection(ang: any, vel: any): any;
-    SetMaxSpeedMult(spd: any): any;
-    SetMinSpeedMult(spd: any): any;
-    SetAverageSpeed(spd: any): any;
+    GetDebugString(): any;
     GetSpeed(): any;
     GetVelocity(): any;
-    GetDebugString(): any;
+    OnEntitySleep(): any;
+    OnEntityWake(): any;
     OnUpdate(dt: any): any;
+    SetAverageSpeed(spd: any): any;
+    SetMaxSpeedMult(spd: any): any;
+    SetMinSpeedMult(spd: any): any;
+    Start(ang: any, vel: any): any;
+    StartSoundLoop(): any;
+    Stop(): any;
+    StopSoundLoop(): any;
   }
 
   interface BoatAI {
@@ -454,17 +454,17 @@ export namespace Component {
     anim_state: any;
     current_state: any;
     boat: any;
-    Repair(doer: any, patch_item: any): any;
     ChangeToRepaired(repair_build_name: any): any;
-    SetState(state: any): any;
+    Repair(doer: any, patch_item: any): any;
     SetBoat(boat: any): any;
+    SetState(state: any): any;
   }
 
   interface BoatPatch {
     inst: any;
     patch_type: any;
-    OnRemoveFromEntity(): any;
     GetPatchType(): any;
+    OnRemoveFromEntity(): any;
   }
 
   interface BoatPhysics {
@@ -514,23 +514,23 @@ export namespace Component {
     new_speed_is_scary: any;
     time: any;
     should_zoom_out: any;
-    OnSave(): any;
-    OnLoad(data: any): any;
     AddAnchorCmp(anchor_cmp: any): any;
-    RemoveAnchorCmp(anchor_cmp: any): any;
-    SetTargetRudderDirection(dir_x: any, dir_z: any): any;
-    GetTargetRudderDirection(): any;
-    GetRudderDirection(): any;
     AddMast(mast: any): any;
-    RemoveMast(mast: any): any;
-    OnDeath(): any;
-    GetVelocity(): any;
     ApplyForce(dir_x: any, dir_z: any, force: any): any;
     GetMaxVelocity(): any;
-    GetTotalAnchorDrag(): any;
+    GetRudderDirection(): any;
     GetRudderTurnSpeed(): any;
-    OnUpdate(dt: any): any;
+    GetTargetRudderDirection(): any;
+    GetTotalAnchorDrag(): any;
+    GetVelocity(): any;
+    OnDeath(): any;
+    OnLoad(data: any): any;
     OnRemoveFromEntity(): any;
+    OnSave(): any;
+    OnUpdate(dt: any): any;
+    RemoveAnchorCmp(anchor_cmp: any): any;
+    RemoveMast(mast: any): any;
+    SetTargetRudderDirection(dir_x: any, dir_z: any): any;
   }
 
   interface BoatTrail {
@@ -551,8 +551,8 @@ export namespace Component {
     angle_apart: number;
     last_dir_x: any;
     last_dir_z: any;
-    SpawnEffectPrefab(x: any, y: any, z: any, dir_x: any, dir_z: any): any;
     OnUpdate(dt: any): any;
+    SpawnEffectPrefab(x: any, y: any, z: any, dir_x: any, dir_z: any): any;
   }
 
   interface BoatTrailMover {
@@ -566,8 +566,8 @@ export namespace Component {
     x: any;
     y: any;
     z: any;
-    Setup(dir_x: any, dir_z: any, velocity: any, acceleration: any): any;
     OnUpdate(dt: any): any;
+    Setup(dir_x: any, dir_z: any, velocity: any, acceleration: any): any;
   }
 
   interface Book {
@@ -589,13 +589,13 @@ export namespace Component {
     onbrushfn: any;
     elapsed: any;
     numprizes: number;
+    Brush(doer: any, brush: any): any;
+    CalculateNumPrizes(): any;
+    GetDebugString(): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
     SetBrushable(brushable: any, reset: any): any;
     SetOnBrushed(fn: any): any;
-    CalculateNumPrizes(): any;
-    Brush(doer: any, brush: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    GetDebugString(): any;
   }
 
   interface Builder {
@@ -641,29 +641,29 @@ export namespace Component {
     prod: any;
     has_tech: boolean;
     ActivateCurrentResearchMachine(recipe: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    IsBuildBuffered(recname: any): boolean;
-    OnUpdate(): any;
-    GiveAllRecipes(): any;
-    UnlockRecipesForTech(tech: any): any;
-    EvaluateTechTrees(): any;
     AddRecipe(recname: any): any;
-    UnlockRecipe(recname: any): any;
-    GetIngredientWetness(ingredients: any): any;
-    GetIngredients(recname: any): any;
-    RemoveIngredients(ingredients: any, recname: any): any;
-    HasCharacterIngredient(ingredient: any): boolean;
-    HasTechIngredient(ingredient: any): boolean;
-    MakeRecipe(recipe: any, pt: any, rot: any, skin: any, onsuccess: any): any;
-    DoBuild(recname: any, pt: any, rotation: any, skin: any): any;
-    KnowsRecipe(recname: any): boolean;
+    BufferBuild(recname: any): any;
     CanBuild(recname: any): boolean;
     CanLearn(recname: any): boolean;
+    DoBuild(recname: any, pt: any, rotation: any, skin: any): any;
+    EvaluateTechTrees(): any;
+    GetIngredientWetness(ingredients: any): any;
+    GetIngredients(recname: any): any;
+    GiveAllRecipes(): any;
+    HasCharacterIngredient(ingredient: any): boolean;
+    HasTechIngredient(ingredient: any): boolean;
+    IsBuildBuffered(recname: any): boolean;
+    KnowsRecipe(recname: any): boolean;
     LongUpdate(dt: any): any;
-    MakeRecipeFromMenu(recipe: any, skin: any): any;
+    MakeRecipe(recipe: any, pt: any, rot: any, skin: any, onsuccess: any): any;
     MakeRecipeAtPoint(recipe: any, pt: any, rot: any, skin: any): any;
-    BufferBuild(recname: any): any;
+    MakeRecipeFromMenu(recipe: any, skin: any): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
+    OnUpdate(): any;
+    RemoveIngredients(ingredients: any, recname: any): any;
+    UnlockRecipe(recname: any): any;
+    UnlockRecipesForTech(tech: any): any;
   }
 
   interface BundleMaker {
@@ -671,9 +671,9 @@ export namespace Component {
     bundlingprefab: any;
     bundledprefab: any;
     onstartbundlingfn: any;
+    OnStartBundling(doer: any): any;
     SetBundlingPrefabs(bundling: any, bundled: any): any;
     SetOnStartBundlingFn(fn: any): any;
-    OnStartBundling(doer: any): any;
   }
 
   interface Bundler {
@@ -692,13 +692,13 @@ export namespace Component {
     currentwrapped: any;
     currentbundling: any;
     CanStartBundling(): boolean;
+    FinishBundling(): any;
     IsBundling(bundlinginst: any): boolean;
+    OnFinishBundling(): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
     StartBundling(item: any): any;
     StopBundling(): any;
-    FinishBundling(): any;
-    OnFinishBundling(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
   }
 
   interface Burnable {
@@ -729,42 +729,42 @@ export namespace Component {
     xoffs: any;
     yoffs: any;
     zoffs: any;
-    SetOnStopSmolderingFn(fn: any): any;
-    SetOnSmolderingFn(fn: any): any;
-    SetOnIgniteFn(fn: any): any;
-    SetOnBurntFn(fn: any): any;
-    SetOnExtinguishFn(fn: any): any;
-    SetBurningFX(name: any): any;
-    SetBurnTime(time: any): any;
-    IsBurning(): boolean;
-    IsSmoldering(): boolean;
     AddBurnFX(
       prefab: any,
       offset: any,
       followsymbol: any,
       followaschild: any
     ): any;
+    ExtendBurning(): any;
+    Extinguish(resetpropagator: any, heatpct: any, smotherer: any): any;
+    FixFX(): any;
+    GetDebugString(): any;
+    GetLargestLightRadius(): any;
+    HasEndothermicHeat(): boolean;
+    HasExothermicHeat(): boolean;
+    Ignite(immediate: any, source: any, doer: any): any;
+    IsBurning(): boolean;
+    IsSmoldering(): boolean;
+    KillFX(): any;
+    LongUpdate(dt: any): any;
+    OnRemoveEntity(): any;
+    OnRemoveFromEntity(): any;
     OverrideBurnFXBuild(build: any): any;
     OverrideBurnFXFinalOffset(offs: any): any;
     OverrideBurnFXRadius(radius_levels: any): any;
-    SetFXOffset(x: any, y: any, z: any): any;
+    SetBurnTime(time: any): any;
+    SetBurningFX(name: any): any;
     SetFXLevel(level: any, percent: any): any;
-    GetLargestLightRadius(): any;
-    GetDebugString(): any;
-    OnRemoveEntity(): any;
-    StartWildfire(): any;
-    Ignite(immediate: any, source: any, doer: any): any;
-    ExtendBurning(): any;
-    LongUpdate(dt: any): any;
+    SetFXOffset(x: any, y: any, z: any): any;
+    SetOnBurntFn(fn: any): any;
+    SetOnExtinguishFn(fn: any): any;
+    SetOnIgniteFn(fn: any): any;
+    SetOnSmolderingFn(fn: any): any;
+    SetOnStopSmolderingFn(fn: any): any;
     SmotherSmolder(smotherer: any): any;
-    StopSmoldering(heatpct: any): any;
-    Extinguish(resetpropagator: any, heatpct: any, smotherer: any): any;
     SpawnFX(immediate: any): any;
-    FixFX(): any;
-    KillFX(): any;
-    HasEndothermicHeat(): boolean;
-    HasExothermicHeat(): boolean;
-    OnRemoveFromEntity(): any;
+    StartWildfire(): any;
+    StopSmoldering(heatpct: any): any;
   }
 
   interface CarefulWalker {
@@ -778,12 +778,12 @@ export namespace Component {
     z: any;
     checkcareful: any;
     toremove: any;
-    OnRemoveFromEntity(): any;
-    SetCarefulWalkingSpeedMultiplier(mult: any): any;
-    TrackTarget(target: any, radius: any, duration: any): any;
     IsCarefulWalking(): boolean;
-    ToggleCareful(careful: any): any;
+    OnRemoveFromEntity(): any;
     OnUpdate(dt: any): any;
+    SetCarefulWalkingSpeedMultiplier(mult: any): any;
+    ToggleCareful(careful: any): any;
+    TrackTarget(target: any, radius: any, duration: any): any;
   }
 
   interface Catcher {
@@ -793,14 +793,14 @@ export namespace Component {
     catchdistance: number;
     canact: boolean;
     watchlist: any;
+    CanCatch(): boolean;
     OnRemoveFromEntity(): any;
-    SetEnabled(enable: any): any;
+    OnUpdate(): any;
     SetActionDistance(dist: any): any;
     SetCatchDistance(dist: any): any;
+    SetEnabled(enable: any): any;
     StartWatching(projectile: any): any;
     StopWatching(projectile: any): any;
-    CanCatch(): boolean;
-    OnUpdate(): any;
   }
 
   interface Channelable {
@@ -810,13 +810,13 @@ export namespace Component {
     onchannelingfn: any;
     onstopchannelingfn: any;
     stopchanneling: boolean;
-    SetEnabled(enabled: any): any;
-    SetChannelingFn(startfn: any, stopfn: any): any;
+    GetDebugString(): any;
     IsChanneling(): boolean;
+    OnUpdate(dt: any): any;
+    SetChannelingFn(startfn: any, stopfn: any): any;
+    SetEnabled(enabled: any): any;
     StartChanneling(channeler: any): any;
     StopChanneling(aborted: any): any;
-    OnUpdate(dt: any): any;
-    GetDebugString(): any;
   }
 
   interface ChildSpawner {
@@ -866,48 +866,48 @@ export namespace Component {
     offset: any;
     child: any;
     ents: any;
-    OnRemoveFromEntity(): any;
-    StartRegen(): any;
-    SetRareChild(childname: any, chance: any): any;
-    StopRegen(): any;
-    SetSpawnPeriod(period: any, variance: any): any;
-    SetRegenPeriod(period: any, variance: any): any;
-    SetEmergencyRadius(rad: any): any;
-    IsFull(): boolean;
-    NumChildren(): any;
-    OnUpdate(dt: any): any;
-    StartUpdate(dt: any): any;
-    StartSpawning(): any;
-    StopSpawning(): any;
-    SetOccupiedFn(fn: any): any;
-    SetSpawnedFn(fn: any): any;
-    SetGoHomeFn(fn: any): any;
-    SetVacateFn(fn: any): any;
-    SetOnChildKilledFn(fn: any): any;
-    SetOnAddChildFn(fn: any): any;
-    CountChildrenOutside(fn: any): any;
-    SetMaxChildren(max: any): any;
-    SetMaxEmergencyChildren(max: any): any;
-    OnSave(): any;
-    GetDebugString(): any;
-    OnLoad(data: any): any;
-    DoTakeOwnership(child: any): any;
-    TakeOwnership(child: any): any;
-    TakeEmergencyOwnership(child: any): any;
-    LoadPostPass(newents: any, savedata: any): any;
-    DoSpawnChild(target: any, prefab: any, radius: any): any;
-    SpawnChild(target: any, prefab: any, radius: any): any;
-    SpawnEmergencyChild(target: any, prefab: any, radius: any): any;
-    UpdateMaxEmergencyCommit(): any;
-    TrySpawnEmergencyChild(): any;
-    GoHome(child: any): any;
-    CanSpawn(): boolean;
-    CanEmergencySpawn(): boolean;
-    OnChildKilled(child: any): any;
-    ReleaseAllChildren(target: any, prefab: any): any;
     AddChildrenInside(count: any): any;
     AddEmergencyChildrenInside(count: any): any;
+    CanEmergencySpawn(): boolean;
+    CanSpawn(): boolean;
+    CountChildrenOutside(fn: any): any;
+    DoSpawnChild(target: any, prefab: any, radius: any): any;
+    DoTakeOwnership(child: any): any;
+    GetDebugString(): any;
+    GoHome(child: any): any;
+    IsFull(): boolean;
+    LoadPostPass(newents: any, savedata: any): any;
     LongUpdate(dt: any): any;
+    NumChildren(): any;
+    OnChildKilled(child: any): any;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    OnUpdate(dt: any): any;
+    ReleaseAllChildren(target: any, prefab: any): any;
+    SetEmergencyRadius(rad: any): any;
+    SetGoHomeFn(fn: any): any;
+    SetMaxChildren(max: any): any;
+    SetMaxEmergencyChildren(max: any): any;
+    SetOccupiedFn(fn: any): any;
+    SetOnAddChildFn(fn: any): any;
+    SetOnChildKilledFn(fn: any): any;
+    SetRareChild(childname: any, chance: any): any;
+    SetRegenPeriod(period: any, variance: any): any;
+    SetSpawnPeriod(period: any, variance: any): any;
+    SetSpawnedFn(fn: any): any;
+    SetVacateFn(fn: any): any;
+    SpawnChild(target: any, prefab: any, radius: any): any;
+    SpawnEmergencyChild(target: any, prefab: any, radius: any): any;
+    StartRegen(): any;
+    StartSpawning(): any;
+    StartUpdate(dt: any): any;
+    StopRegen(): any;
+    StopSpawning(): any;
+    TakeEmergencyOwnership(child: any): any;
+    TakeOwnership(child: any): any;
+    TrySpawnEmergencyChild(): any;
+    UpdateMaxEmergencyCommit(): any;
   }
 
   interface Circler {
@@ -933,16 +933,16 @@ export namespace Component {
     x: any;
     y: any;
     z: any;
-    Start(): any;
-    Stop(): any;
-    SetCircleTarget(tar: any): any;
-    GetSpeed(dt: any): any;
-    GetMinSpeed(): any;
+    GetDebugString(): any;
+    GetMaxScale(): any;
     GetMaxSpeed(): any;
     GetMinScale(): any;
-    GetMaxScale(): any;
-    GetDebugString(): any;
+    GetMinSpeed(): any;
+    GetSpeed(dt: any): any;
     OnUpdate(dt: any): any;
+    SetCircleTarget(tar: any): any;
+    Start(): any;
+    Stop(): any;
   }
 
   interface CircuitNode {
@@ -957,18 +957,18 @@ export namespace Component {
     z: any;
     my_platform: any;
     onconnectfn: any;
-    OnRemoveEntity(): any;
-    IsEnabled(): boolean;
-    IsConnected(): boolean;
-    NumConnectedNodes(): any;
+    AddNode(node: any): any;
     ConnectTo(tag: any): any;
     Disconnect(): any;
-    SetRange(range: any): any;
+    ForEachNode(fn: any): any;
+    IsConnected(): boolean;
+    IsEnabled(): boolean;
+    NumConnectedNodes(): any;
+    OnRemoveEntity(): any;
+    RemoveNode(node: any): any;
     SetOnConnectFn(fn: any): any;
     SetOnDisconnectFn(fn: any): any;
-    AddNode(node: any): any;
-    RemoveNode(node: any): any;
-    ForEachNode(fn: any): any;
+    SetRange(range: any): any;
   }
 
   interface ColourAdder {
@@ -981,15 +981,15 @@ export namespace Component {
     b: number;
     a: number;
     str: any;
-    OnRemoveFromEntity(): any;
     AttachChild(child: any): any;
+    CalculateCurrentColour(): any;
     DetachChild(child: any): any;
     GetCurrentColour(): any;
-    CalculateCurrentColour(): any;
-    OnSetColour(r: any, g: any, b: any, a: any): any;
-    PushColour(source: any, r: any, g: any, b: any, a: any): any;
-    PopColour(source: any): any;
     GetDebugString(): any;
+    OnRemoveFromEntity(): any;
+    OnSetColour(r: any, g: any, b: any, a: any): any;
+    PopColour(source: any): any;
+    PushColour(source: any, r: any, g: any, b: any, a: any): any;
   }
 
   interface ColourTweener {
@@ -1008,10 +1008,10 @@ export namespace Component {
     tweening: boolean;
     i_colour: any;
     t: any;
-    IsTweening(): boolean;
     EndTween(): any;
-    StartTween(colour: any, time: any, callback: any): any;
+    IsTweening(): boolean;
     OnUpdate(dt: any): any;
+    StartTween(colour: any, time: any, callback: any): any;
   }
 
   interface Combat {
@@ -1091,61 +1091,11 @@ export namespace Component {
     dmg: any;
     lastdoattacktime: any;
     hitcount: number;
-    SetLastTarget(target: any): any;
-    SetAttackPeriod(period: any): any;
-    TargetIs(target: any): any;
-    InCooldown(): any;
-    GetCooldown(): any;
-    ResetCooldown(): any;
-    RestartCooldown(): any;
-    SetRange(attack: any, hit: any): any;
-    SetPlayerStunlock(stunlock: any): any;
-    SetAreaDamage(range: any, percent: any, areahitcheck: any): any;
-    EnableAreaDamage(enable: any): any;
-    BlankOutAttacks(fortime: any): any;
-    ShareTarget(
-      target: any,
-      range: any,
-      fn: any,
-      maxnum: any,
-      musttags: any
-    ): any;
-    SetDefaultDamage(damage: any): any;
-    SetOnHit(fn: any): any;
-    SuggestTarget(target: any): any;
-    SetKeepTargetFunction(fn: any): any;
-    TryRetarget(): any;
-    SetRetargetFunction(period: any, fn: any): any;
-    OnEntitySleep(): any;
-    OnEntityWake(): any;
-    OnUpdate(dt: any): any;
-    IsRecentTarget(target: any): boolean;
-    StartTrackingTarget(target: any): any;
-    StopTrackingTarget(target: any): any;
-    DropTarget(hasnexttarget: any): any;
-    EngageTarget(target: any): any;
-    SetTarget(target: any): any;
-    IsValidTarget(target: any): boolean;
-    ValidateTarget(): any;
-    GetDebugString(): any;
-    GetGiveUpString(target: any): any;
-    GiveUp(): any;
-    GetBattleCryString(target: any): any;
-    ResetBattleCryCooldown(t: any): any;
     BattleCry(): any;
-    SetHurtSound(sound: any): any;
-    GetAttacked(attacker: any, damage: any, weapon: any, stimuli: any): any;
-    GetImpactSound(target: any, weapon: any): any;
-    StartAttack(): any;
-    CancelAttack(): any;
-    CanTarget(target: any): boolean;
-    HasTarget(): boolean;
-    CanAttack(target: any): boolean;
-    TryAttack(target: any): any;
-    ForceAttack(): any;
-    GetWeapon(): any;
-    GetLastAttackedTime(): any;
+    BlankOutAttacks(fortime: any): any;
+    CalcAttackRangeSq(target: any): any;
     CalcDamage(target: any, weapon: any, multiplier: any): any;
+    CalcHitRangeSq(target: any): any;
     CalcReflectedDamage(
       targ: any,
       dmg: any,
@@ -1153,21 +1103,13 @@ export namespace Component {
       stimuli: any,
       reflect_list: any
     ): any;
-    GetAttackRange(): any;
-    CalcAttackRangeSq(target: any): any;
-    GetHitRange(): any;
-    CalcHitRangeSq(target: any): any;
+    CanAttack(target: any): boolean;
+    CanBeAttacked(attacker: any): boolean;
     CanExtinguishTarget(target: any, weapon: any): boolean;
-    CanLightTarget(target: any, weapon: any): boolean;
     CanHitTarget(target: any, weapon: any): boolean;
-    DoAttack(
-      targ: any,
-      weapon: any,
-      projectile: any,
-      stimuli: any,
-      instancemult: any
-    ): any;
-    GetDamageReflect(target: any, damage: any, weapon: any, stimuli: any): any;
+    CanLightTarget(target: any, weapon: any): boolean;
+    CanTarget(target: any): boolean;
+    CancelAttack(): any;
     DoAreaAttack(
       target: any,
       range: any,
@@ -1176,11 +1118,69 @@ export namespace Component {
       stimuli: any,
       excludetags: any
     ): any;
+    DoAttack(
+      targ: any,
+      weapon: any,
+      projectile: any,
+      stimuli: any,
+      instancemult: any
+    ): any;
+    DropTarget(hasnexttarget: any): any;
+    EnableAreaDamage(enable: any): any;
+    EngageTarget(target: any): any;
+    ForceAttack(): any;
+    GetAttackRange(): any;
+    GetAttacked(attacker: any, damage: any, weapon: any, stimuli: any): any;
+    GetBattleCryString(target: any): any;
+    GetCooldown(): any;
+    GetDamageReflect(target: any, damage: any, weapon: any, stimuli: any): any;
+    GetDebugString(): any;
+    GetGiveUpString(target: any): any;
+    GetHitRange(): any;
+    GetImpactSound(target: any, weapon: any): any;
+    GetLastAttackedTime(): any;
+    GetWeapon(): any;
+    GiveUp(): any;
+    HasTarget(): boolean;
+    InCooldown(): any;
     IsAlly(guy: any): boolean;
-    CanBeAttacked(attacker: any): boolean;
-    OnSave(): any;
+    IsRecentTarget(target: any): boolean;
+    IsValidTarget(target: any): boolean;
     LoadPostPass(newents: any, data: any): any;
+    OnEntitySleep(): any;
+    OnEntityWake(): any;
     OnRemoveFromEntity(): any;
+    OnSave(): any;
+    OnUpdate(dt: any): any;
+    ResetBattleCryCooldown(t: any): any;
+    ResetCooldown(): any;
+    RestartCooldown(): any;
+    SetAreaDamage(range: any, percent: any, areahitcheck: any): any;
+    SetAttackPeriod(period: any): any;
+    SetDefaultDamage(damage: any): any;
+    SetHurtSound(sound: any): any;
+    SetKeepTargetFunction(fn: any): any;
+    SetLastTarget(target: any): any;
+    SetOnHit(fn: any): any;
+    SetPlayerStunlock(stunlock: any): any;
+    SetRange(attack: any, hit: any): any;
+    SetRetargetFunction(period: any, fn: any): any;
+    SetTarget(target: any): any;
+    ShareTarget(
+      target: any,
+      range: any,
+      fn: any,
+      maxnum: any,
+      musttags: any
+    ): any;
+    StartAttack(): any;
+    StartTrackingTarget(target: any): any;
+    StopTrackingTarget(target: any): any;
+    SuggestTarget(target: any): any;
+    TargetIs(target: any): any;
+    TryAttack(target: any): any;
+    TryRetarget(): any;
+    ValidateTarget(): any;
   }
 
   interface Commander {
@@ -1190,21 +1190,21 @@ export namespace Component {
     trackingdist: number;
     trackingperiod: number;
     k: any;
-    OnRemoveFromEntity(): any;
-    GetNumSoldiers(): any;
-    GetAllSoldiers(): any;
-    IsSoldier(ent: any): boolean;
-    ShareTargetToAllSoldiers(target: any): any;
-    DropAllSoldierTargets(): any;
-    IsAnySoldierNotAlert(): boolean;
-    AlertAllSoldiers(): any;
-    PushEventToAllSoldiers(ev: any, data: any): any;
     AddSoldier(ent: any): any;
+    AlertAllSoldiers(): any;
+    DropAllSoldierTargets(): any;
+    GetAllSoldiers(): any;
+    GetDebugString(): any;
+    GetNumSoldiers(): any;
+    IsAnySoldierNotAlert(): boolean;
+    IsSoldier(ent: any): boolean;
+    OnRemoveFromEntity(): any;
+    PushEventToAllSoldiers(ev: any, data: any): any;
     RemoveSoldier(ent: any): any;
     SetTrackingDistance(dist: any): any;
+    ShareTargetToAllSoldiers(target: any): any;
     StartTrackingDistance(): any;
     StopTrackingDistance(): any;
-    GetDebugString(): any;
   }
 
   interface ComplexProjectile {
@@ -1245,19 +1245,19 @@ export namespace Component {
     vx: any;
     vy: any;
     vz: any;
-    OnRemoveFromEntity(): any;
-    GetDebugString(): any;
-    SetHorizontalSpeed(speed: any): any;
-    SetGravity(g: any): any;
-    SetLaunchOffset(offset: any): any;
-    SetTargetOffset(offset: any): any;
-    SetOnLaunch(fn: any): any;
-    SetOnHit(fn: any): any;
-    SetOnUpdate(fn: any): any;
     CalculateTrajectory(startPos: any, endPos: any, speed: any): any;
-    Launch(targetPos: any, attacker: any, owningweapon: any): any;
+    GetDebugString(): any;
     Hit(target: any): any;
+    Launch(targetPos: any, attacker: any, owningweapon: any): any;
+    OnRemoveFromEntity(): any;
     OnUpdate(dt: any): any;
+    SetGravity(g: any): any;
+    SetHorizontalSpeed(speed: any): any;
+    SetLaunchOffset(offset: any): any;
+    SetOnHit(fn: any): any;
+    SetOnLaunch(fn: any): any;
+    SetOnUpdate(fn: any): any;
+    SetTargetOffset(offset: any): any;
   }
 
   interface ConstructionBuilder {
@@ -1271,25 +1271,25 @@ export namespace Component {
     currentconstructing: any;
     currenttarget: any;
     CanStartConstruction(): boolean;
+    FinishConstruction(): any;
     IsConstructing(constructioninst: any): boolean;
     IsConstructingAny(): boolean;
+    OnFinishConstruction(): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
     StartConstruction(target: any): any;
     StopConstruction(): any;
-    FinishConstruction(): any;
-    OnFinishConstruction(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
   }
 
   interface ConstructionBuilderUIData {
     inst: any;
-    SetContainer(containerinst: any): any;
-    GetContainer(): any;
-    SetTarget(targetinst: any): any;
-    GetTarget(): any;
     GetConstructionSite(): any;
+    GetContainer(): any;
     GetIngredientForSlot(slot: any): any;
     GetSlotForIngredient(prefab: any): any;
+    GetTarget(): any;
+    SetContainer(containerinst: any): any;
+    SetTarget(targetinst: any): any;
   }
 
   interface ConstructionPlans {
@@ -1298,9 +1298,9 @@ export namespace Component {
     constructionprefab: any;
     product: any;
     AddTargetPrefab(prefab: any, constructionprefab: any): any;
+    OnRemoveFromEntity(): any;
     RemoveTargetPrefab(prefab: any): any;
     StartConstruction(target: any): any;
-    OnRemoveFromEntity(): any;
   }
 
   interface ConstructionSite {
@@ -1317,21 +1317,21 @@ export namespace Component {
     material: any;
     delta: any;
     str: any;
-    SetConstructionPrefab(prefab: any): any;
-    SetOnStartConstructionFn(fn: any): any;
-    SetOnStopConstructionFn(fn: any): any;
-    SetOnConstructedFn(fn: any): any;
-    OnStartConstruction(doer: any): any;
-    OnStopConstruction(doer: any): any;
-    OnConstruct(doer: any, items: any): any;
-    HasBuilder(): boolean;
-    IsBuilder(guy: any): boolean;
     AddMaterial(prefab: any, num: any): any;
+    GetDebugString(): any;
     GetMaterialCount(prefab: any): any;
     GetSlotCount(slot: any): any;
-    OnSave(): any;
+    HasBuilder(): boolean;
+    IsBuilder(guy: any): boolean;
+    OnConstruct(doer: any, items: any): any;
     OnLoad(data: any): any;
-    GetDebugString(): any;
+    OnSave(): any;
+    OnStartConstruction(doer: any): any;
+    OnStopConstruction(doer: any): any;
+    SetConstructionPrefab(prefab: any): any;
+    SetOnConstructedFn(fn: any): any;
+    SetOnStartConstructionFn(fn: any): any;
+    SetOnStopConstructionFn(fn: any): any;
   }
 
   interface Container {
@@ -1367,50 +1367,50 @@ export namespace Component {
     halfstack: any;
     leftovers: any;
     targetslot: any;
-    WidgetSetup(prefab: any, data: any): any;
-    GetWidget(): any;
-    NumItems(): any;
-    IsFull(): boolean;
-    IsEmpty(): boolean;
-    SetNumSlots(numslots: any): any;
-    DropItemBySlot(slot: any): any;
-    DropEverythingWithTag(tag: any): any;
-    DropEverything(): any;
-    DropItem(itemtodrop: any): any;
-    CanTakeItemInSlot(item: any, slot: any): boolean;
-    GetSpecificSlotForItem(item: any): any;
     AcceptsStacks(): boolean;
-    IsSideWidget(): boolean;
-    DestroyContents(): any;
-    GiveItem(item: any, slot: any, src_pos: any, drop_on_fail: any): any;
-    RemoveItemBySlot(slot: any): any;
-    GetNumSlots(): any;
-    GetItemInSlot(slot: any): any;
-    GetItemSlot(item: any): any;
-    Open(doer: any): any;
+    AddAllOfActiveItemToSlot(slot: any): any;
+    AddOneOfActiveItemToSlot(slot: any): any;
+    CanTakeItemInSlot(item: any, slot: any): boolean;
     Close(): any;
-    IsOpen(): boolean;
-    IsOpenedBy(guy: any): boolean;
-    IsHolding(item: any, checkcontainer: any): boolean;
+    ConsumeByName(item: any, amount: any): any;
+    DestroyContents(): any;
+    DropEverything(): any;
+    DropEverythingWithTag(tag: any): any;
+    DropItem(itemtodrop: any): any;
+    DropItemBySlot(slot: any): any;
     FindItem(fn: any): any;
     FindItems(fn: any): any;
-    Has(item: any, amount: any): boolean;
     GetItemByName(item: any, amount: any): any;
-    ConsumeByName(item: any, amount: any): any;
-    OnSave(): any;
-    OnLoad(data: any, newents: any): any;
-    RemoveItem(item: any, wholestack: any): any;
-    OnUpdate(dt: any): any;
-    PutOneOfActiveItemInSlot(slot: any): any;
-    PutAllOfActiveItemInSlot(slot: any): any;
-    TakeActiveItemFromHalfOfSlot(slot: any): any;
-    TakeActiveItemFromAllOfSlot(slot: any): any;
-    AddOneOfActiveItemToSlot(slot: any): any;
-    AddAllOfActiveItemToSlot(slot: any): any;
-    SwapActiveItemWithSlot(slot: any): any;
+    GetItemInSlot(slot: any): any;
+    GetItemSlot(item: any): any;
+    GetNumSlots(): any;
+    GetSpecificSlotForItem(item: any): any;
+    GetWidget(): any;
+    GiveItem(item: any, slot: any, src_pos: any, drop_on_fail: any): any;
+    Has(item: any, amount: any): boolean;
+    IsEmpty(): boolean;
+    IsFull(): boolean;
+    IsHolding(item: any, checkcontainer: any): boolean;
+    IsOpen(): boolean;
+    IsOpenedBy(guy: any): boolean;
+    IsSideWidget(): boolean;
     MoveItemFromAllOfSlot(slot: any, container: any): any;
     MoveItemFromHalfOfSlot(slot: any, container: any): any;
+    NumItems(): any;
+    OnLoad(data: any, newents: any): any;
+    OnSave(): any;
+    OnUpdate(dt: any): any;
+    Open(doer: any): any;
+    PutAllOfActiveItemInSlot(slot: any): any;
+    PutOneOfActiveItemInSlot(slot: any): any;
     ReferenceAllItems(): any;
+    RemoveItem(item: any, wholestack: any): any;
+    RemoveItemBySlot(slot: any): any;
+    SetNumSlots(numslots: any): any;
+    SwapActiveItemWithSlot(slot: any): any;
+    TakeActiveItemFromAllOfSlot(slot: any): any;
+    TakeActiveItemFromHalfOfSlot(slot: any): any;
+    WidgetSetup(prefab: any, data: any): any;
   }
 
   interface Cookable {
@@ -1419,18 +1419,18 @@ export namespace Component {
     oncooked: any;
     prod: any;
     new_percent: any;
+    Cook(cooker: any, chef: any): any;
     OnRemoveFromEntity(): any;
     SetOnCookedFn(fn: any): any;
-    Cook(cooker: any, chef: any): any;
   }
 
   interface Cooker {
     inst: any;
     newitem: any;
     sound_inst: any;
-    OnRemoveFromEntity(): any;
     CanCook(item: any, chef: any): boolean;
     CookItem(item: any, chef: any): any;
+    OnRemoveFromEntity(): any;
   }
 
   interface Cooldown {
@@ -1442,30 +1442,30 @@ export namespace Component {
     task: any;
     cooldown_deadline: any;
     t: any;
-    OnRemoveFromEntity(): any;
-    StartCharging(time: any): any;
     FinishCharging(): any;
+    GetDebugString(): any;
     GetTimeToCharged(): any;
     IsCharged(): boolean;
     IsCharging(): boolean;
-    OnSave(): any;
-    GetDebugString(): any;
     LongUpdate(dt: any): any;
     OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    StartCharging(time: any): any;
   }
 
   interface CraftingStation {
     inst: any;
     items: any;
     recipes: any;
-    LearnItem(itemname: any, recipetouse: any): any;
-    KnowsItem(itemname: any): boolean;
+    ForgetAllItems(): any;
+    ForgetItem(itemname: any): any;
     GetItems(): any;
     GetRecipes(): any;
-    ForgetItem(itemname: any): any;
-    ForgetAllItems(): any;
-    OnSave(): any;
+    KnowsItem(itemname: any): boolean;
+    LearnItem(itemname: any, recipetouse: any): any;
     OnLoad(data: any): any;
+    OnSave(): any;
   }
 
   interface CritterTraits {
@@ -1479,16 +1479,16 @@ export namespace Component {
     data: any;
     dominant: any;
     str: any;
-    OnPet(petter: any): any;
-    StartTracking(): any;
-    IncTracker(name: any, multiplier: any): any;
     DecayTraits(): any;
-    SetDominantTrait(trait: any): any;
-    IsDominantTrait(trait: any): boolean;
-    RefreshDominantTrait(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
     GetDebugString(): any;
+    IncTracker(name: any, multiplier: any): any;
+    IsDominantTrait(trait: any): boolean;
+    OnLoad(data: any): any;
+    OnPet(petter: any): any;
+    OnSave(): any;
+    RefreshDominantTrait(): any;
+    SetDominantTrait(trait: any): any;
+    StartTracking(): any;
   }
 
   interface Crop {
@@ -1511,37 +1511,37 @@ export namespace Component {
     grower: any;
     product: any;
     temp: any;
+    DoGrow(dt: any, nowither: any): any;
+    Fertilize(fertilizer: any, doer: any): any;
+    GetDebugString(): any;
+    Harvest(harvester: any): any;
+    IsReadyForHarvest(): boolean;
+    LoadPostPass(): any;
+    LongUpdate(dt: any): any;
+    MakeWithered(): any;
+    Mature(): any;
+    OnLoad(data: any): any;
     OnRemoveFromEntity(): any;
+    OnSave(): any;
+    Resume(): any;
+    SetOnHarvestFn(fn: any): any;
     SetOnMatureFn(fn: any): any;
     SetOnWitheredFn(fn: any): any;
-    SetOnHarvestFn(fn: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    LoadPostPass(): any;
-    Fertilize(fertilizer: any, doer: any): any;
-    DoGrow(dt: any, nowither: any): any;
-    GetDebugString(): any;
-    Resume(): any;
     StartGrowing(prod: any, grow_time: any, grower: any, percent: any): any;
-    Harvest(harvester: any): any;
-    Mature(): any;
-    MakeWithered(): any;
-    IsReadyForHarvest(): boolean;
-    LongUpdate(dt: any): any;
   }
 
   interface DamageReflect {
     inst: any;
     reflectdamagefn: any;
     defaultdamage: number;
-    SetReflectDamageFn(fn: any): any;
-    SetDefaultDamage(value: any): any;
     GetReflectedDamage(
       attacker: any,
       damage: any,
       weapon: any,
       stimuli: any
     ): any;
+    SetDefaultDamage(value: any): any;
+    SetReflectDamageFn(fn: any): any;
   }
 
   interface DamageTracker {
@@ -1551,9 +1551,9 @@ export namespace Component {
     damage_threshold_fn: any;
     enabled: boolean;
     old: any;
+    OnHealthDelta(data: any): any;
     Start(): any;
     Stop(): any;
-    OnHealthDelta(data: any): any;
   }
 
   interface Debuff {
@@ -1563,13 +1563,13 @@ export namespace Component {
     onattachedfn: any;
     ondetachedfn: any;
     onextendedfn: any;
+    AttachTo(name: any, target: any, followsymbol: any, followoffset: any): any;
+    Extend(followsymbol: any, followoffset: any): any;
+    OnDetach(): any;
     SetAttachedFn(fn: any): any;
     SetDetachedFn(fn: any): any;
     SetExtendedFn(fn: any): any;
     Stop(): any;
-    AttachTo(name: any, target: any, followsymbol: any, followoffset: any): any;
-    OnDetach(): any;
-    Extend(followsymbol: any, followoffset: any): any;
   }
 
   interface Debuffable {
@@ -1587,17 +1587,17 @@ export namespace Component {
     ent: any;
     data: any;
     str: any;
-    IsEnabled(): boolean;
+    AddDebuff(name: any, prefab: any): any;
     Enable(enable: any): any;
+    GetDebuff(name: any): any;
+    GetDebugString(): any;
+    HasDebuff(name: any): boolean;
+    IsEnabled(): boolean;
+    OnLoad(data: any): any;
+    OnSave(): any;
+    RemoveDebuff(name: any): any;
     RemoveOnDespawn(): any;
     SetFollowSymbol(symbol: any, x: any, y: any, z: any): any;
-    HasDebuff(name: any): boolean;
-    GetDebuff(name: any): any;
-    AddDebuff(name: any, prefab: any): any;
-    RemoveDebuff(name: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    GetDebugString(): any;
   }
 
   interface Debugger {
@@ -1605,12 +1605,12 @@ export namespace Component {
     debugger: any;
     z: number;
     debuggerdraws: any;
+    OnUpdate(): any;
+    SetAll(key: any, origin: any, tar: any, colour: any): any;
+    SetColour(key: any, r: any, g: any, b: any, a: any): any;
     SetOrigin(key: any, x: any, y: any): any;
     SetTarget(key: any, x: any, y: any): any;
-    SetColour(key: any, r: any, g: any, b: any, a: any): any;
-    SetAll(key: any, origin: any, tar: any, colour: any): any;
     SetZ(val: any): any;
-    OnUpdate(): any;
   }
 
   interface Decay {
@@ -1661,12 +1661,12 @@ export namespace Component {
     angle: any;
     numdrakes: any;
     ignitenumdrakes: any;
-    StartMonster(starttime: any): any;
-    StopMonster(): any;
-    OnEntityWake(): any;
     OnEntitySleep(): any;
+    OnEntityWake(): any;
     OnUpdate(dt: any): any;
     SpawnIgniteWave(): any;
+    StartMonster(starttime: any): any;
+    StopMonster(): any;
   }
 
   interface DeerHerding {
@@ -1705,24 +1705,24 @@ export namespace Component {
     closest_dist: number;
     data: any;
     s: string;
-    Init(startingpt: any, herdspawner: any): any;
-    SetValidAareaCheckFn(fn: any): any;
     CalcHerdCenterPoint(detailedinfo: any): any;
-    UpdateHerdLocation(radius: any): any;
-    IsActiveInHerd(deer: any): boolean;
-    UpdateDeerHerdingStatus(): any;
     CalcIsHerdSpooked(): any;
-    IsAnyEntityAsleep(): boolean;
-    OnUpdate(dt: any): any;
-    IsGrazing(): boolean;
-    SetHerdAlertTarget(deer: any, target: any): any;
     GetClosestHerdAlertTarget(deer: any): any;
-    HerdHasAlertTarget(): any;
-    IsAHerdAlertTarget(target: any): boolean;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    LoadPostPass(newents: any, data: any): any;
     GetDebugString(): any;
+    HerdHasAlertTarget(): any;
+    Init(startingpt: any, herdspawner: any): any;
+    IsAHerdAlertTarget(target: any): boolean;
+    IsActiveInHerd(deer: any): boolean;
+    IsAnyEntityAsleep(): boolean;
+    IsGrazing(): boolean;
+    LoadPostPass(newents: any, data: any): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
+    OnUpdate(dt: any): any;
+    SetHerdAlertTarget(deer: any, target: any): any;
+    SetValidAareaCheckFn(fn: any): any;
+    UpdateDeerHerdingStatus(): any;
+    UpdateHerdLocation(radius: any): any;
   }
 
   interface Deployable {
@@ -1736,14 +1736,14 @@ export namespace Component {
     y: any;
     z: any;
     isplant: any;
+    CanDeploy(pt: any, mouseover: any, deployer: any): boolean;
+    Deploy(pt: any, deployer: any, rot: any): any;
+    DeploySpacingRadius(): any;
+    IsDeployable(deployer: any): boolean;
     OnRemoveFromEntity(): any;
     SetDeployMode(mode: any): any;
     SetDeploySpacing(spacing: any): any;
     SetUseGridPlacer(usegridplacer: any): any;
-    DeploySpacingRadius(): any;
-    IsDeployable(deployer: any): boolean;
-    CanDeploy(pt: any, mouseover: any, deployer: any): boolean;
-    Deploy(pt: any, deployer: any, rot: any): any;
   }
 
   interface DeployHelper {
@@ -1751,12 +1751,12 @@ export namespace Component {
     onenablehelper: any;
     recipefilters: any;
     delay: number;
+    AddRecipeFilter(recipename: any): any;
     OnEntitySleep(): any;
     OnEntityWake(): any;
-    AddRecipeFilter(recipename: any): any;
+    OnUpdate(): any;
     StartHelper(recipename: any, placerinst: any): any;
     StopHelper(): any;
-    OnUpdate(): any;
   }
 
   interface Digester {
@@ -1782,9 +1782,9 @@ export namespace Component {
     canbepickedup: boolean;
     canbepickedupalive: boolean;
     Disappear(): any;
-    StopDisappear(): any;
-    PrepareDisappear(): any;
     GetDebugString(): any;
+    PrepareDisappear(): any;
+    StopDisappear(): any;
   }
 
   interface Discoverable {
@@ -1795,9 +1795,9 @@ export namespace Component {
     data: any;
     Discover(): any;
     Hide(): any;
-    SetIcons(undiscovered: any, discovered: any): any;
-    OnSave(data: any): any;
     OnLoad(data: any): any;
+    OnSave(data: any): any;
+    SetIcons(undiscovered: any, discovered: any): any;
   }
 
   interface Diseaseable {
@@ -1809,16 +1809,16 @@ export namespace Component {
     y: any;
     z: any;
     ents: any;
-    OnRemoveFromEntity(): any;
-    IsDiseased(): boolean;
-    IsBecomingDiseased(): boolean;
-    SetDiseasedFn(fn: any): any;
     Disease(): any;
-    Spread(): any;
-    RestartNearbySpread(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
     GetDebugString(): any;
+    IsBecomingDiseased(): boolean;
+    IsDiseased(): boolean;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    RestartNearbySpread(): any;
+    SetDiseasedFn(fn: any): any;
+    Spread(): any;
   }
 
   interface DistanceTracker {
@@ -1843,26 +1843,26 @@ export namespace Component {
     tendencies: any;
     decaytask: any;
     s: any;
-    OnRemoveFromEntity(): any;
-    SetDomesticationTrigger(fn: any): any;
-    GetObedience(): any;
-    GetDomestication(): any;
-    Validate(): any;
-    CheckForChanges(): any;
     BecomeDomesticated(): any;
-    DeltaObedience(delta: any): any;
-    DeltaDomestication(delta: any): any;
-    DeltaTendency(tendency: any, delta: any): any;
-    PauseDomesticationDecay(pause: any): any;
-    TryBecomeDomesticated(): any;
     CancelTask(): any;
     CheckAndStartTask(): any;
-    SetDomesticated(domesticated: any): any;
-    IsDomesticated(): boolean;
-    SetMinObedience(min: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
+    CheckForChanges(): any;
+    DeltaDomestication(delta: any): any;
+    DeltaObedience(delta: any): any;
+    DeltaTendency(tendency: any, delta: any): any;
     GetDebugString(): any;
+    GetDomestication(): any;
+    GetObedience(): any;
+    IsDomesticated(): boolean;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    PauseDomesticationDecay(pause: any): any;
+    SetDomesticated(domesticated: any): any;
+    SetDomesticationTrigger(fn: any): any;
+    SetMinObedience(min: any): any;
+    TryBecomeDomesticated(): any;
+    Validate(): any;
   }
 
   interface Drawable {
@@ -1873,10 +1873,11 @@ export namespace Component {
     bgimagename: any;
     bgatlasname: any;
     ondrawnfn: any;
-    OnRemoveFromEntity(): any;
-    SetCanDraw(candraw: any): any;
     CanDraw(): boolean;
-    SetOnDrawnFn(fn: any): any;
+    GetAtlas(): any;
+    GetBGAtlas(): any;
+    GetBGImage(): any;
+    GetImage(): any;
     OnDrawn(
       imagename: any,
       imagesource: any,
@@ -1884,12 +1885,11 @@ export namespace Component {
       bgimagename: any,
       bgatlasname: any
     ): any;
-    GetImage(): any;
-    GetAtlas(): any;
-    GetBGImage(): any;
-    GetBGAtlas(): any;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    SetCanDraw(candraw: any): any;
+    SetOnDrawnFn(fn: any): any;
   }
 
   interface DrawingTool {
@@ -1900,8 +1900,6 @@ export namespace Component {
     bgimage: any;
     bgatlas: any;
     image: any;
-    SetOnDrawFn(fn: any): any;
-    GetImageToDraw(target: any): any;
     Draw(
       target: any,
       image: any,
@@ -1910,6 +1908,8 @@ export namespace Component {
       bgimage: any,
       bgatlas: any
     ): any;
+    GetImageToDraw(target: any): any;
+    SetOnDrawFn(fn: any): any;
   }
 
   interface Drownable {
@@ -1938,15 +1938,15 @@ export namespace Component {
     tunings: any;
     delta: any;
     to_drop: any;
-    SetOnTakeDrowningDamageFn(fn: any): any;
+    DropInventory(): any;
+    GiveupAndDrown(): any;
+    OnFallInOcean(shore_x: any, shore_y: any, shore_z: any): any;
     SetCustomTuningsFn(fn: any): any;
+    SetOnTakeDrowningDamageFn(fn: any): any;
     ShouldDrown(): any;
+    TakeDrowningDamage(): any;
     Teleport(): any;
     WashAshore(): any;
-    OnFallInOcean(shore_x: any, shore_y: any, shore_z: any): any;
-    TakeDrowningDamage(): any;
-    GiveupAndDrown(): any;
-    DropInventory(): any;
   }
 
   interface Dryable {
@@ -1954,13 +1954,13 @@ export namespace Component {
     product: any;
     drytime: any;
     buildfile: any;
-    OnRemoveFromEntity(): any;
-    SetProduct(product: any): any;
-    GetProduct(): any;
-    SetDryTime(time: any): any;
-    GetDryTime(): any;
-    SetBuildFile(buildfile: any): any;
     GetBuildFile(): any;
+    GetDryTime(): any;
+    GetProduct(): any;
+    OnRemoveFromEntity(): any;
+    SetBuildFile(buildfile: any): any;
+    SetDryTime(time: any): any;
+    SetProduct(product: any): any;
   }
 
   interface Dryer {
@@ -1979,26 +1979,26 @@ export namespace Component {
     watchingrain: any;
     ingredientperish: any;
     loot: any;
-    OnRemoveFromEntity(): any;
-    SetStartDryingFn(fn: any): any;
-    SetDoneDryingFn(fn: any): any;
-    SetOnHarvestFn(fn: any): any;
     CanDry(dryable: any): boolean;
-    IsDrying(): boolean;
-    IsDone(): boolean;
+    DropItem(): any;
+    GetDebugString(): any;
     GetTimeToDry(): any;
     GetTimeToSpoil(): any;
+    Harvest(harvester: any): any;
+    IsDone(): boolean;
+    IsDrying(): boolean;
     IsPaused(): boolean;
-    StartDrying(dryable: any): any;
-    StopDrying(reason: any): any;
+    LongUpdate(dt: any): any;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
     Pause(): any;
     Resume(): any;
-    DropItem(): any;
-    Harvest(harvester: any): any;
-    LongUpdate(dt: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    GetDebugString(): any;
+    SetDoneDryingFn(fn: any): any;
+    SetOnHarvestFn(fn: any): any;
+    SetStartDryingFn(fn: any): any;
+    StartDrying(dryable: any): any;
+    StopDrying(reason: any): any;
   }
 
   interface Eater {
@@ -2023,24 +2023,24 @@ export namespace Component {
     base_mult: any;
     owner: any;
     preferred: boolean;
-    OnRemoveFromEntity(): any;
-    SetDiet(caneat: any, preferseating: any): any;
-    SetAbsorptionModifiers(health: any, hunger: any, sanity: any): any;
-    TimeSinceLastEating(): any;
-    HasBeen(time: any): boolean;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    SetCanEatHorrible(): any;
-    SetCanEatGears(): any;
-    SetCanEatRaw(): any;
-    SetPrefersEatingTag(tag: any): any;
-    SetOnEatFn(fn: any): any;
-    DoFoodEffects(food: any): any;
-    GetEdibleTags(): any;
-    Eat(food: any, feeder: any): any;
-    TestFood(food: any, testvalues: any): any;
-    PrefersToEat(inst: any): any;
     CanEat(inst: any): boolean;
+    DoFoodEffects(food: any): any;
+    Eat(food: any, feeder: any): any;
+    GetEdibleTags(): any;
+    HasBeen(time: any): boolean;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    PrefersToEat(inst: any): any;
+    SetAbsorptionModifiers(health: any, hunger: any, sanity: any): any;
+    SetCanEatGears(): any;
+    SetCanEatHorrible(): any;
+    SetCanEatRaw(): any;
+    SetDiet(caneat: any, preferseating: any): any;
+    SetOnEatFn(fn: any): any;
+    SetPrefersEatingTag(tag: any): any;
+    TestFood(food: any, testvalues: any): any;
+    TimeSinceLastEating(): any;
   }
 
   interface Edible {
@@ -2067,19 +2067,19 @@ export namespace Component {
     delta_multiplier: number;
     duration_multiplier: number;
     stacksize: any;
-    OnRemoveFromEntity(): any;
-    GetWoodiness(eater: any): any;
-    GetSanity(eater: any): any;
-    GetHunger(eater: any): any;
-    GetHealth(eater: any): any;
-    GetDebugString(): any;
-    SetOnEatenFn(fn: any): any;
-    SetGetHealthFn(fn: any): any;
-    OnEaten(eater: any): any;
     AddChill(delta: any): any;
     DiluteChill(item: any, count: any): any;
-    OnSave(): any;
+    GetDebugString(): any;
+    GetHealth(eater: any): any;
+    GetHunger(eater: any): any;
+    GetSanity(eater: any): any;
+    GetWoodiness(eater: any): any;
+    OnEaten(eater: any): any;
     OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    SetGetHealthFn(fn: any): any;
+    SetOnEatenFn(fn: any): any;
   }
 
   interface ElectricAttacks {
@@ -2111,16 +2111,16 @@ export namespace Component {
     x: any;
     z: any;
     hopping: boolean;
-    UpdateEmbarkingPos(dt: any): any;
-    SetEmbarkable(embarkable: any): any;
-    SetDisembarkPos(pos_x: any, pos_z: any): any;
-    SetDisembarkActionPos(pos_x: any, pos_z: any): any;
-    StartMoving(): any;
-    OnWallUpdate(dt: any): any;
-    HasDestination(): boolean;
-    GetEmbarkPosition(): any;
-    Embark(): any;
     Cancel(): any;
+    Embark(): any;
+    GetEmbarkPosition(): any;
+    HasDestination(): boolean;
+    OnWallUpdate(dt: any): any;
+    SetDisembarkActionPos(pos_x: any, pos_z: any): any;
+    SetDisembarkPos(pos_x: any, pos_z: any): any;
+    SetEmbarkable(embarkable: any): any;
+    StartMoving(): any;
+    UpdateEmbarkingPos(dt: any): any;
   }
 
   interface Emitter {
@@ -2147,13 +2147,13 @@ export namespace Component {
     str: string;
     ents: any;
     refs: any;
-    OnRemoveFromEntity(): any;
-    GetDebugString(): any;
-    TrackEntity(name: any, inst: any): any;
     ForgetEntity(name: any): any;
+    GetDebugString(): any;
     GetEntity(name: any): any;
-    OnSave(): any;
     LoadPostPass(ents: any, data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    TrackEntity(name: any, inst: any): any;
   }
 
   interface EpicScare {
@@ -2167,9 +2167,9 @@ export namespace Component {
     y: any;
     z: any;
     ents: any;
-    SetRange(range: any): any;
-    SetDefaultDuration(duration: any): any;
     Scare(duration: any): any;
+    SetDefaultDuration(duration: any): any;
+    SetRange(range: any): any;
   }
 
   interface Equippable {
@@ -2187,19 +2187,19 @@ export namespace Component {
     equippedmoisture: number;
     maxequippedmoisture: number;
     inventoryitem: any;
-    OnRemoveFromEntity(): any;
+    Equip(owner: any): any;
+    GetDapperness(owner: any): any;
+    GetEquippedMoisture(): any;
+    GetWalkSpeedMult(): any;
+    IsEquipped(): boolean;
     IsInsulated(): boolean;
+    IsRestricted(target: any): boolean;
+    OnRemoveFromEntity(): any;
     SetOnEquip(fn: any): any;
     SetOnPocket(fn: any): any;
     SetOnUnequip(fn: any): any;
-    IsEquipped(): boolean;
-    Equip(owner: any): any;
     ToPocket(owner: any): any;
     Unequip(owner: any): any;
-    GetWalkSpeedMult(): any;
-    IsRestricted(target: any): boolean;
-    GetDapperness(owner: any): any;
-    GetEquippedMoisture(): any;
   }
 
   interface Explosive {
@@ -2216,8 +2216,8 @@ export namespace Component {
     z: any;
     ents: any;
     world: any;
-    SetOnExplodeFn(fn: any): any;
     OnBurnt(): any;
+    SetOnExplodeFn(fn: any): any;
   }
 
   interface ExplosiveResist {
@@ -2227,14 +2227,14 @@ export namespace Component {
     decaytime: any;
     decaydelay: any;
     delayremaining: number;
-    OnExplosiveDamage(damage: any, src: any): any;
-    GetResistance(): any;
     DoDelta(delta: any): any;
-    SetResistance(resistance: any): any;
-    OnUpdate(dt: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
     GetDebugString(): any;
+    GetResistance(): any;
+    OnExplosiveDamage(damage: any, src: any): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
+    OnUpdate(dt: any): any;
+    SetResistance(resistance: any): any;
   }
 
   interface Fader {
@@ -2250,8 +2250,8 @@ export namespace Component {
       atend: any,
       id: any
     ): any;
-    StopAll(): any;
     OnUpdate(dt: any): any;
+    StopAll(): any;
   }
 
   interface Fan {
@@ -2260,14 +2260,14 @@ export namespace Component {
     onusefn: any;
     onchannelingfn: any;
     overridesymbol: any;
-    OnRemoveFromEntity(): any;
-    SetCanUseFn(fn: any): any;
-    SetOnUseFn(fn: any): any;
-    SetOnChannelingFn(fn: any): any;
-    SetOverrideSymbol(symbol: any): any;
-    IsChanneling(): boolean;
     Channel(target: any): any;
     Fan(target: any): any;
+    IsChanneling(): boolean;
+    OnRemoveFromEntity(): any;
+    SetCanUseFn(fn: any): any;
+    SetOnChannelingFn(fn: any): any;
+    SetOnUseFn(fn: any): any;
+    SetOverrideSymbol(symbol: any): any;
   }
 
   interface Fertilizer {
@@ -2278,9 +2278,9 @@ export namespace Component {
     fertilize_sound: string;
     planthealth: any;
     cost: number;
+    Heal(target: any): any;
     OnRemoveFromEntity(): any;
     SetHealingAmount(health: any): any;
-    Heal(target: any): any;
   }
 
   interface Fillable {
@@ -2301,18 +2301,18 @@ export namespace Component {
     was_positive: any;
     uses: any;
     onfinished: any;
-    SetConsumption(action: any, uses: any): any;
     GetDebugString(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    SetMaxUses(val: any): any;
-    SetUses(val: any): any;
-    GetUses(): any;
-    Use(num: any): any;
-    OnUsedAsItem(action: any): any;
     GetPercent(): any;
-    SetPercent(amount: any): any;
+    GetUses(): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
+    OnUsedAsItem(action: any): any;
+    SetConsumption(action: any, uses: any): any;
+    SetMaxUses(val: any): any;
     SetOnFinished(fn: any): any;
+    SetPercent(amount: any): any;
+    SetUses(val: any): any;
+    Use(num: any): any;
   }
 
   interface Firebug {
@@ -2323,10 +2323,10 @@ export namespace Component {
     sanity_threshold: any;
     prefab: any;
     enabled: boolean;
-    Enable(enable: any): any;
     Disable(): any;
-    OnUpdate(dt: any): any;
+    Enable(enable: any): any;
     GetDebugString(): any;
+    OnUpdate(dt: any): any;
   }
 
   interface FireDetector {
@@ -2353,24 +2353,24 @@ export namespace Component {
     emergencyShutdownTime: any;
     warningStartTime: any;
     t: any;
-    SetOnFindFireFn(fn: any): any;
-    SetOnBeginEmergencyFn(fn: any): any;
-    SetOnEndEmergencyFn(fn: any): any;
-    SetOnBeginWarningFn(fn: any): any;
-    SetOnUpdateWarningFn(fn: any): any;
-    SetOnEndWarningFn(fn: any): any;
-    OnRemoveFromEntity(): any;
     Activate(randomizedStartTime: any): any;
     ActivateEmergencyMode(randomizedStartTime: any): any;
-    IsEmergency(): boolean;
-    GetEmergencyLevel(): any;
-    GetMaxEmergencyLevel(): any;
-    ResetEmergencyCooldown(): any;
-    RaiseEmergencyLevel(numlevels: any): any;
-    LowerEmergencyLevel(numlevels: any): any;
     Deactivate(): any;
     DetectFire(): any;
     GetDebugString(): any;
+    GetEmergencyLevel(): any;
+    GetMaxEmergencyLevel(): any;
+    IsEmergency(): boolean;
+    LowerEmergencyLevel(numlevels: any): any;
+    OnRemoveFromEntity(): any;
+    RaiseEmergencyLevel(numlevels: any): any;
+    ResetEmergencyCooldown(): any;
+    SetOnBeginEmergencyFn(fn: any): any;
+    SetOnBeginWarningFn(fn: any): any;
+    SetOnEndEmergencyFn(fn: any): any;
+    SetOnEndWarningFn(fn: any): any;
+    SetOnFindFireFn(fn: any): any;
+    SetOnUpdateWarningFn(fn: any): any;
   }
 
   interface FireFX {
@@ -2399,16 +2399,16 @@ export namespace Component {
     rad: any;
     val: any;
     should_play_extinguish: any;
-    OnRemoveEntity(): any;
     AttachLightTo(target: any): any;
-    OnUpdate(dt: any): any;
-    GetLevelRadius(level: any): any;
-    UpdateRadius(): any;
-    SetPercentInLevel(percent: any): any;
-    SetLevel(lev: any, immediate: any): any;
     Extinguish(): any;
+    GetLevelRadius(level: any): any;
     OnEntitySleep(): any;
     OnEntityWake(): any;
+    OnRemoveEntity(): any;
+    OnUpdate(dt: any): any;
+    SetLevel(lev: any, immediate: any): any;
+    SetPercentInLevel(percent: any): any;
+    UpdateRadius(): any;
   }
 
   interface Fishable {
@@ -2423,21 +2423,21 @@ export namespace Component {
     str: any;
     getfishfn: any;
     fishprefab: any;
-    OnRemoveFromEntity(): any;
-    GetDebugString(): any;
     AddFish(prefab: any): any;
-    SetGetFishFn(fn: any): any;
-    SetRespawnTime(time: any): any;
+    Freeze(): any;
+    GetDebugString(): any;
+    GetFishPercent(): any;
     HookFish(): any;
+    IsFrozenOver(): boolean;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    RefreshFish(): any;
     ReleaseFish(fish: any): any;
     RemoveFish(fish: any): any;
-    IsFrozenOver(): boolean;
-    Freeze(): any;
+    SetGetFishFn(fn: any): any;
+    SetRespawnTime(time: any): any;
     Unfreeze(): any;
-    RefreshFish(): any;
-    GetFishPercent(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
   }
 
   interface FishingNet {
@@ -2490,13 +2490,13 @@ export namespace Component {
     last_dir_x: any;
     last_dir_z: any;
     BeginCast(thrower: any, target_x: any, target_z: any): any;
-    UpdateWhenMovingToTarget(dt: any): any;
-    CalculateY(x: any, x_span: any, scale: any): any;
-    UpdateWhenOpening(dt: any): any;
-    BeginOpening(): any;
-    DropItem(item: any, last_dir_x: any, last_dir_z: any, idx: any): any;
-    BeginRetrieving(): any;
     BeginFinalPickup(): any;
+    BeginOpening(): any;
+    BeginRetrieving(): any;
+    CalculateY(x: any, x_span: any, scale: any): any;
+    DropItem(item: any, last_dir_x: any, last_dir_z: any, idx: any): any;
+    UpdateWhenMovingToTarget(dt: any): any;
+    UpdateWhenOpening(dt: any): any;
     UpdateWhenRetrieving(dt: any): any;
   }
 
@@ -2519,22 +2519,22 @@ export namespace Component {
     spawnPos: any;
     offset: any;
     persists: boolean;
-    GetDebugString(): any;
-    SetWaitTimes(min: any, max: any): any;
-    SetStrainTimes(min: any, max: any): any;
-    OnUpdate(dt: any): any;
-    IsFishing(): boolean;
-    HasHookedFish(): boolean;
-    HasCaughtFish(): boolean;
-    FishIsBiting(): any;
-    StartFishing(target: any, fisherman: any): any;
-    WaitForFish(): any;
     CancelFishTask(): any;
-    StopFishing(): any;
-    Hook(): any;
-    Release(): any;
-    Reel(): any;
     Collect(): any;
+    FishIsBiting(): any;
+    GetDebugString(): any;
+    HasCaughtFish(): boolean;
+    HasHookedFish(): boolean;
+    Hook(): any;
+    IsFishing(): boolean;
+    OnUpdate(dt: any): any;
+    Reel(): any;
+    Release(): any;
+    SetStrainTimes(min: any, max: any): any;
+    SetWaitTimes(min: any, max: any): any;
+    StartFishing(target: any, fisherman: any): any;
+    StopFishing(): any;
+    WaitForFish(): any;
   }
 
   interface FishSchool {
@@ -2546,11 +2546,11 @@ export namespace Component {
     net_x: any;
     net_y: any;
     net_z: any;
-    StartReplenish(replenish_rate: any): any;
-    StopReplenish(): any;
-    SetNettedPrefab(fishing_net_prefab: any): any;
     OnPreNet(net: any): any;
     Replenish(): any;
+    SetNettedPrefab(fishing_net_prefab: any): any;
+    StartReplenish(replenish_rate: any): any;
+    StopReplenish(): any;
   }
 
   interface Floater {
@@ -2578,21 +2578,21 @@ export namespace Component {
     back_fx: any;
     bank: any;
     anim: any;
-    SetSize(size: any): any;
-    SetVerticalOffset(offset: any): any;
-    SetScale(scale: any): any;
+    AttachEffect(effect: any): any;
+    IsFloating(): boolean;
+    OnLandedClient(): any;
+    OnLandedServer(): any;
+    OnNoLongerLandedClient(): any;
+    OnNoLongerLandedServer(): any;
     SetBankSwapOnFloat(
       should_bank_swap: any,
       float_index: any,
       swap_data: any
     ): any;
+    SetScale(scale: any): any;
+    SetSize(size: any): any;
+    SetVerticalOffset(offset: any): any;
     ShouldShowEffect(): any;
-    AttachEffect(effect: any): any;
-    IsFloating(): boolean;
-    OnLandedServer(): any;
-    OnLandedClient(): any;
-    OnNoLongerLandedServer(): any;
-    OnNoLongerLandedClient(): any;
   }
 
   interface FocalPoint {
@@ -2608,6 +2608,14 @@ export namespace Component {
     toremove: any;
     fn: any;
     str: any;
+    CameraUpdate(dt: any): any;
+    GetDebugString(): any;
+    PushTempFocus(
+      target: any,
+      minrange: any,
+      maxrange: any,
+      priority: any
+    ): any;
     Reset(no_snap: any): any;
     StartFocusSource(
       source: any,
@@ -2619,14 +2627,6 @@ export namespace Component {
       updater: any
     ): any;
     StopFocusSource(source: any, id: any): any;
-    PushTempFocus(
-      target: any,
-      minrange: any,
-      maxrange: any,
-      priority: any
-    ): any;
-    CameraUpdate(dt: any): any;
-    GetDebugString(): any;
   }
 
   interface Follower {
@@ -2645,21 +2645,21 @@ export namespace Component {
     othercmp: any;
     keepleaderonattacked: boolean;
     time_left: any;
+    AddLoyaltyTime(time: any): any;
     GetDebugString(): any;
     GetLeader(): any;
-    StartLeashing(): any;
-    StopLeashing(): any;
-    SetLeader(inst: any): any;
     GetLoyaltyPercent(): any;
-    AddLoyaltyTime(time: any): any;
-    StopFollowing(): any;
-    IsNearLeader(dist: any): boolean;
-    OnSave(): any;
-    OnLoad(data: any): any;
     IsLeaderSame(otherfollower: any): boolean;
+    IsNearLeader(dist: any): boolean;
     KeepLeaderOnAttacked(): any;
     LongUpdate(dt: any): any;
+    OnLoad(data: any): any;
     OnRemoveFromEntity(): any;
+    OnSave(): any;
+    SetLeader(inst: any): any;
+    StartLeashing(): any;
+    StopFollowing(): any;
+    StopLeashing(): any;
   }
 
   interface FoodMemory {
@@ -2669,15 +2669,15 @@ export namespace Component {
     mults: any;
     rec: any;
     count: any;
+    GetBaseFood(prefab: any): any;
+    GetFoodMultiplier(prefab: any): any;
+    GetMemoryCount(prefab: any): any;
+    OnLoad(data: any): any;
     OnRemoveFromEntity(): any;
+    OnSave(): any;
+    RememberFood(prefab: any): any;
     SetDuration(duration: any): any;
     SetMultipliers(mults: any): any;
-    GetBaseFood(prefab: any): any;
-    RememberFood(prefab: any): any;
-    GetMemoryCount(prefab: any): any;
-    GetFoodMultiplier(prefab: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
   }
 
   interface Freezable {
@@ -2699,27 +2699,27 @@ export namespace Component {
     extraresist: any;
     diminishingtask: any;
     prevState: any;
-    OnRemoveFromEntity(): any;
-    SetResistance(resist: any): any;
-    SetDefaultWearOffTime(wearofftime: any): any;
+    AddColdness(coldness: any, freezetime: any, nofreeze: any): any;
     AddShatterFX(prefab: any, offset: any, followsymbol: any): any;
-    SetShatterFXLevel(level: any, percent: any): any;
-    SpawnShatterFX(): any;
+    Freeze(freezetime: any): any;
+    GetDebugString(): any;
     IsFrozen(): boolean;
     IsThawing(): boolean;
-    GetDebugString(): any;
-    AddColdness(coldness: any, freezetime: any, nofreeze: any): any;
-    StartWearingOff(wearofftime: any): any;
-    UpdateTint(): any;
-    SetExtraResist(resist: any): any;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    Reset(): any;
     ResolveResistance(): any;
     ResolveWearOffTime(t: any): any;
-    Freeze(freezetime: any): any;
-    Unfreeze(): any;
+    SetDefaultWearOffTime(wearofftime: any): any;
+    SetExtraResist(resist: any): any;
+    SetResistance(resist: any): any;
+    SetShatterFXLevel(level: any, percent: any): any;
+    SpawnShatterFX(): any;
+    StartWearingOff(wearofftime: any): any;
     Thaw(thawtime: any): any;
-    Reset(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
+    Unfreeze(): any;
+    UpdateTint(): any;
   }
 
   interface FrostyBreather {
@@ -2733,16 +2733,16 @@ export namespace Component {
     x: any;
     y: any;
     z: any;
-    OnRemoveFromEntity(): any;
-    StartBreath(): any;
-    StopBreath(): any;
-    Enable(): any;
     Disable(): any;
-    OnTemperatureChanged(temperature: any): any;
     EmitOnce(): any;
+    Enable(): any;
+    GetOffset(): any;
+    OnRemoveFromEntity(): any;
+    OnTemperatureChanged(temperature: any): any;
     SetOffset(x: any, y: any, z: any): any;
     SetOffsetFn(fn: any): any;
-    GetOffset(): any;
+    StartBreath(): any;
+    StopBreath(): any;
   }
 
   interface Fuel {
@@ -2784,41 +2784,41 @@ export namespace Component {
     task: any;
     firstperioddt: any;
     newsection: any;
-    OnRemoveFromEntity(): any;
-    MakeEmpty(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    SetSectionCallback(fn: any): any;
-    SetDepletedFn(fn: any): any;
-    IsEmpty(): boolean;
-    SetSections(num: any): any;
-    CanAcceptFuelItem(item: any): boolean;
-    GetCurrentSection(): any;
-    ChangeSection(amount: any): any;
-    SetTakeFuelFn(fn: any): any;
-    TakeFuelItem(item: any, doer: any): any;
-    SetUpdateFn(fn: any): any;
-    GetDebugString(): any;
     AddThreshold(percent: any, fn: any): any;
-    GetSectionPercent(): any;
-    GetPercent(): any;
-    SetPercent(amount: any): any;
-    SetFirstPeriod(firstperiod: any, firstperiodfull: any): any;
-    StartConsuming(): any;
-    OnWallUpdate(dt: any): any;
-    InitializeFuelLevel(fuel: any): any;
+    CanAcceptFuelItem(item: any): boolean;
+    ChangeSection(amount: any): any;
     DoDelta(amount: any, doer: any): any;
     DoUpdate(dt: any): any;
+    GetCurrentSection(): any;
+    GetDebugString(): any;
+    GetPercent(): any;
+    GetSectionPercent(): any;
+    InitializeFuelLevel(fuel: any): any;
+    IsEmpty(): boolean;
+    MakeEmpty(): any;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    OnWallUpdate(dt: any): any;
+    SetDepletedFn(fn: any): any;
+    SetFirstPeriod(firstperiod: any, firstperiodfull: any): any;
+    SetPercent(amount: any): any;
+    SetSectionCallback(fn: any): any;
+    SetSections(num: any): any;
+    SetTakeFuelFn(fn: any): any;
+    SetUpdateFn(fn: any): any;
+    StartConsuming(): any;
     StopConsuming(): any;
+    TakeFuelItem(item: any, doer: any): any;
   }
 
   interface FuelMaster {
     inst: any;
     bonusmult: number;
     bonusfn: any;
-    SetBonusMult(mult: any): any;
-    SetBonusFn(fn: any): any;
     GetBonusMult(item: any, target: any): any;
+    SetBonusFn(fn: any): any;
+    SetBonusMult(mult: any): any;
   }
 
   interface GiftReceiver {
@@ -2827,11 +2827,11 @@ export namespace Component {
     giftmachine: any;
     old: any;
     HasGift(): boolean;
-    RefreshGiftCount(): any;
-    SetGiftMachine(inst: any): any;
-    OpenNextGift(): any;
     OnStartOpenGift(): any;
     OnStopOpenGift(usewardrobe: any): any;
+    OpenNextGift(): any;
+    RefreshGiftCount(): any;
+    SetGiftMachine(inst: any): any;
   }
 
   interface Grogginess {
@@ -2848,22 +2848,22 @@ export namespace Component {
     whilegroggyfn: any;
     whilewearingofffn: any;
     onwearofffn: any;
+    AddGrogginess(grogginess: any, knockoutduration: any): any;
+    ComeTo(): any;
+    ExtendKnockout(knockoutduration: any): any;
+    GetDebugString(): any;
+    HasGrogginess(): boolean;
+    IsGroggy(): boolean;
+    IsKnockedOut(): boolean;
+    KnockOut(): any;
     OnRemoveFromEntity(): any;
-    SetDefaultTests(): any;
+    OnUpdate(dt: any): any;
     SetComeToTest(fn: any): any;
+    SetDecayRate(rate: any): any;
+    SetDefaultTests(): any;
     SetKnockOutTest(fn: any): any;
     SetResistance(resist: any): any;
-    SetDecayRate(rate: any): any;
     SetWearOffDuration(duration: any): any;
-    IsKnockedOut(): boolean;
-    IsGroggy(): boolean;
-    HasGrogginess(): boolean;
-    GetDebugString(): any;
-    AddGrogginess(grogginess: any, knockoutduration: any): any;
-    ExtendKnockout(knockoutduration: any): any;
-    KnockOut(): any;
-    ComeTo(): any;
-    OnUpdate(dt: any): any;
   }
 
   interface GroundPounder {
@@ -2894,16 +2894,16 @@ export namespace Component {
     ents: any;
     platformPushRadius: any;
     platformEnts: any;
-    GetPoints(pt: any): any;
     DestroyPoints(
       points: any,
       breakobjects: any,
       dodamage: any,
       pushplatforms: any
     ): any;
+    GetDebugString(): any;
+    GetPoints(pt: any): any;
     GroundPound(pt: any): any;
     GroundPound_Offscreen(position: any): any;
-    GetDebugString(): any;
   }
 
   interface GroundShadowHandler {
@@ -2919,9 +2919,9 @@ export namespace Component {
     max_scale: number;
     percent: any;
     scale: any;
-    SetSize(width: any, height: any): any;
-    OnUpdate(dt: any): any;
     OnRemove(): any;
+    OnUpdate(dt: any): any;
+    SetSize(width: any, height: any): any;
   }
 
   interface GroupTargeter {
@@ -2942,17 +2942,17 @@ export namespace Component {
     selection_weight: any;
     selected_target: any;
     weight: number;
+    AddTarget(target: any): any;
+    GetTargets(): any;
+    GetTotalWeight(): any;
+    IsTargeting(target: any): boolean;
+    OnPickTarget(target: any): any;
     OnRemoveFromEntity(): any;
+    RemoveTarget(target: any): any;
+    SelectTarget(): any;
     StartTracking(target: any): any;
     StopTracking(target: any): any;
-    GetTotalWeight(): any;
-    OnPickTarget(target: any): any;
-    AddTarget(target: any): any;
-    RemoveTarget(target: any): any;
-    GetTargets(): any;
-    IsTargeting(target: any): boolean;
     TryGetNewTarget(): any;
-    SelectTarget(): any;
   }
 
   interface Growable {
@@ -2971,22 +2971,22 @@ export namespace Component {
     data: any;
     time_from_now: any;
     time: any;
-    GetDebugString(): any;
-    StartGrowing(time: any): any;
-    GetNextStage(): any;
     DoGrowth(): any;
-    StopGrowing(): any;
-    Pause(): any;
-    Resume(): any;
     ExtendGrowTime(extra_time: any): any;
-    GetStage(): any;
-    SetStage(stage: any): any;
     GetCurrentStageData(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
+    GetDebugString(): any;
+    GetNextStage(): any;
+    GetStage(): any;
     LongUpdate(dt: any): any;
     OnEntitySleep(): any;
     OnEntityWake(): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
+    Pause(): any;
+    Resume(): any;
+    SetStage(stage: any): any;
+    StartGrowing(time: any): any;
+    StopGrowing(): any;
   }
 
   interface Grower {
@@ -3002,17 +3002,17 @@ export namespace Component {
     was_fertile: any;
     prefab: any;
     pos: any;
-    OnRemoveFromEntity(): any;
-    IsEmpty(): boolean;
-    IsFullFertile(): boolean;
-    GetFertilePercent(): any;
-    IsFertile(): boolean;
-    OnSave(): any;
     Fertilize(obj: any, doer: any): any;
+    GetDebugString(): any;
+    GetFertilePercent(): any;
+    IsEmpty(): boolean;
+    IsFertile(): boolean;
+    IsFullFertile(): boolean;
     OnLoad(data: any, newents: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
     PlantItem(item: any, doer: any): any;
     RemoveCrop(crop: any): any;
-    GetDebugString(): any;
     Reset(reason: any): any;
   }
 
@@ -3028,16 +3028,16 @@ export namespace Component {
     soundwarn: any;
     soundattack: any;
     resistance: any;
-    OnRemoveFromEntity(): any;
-    CheckForStart(): any;
-    Start(): any;
-    SetSounds(warn: any, attack: any): any;
-    Stop(): any;
-    SetResistance(resistance: any): any;
     AddImmunity(source: any): any;
-    RemoveImmunity(source: any): any;
-    SetSleeping(asleep: any): any;
+    CheckForStart(): any;
+    OnRemoveFromEntity(): any;
     OnUpdate(dt: any): any;
+    RemoveImmunity(source: any): any;
+    SetResistance(resistance: any): any;
+    SetSleeping(asleep: any): any;
+    SetSounds(warn: any, attack: any): any;
+    Start(): any;
+    Stop(): any;
   }
 
   interface Guardian {
@@ -3055,21 +3055,21 @@ export namespace Component {
     cause: any;
     data: any;
     refs: any;
-    OnRemoveFromEntity(): any;
-    SetGuardian(guardian: any): any;
-    DoDelta(d: any): any;
-    SummonsAtMax(): any;
-    SummonsAtMin(): any;
     Call(d: any): any;
     Decay(d: any): any;
+    DismissGuardian(): any;
+    DoDelta(d: any): any;
+    HasGuardian(): boolean;
+    LoadPostPass(ents: any, data: any): any;
+    OnGuardianDeath(data: any): any;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    SetGuardian(guardian: any): any;
     StartDecay(): any;
     SummonGuardian(override: any): any;
-    OnGuardianDeath(data: any): any;
-    DismissGuardian(): any;
-    HasGuardian(): boolean;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    LoadPostPass(ents: any, data: any): any;
+    SummonsAtMax(): any;
+    SummonsAtMin(): any;
   }
 
   interface Harvestable {
@@ -3086,20 +3086,20 @@ export namespace Component {
     task: any;
     targettime: any;
     pos: any;
+    CanBeHarvested(): boolean;
+    GetDebugString(): any;
+    Grow(): any;
+    Harvest(picker: any): any;
+    OnLoad(data: any): any;
     OnRemoveFromEntity(): any;
-    SetUp(product: any, max: any, time: any, onharvest: any, ongrow: any): any;
+    OnSave(): any;
+    SetGrowTime(time: any): any;
     SetOnGrowFn(fn: any): any;
     SetOnHarvestFn(fn: any): any;
     SetProduct(product: any, max: any): any;
-    SetGrowTime(time: any): any;
-    CanBeHarvested(): boolean;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    GetDebugString(): any;
-    Grow(): any;
+    SetUp(product: any, max: any, time: any, onharvest: any, ongrow: any): any;
     StartGrowing(time: any): any;
     StopGrowing(): any;
-    Harvest(picker: any): any;
   }
 
   interface Hatchable {
@@ -3121,20 +3121,20 @@ export namespace Component {
     toocold: boolean;
     oldstate: any;
     data: any;
-    GetDebugString(): any;
-    SetOnState(fn: any): any;
-    SetCrackTime(t: any): any;
-    SetHatchTime(t: any): any;
-    SetHatchFailTime(t: any): any;
-    OnState(state: any): any;
     Delay(time: any): any;
-    StopUpdating(): any;
-    StartUpdating(): any;
-    SetHeaterPrefs(day: any, dusk: any, night: any): any;
+    GetDebugString(): any;
     GetHeaterPref(phase: any): any;
-    OnUpdate(dt: any): any;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnSave(): any;
+    OnState(state: any): any;
+    OnUpdate(dt: any): any;
+    SetCrackTime(t: any): any;
+    SetHatchFailTime(t: any): any;
+    SetHatchTime(t: any): any;
+    SetHeaterPrefs(day: any, dusk: any, night: any): any;
+    SetOnState(fn: any): any;
+    StartUpdating(): any;
+    StopUpdating(): any;
   }
 
   interface Hauntable {
@@ -3151,25 +3151,25 @@ export namespace Component {
     panictimer: number;
     usefx: boolean;
     flicker: string;
+    AdvanceFlickerState(): any;
+    DoHaunt(doer: any): any;
+    OnRemoveFromEntity(): any;
+    OnUpdate(dt: any): any;
+    Panic(panictime: any): any;
+    SetHauntValue(val: any): any;
     SetOnHauntFn(fn: any): any;
     SetOnUnHauntFn(fn: any): any;
-    SetHauntValue(val: any): any;
-    Panic(panictime: any): any;
     StartFX(noflicker: any): any;
-    AdvanceFlickerState(): any;
-    StopFX(): any;
-    DoHaunt(doer: any): any;
     StartShaderFx(): any;
+    StopFX(): any;
     StopShaderFX(): any;
-    OnUpdate(dt: any): any;
-    OnRemoveFromEntity(): any;
   }
 
   interface Healer {
     inst: any;
     health: any;
-    SetHealthAmount(health: any): any;
     Heal(target: any): any;
+    SetHealthAmount(health: any): any;
   }
 
   interface Health {
@@ -3210,34 +3210,7 @@ export namespace Component {
     persists: boolean;
     old_percent: any;
     new_percent: any;
-    OnRemoveFromEntity(): any;
-    RecalculatePenalty(): any;
-    SetInvincible(val: any): any;
-    ForceUpdateHUD(overtime: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    GetFireDamageScale(): any;
-    DoFireDamage(amount: any, doer: any, instant: any): any;
-    OnUpdate(dt: any): any;
-    StartRegen(amount: any, period: any, interruptcurrentregen: any): any;
-    SetAbsorptionAmount(amount: any): any;
-    SetAbsorptionAmountFromPlayer(amount: any): any;
-    StopRegen(): any;
-    SetPenalty(penalty: any): any;
     DeltaPenalty(delta: any): any;
-    GetPenaltyPercent(): any;
-    GetPercent(): any;
-    IsInvincible(): boolean;
-    GetDebugString(): any;
-    SetCurrentHealth(amount: any): any;
-    SetMaxHealth(amount: any): any;
-    SetMinHealth(amount: any): any;
-    IsHurt(): boolean;
-    GetMaxWithPenalty(): any;
-    Kill(): any;
-    IsDead(): boolean;
-    SetPercent(percent: any, overtime: any, cause: any): any;
-    SetVal(val: any, cause: any, afflicter: any): any;
     DoDelta(
       amount: any,
       overtime: any,
@@ -3246,6 +3219,33 @@ export namespace Component {
       afflicter: any,
       ignore_absorb: any
     ): any;
+    DoFireDamage(amount: any, doer: any, instant: any): any;
+    ForceUpdateHUD(overtime: any): any;
+    GetDebugString(): any;
+    GetFireDamageScale(): any;
+    GetMaxWithPenalty(): any;
+    GetPenaltyPercent(): any;
+    GetPercent(): any;
+    IsDead(): boolean;
+    IsHurt(): boolean;
+    IsInvincible(): boolean;
+    Kill(): any;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    OnUpdate(dt: any): any;
+    RecalculatePenalty(): any;
+    SetAbsorptionAmount(amount: any): any;
+    SetAbsorptionAmountFromPlayer(amount: any): any;
+    SetCurrentHealth(amount: any): any;
+    SetInvincible(val: any): any;
+    SetMaxHealth(amount: any): any;
+    SetMinHealth(amount: any): any;
+    SetPenalty(penalty: any): any;
+    SetPercent(percent: any, overtime: any, cause: any): any;
+    SetVal(val: any, cause: any, afflicter: any): any;
+    StartRegen(amount: any, period: any, interruptcurrentregen: any): any;
+    StopRegen(): any;
   }
 
   interface HealthBar {
@@ -3275,8 +3275,8 @@ export namespace Component {
     down: any;
     up: any;
     status: any;
-    GetPercent(): any;
     GetOverTime(): any;
+    GetPercent(): any;
     OnUpdate(dt: any): any;
   }
 
@@ -3284,9 +3284,9 @@ export namespace Component {
     inst: any;
     triggers: any;
     totrigger: any;
-    OnRemoveFromEntity(): any;
     AddTrigger(amount: any, fn: any): any;
     OnHealthDelta(data: any): any;
+    OnRemoveFromEntity(): any;
   }
 
   interface Heater {
@@ -3300,14 +3300,14 @@ export namespace Component {
     carriedheatmultiplier: number;
     exothermic: boolean;
     endothermic: boolean;
-    OnRemoveFromEntity(): any;
-    SetThermics(exo: any, endo: any): any;
-    IsEndothermic(): boolean;
-    IsExothermic(): boolean;
-    GetHeat(observer: any): any;
-    GetEquippedHeat(observer: any): any;
     GetCarriedHeat(observer: any): any;
     GetDebugString(): any;
+    GetEquippedHeat(observer: any): any;
+    GetHeat(observer: any): any;
+    IsEndothermic(): boolean;
+    IsExothermic(): boolean;
+    OnRemoveFromEntity(): any;
+    SetThermics(exo: any, endo: any): any;
   }
 
   interface HeavyObstaclePhysics {
@@ -3323,19 +3323,19 @@ export namespace Component {
     onchangetoobstaclefn: any;
     onstartfallingfn: any;
     onstopfallingfn: any;
-    OnRemoveFromEntity(): any;
-    SetRadius(radius: any): any;
-    MakeSmallObstacle(): any;
     AddFallingStates(): any;
     GetPhysicsState(): any;
+    IsFalling(): boolean;
     IsItem(): boolean;
     IsObstacle(): boolean;
-    IsFalling(): boolean;
-    SetOnPhysicsStateChangedFn(fn: any): any;
+    MakeSmallObstacle(): any;
+    OnRemoveFromEntity(): any;
     SetOnChangeToItemFn(fn: any): any;
     SetOnChangeToObstacleFn(fn: any): any;
+    SetOnPhysicsStateChangedFn(fn: any): any;
     SetOnStartFallingFn(fn: any): any;
     SetOnStopFallingFn(fn: any): any;
+    SetRadius(radius: any): any;
   }
 
   interface Herd {
@@ -3362,23 +3362,23 @@ export namespace Component {
     toremove: any;
     herdPos: any;
     data: any;
-    OnRemoveFromEntity(): any;
+    AddMember(inst: any): any;
+    GatherNearbyMembers(): any;
     GetDebugString(): any;
-    SetMemberTag(tag: any): any;
+    IsFull(): boolean;
+    LoadPostPass(newents: any, savedata: any): any;
+    MergeNearbyHerds(): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    OnUpdate(): any;
+    RemoveMember(inst: any): any;
+    SetAddMemberFn(fn: any): any;
     SetGatherRange(range: any): any;
-    SetUpdateRange(range: any): any;
     SetMaxSize(size: any): any;
+    SetMemberTag(tag: any): any;
     SetOnEmptyFn(fn: any): any;
     SetOnFullFn(fn: any): any;
-    SetAddMemberFn(fn: any): any;
-    IsFull(): boolean;
-    AddMember(inst: any): any;
-    RemoveMember(inst: any): any;
-    GatherNearbyMembers(): any;
-    MergeNearbyHerds(): any;
-    OnUpdate(): any;
-    OnSave(): any;
-    LoadPostPass(newents: any, savedata: any): any;
+    SetUpdateRange(range: any): any;
   }
 
   interface HerdMember {
@@ -3387,13 +3387,13 @@ export namespace Component {
     herd: any;
     herdprefab: string;
     task: any;
-    OnRemoveFromEntity(): any;
-    SetHerd(herd: any): any;
-    SetHerdPrefab(prefab: any): any;
-    GetHerd(): any;
     CreateHerd(): any;
     Enable(enabled: any): any;
     GetDebugString(): any;
+    GetHerd(): any;
+    OnRemoveFromEntity(): any;
+    SetHerd(herd: any): any;
+    SetHerdPrefab(prefab: any): any;
   }
 
   interface Hideout {
@@ -3417,25 +3417,25 @@ export namespace Component {
     child: any;
     success: any;
     str: string;
-    SetSpawnPeriod(period: any, variance: any): any;
-    OnUpdate(dt: any): any;
-    StartUpdate(): any;
-    StartSpawning(): any;
-    StopSpawning(): any;
-    SetOccupiedFn(fn: any): any;
-    SetSpawnedFn(fn: any): any;
-    SetGoHomeFn(fn: any): any;
-    SetVacateFn(fn: any): any;
-    OnSave(): any;
-    OnLoad(data: any, newents: any): any;
-    LoadPostPass(newents: any, data: any): any;
-    DoReleaseChild(target: any, child: any, radius: any): any;
-    ReleaseChild(target: any, prefab: any, radius: any): any;
-    GoHome(child: any): any;
     CanRelease(): boolean;
-    ReleaseAllChildren(target: any, prefab: any): any;
-    LongUpdate(dt: any): any;
+    DoReleaseChild(target: any, child: any, radius: any): any;
     GetDebugString(): any;
+    GoHome(child: any): any;
+    LoadPostPass(newents: any, data: any): any;
+    LongUpdate(dt: any): any;
+    OnLoad(data: any, newents: any): any;
+    OnSave(): any;
+    OnUpdate(dt: any): any;
+    ReleaseAllChildren(target: any, prefab: any): any;
+    ReleaseChild(target: any, prefab: any, radius: any): any;
+    SetGoHomeFn(fn: any): any;
+    SetOccupiedFn(fn: any): any;
+    SetSpawnPeriod(period: any, variance: any): any;
+    SetSpawnedFn(fn: any): any;
+    SetVacateFn(fn: any): any;
+    StartSpawning(): any;
+    StartUpdate(): any;
+    StopSpawning(): any;
   }
 
   interface Highlight {
@@ -3457,13 +3457,13 @@ export namespace Component {
     highlight_add_colour_red: any;
     highlight_add_colour_green: any;
     highlight_add_colour_blue: any;
-    SetAddColour(col: any): any;
-    Flash(toadd: any, timein: any, timeout: any): any;
-    OnUpdate(dt: any): any;
     ApplyColour(): any;
+    Flash(toadd: any, timein: any, timeout: any): any;
     Highlight(r: any, g: any, b: any): any;
-    UnHighlight(): any;
     OnRemoveFromEntity(): any;
+    OnUpdate(dt: any): any;
+    SetAddColour(col: any): any;
+    UnHighlight(): any;
   }
 
   interface HomeSeeker {
@@ -3471,11 +3471,11 @@ export namespace Component {
     onhomeremoved: any;
     home: any;
     bufferedaction: any;
-    HasHome(): boolean;
     GetDebugString(): any;
-    SetHome(home: any): any;
-    GoHome(shouldrun: any): any;
     GetHomePos(): any;
+    GoHome(shouldrun: any): any;
+    HasHome(): boolean;
+    SetHome(home: any): any;
   }
 
   interface Hull {
@@ -3483,17 +3483,17 @@ export namespace Component {
     plank: any;
     boat_lip: any;
     radius: any;
-    FinishRemovingEntity(entity: any): any;
     AttachEntityToBoat(
       obj: any,
       offset_x: any,
       offset_z: any,
       parent_to_boat: any
     ): any;
-    SetPlank(obj: any): any;
-    SetBoatLip(obj: any): any;
-    SetRadius(radius: any): any;
+    FinishRemovingEntity(entity: any): any;
     OnDeployed(): any;
+    SetBoatLip(obj: any): any;
+    SetPlank(obj: any): any;
+    SetRadius(radius: any): any;
   }
 
   interface HullHealth {
@@ -3534,13 +3534,13 @@ export namespace Component {
     max_health_damage: number;
     health_damage: any;
     leaks: any;
-    UpdateHealth(): any;
-    GetLeakPosition(idx: any): any;
     GetLeakAngle(idx: any): any;
-    RefreshLeakIndicator(leak_idx: any): any;
+    GetLeakPosition(idx: any): any;
     OnCollide(data: any): any;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnSave(): any;
+    RefreshLeakIndicator(leak_idx: any): any;
+    UpdateHealth(): any;
   }
 
   interface Hunger {
@@ -3555,21 +3555,21 @@ export namespace Component {
     burnratemodifiers: any;
     period: number;
     old: any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    SetOverrideStarveFn(fn: any): any;
+    DoDec(dt: any, ignore_damage: any): any;
+    DoDelta(delta: any, overtime: any, ignore_invincible: any): any;
+    GetDebugString(): any;
+    GetPercent(): any;
+    IsPaused(): boolean;
+    IsStarving(): boolean;
     LongUpdate(dt: any): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
     Pause(): any;
     Resume(): any;
-    IsPaused(): boolean;
-    GetDebugString(): any;
-    SetMax(amount: any): any;
-    IsStarving(): boolean;
-    DoDelta(delta: any, overtime: any, ignore_invincible: any): any;
-    GetPercent(): any;
-    SetPercent(p: any, overtime: any): any;
-    DoDec(dt: any, ignore_damage: any): any;
     SetKillRate(rate: any): any;
+    SetMax(amount: any): any;
+    SetOverrideStarveFn(fn: any): any;
+    SetPercent(p: any, overtime: any): any;
     SetRate(rate: any): any;
   }
 
@@ -3586,9 +3586,9 @@ export namespace Component {
     lastproduction: number;
     count: any;
     CanProduce(): boolean;
-    TryProduce(): any;
     DoProduce(): any;
     GetDebugString(): any;
+    TryProduce(): any;
   }
 
   interface Inspectable {
@@ -3597,11 +3597,11 @@ export namespace Component {
     getspecialdescription: any;
     recordview: any;
     desc: any;
-    OnRemoveFromEntity(): any;
-    SetDescription(desc: any): any;
-    RecordViews(state: any): any;
-    GetStatus(viewer: any): any;
     GetDescription(viewer: any): any;
+    GetStatus(viewer: any): any;
+    OnRemoveFromEntity(): any;
+    RecordViews(state: any): any;
+    SetDescription(desc: any): any;
   }
 
   interface Instrument {
@@ -3613,21 +3613,21 @@ export namespace Component {
     y: any;
     z: any;
     ents: any;
+    Play(musician: any): any;
     SetOnHeardFn(fn: any): any;
     SetOnPlayedFn(fn: any): any;
-    Play(musician: any): any;
   }
 
   interface Insulator {
     inst: any;
     insulation: number;
     type: any;
-    SetSummer(): any;
-    SetWinter(): any;
+    GetInsulation(): any;
     GetType(): any;
     IsType(type: any): boolean;
     SetInsulation(val: any): any;
-    GetInsulation(): any;
+    SetSummer(): any;
+    SetWinter(): any;
   }
 
   interface Inventory {
@@ -3703,79 +3703,21 @@ export namespace Component {
     moisture: number;
     max: number;
     waterproofness: number;
-    EnableDropOnDeath(): any;
-    DisableDropOnDeath(): any;
-    NumItems(): any;
-    TransferInventory(receiver: any): any;
-    OnSave(): any;
-    CanTakeItemInSlot(item: any, slot: any): boolean;
     AcceptsStacks(): boolean;
-    IgnoresCanGoInContainer(): any;
-    OnLoad(data: any, newents: any): any;
-    DropActiveItem(): any;
-    ReturnActiveActionItem(item: any): any;
-    IsWearingArmor(): boolean;
-    ArmorHasTag(tag: any): any;
-    EquipHasTag(tag: any): any;
-    IsHeavyLifting(): boolean;
-    ApplyDamage(damage: any, attacker: any, weapon: any): any;
-    GetActiveItem(): any;
-    IsItemEquipped(item: any): boolean;
-    SelectActiveItemFromEquipSlot(slot: any): any;
-    CombineActiveStackWithSlot(slot: any, stack_mod: any): any;
-    SelectActiveItemFromSlot(slot: any): any;
-    ReturnActiveItem(slot: any, stack_mod: any): any;
-    GetNumSlots(): any;
-    GetItemSlot(item: any): any;
-    IsHolding(item: any, checkcontainer: any): boolean;
-    FindItem(fn: any): any;
-    FindItems(fn: any): any;
-    RemoveItemBySlot(slot: any): any;
-    DropItem(item: any, wholestack: any, randomdir: any, pos: any): any;
-    IsInsulated(): boolean;
-    GetEquippedItem(eslot: any): any;
-    GetItemInSlot(slot: any): any;
-    IsFull(): boolean;
-    GetNextAvailableSlot(item: any): any;
-    CanAcceptCount(item: any, maxcount: any): boolean;
-    GiveActiveItem(inst: any): any;
-    GiveItem(inst: any, slot: any, src_pos: any): any;
-    Unequip(equipslot: any, slip: any): any;
-    SetActiveItem(item: any): any;
-    Equip(item: any, old_to_active: any): any;
-    RemoveItem(item: any, wholestack: any): any;
-    GetOverflowContainer(): any;
-    Has(item: any, amount: any): boolean;
-    GetItemByName(item: any, amount: any): any;
-    ConsumeByName(item: any, amount: any): any;
-    DropEverythingWithTag(tag: any): any;
-    DropEverything(ondeath: any, keepequip: any): any;
-    DropEquipped(keepBackpack: any): any;
-    BurnNonpotatableInContainer(container: any): any;
-    ReferenceAllItems(): any;
-    GetDebugString(): any;
-    IsOpenedBy(guy: any): boolean;
-    Show(): any;
-    Open(): any;
-    Hide(): any;
-    Close(keepactiveitem: any): any;
-    PutOneOfActiveItemInSlot(slot: any): any;
-    PutAllOfActiveItemInSlot(slot: any): any;
-    TakeActiveItemFromHalfOfSlot(slot: any): any;
-    TakeActiveItemFromAllOfSlot(slot: any): any;
-    AddOneOfActiveItemToSlot(slot: any): any;
     AddAllOfActiveItemToSlot(slot: any): any;
-    SwapActiveItemWithSlot(slot: any): any;
+    AddOneOfActiveItemToSlot(slot: any): any;
+    ApplyDamage(damage: any, attacker: any, weapon: any): any;
+    ArmorHasTag(tag: any): any;
+    BurnNonpotatableInContainer(container: any): any;
+    CanAcceptCount(item: any, maxcount: any): boolean;
     CanAccessItem(item: any): boolean;
-    UseItemFromInvTile(item: any, actioncode: any, mod_name: any): any;
+    CanTakeItemInSlot(item: any, slot: any): boolean;
+    Close(keepactiveitem: any): any;
+    CombineActiveStackWithSlot(slot: any, stack_mod: any): any;
+    ConsumeByName(item: any, amount: any): any;
     ControllerUseItemOnItemFromInvTile(
       item: any,
       active_item: any,
-      actioncode: any,
-      mod_name: any
-    ): any;
-    ControllerUseItemOnSelfFromInvTile(
-      item: any,
       actioncode: any,
       mod_name: any
     ): any;
@@ -3785,18 +3727,76 @@ export namespace Component {
       actioncode: any,
       mod_name: any
     ): any;
-    InspectItemFromInvTile(item: any): any;
+    ControllerUseItemOnSelfFromInvTile(
+      item: any,
+      actioncode: any,
+      mod_name: any
+    ): any;
+    DisableDropOnDeath(): any;
+    DropActiveItem(): any;
+    DropEquipped(keepBackpack: any): any;
+    DropEverything(ondeath: any, keepequip: any): any;
+    DropEverythingWithTag(tag: any): any;
+    DropItem(item: any, wholestack: any, randomdir: any, pos: any): any;
     DropItemFromInvTile(item: any, single: any): any;
-    EquipActiveItem(): any;
+    EnableDropOnDeath(): any;
+    Equip(item: any, old_to_active: any): any;
     EquipActionItem(item: any): any;
-    SwapEquipWithActiveItem(): any;
-    TakeActiveItemFromEquipSlot(eslot: any): any;
-    TakeActiveItemFromEquipSlotID(eslotid: any): any;
+    EquipActiveItem(): any;
+    EquipHasTag(tag: any): any;
+    FindItem(fn: any): any;
+    FindItems(fn: any): any;
+    GetActiveItem(): any;
+    GetDebugString(): any;
+    GetEquippedItem(eslot: any): any;
+    GetEquippedMoistureRate(slot: any): any;
+    GetItemByName(item: any, amount: any): any;
+    GetItemInSlot(slot: any): any;
+    GetItemSlot(item: any): any;
+    GetNextAvailableSlot(item: any): any;
+    GetNumSlots(): any;
+    GetOverflowContainer(): any;
+    GetWaterproofness(slot: any): any;
+    GiveActiveItem(inst: any): any;
+    GiveItem(inst: any, slot: any, src_pos: any): any;
+    Has(item: any, amount: any): boolean;
+    Hide(): any;
+    IgnoresCanGoInContainer(): any;
+    InspectItemFromInvTile(item: any): any;
+    IsFull(): boolean;
+    IsHeavyLifting(): boolean;
+    IsHolding(item: any, checkcontainer: any): boolean;
+    IsInsulated(): boolean;
+    IsItemEquipped(item: any): boolean;
+    IsOpenedBy(guy: any): boolean;
+    IsWaterproof(): boolean;
+    IsWearingArmor(): boolean;
     MoveItemFromAllOfSlot(slot: any, container: any): any;
     MoveItemFromHalfOfSlot(slot: any, container: any): any;
-    GetEquippedMoistureRate(slot: any): any;
-    GetWaterproofness(slot: any): any;
-    IsWaterproof(): boolean;
+    NumItems(): any;
+    OnLoad(data: any, newents: any): any;
+    OnSave(): any;
+    Open(): any;
+    PutAllOfActiveItemInSlot(slot: any): any;
+    PutOneOfActiveItemInSlot(slot: any): any;
+    ReferenceAllItems(): any;
+    RemoveItem(item: any, wholestack: any): any;
+    RemoveItemBySlot(slot: any): any;
+    ReturnActiveActionItem(item: any): any;
+    ReturnActiveItem(slot: any, stack_mod: any): any;
+    SelectActiveItemFromEquipSlot(slot: any): any;
+    SelectActiveItemFromSlot(slot: any): any;
+    SetActiveItem(item: any): any;
+    Show(): any;
+    SwapActiveItemWithSlot(slot: any): any;
+    SwapEquipWithActiveItem(): any;
+    TakeActiveItemFromAllOfSlot(slot: any): any;
+    TakeActiveItemFromEquipSlot(eslot: any): any;
+    TakeActiveItemFromEquipSlotID(eslotid: any): any;
+    TakeActiveItemFromHalfOfSlot(slot: any): any;
+    TransferInventory(receiver: any): any;
+    Unequip(equipslot: any, slip: any): any;
+    UseItemFromInvTile(item: any, actioncode: any, mod_name: any): any;
   }
 
   interface InventoryItem {
@@ -3832,40 +3832,40 @@ export namespace Component {
     vx: any;
     vy: any;
     vz: any;
-    OnRemoveFromEntity(): any;
-    EnableMoisture(enable: any): any;
-    GetMoisture(): any;
-    IsWet(): boolean;
-    InheritMoisture(moisture: any, iswet: any): any;
-    DiluteMoisture(item: any, count: any): any;
     AddMoisture(delta: any): any;
-    SetOwner(owner: any): any;
+    ChangeImageName(newname: any): any;
     ClearOwner(owner: any): any;
-    SetOnDroppedFn(fn: any): any;
-    SetOnActiveItemFn(fn: any): any;
-    SetOnPickupFn(fn: any): any;
-    SetOnPutInInventoryFn(fn: any): any;
-    SetSinks(should_sink: any): any;
-    GetSlotNum(): any;
-    GetContainer(): any;
-    HibernateLivingItem(): any;
-    WakeLivingItem(): any;
-    OnPutInInventory(owner: any): any;
-    OnRemoved(): any;
-    OnDropped(randomdir: any, speedmult: any): any;
+    DiluteMoisture(item: any, count: any): any;
     DoDropPhysics(x: any, y: any, z: any, randomdir: any, speedmult: any): any;
-    OnPickup(pickupguy: any, src_pos: any): any;
+    EnableMoisture(enable: any): any;
+    GetContainer(): any;
+    GetGrandOwner(): any;
+    GetMoisture(): any;
+    GetSlotNum(): any;
+    HibernateLivingItem(): any;
+    InheritMoisture(moisture: any, iswet: any): any;
     IsHeld(): boolean;
     IsHeldBy(guy: any): boolean;
-    ChangeImageName(newname: any): any;
-    RemoveFromOwner(wholestack: any): any;
-    OnRemoveEntity(): any;
-    GetGrandOwner(): any;
     IsSheltered(): boolean;
+    IsWet(): boolean;
+    OnDropped(randomdir: any, speedmult: any): any;
+    OnPickup(pickupguy: any, src_pos: any): any;
+    OnPutInInventory(owner: any): any;
+    OnRemoveEntity(): any;
+    OnRemoveFromEntity(): any;
+    OnRemoved(): any;
+    OnUpdate(dt: any): any;
+    RemoveFromOwner(wholestack: any): any;
     SetLanded(is_landed: any, should_poll_for_landing: any): any;
+    SetOnActiveItemFn(fn: any): any;
+    SetOnDroppedFn(fn: any): any;
+    SetOnPickupFn(fn: any): any;
+    SetOnPutInInventoryFn(fn: any): any;
+    SetOwner(owner: any): any;
+    SetSinks(should_sink: any): any;
     ShouldSink(): any;
     TryToSink(): any;
-    OnUpdate(dt: any): any;
+    WakeLivingItem(): any;
   }
 
   interface InventoryItemMoisture {
@@ -3886,17 +3886,17 @@ export namespace Component {
     targetMoisture: any;
     data: any;
     AttachReplica(replica: any): any;
-    OnRemoveFromEntity(): any;
-    OnRemoveEntity(): any;
-    InheritMoisture(moisture: any, iswet: any): any;
     DiluteMoisture(item: any, count: any): any;
     DoDelta(delta: any): any;
-    SetMoisture(moisture: any): any;
-    GetTargetMoisture(): any;
-    UpdateMoisture(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
     GetDebugString(): any;
+    GetTargetMoisture(): any;
+    InheritMoisture(moisture: any, iswet: any): any;
+    OnLoad(data: any): any;
+    OnRemoveEntity(): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    SetMoisture(moisture: any): any;
+    UpdateMoisture(): any;
   }
 
   interface Key {
@@ -3905,10 +3905,10 @@ export namespace Component {
     onused: any;
     onremoved: any;
     OnRemoveFromEntity(): any;
-    SetOnUsedFn(fn: any): any;
-    SetOnRemovedFn(fn: any): any;
-    OnUsed(lock: any, doer: any): any;
     OnRemoved(lock: any, doer: any): any;
+    OnUsed(lock: any, doer: any): any;
+    SetOnRemovedFn(fn: any): any;
+    SetOnUsedFn(fn: any): any;
   }
 
   interface KlausSackKey {
@@ -3936,14 +3936,14 @@ export namespace Component {
     str: string;
     locs: any;
     data: any;
-    GetDebugString(): any;
-    SerializeLocations(): any;
     DeserializeLocations(data: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    RememberLocation(name: any, pos: any, dont_overwrite: any): any;
-    GetLocation(name: any): any;
     ForgetLocation(name: any): any;
+    GetDebugString(): any;
+    GetLocation(name: any): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
+    RememberLocation(name: any, pos: any, dont_overwrite: any): any;
+    SerializeLocations(): any;
   }
 
   interface LavaArenaMobTracker {
@@ -3952,10 +3952,6 @@ export namespace Component {
     count: number;
     ret: any;
     dists: any;
-    StartTracking(ent: any): any;
-    StopTracking(ent: any): any;
-    GetNumMobs(): any;
-    GetAllMobs(): any;
     FindMobs(
       x: any,
       y: any,
@@ -3966,6 +3962,10 @@ export namespace Component {
       mustoneoftags: any
     ): any;
     ForEachMob(cb: any, params: any): any;
+    GetAllMobs(): any;
+    GetNumMobs(): any;
+    StartTracking(ent: any): any;
+    StopTracking(ent: any): any;
   }
 
   interface Leader {
@@ -3973,28 +3973,28 @@ export namespace Component {
     followers: any;
     numfollowers: number;
     count: number;
-    OnRemoveFromEntity(): any;
-    IsFollower(guy: any): boolean;
-    OnAttacked(attacker: any): any;
-    CountFollowers(tag: any): any;
-    OnNewTarget(target: any): any;
-    RemoveFollower(follower: any, invalid: any): any;
     AddFollower(follower: any): any;
-    RemoveFollowersByTag(tag: any, validateremovefn: any): any;
+    CountFollowers(tag: any): any;
+    GetDebugString(): any;
+    IsBeingFollowedBy(prefabName: any): boolean;
+    IsFollower(guy: any): boolean;
+    LoadPostPass(newents: any, savedata: any): any;
+    OnAttacked(attacker: any): any;
+    OnNewTarget(target: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
     RemoveAllFollowers(): any;
     RemoveAllFollowersOnDeath(): any;
-    IsBeingFollowedBy(prefabName: any): boolean;
-    OnSave(): any;
-    LoadPostPass(newents: any, savedata: any): any;
-    GetDebugString(): any;
+    RemoveFollower(follower: any, invalid: any): any;
+    RemoveFollowersByTag(tag: any, validateremovefn: any): any;
   }
 
   interface Lighter {
     inst: any;
     onlight: any;
+    Light(target: any): any;
     OnRemoveFromEntity(): any;
     SetOnLightFn(fn: any): any;
-    Light(target: any): any;
   }
 
   interface LightTweener {
@@ -4020,6 +4020,7 @@ export namespace Component {
     i_colour_r: any;
     t: any;
     EndTween(): any;
+    OnUpdate(dt: any): any;
     StartTween(
       light: any,
       rad: any,
@@ -4029,7 +4030,6 @@ export namespace Component {
       time: any,
       callback: any
     ): any;
-    OnUpdate(dt: any): any;
   }
 
   interface Lock {
@@ -4041,27 +4041,27 @@ export namespace Component {
     isstuck: boolean;
     key: any;
     locktype: any;
-    OnRemoveFromEntity(): any;
-    GetDebugString(): any;
-    SetOnUnlockedFn(fn: any): any;
-    SetOnLockedFn(fn: any): any;
     CompatableKey(keytype: any): any;
-    IsStuck(): boolean;
+    GetDebugString(): any;
     IsLocked(): boolean;
-    Unlock(key: any, doer: any): any;
-    Lock(doer: any): any;
-    SetKey(key: any): any;
-    TestForUnlock(key: any): any;
-    SetLocked(locked: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
+    IsStuck(): boolean;
     LoadPostPass(newents: any, data: any): any;
+    Lock(doer: any): any;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    SetKey(key: any): any;
+    SetLocked(locked: any): any;
+    SetOnLockedFn(fn: any): any;
+    SetOnUnlockedFn(fn: any): any;
+    TestForUnlock(key: any): any;
+    Unlock(key: any, doer: any): any;
   }
 
   interface Dest {
     act_pos: any;
-    IsValid(): boolean;
     GetPoint(): any;
+    IsValid(): boolean;
   }
 
   interface LocoMotor {
@@ -4206,48 +4206,6 @@ export namespace Component {
     desttile_y: any;
     isle0: any;
     isle1: any;
-    StartUpdatingInternal(): any;
-    StopUpdatingInternal(): any;
-    OnEntitySleep(): any;
-    OnEntityWake(): any;
-    OnRemoveFromEntity(): any;
-    StopMoving(): any;
-    RecalculateExternalSpeedMultiplier(sources: any): any;
-    SetExternalSpeedMultiplier(source: any, key: any, m: any): any;
-    RemoveExternalSpeedMultiplier(source: any, key: any): any;
-    GetExternalSpeedMultiplier(source: any, key: any): any;
-    SetSlowMultiplier(m: any): any;
-    SetTriggersCreep(triggers: any): any;
-    EnableGroundSpeedMultiplier(enable: any): any;
-    GetWalkSpeed(): any;
-    GetRunSpeed(): any;
-    UpdateGroundSpeedMultiplier(): any;
-    PushTempGroundSpeedMultiplier(mult: any, tile: any): any;
-    TempGroundSpeedMultiplier(): any;
-    TempGroundTile(): any;
-    WalkForward(direct: any): any;
-    RunForward(direct: any): any;
-    Clear(): any;
-    ResetPath(): any;
-    KillPathSearch(): any;
-    SetReachDestinationCallback(fn: any): any;
-    PreviewAction(bufferedaction: any, run: any, try_instant: any): any;
-    PushAction(bufferedaction: any, run: any, try_instant: any): any;
-    GoToEntity(target: any, bufferedaction: any, run: any): any;
-    GoToPoint(pt: any, bufferedaction: any, run: any, overridedest: any): any;
-    SetBufferedAction(act: any): any;
-    Stop(sgparams: any): any;
-    WalkInDirection(direction: any, should_run: any): any;
-    RunInDirection(direction: any, throttle: any): any;
-    GetDebugString(): any;
-    HasDestination(): boolean;
-    SetShouldRun(should_run: any): any;
-    WantsToRun(): any;
-    WantsToMoveForward(): any;
-    WaitingForPathSearch(): any;
-    UpdateHopping(dt: any): any;
-    FinishHopping(): any;
-    SetAllowPlatformHopping(enabled: any): any;
     CheckEdge(
       my_platform: any,
       map: any,
@@ -4257,6 +4215,17 @@ export namespace Component {
       dir_z: any,
       radius: any
     ): any;
+    Clear(): any;
+    EnableGroundSpeedMultiplier(enable: any): any;
+    FindPath(): any;
+    FinishHopping(): any;
+    GetDebugString(): any;
+    GetExternalSpeedMultiplier(source: any, key: any): any;
+    GetRunSpeed(): any;
+    GetWalkSpeed(): any;
+    GoToEntity(target: any, bufferedaction: any, run: any): any;
+    GoToPoint(pt: any, bufferedaction: any, run: any, overridedest: any): any;
+    HasDestination(): boolean;
     IsAtEdge(
       my_platform: any,
       map: any,
@@ -4265,6 +4234,20 @@ export namespace Component {
       dir_x: any,
       dir_z: any
     ): boolean;
+    KillPathSearch(): any;
+    OnEntitySleep(): any;
+    OnEntityWake(): any;
+    OnRemoveFromEntity(): any;
+    OnUpdate(dt: any): any;
+    PreviewAction(bufferedaction: any, run: any, try_instant: any): any;
+    PushAction(bufferedaction: any, run: any, try_instant: any): any;
+    PushTempGroundSpeedMultiplier(mult: any, tile: any): any;
+    RecalculateExternalSpeedMultiplier(sources: any): any;
+    RemoveExternalSpeedMultiplier(source: any, key: any): any;
+    ResetPath(): any;
+    RunForward(direct: any): any;
+    RunInDirection(direction: any, throttle: any): any;
+    ScanForPlatform(my_platform: any, target_x: any, target_z: any): any;
     ScanForPlatformInDir(
       my_platform: any,
       map: any,
@@ -4275,6 +4258,20 @@ export namespace Component {
       steps: any,
       step_size: any
     ): any;
+    SetAllowPlatformHopping(enabled: any): any;
+    SetBufferedAction(act: any): any;
+    SetExternalSpeedMultiplier(source: any, key: any, m: any): any;
+    SetReachDestinationCallback(fn: any): any;
+    SetShouldRun(should_run: any): any;
+    SetSlowMultiplier(m: any): any;
+    SetTriggersCreep(triggers: any): any;
+    StartHopping(x: any, z: any, target_platform: any): any;
+    StartUpdatingInternal(): any;
+    Stop(sgparams: any): any;
+    StopMoving(): any;
+    StopUpdatingInternal(): any;
+    TempGroundSpeedMultiplier(): any;
+    TempGroundTile(): any;
     TestForBlocked(
       my_x: any,
       my_z: any,
@@ -4283,10 +4280,13 @@ export namespace Component {
       radius: any,
       test_length: any
     ): any;
-    ScanForPlatform(my_platform: any, target_x: any, target_z: any): any;
-    StartHopping(x: any, z: any, target_platform: any): any;
-    OnUpdate(dt: any): any;
-    FindPath(): any;
+    UpdateGroundSpeedMultiplier(): any;
+    UpdateHopping(dt: any): any;
+    WaitingForPathSearch(): any;
+    WalkForward(direct: any): any;
+    WalkInDirection(direction: any, should_run: any): any;
+    WantsToMoveForward(): any;
+    WantsToRun(): any;
   }
 
   interface LootDropper {
@@ -4326,20 +4326,20 @@ export namespace Component {
     isstructure: any;
     prefabname: any;
     num_decor_loot: any;
-    SetChanceLootTable(name: any): any;
-    SetLoot(loots: any): any;
-    SetLootSetupFn(fn: any): any;
-    AddRandomLoot(prefab: any, weight: any): any;
-    AddRandomHauntedLoot(prefab: any, weight: any): any;
     AddChanceLoot(prefab: any, chance: any): any;
     AddIfNotChanceLoot(prefab: any): any;
-    PickRandomLoot(): any;
-    GetRecipeLoot(recipe: any): any;
-    GenerateLoot(): any;
-    SetFlingTarget(pos: any, variance: any): any;
-    FlingItem(loot: any, pt: any, bouncedcb: any): any;
-    SpawnLootPrefab(lootprefab: any, pt: any): any;
+    AddRandomHauntedLoot(prefab: any, weight: any): any;
+    AddRandomLoot(prefab: any, weight: any): any;
     DropLoot(pt: any): any;
+    FlingItem(loot: any, pt: any, bouncedcb: any): any;
+    GenerateLoot(): any;
+    GetRecipeLoot(recipe: any): any;
+    PickRandomLoot(): any;
+    SetChanceLootTable(name: any): any;
+    SetFlingTarget(pos: any, variance: any): any;
+    SetLoot(loots: any): any;
+    SetLootSetupFn(fn: any): any;
+    SpawnLootPrefab(lootprefab: any, pt: any): any;
   }
 
   interface Machine {
@@ -4350,14 +4350,14 @@ export namespace Component {
     cooldowntime: number;
     oncooldown: boolean;
     data: any;
+    CanInteract(): boolean;
+    GetDebugString(): any;
+    IsOn(): boolean;
+    OnLoad(data: any): any;
     OnRemoveFromEntity(): any;
     OnSave(): any;
-    OnLoad(data: any): any;
-    TurnOn(): any;
-    CanInteract(): boolean;
     TurnOff(): any;
-    IsOn(): boolean;
-    GetDebugString(): any;
+    TurnOn(): any;
   }
 
   interface MadScienceLab {
@@ -4368,14 +4368,14 @@ export namespace Component {
     result: any;
     stage: any;
     str: string;
-    OnRemoveFromEntity(): any;
+    GetDebugString(): any;
     IsMakingScience(): boolean;
+    LongUpdate(dt: any): any;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
     SetStage(stage: any, time_override: any): any;
     StartMakingScience(product: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    GetDebugString(): any;
-    LongUpdate(dt: any): any;
   }
 
   interface Map {
@@ -4397,9 +4397,37 @@ export namespace Component {
     pt_z: any;
     test_increment: any;
     map: any;
-    RegisterDeployExtraSpacing(spacing: any): any;
-    RegisterTerraformExtraSpacing(spacing: any): any;
-    RegisterGroundTargetBlocker(radius: any): any;
+    CanDeployAtPoint(pt: any, inst: any, mouseover: any): boolean;
+    CanDeployAtPointInWater(
+      pt: any,
+      inst: any,
+      mouseover: any,
+      data: any
+    ): boolean;
+    CanDeployMastAtPoint(pt: any, inst: any, mouseover: any): boolean;
+    CanDeployPlantAtPoint(pt: any, inst: any): boolean;
+    CanDeployRecipeAtPoint(pt: any, recipe: any, rot: any): boolean;
+    CanDeployWallAtPoint(pt: any, inst: any): boolean;
+    CanPlacePrefabFilteredAtPoint(x: any, y: any, z: any, prefab: any): boolean;
+    CanPlaceTurfAtPoint(x: any, y: any, z: any): boolean;
+    CanPlantAtPoint(x: any, y: any, z: any): boolean;
+    CanTerraformAtPoint(x: any, y: any, z: any): boolean;
+    CanTillSoilAtPoint(pt: any): boolean;
+    FindNodeAtPoint(x: any, y: any, z: any): any;
+    GetNearestPointOnWater(x: any, z: any, radius: any, iterations: any): any;
+    GetPlatformAtPoint(pos_x: any, pos_z: any): any;
+    InternalIsPointOnWater(test_x: any, test_z: any): any;
+    IsAboveGroundAtPoint(x: any, y: any, z: any, allow_water: any): boolean;
+    IsDeployPointClear(
+      pt: any,
+      inst: any,
+      min_spacing: any,
+      min_spacing_sq_fn: any,
+      near_other_fn: any
+    ): boolean;
+    IsFarmableSoilAtPoint(x: any, y: any, z: any): boolean;
+    IsGroundTargetBlocked(pt: any, range: any): boolean;
+    IsOceanTileAtPoint(x: any, y: any, z: any): boolean;
     IsPassableAtPoint(
       x: any,
       y: any,
@@ -4416,40 +4444,12 @@ export namespace Component {
       platform_radius_bias: any,
       ignore_land_overhang: any
     ): boolean;
-    IsAboveGroundAtPoint(x: any, y: any, z: any, allow_water: any): boolean;
-    IsOceanTileAtPoint(x: any, y: any, z: any): boolean;
-    IsValidTileAtPoint(x: any, y: any, z: any): boolean;
-    CanTerraformAtPoint(x: any, y: any, z: any): boolean;
-    CanPlaceTurfAtPoint(x: any, y: any, z: any): boolean;
-    CanPlantAtPoint(x: any, y: any, z: any): boolean;
     IsPointNearHole(pt: any, range: any): boolean;
-    IsGroundTargetBlocked(pt: any, range: any): boolean;
-    IsDeployPointClear(
-      pt: any,
-      inst: any,
-      min_spacing: any,
-      min_spacing_sq_fn: any,
-      near_other_fn: any
-    ): boolean;
-    CanDeployAtPoint(pt: any, inst: any, mouseover: any): boolean;
-    CanDeployPlantAtPoint(pt: any, inst: any): boolean;
-    CanDeployWallAtPoint(pt: any, inst: any): boolean;
-    CanDeployAtPointInWater(
-      pt: any,
-      inst: any,
-      mouseover: any,
-      data: any
-    ): boolean;
-    CanDeployMastAtPoint(pt: any, inst: any, mouseover: any): boolean;
-    CanPlacePrefabFilteredAtPoint(x: any, y: any, z: any, prefab: any): boolean;
-    CanDeployRecipeAtPoint(pt: any, recipe: any, rot: any): boolean;
     IsSurroundedByWater(x: any, y: any, z: any, radius: any): boolean;
-    GetNearestPointOnWater(x: any, z: any, radius: any, iterations: any): any;
-    InternalIsPointOnWater(test_x: any, test_z: any): any;
-    GetPlatformAtPoint(pos_x: any, pos_z: any): any;
-    FindNodeAtPoint(x: any, y: any, z: any): any;
-    IsFarmableSoilAtPoint(x: any, y: any, z: any): boolean;
-    CanTillSoilAtPoint(pt: any): boolean;
+    IsValidTileAtPoint(x: any, y: any, z: any): boolean;
+    RegisterDeployExtraSpacing(spacing: any): any;
+    RegisterGroundTargetBlocker(radius: any): any;
+    RegisterTerraformExtraSpacing(spacing: any): any;
   }
 
   interface MapRecorder {
@@ -4463,15 +4463,15 @@ export namespace Component {
     ondatachangedfn: any;
     MapExplorer: any;
     dirty: boolean;
-    SetOnTeachFn(fn: any): any;
-    SetOnDataChangedFn(fn: any): any;
+    ClearMap(): any;
     HasData(): boolean;
     IsCurrentWorld(): boolean;
-    ClearMap(): any;
-    RecordMap(target: any): any;
-    TeachMap(target: any): any;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnSave(): any;
+    RecordMap(target: any): any;
+    SetOnDataChangedFn(fn: any): any;
+    SetOnTeachFn(fn: any): any;
+    TeachMap(target: any): any;
   }
 
   interface MapRevealable {
@@ -4485,27 +4485,27 @@ export namespace Component {
     revealsources: any;
     restriction: any;
     toremove: any;
-    SetIcon(iconname: any): any;
-    SetIconPriority(priority: any): any;
-    SetIconPrefab(prefab: any): any;
     AddRevealSource(source: any, restriction: any): any;
-    RemoveRevealSource(source: any): any;
-    RefreshRevealSources(): any;
-    StartRevealing(restriction: any): any;
-    StopRevealing(): any;
-    Refresh(): any;
-    Start(delay: any): any;
-    Stop(): any;
     OnRemoveFromEntity(): any;
+    Refresh(): any;
+    RefreshRevealSources(): any;
+    RemoveRevealSource(source: any): any;
+    SetIcon(iconname: any): any;
+    SetIconPrefab(prefab: any): any;
+    SetIconPriority(priority: any): any;
+    Start(delay: any): any;
+    StartRevealing(restriction: any): any;
+    Stop(): any;
+    StopRevealing(): any;
   }
 
   interface MapRevealer {
     inst: any;
     revealperiod: number;
     task: any;
+    RevealMapToPlayer(player: any): any;
     Start(delay: any): any;
     Stop(): any;
-    RevealMapToPlayer(player: any): any;
   }
 
   interface Mast {
@@ -4532,27 +4532,27 @@ export namespace Component {
     boat_physics: any;
     rudder_direction_x: any;
     rudder_direction_z: any;
-    SetSailForce(set: any): any;
-    SetVelocityMod(set: any): any;
-    SetBoat(boat: any): any;
-    SetRudder(obj: any): any;
-    OnDeath(): any;
     AddSailFurler(doer: any, strength: any): any;
-    RemoveSailFurler(doer: any): any;
     GetCurrentFurlUnits(): any;
-    UnfurlSail(): any;
-    SailFurled(): any;
-    SailUnfurled(): any;
     GetFurled0to1(): any;
+    OnDeath(): any;
     OnRemoveFromEntity(): any;
     OnUpdate(dt: any): any;
+    RemoveSailFurler(doer: any): any;
+    SailFurled(): any;
+    SailUnfurled(): any;
+    SetBoat(boat: any): any;
+    SetRudder(obj: any): any;
+    SetSailForce(set: any): any;
+    SetVelocityMod(set: any): any;
+    UnfurlSail(): any;
   }
 
   interface MaxHealer {
     inst: any;
     healamount: any;
-    SetHealthAmount(health: any): any;
     Heal(target: any): any;
+    SetHealthAmount(health: any): any;
   }
 
   interface MaxLightSpawner {
@@ -4567,12 +4567,12 @@ export namespace Component {
     light: any;
     pt: any;
     theta: any;
-    TakeOwnership(light: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
     LoadPostPass(newents: any, savedata: any): any;
-    SpawnLight(location: any): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
     SpawnAllLights(): any;
+    SpawnLight(location: any): any;
+    TakeOwnership(light: any): any;
   }
 
   interface MaxwellTalker {
@@ -4585,14 +4585,14 @@ export namespace Component {
     wilson: any;
     pt: any;
     length: any;
-    OnRemoveFromEntity(): any;
-    OnCancel(): any;
-    OnClick(): any;
-    StopTalking(): any;
+    DoTalk(): any;
     Initialize(): any;
     IsTalking(): boolean;
-    DoTalk(): any;
+    OnCancel(): any;
+    OnClick(): any;
+    OnRemoveFromEntity(): any;
     SetSpeech(speech: any): any;
+    StopTalking(): any;
   }
 
   interface MeteorShower {
@@ -4621,15 +4621,15 @@ export namespace Component {
     rate: any;
     cooldown: any;
     remaining_time: any;
-    IsShowering(): boolean;
+    GetDebugString(): any;
     IsCoolingDown(): boolean;
+    IsShowering(): boolean;
+    OnLoad(data: any): any;
+    OnSave(): any;
     SpawnMeteor(mod: any): any;
+    StartCooldown(): any;
     StartShower(level: any): any;
     StopShower(): any;
-    StartCooldown(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    GetDebugString(): any;
   }
 
   interface Mine {
@@ -4646,26 +4646,26 @@ export namespace Component {
     alignment: string;
     ondeactivate: any;
     next_test_time: any;
-    OnRemoveFromEntity(): any;
-    SetRadius(radius: any): any;
-    SetOnExplodeFn(fn: any): any;
-    SetOnSprungFn(fn: any): any;
-    SetOnResetFn(fn: any): any;
-    SetOnDeactivateFn(fn: any): any;
-    SetTestTimeFn(fn: any): any;
-    SetAlignment(alignment: any): any;
-    SetReusable(reusable: any): any;
-    Reset(): any;
-    StartTesting(): any;
-    StopTesting(): any;
+    Deactivate(): any;
+    Explode(target: any): any;
+    GetTarget(): any;
     OnEntitySleep(): any;
     OnEntityWake(): any;
-    Deactivate(): any;
-    Spring(): any;
-    GetTarget(): any;
-    Explode(target: any): any;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    Reset(): any;
+    SetAlignment(alignment: any): any;
+    SetOnDeactivateFn(fn: any): any;
+    SetOnExplodeFn(fn: any): any;
+    SetOnResetFn(fn: any): any;
+    SetOnSprungFn(fn: any): any;
+    SetRadius(radius: any): any;
+    SetReusable(reusable: any): any;
+    SetTestTimeFn(fn: any): any;
+    Spring(): any;
+    StartTesting(): any;
+    StopTesting(): any;
   }
 
   interface Minigame {
@@ -4681,14 +4681,14 @@ export namespace Component {
     z: any;
     spectators: any;
     participators: any;
-    OnRemoveFromEntity(): any;
-    SetOnActivatedFn(fn: any): any;
-    SetOnDeactivatedFn(fn: any): any;
-    IsActive(): boolean;
     Activate(): any;
     Deactivate(): any;
     DoActivePulse(): any;
     GetDebugString(): any;
+    IsActive(): boolean;
+    OnRemoveFromEntity(): any;
+    SetOnActivatedFn(fn: any): any;
+    SetOnDeactivatedFn(fn: any): any;
   }
 
   interface MinigameParticipator {
@@ -4697,20 +4697,20 @@ export namespace Component {
     updatecheck: any;
     onminigameover: any;
     expireytime: any;
-    OnRemoveFromEntity(): any;
-    GetMinigame(): any;
-    SetMinigame(minigame: any): any;
     GetDebugString(): any;
+    GetMinigame(): any;
+    OnRemoveFromEntity(): any;
+    SetMinigame(minigame: any): any;
   }
 
   interface MinigameSpectator {
     inst: any;
     minigame: any;
     onminigameover: any;
+    GetDebugString(): any;
+    GetMinigame(): any;
     OnRemoveFromEntity(): any;
     SetWatchingMinigame(minigame: any): any;
-    GetMinigame(): any;
-    GetDebugString(): any;
   }
 
   interface MinionSpawner {
@@ -4744,26 +4744,26 @@ export namespace Component {
     minion: any;
     task: any;
     possiblespawns: any;
-    GetDebugString(): any;
-    RemovePosition(num: any): any;
     AddPosition(num: any, tbl: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    LoadPostPass(newents: any, savedata: any): any;
-    TakeOwnership(minion: any): any;
-    OnLostMinion(minion: any): any;
-    MakeMinion(): any;
     CheckTileCompatibility(tile: any): any;
-    MakeSpawnLocations(): any;
-    GetSpawnLocation(num: any): any;
+    GetDebugString(): any;
     GetNextSpawnTime(): any;
+    GetSpawnLocation(num: any): any;
     KillAllMinions(): any;
-    SpawnNewMinion(): any;
-    MaxedMinions(): any;
-    SetSpawnInfo(time: any): any;
-    StartNextSpawn(): any;
-    ResumeSpawn(time: any): any;
+    LoadPostPass(newents: any, savedata: any): any;
     LongUpdate(dt: any): any;
+    MakeMinion(): any;
+    MakeSpawnLocations(): any;
+    MaxedMinions(): any;
+    OnLoad(data: any): any;
+    OnLostMinion(minion: any): any;
+    OnSave(): any;
+    RemovePosition(num: any): any;
+    ResumeSpawn(time: any): any;
+    SetSpawnInfo(time: any): any;
+    SpawnNewMinion(): any;
+    StartNextSpawn(): any;
+    TakeOwnership(minion: any): any;
   }
 
   interface Moisture {
@@ -4802,30 +4802,30 @@ export namespace Component {
     full: any;
     waterproofmult: any;
     heaterPower: any;
-    ForceDry(force: any, source: any): any;
-    GetDebugString(): any;
     AnnounceMoisture(oldSegs: any, newSegs: any): any;
     DoDelta(num: any, no_announce: any): any;
-    SetMoistureLevel(num: any): any;
-    IsWet(): boolean;
+    ForceDry(force: any, source: any): any;
+    GetDebugString(): any;
+    GetDryingRate(moisturerate: any): any;
+    GetEquippedMoistureRate(dryingrate: any): any;
     GetMaxMoisture(): any;
     GetMoisture(): any;
     GetMoisturePercent(): any;
-    GetWaterproofInventory(): any;
-    SetWaterproofInventory(waterproof: any): any;
-    SetPercent(per: any): any;
-    SetInherentWaterproofness(waterproofness: any): any;
-    GetSegs(): any;
     GetMoistureRate(): any;
-    GetEquippedMoistureRate(dryingrate: any): any;
-    GetDryingRate(moisturerate: any): any;
-    GetSleepingBagDryingRate(): any;
     GetRate(): any;
     GetRateScale(): any;
-    OnUpdate(dt: any): any;
+    GetSegs(): any;
+    GetSleepingBagDryingRate(): any;
+    GetWaterproofInventory(): any;
+    IsWet(): boolean;
     LongUpdate(dt: any): any;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnSave(): any;
+    OnUpdate(dt: any): any;
+    SetInherentWaterproofness(waterproofness: any): any;
+    SetMoistureLevel(num: any): any;
+    SetPercent(per: any): any;
+    SetWaterproofInventory(waterproof: any): any;
   }
 
   interface Mood {
@@ -4843,19 +4843,19 @@ export namespace Component {
     seasonmood: boolean;
     active: boolean;
     season: any;
-    GetDebugString(): any;
+    CheckForMoodChange(): any;
     Enable(enabled: any): any;
+    GetDebugString(): any;
+    IsInMood(): boolean;
+    OnLoad(data: any): any;
+    OnSave(): any;
+    ResetMood(): any;
+    SetInMoodFn(fn: any): any;
+    SetIsInMood(inmood: any, entireseason: any): any;
+    SetLeaveMoodFn(fn: any): any;
+    SetMoodSeason(activeseason: any): any;
     SetMoodTimeInDays(length: any, wait: any): any;
     ValidateMood(): any;
-    SetMoodSeason(activeseason: any): any;
-    CheckForMoodChange(): any;
-    SetInMoodFn(fn: any): any;
-    SetLeaveMoodFn(fn: any): any;
-    ResetMood(): any;
-    SetIsInMood(inmood: any, entireseason: any): any;
-    IsInMood(): boolean;
-    OnSave(): any;
-    OnLoad(data: any): any;
   }
 
   interface MoonBeastSpawner {
@@ -4870,8 +4870,8 @@ export namespace Component {
     y: any;
     z: any;
     ents: any;
-    OnRemoveFromEntity(): any;
     ForcePetrify(): any;
+    OnRemoveFromEntity(): any;
     Start(): any;
     Stop(): any;
   }
@@ -4886,9 +4886,9 @@ export namespace Component {
     onaccept: any;
     success: any;
     reason: any;
+    AcceptOffering(giver: any, item: any): any;
     SetCanAcceptFn(fn: any): any;
     SetOnAcceptFn(fn: any): any;
-    AcceptOffering(giver: any, item: any): any;
   }
 
   interface Named {
@@ -4896,10 +4896,10 @@ export namespace Component {
     possiblenames: any;
     nameformat: any;
     name: any;
+    OnLoad(data: any): any;
+    OnSave(): any;
     PickNewName(): any;
     SetName(name: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
   }
 
   interface NIS {
@@ -4913,15 +4913,15 @@ export namespace Component {
     init: any;
     cancel: any;
     task: any;
-    OnRemoveEntity(): any;
-    SetName(name: any): any;
-    SetScript(fn: any): any;
-    SetInit(fn: any): any;
-    SetCancel(fn: any): any;
-    OnFinish(): any;
     Cancel(): any;
     OnClick(): any;
+    OnFinish(): any;
+    OnRemoveEntity(): any;
     Play(lines: any): any;
+    SetCancel(fn: any): any;
+    SetInit(fn: any): any;
+    SetName(name: any): any;
+    SetScript(fn: any): any;
   }
 
   interface Oar {
@@ -4949,8 +4949,8 @@ export namespace Component {
     radius: number;
     distsq: any;
     maxradius: any;
-    IsEntityInOasis(ent: any): boolean;
     GetProximityLevel(ent: any, range: any): any;
+    IsEntityInOasis(ent: any): boolean;
   }
 
   interface ObjectSpawner {
@@ -4958,10 +4958,10 @@ export namespace Component {
     objects: any;
     onnewobjectfn: any;
     references: any;
-    OnSave(): any;
     LoadPostPass(newents: any, data: any): any;
-    TakeOwnership(obj: any): any;
+    OnSave(): any;
     SpawnObject(obj: any): any;
+    TakeOwnership(obj: any): any;
   }
 
   interface Occupiable {
@@ -4969,14 +4969,14 @@ export namespace Component {
     occupant: any;
     occupanttype: any;
     persists: boolean;
-    OnRemoveFromEntity(): any;
-    IsOccupied(): boolean;
-    GetOccupant(): any;
     CanOccupy(occupier: any): boolean;
-    Occupy(occupier: any): any;
+    GetOccupant(): any;
     Harvest(): any;
-    OnSave(): any;
+    IsOccupied(): boolean;
+    Occupy(occupier: any): any;
     OnLoad(data: any, newents: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
   }
 
   interface Occupier {
@@ -4990,10 +4990,10 @@ export namespace Component {
     inst: any;
     currentAngle: number;
     currentSpeed: number;
-    OnUpdate(dt: any): any;
     GetCurrentAngle(): any;
     GetCurrentSpeed(): any;
     GetCurrentVec3(): any;
+    OnUpdate(dt: any): any;
   }
 
   interface OceanColor {
@@ -5011,8 +5011,8 @@ export namespace Component {
     map: any;
     target_color: any;
     Initialize(has_ocean: any): any;
-    OnWallUpdate(dt: any): any;
     OnPhaseChanged(src: any, phase: any): any;
+    OnWallUpdate(dt: any): any;
   }
 
   interface PeriodicSpawner {
@@ -5035,19 +5035,19 @@ export namespace Component {
     target_time: any;
     task: any;
     time_to_wait: any;
-    SetPrefab(prefab: any): any;
-    SetRandomTimes(basetime: any, variance: any, no_reset: any): any;
+    ForceNextSpawn(): any;
+    GetDebugString(): any;
+    LongUpdate(dt: any): any;
     SetDensityInRange(range: any, density: any): any;
     SetMinimumSpacing(spacing: any): any;
-    SetOnlySpawnOffscreen(offscreen: any): any;
     SetOnSpawnFn(fn: any): any;
+    SetOnlySpawnOffscreen(offscreen: any): any;
+    SetPrefab(prefab: any): any;
+    SetRandomTimes(basetime: any, variance: any, no_reset: any): any;
     SetSpawnTestFn(fn: any): any;
-    TrySpawn(prefab: any): any;
     Start(): any;
     Stop(): any;
-    ForceNextSpawn(): any;
-    LongUpdate(dt: any): any;
-    GetDebugString(): any;
+    TrySpawn(prefab: any): any;
   }
 
   interface Perishable {
@@ -5070,27 +5070,27 @@ export namespace Component {
     x: any;
     y: any;
     z: any;
-    OnRemoveFromEntity(): any;
-    OnRemoveEntity(): any;
-    IsFresh(): boolean;
-    IsStale(): boolean;
-    IsSpoiled(): boolean;
     Dilute(number: any, timeleft: any): any;
-    SetPerishTime(time: any): any;
-    SetLocalMultiplier(newMult: any): any;
+    GetDebugString(): any;
     GetLocalMultiplier(): any;
+    GetPercent(): any;
+    IsFresh(): boolean;
+    IsSpoiled(): boolean;
+    IsStale(): boolean;
+    LongUpdate(dt: any): any;
+    OnLoad(data: any): any;
+    OnRemoveEntity(): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    Perish(): any;
+    ReducePercent(amount: any): any;
+    SetLocalMultiplier(newMult: any): any;
     SetNewMaxPerishTime(newtime: any): any;
     SetOnPerishFn(fn: any): any;
-    GetPercent(): any;
     SetPercent(percent: any): any;
-    ReducePercent(amount: any): any;
-    GetDebugString(): any;
-    LongUpdate(dt: any): any;
+    SetPerishTime(time: any): any;
     StartPerishing(): any;
-    Perish(): any;
     StopPerishing(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
   }
 
   interface PetHealthBar {
@@ -5105,14 +5105,14 @@ export namespace Component {
     down: any;
     up: any;
     status: any;
-    GetSymbol(): any;
     GetMaxHealth(): any;
     GetOverTime(): any;
     GetPercent(): any;
-    SetSymbol(symbol: any): any;
+    GetSymbol(): any;
+    OnUpdate(dt: any): any;
     SetMaxHealth(max_health: any): any;
     SetPet(pet: any, symbol: any, maxhealth: any): any;
-    OnUpdate(dt: any): any;
+    SetSymbol(symbol: any): any;
   }
 
   interface PetLeash {
@@ -5126,35 +5126,35 @@ export namespace Component {
     pet: any;
     toremove: any;
     data: any;
-    SetPetPrefab(prefab: any): any;
-    SetOnSpawnFn(fn: any): any;
-    SetOnDespawnFn(fn: any): any;
-    SetMaxPets(num: any): any;
+    DespawnAllPets(): any;
+    DespawnPet(pet: any): any;
     GetMaxPets(): any;
     GetNumPets(): any;
-    IsFull(): boolean;
-    HasPetWithTag(tag: any): boolean;
     GetPets(): any;
+    HasPetWithTag(tag: any): boolean;
+    IsFull(): boolean;
     IsPet(pet: any): boolean;
-    SpawnPetAt(x: any, y: any, z: any, prefaboverride: any, skin: any): any;
-    DespawnPet(pet: any): any;
-    DespawnAllPets(): any;
-    OnSave(): any;
     OnLoad(data: any): any;
     OnRemoveFromEntity(): any;
+    OnSave(): any;
+    SetMaxPets(num: any): any;
+    SetOnDespawnFn(fn: any): any;
+    SetOnSpawnFn(fn: any): any;
+    SetPetPrefab(prefab: any): any;
+    SpawnPetAt(x: any, y: any, z: any, prefaboverride: any, skin: any): any;
   }
 
   interface Petrifiable {
     inst: any;
     onPetrifiedFn: any;
     petrified: boolean;
-    OnRemoveFromEntity(): any;
-    IsPetrified(): boolean;
-    SetPetrifiedFn(fn: any): any;
-    Petrify(immediate: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
     GetDebugString(): any;
+    IsPetrified(): boolean;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    Petrify(immediate: any): any;
+    SetPetrifiedFn(fn: any): any;
   }
 
   interface Pickable {
@@ -5192,30 +5192,30 @@ export namespace Component {
     loot: any;
     num: any;
     pt: any;
-    OnRemoveFromEntity(): any;
-    LongUpdate(dt: any): any;
-    IsWildfireStarter(): boolean;
-    FinishGrowing(): any;
-    Resume(): any;
-    Pause(): any;
-    GetDebugString(): any;
-    SetUp(product: any, regen: any, number: any): any;
-    SetOnPickedFn(fn: any): any;
-    SetOnRegenFn(fn: any): any;
-    SetMakeBarrenFn(fn: any): any;
-    SetMakeEmptyFn(fn: any): any;
     CanBeFertilized(): boolean;
+    CanBePicked(): boolean;
     ChangeProduct(newProduct: any): any;
     Fertilize(fertilizer: any, doer: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
+    FinishGrowing(): any;
+    GetDebugString(): any;
     IsBarren(): boolean;
-    CanBePicked(): boolean;
-    Regen(): any;
+    IsWildfireStarter(): boolean;
+    LongUpdate(dt: any): any;
     MakeBarren(): any;
-    OnTransplant(): any;
     MakeEmpty(): any;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    OnTransplant(): any;
+    Pause(): any;
     Pick(picker: any): any;
+    Regen(): any;
+    Resume(): any;
+    SetMakeBarrenFn(fn: any): any;
+    SetMakeEmptyFn(fn: any): any;
+    SetOnPickedFn(fn: any): any;
+    SetOnRegenFn(fn: any): any;
+    SetUp(product: any, regen: any, number: any): any;
   }
 
   interface Pinnable {
@@ -5235,16 +5235,16 @@ export namespace Component {
     mintime: any;
     prevState: any;
     remaining: any;
-    OnRemoveFromEntity(): any;
-    SetDefaultWearOffTime(wearofftime: any): any;
-    SpawnShatterFX(ratio: any): any;
     IsStuck(): boolean;
     IsValidPinTarget(): boolean;
+    OnRemoveFromEntity(): any;
+    RemainingRatio(): any;
+    SetDefaultWearOffTime(wearofftime: any): any;
+    SpawnShatterFX(ratio: any): any;
     StartWearingOff(wearofftime: any): any;
     Stick(): any;
-    UpdateStuckStatus(): any;
-    RemainingRatio(): any;
     Unstick(): any;
+    UpdateStuckStatus(): any;
   }
 
   interface Placer {
@@ -5268,11 +5268,11 @@ export namespace Component {
     y: any;
     z: any;
     rot: any;
-    SetBuilder(builder: any, recipe: any, invobject: any): any;
-    LinkEntity(ent: any): any;
     GetDeployAction(): any;
+    LinkEntity(ent: any): any;
     OnUpdate(dt: any): any;
     OnWallUpdate(dt: any): any;
+    SetBuilder(builder: any, recipe: any, invobject: any): any;
   }
 
   interface Plantable {
@@ -5297,16 +5297,16 @@ export namespace Component {
     ents: any;
     offspring: any;
     data: any;
-    ResetGrowthTime(): any;
-    SetRegrowthRate(rate: any): any;
-    SetProduct(product: any): any;
-    SetSearchTag(tag: any): any;
-    OnRemoveFromEntity(): any;
-    OnRemoveEntity(): any;
-    TrySpawnNearby(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
     GetDebugString(): any;
+    OnLoad(data: any): any;
+    OnRemoveEntity(): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    ResetGrowthTime(): any;
+    SetProduct(product: any): any;
+    SetRegrowthRate(rate: any): any;
+    SetSearchTag(tag: any): any;
+    TrySpawnNearby(): any;
   }
 
   interface PlayerActionPicker {
@@ -5342,23 +5342,23 @@ export namespace Component {
     rmb: any;
     lmbs: any;
     rmbs: any;
-    RegisterContainer(container: any): any;
-    UnregisterContainer(container: any): any;
-    HasContainerWidgetAction(): boolean;
-    OnUpdateActionFilterStack(): any;
-    PushActionFilter(filterfn: any, priority: any): any;
-    PopActionFilter(filterfn: any): any;
-    SortActionList(actions: any, target: any, useitem: any): any;
-    GetSceneActions(useitem: any, right: any): any;
-    GetUseItemActions(target: any, useitem: any, right: any): any;
-    GetSteeringActions(inst: any, pos: any, right: any): any;
-    GetPointActions(pos: any, useitem: any, right: any): any;
-    GetPointSpecialActions(pos: any, useitem: any, right: any): any;
+    DoGetMouseActions(position: any, target: any): any;
     GetEquippedItemActions(target: any, useitem: any, right: any): any;
     GetInventoryActions(useitem: any, right: any): any;
     GetLeftClickActions(position: any, target: any): any;
+    GetPointActions(pos: any, useitem: any, right: any): any;
+    GetPointSpecialActions(pos: any, useitem: any, right: any): any;
     GetRightClickActions(position: any, target: any): any;
-    DoGetMouseActions(position: any, target: any): any;
+    GetSceneActions(useitem: any, right: any): any;
+    GetSteeringActions(inst: any, pos: any, right: any): any;
+    GetUseItemActions(target: any, useitem: any, right: any): any;
+    HasContainerWidgetAction(): boolean;
+    OnUpdateActionFilterStack(): any;
+    PopActionFilter(filterfn: any): any;
+    PushActionFilter(filterfn: any, priority: any): any;
+    RegisterContainer(container: any): any;
+    SortActionList(actions: any, target: any, useitem: any): any;
+    UnregisterContainer(container: any): any;
   }
 
   interface PlayerAvatarData {
@@ -5381,18 +5381,18 @@ export namespace Component {
     equip: any;
     data: any;
     temp: any;
-    SetAllowEmptyName(allow: any): any;
-    SetAllowBurnt(allow: any): any;
-    AddNameData(save: any): any;
+    AddAgeData(save: any): any;
     AddBaseSkinData(save: any): any;
     AddClothingData(save: any): any;
-    AddAgeData(save: any): any;
     AddEquipData(save: any): any;
+    AddNameData(save: any): any;
     AddPlayerData(save: any): any;
     GetData(): any;
-    SetData(client_obj: any): any;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnSave(): any;
+    SetAllowBurnt(allow: any): any;
+    SetAllowEmptyName(allow: any): any;
+    SetData(client_obj: any): any;
   }
 
   interface PlayerController {
@@ -5564,44 +5564,92 @@ export namespace Component {
     equipitem: any;
     isaoetargeting: any;
     skin_index: any;
-    OnRemoveFromEntity(): any;
-    AttachClassified(classified: any): any;
-    DetachClassified(): any;
     Activate(): any;
-    Deactivate(): any;
-    Enable(val: any): any;
-    ToggleController(val: any): any;
-    EnableMapControls(val: any): any;
-    SetCanUseMap(val: any): any;
-    IsEnabled(): boolean;
-    IsMapControlsEnabled(): boolean;
-    IsControlPressed(control: any): boolean;
-    IsAnyOfControlsPressed(): boolean;
-    CooldownRemoteController(dt: any): any;
-    OnRemoteStopControl(control: any): any;
-    OnRemoteStopAllControls(): any;
-    RemoteStopControl(control: any): any;
-    RemoteStopAllControls(): any;
-    RemotePausePrediction(frames: any): any;
-    OnControl(control: any, down: any): any;
-    EncodeControlMods(): any;
-    DecodeControlMods(code: any): any;
-    ClearControlMods(): any;
+    AttachClassified(classified: any): any;
     CanLocomote(): boolean;
-    IsBusy(): boolean;
+    CancelAOETargeting(): any;
+    CancelDeployPlacement(): any;
+    CancelPlacement(cache: any): any;
+    ClearControlMods(): any;
+    ControllerTargetLock(enable: any): any;
+    CooldownRemoteController(dt: any): any;
+    CycleControllerAttackTargetBack(): any;
+    CycleControllerAttackTargetForward(): any;
+    Deactivate(): any;
+    DecodeControlMods(code: any): any;
+    DetachClassified(): any;
+    DoAction(buffaction: any): any;
+    DoActionAutoEquip(buffaction: any): any;
+    DoActionButton(): any;
+    DoAttackButton(retarget: any): any;
+    DoBoatSteering(dt: any): any;
+    DoCameraControl(): any;
+    DoControllerActionButton(): any;
+    DoControllerAltActionButton(): any;
+    DoControllerAttackButton(target: any): any;
+    DoControllerDropItemFromInvTile(item: any, single: any): any;
+    DoControllerInspectItemFromInvTile(item: any): any;
+    DoControllerUseItemOnSceneFromInvTile(item: any): any;
+    DoControllerUseItemOnSelfFromInvTile(item: any): any;
+    DoDirectWalking(dt: any): any;
+    DoDragWalking(dt: any): any;
+    DoInspectButton(): any;
+    DoPredictHopping(dt: any): any;
+    DoPredictWalking(dt: any): any;
+    DoResurrectButton(): any;
+    EchoReticuleAt(x: any, y: any, z: any): any;
+    Enable(val: any): any;
+    EnableMapControls(val: any): any;
+    EncodeControlMods(): any;
+    GetAOETargetingPos(): any;
+    GetActionButtonAction(force_target: any): any;
+    GetAttackTarget(force_attack: any, force_target: any, isretarget: any): any;
+    GetControllerAttackTarget(): any;
+    GetControllerTarget(): any;
     GetCursorInventoryObject(): any;
     GetCursorInventorySlotAndContainer(): any;
-    DoControllerActionButton(): any;
-    OnRemoteControllerActionButton(
+    GetGroundUseAction(position: any): any;
+    GetGroundUseSpecialAction(position: any, right: any): any;
+    GetHoverTextOverride(): any;
+    GetInspectButtonAction(target: any): any;
+    GetItemSelfAction(item: any): any;
+    GetItemUseAction(active_item: any, target: any): any;
+    GetLeftMouseAction(): any;
+    GetPlatformRelativePosition(absolute_x: any, absolute_z: any): any;
+    GetRemoteDirectVector(): any;
+    GetRemoteDragPosition(): any;
+    GetRemotePredictPosition(): any;
+    GetResurrectButtonAction(): any;
+    GetRightMouseAction(): any;
+    GetSceneItemControllerAction(item: any): any;
+    HasAOETargeting(): boolean;
+    HasGroundUseSpecialAction(right: any): boolean;
+    IsAOETargeting(): boolean;
+    IsAnyOfControlsPressed(): boolean;
+    IsBusy(): boolean;
+    IsControlPressed(control: any): boolean;
+    IsControllerTargetLockEnabled(): boolean;
+    IsControllerTargetLocked(): boolean;
+    IsControllerTargetingModifierDown(): boolean;
+    IsDoingOrWorking(): boolean;
+    IsEnabled(): boolean;
+    IsLocalOrRemoteHopping(): boolean;
+    IsMapControlsEnabled(): boolean;
+    OnControl(control: any, down: any): any;
+    OnLeftClick(down: any): any;
+    OnLeftUp(): any;
+    OnRemoteActionButton(
       actioncode: any,
       target: any,
       isreleased: any,
       noforce: any,
       mod_name: any
     ): any;
-    OnRemoteControllerActionButtonPoint(
+    OnRemoteAttackButton(target: any, force_attack: any, noforce: any): any;
+    OnRemoteBufferedAction(): any;
+    OnRemoteControllerActionButton(
       actioncode: any,
-      position: any,
+      target: any,
       isreleased: any,
       noforce: any,
       mod_name: any
@@ -5612,7 +5660,13 @@ export namespace Component {
       rotation: any,
       isreleased: any
     ): any;
-    DoControllerAltActionButton(): any;
+    OnRemoteControllerActionButtonPoint(
+      actioncode: any,
+      position: any,
+      isreleased: any,
+      noforce: any,
+      mod_name: any
+    ): any;
     OnRemoteControllerAltActionButton(
       actioncode: any,
       target: any,
@@ -5628,88 +5682,14 @@ export namespace Component {
       isspecial: any,
       mod_name: any
     ): any;
-    DoControllerAttackButton(target: any): any;
     OnRemoteControllerAttackButton(
       target: any,
       isreleased: any,
       noforce: any
     ): any;
-    DoControllerDropItemFromInvTile(item: any, single: any): any;
-    DoControllerInspectItemFromInvTile(item: any): any;
-    DoControllerUseItemOnSelfFromInvTile(item: any): any;
-    DoControllerUseItemOnSceneFromInvTile(item: any): any;
-    RotLeft(): any;
-    RotRight(): any;
-    GetHoverTextOverride(): any;
-    CancelPlacement(cache: any): any;
-    CancelDeployPlacement(): any;
-    StartBuildPlacementMode(recipe: any, skin: any): any;
-    GetAOETargetingPos(): any;
-    IsAOETargeting(): boolean;
-    HasAOETargeting(): boolean;
-    TryAOETargeting(): any;
-    CancelAOETargeting(): any;
-    EchoReticuleAt(x: any, y: any, z: any): any;
-    RefreshReticule(): any;
-    GetAttackTarget(force_attack: any, force_target: any, isretarget: any): any;
-    DoAttackButton(retarget: any): any;
-    OnRemoteAttackButton(target: any, force_attack: any, noforce: any): any;
-    RemoteAttackButton(target: any, force_attack: any): any;
-    IsDoingOrWorking(): boolean;
-    GetActionButtonAction(force_target: any): any;
-    DoActionButton(): any;
-    OnRemoteActionButton(
-      actioncode: any,
-      target: any,
-      isreleased: any,
-      noforce: any,
-      mod_name: any
-    ): any;
-    RemoteActionButton(action: any, isreleased: any): any;
-    GetInspectButtonAction(target: any): any;
-    DoInspectButton(): any;
-    OnRemoteInspectButton(target: any): any;
-    RemoteInspectButton(action: any): any;
-    GetResurrectButtonAction(): any;
-    DoResurrectButton(): any;
-    OnRemoteResurrectButton(): any;
-    RemoteResurrectButton(): any;
-    UsingMouse(): any;
-    OnUpdate(dt: any): any;
-    UpdateControllerTargets(dt: any): any;
-    GetControllerTarget(): any;
-    GetControllerAttackTarget(): any;
-    IsControllerTargetingModifierDown(): boolean;
-    IsControllerTargetLockEnabled(): boolean;
-    IsControllerTargetLocked(): boolean;
-    ControllerTargetLock(enable: any): any;
-    CycleControllerAttackTargetForward(): any;
-    CycleControllerAttackTargetBack(): any;
-    ResetRemoteController(): any;
-    GetRemoteDirectVector(): any;
-    GetRemoteDragPosition(): any;
-    GetRemotePredictPosition(): any;
     OnRemoteDirectWalking(x: any, z: any): any;
     OnRemoteDragWalking(x: any, z: any): any;
-    OnRemotePredictWalking(x: any, z: any, isdirectwalking: any): any;
-    OnRemoteStartHop(x: any, z: any, platform: any): any;
-    OnRemoteStopWalking(): any;
-    OnRemoteStopHopping(): any;
-    RemoteDirectWalking(x: any, z: any): any;
-    RemoteDragWalking(x: any, z: any): any;
-    RemotePredictWalking(x: any, z: any): any;
-    RemoteStopWalking(): any;
-    DoPredictHopping(dt: any): any;
-    IsLocalOrRemoteHopping(): boolean;
-    DoPredictWalking(dt: any): any;
-    DoDragWalking(dt: any): any;
-    DoBoatSteering(dt: any): any;
-    DoDirectWalking(dt: any): any;
-    DoCameraControl(): any;
-    OnLeftUp(): any;
-    DoAction(buffaction: any): any;
-    DoActionAutoEquip(buffaction: any): any;
-    OnLeftClick(down: any): any;
+    OnRemoteInspectButton(target: any): any;
     OnRemoteLeftClick(
       actioncode: any,
       position: any,
@@ -5719,8 +5699,8 @@ export namespace Component {
       noforce: any,
       mod_name: any
     ): any;
-    GetPlatformRelativePosition(absolute_x: any, absolute_z: any): any;
-    OnRightClick(down: any): any;
+    OnRemotePredictWalking(x: any, z: any, isdirectwalking: any): any;
+    OnRemoteResurrectButton(): any;
     OnRemoteRightClick(
       actioncode: any,
       position: any,
@@ -5731,28 +5711,48 @@ export namespace Component {
       noforce: any,
       mod_name: any
     ): any;
-    GetLeftMouseAction(): any;
-    GetRightMouseAction(): any;
-    GetItemSelfAction(item: any): any;
-    GetSceneItemControllerAction(item: any): any;
-    GetGroundUseAction(position: any): any;
-    GetGroundUseSpecialAction(position: any, right: any): any;
-    HasGroundUseSpecialAction(right: any): boolean;
-    GetItemUseAction(active_item: any, target: any): any;
-    RemoteUseItemFromInvTile(buffaction: any, item: any): any;
+    OnRemoteStartHop(x: any, z: any, platform: any): any;
+    OnRemoteStopAllControls(): any;
+    OnRemoteStopControl(control: any): any;
+    OnRemoteStopHopping(): any;
+    OnRemoteStopWalking(): any;
+    OnRemoveFromEntity(): any;
+    OnRightClick(down: any): any;
+    OnUpdate(dt: any): any;
+    RefreshReticule(): any;
+    RemoteActionButton(action: any, isreleased: any): any;
+    RemoteAttackButton(target: any, force_attack: any): any;
+    RemoteBufferedAction(buffaction: any): any;
     RemoteControllerUseItemOnItemFromInvTile(
       buffaction: any,
       item: any,
       active_item: any
     ): any;
-    RemoteControllerUseItemOnSelfFromInvTile(buffaction: any, item: any): any;
     RemoteControllerUseItemOnSceneFromInvTile(buffaction: any, item: any): any;
-    RemoteInspectItemFromInvTile(item: any): any;
+    RemoteControllerUseItemOnSelfFromInvTile(buffaction: any, item: any): any;
+    RemoteDirectWalking(x: any, z: any): any;
+    RemoteDragWalking(x: any, z: any): any;
     RemoteDropItemFromInvTile(item: any, single: any): any;
-    RemoteMakeRecipeFromMenu(recipe: any, skin: any): any;
+    RemoteInspectButton(action: any): any;
+    RemoteInspectItemFromInvTile(item: any): any;
     RemoteMakeRecipeAtPoint(recipe: any, pt: any, rot: any, skin: any): any;
-    RemoteBufferedAction(buffaction: any): any;
-    OnRemoteBufferedAction(): any;
+    RemoteMakeRecipeFromMenu(recipe: any, skin: any): any;
+    RemotePausePrediction(frames: any): any;
+    RemotePredictWalking(x: any, z: any): any;
+    RemoteResurrectButton(): any;
+    RemoteStopAllControls(): any;
+    RemoteStopControl(control: any): any;
+    RemoteStopWalking(): any;
+    RemoteUseItemFromInvTile(buffaction: any, item: any): any;
+    ResetRemoteController(): any;
+    RotLeft(): any;
+    RotRight(): any;
+    SetCanUseMap(val: any): any;
+    StartBuildPlacementMode(recipe: any, skin: any): any;
+    ToggleController(val: any): any;
+    TryAOETargeting(): any;
+    UpdateControllerTargets(dt: any): any;
+    UsingMouse(): any;
   }
 
   interface PlayerHearing {
@@ -5770,10 +5770,10 @@ export namespace Component {
     inst: any;
     hitchance: number;
     onstrikefn: any;
-    SetHitChance(chance: any): any;
-    GetHitChance(): any;
-    SetOnStrikeFn(fn: any): any;
     DoStrike(): any;
+    GetHitChance(): any;
+    SetHitChance(chance: any): any;
+    SetOnStrikeFn(fn: any): any;
   }
 
   interface PlayerMetrics {
@@ -5795,20 +5795,20 @@ export namespace Component {
     alivemode: any;
     originaltargetmode: any;
     targetmode: any;
+    ForceUpdate(): any;
     GetDebugString(): any;
-    SetOnPlayerNear(fn: any): any;
-    SetOnPlayerFar(fn: any): any;
     IsPlayerClose(): boolean;
+    OnEntitySleep(): any;
+    OnEntityWake(): any;
+    Schedule(): any;
     SetDist(near: any, far: any): any;
     SetLostTargetFn(func: any): any;
+    SetOnPlayerFar(fn: any): any;
+    SetOnPlayerNear(fn: any): any;
     SetPlayerAliveMode(alivemode: any): any;
-    Schedule(): any;
-    ForceUpdate(): any;
-    Stop(): any;
-    OnEntityWake(): any;
-    OnEntitySleep(): any;
-    SetTargetMode(mode: any, target: any, override: any): any;
     SetTarget(target: any): any;
+    SetTargetMode(mode: any, target: any, override: any): any;
+    Stop(): any;
   }
 
   interface PlayerTargetIndicator {
@@ -5819,9 +5819,9 @@ export namespace Component {
     onplayerexited: any;
     checked: any;
     OnRemoveFromEntity(): any;
-    ShouldShowIndicator(target: any): any;
-    ShouldRemoveIndicator(target: any): any;
     OnUpdate(): any;
+    ShouldRemoveIndicator(target: any): any;
+    ShouldShowIndicator(target: any): any;
   }
 
   interface PlayerVision {
@@ -5837,18 +5837,18 @@ export namespace Component {
     currentccphasefn: any;
     cctable: any;
     ccphasefn: any;
-    HasGhostVision(): boolean;
-    HasNightmareVision(): boolean;
-    HasNightVision(): boolean;
-    HasGoggleVision(): boolean;
+    ForceGoggleVision(force: any): any;
+    ForceNightVision(force: any): any;
     GetCCPhaseFn(): any;
     GetCCTable(): any;
-    UpdateCCTable(): any;
+    HasGhostVision(): boolean;
+    HasGoggleVision(): boolean;
+    HasNightVision(): boolean;
+    HasNightmareVision(): boolean;
+    SetCustomCCTable(cctable: any): any;
     SetGhostVision(enabled: any): any;
     SetNightmareVision(enabled: any): any;
-    ForceNightVision(force: any): any;
-    ForceGoggleVision(force: any): any;
-    SetCustomCCTable(cctable: any): any;
+    UpdateCCTable(): any;
   }
 
   interface PlayerVoter {
@@ -5856,16 +5856,16 @@ export namespace Component {
     classified: any;
     ondetachclassified: any;
     onvoteselectiondirty: any;
-    OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
+    CanVote(): boolean;
     DetachClassified(): any;
-    SubmitVote(sel: any): any;
-    SetSelection(sel: any): any;
     GetSelection(): any;
     HasVoted(): boolean;
-    CanVote(): boolean;
-    SetSquelched(val: any): any;
     IsSquelched(): boolean;
+    OnRemoveFromEntity(): any;
+    SetSelection(sel: any): any;
+    SetSquelched(val: any): any;
+    SubmitVote(sel: any): any;
   }
 
   interface Pollinator {
@@ -5881,20 +5881,20 @@ export namespace Component {
     y: any;
     z: any;
     nearbyentities: any;
+    CanPollinate(flower: any): boolean;
+    CheckFlowerDensity(): any;
+    CreateFlower(): any;
+    GetDebugString(): any;
+    HasCollectedEnough(): boolean;
     OnRemoveFromEntity(): any;
     Pollinate(flower: any): any;
-    CanPollinate(flower: any): boolean;
-    HasCollectedEnough(): boolean;
-    CreateFlower(): any;
-    CheckFlowerDensity(): any;
-    GetDebugString(): any;
   }
 
   interface PortableCookware {
     inst: any;
     ondismantlefn: any;
-    SetOnDismantleFn(fn: any): any;
     Dismantle(doer: any): any;
+    SetOnDismantleFn(fn: any): any;
   }
 
   interface PossessedAxe {
@@ -5924,14 +5924,14 @@ export namespace Component {
     fx: any;
     slot: any;
     data: any;
-    WaitForPlayer(userid: any, delay: any): any;
-    StopWaitingForPlayer(): any;
-    LinkToPlayer(player: any): any;
     Drop(): any;
-    Revert(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
     GetDebugString(): any;
+    LinkToPlayer(player: any): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
+    Revert(): any;
+    StopWaitingForPlayer(): any;
+    WaitForPlayer(userid: any, delay: any): any;
   }
 
   interface Projectile {
@@ -5964,32 +5964,32 @@ export namespace Component {
     rot: any;
     direction: any;
     angle: any;
-    OnRemoveFromEntity(): any;
-    GetDebugString(): any;
-    SetSpeed(speed: any): any;
-    SetStimuli(stimuli: any): any;
-    SetRange(range: any): any;
-    SetHitDist(dist: any): any;
-    SetOnThrownFn(fn: any): any;
-    SetOnHitFn(fn: any): any;
-    SetOnCaughtFn(fn: any): any;
-    SetOnMissFn(fn: any): any;
-    SetCanCatch(cancatch: any): any;
-    SetHoming(homing: any): any;
-    SetLaunchOffset(offset: any): any;
-    IsThrown(): boolean;
-    Throw(owner: any, target: any, attacker: any): any;
     Catch(catcher: any): any;
-    Miss(target: any): any;
-    Stop(): any;
+    DelayVisibility(duration: any): any;
+    GetDebugString(): any;
     Hit(target: any): any;
+    IsThrown(): boolean;
+    LoadPostPass(newents: any, savedata: any): any;
+    Miss(target: any): any;
     OnEntitySleep(): any;
     OnEntityWake(): any;
-    OnUpdate(dt: any): any;
+    OnRemoveFromEntity(): any;
     OnSave(): any;
+    OnUpdate(dt: any): any;
     RotateToTarget(dest: any): any;
-    LoadPostPass(newents: any, savedata: any): any;
-    DelayVisibility(duration: any): any;
+    SetCanCatch(cancatch: any): any;
+    SetHitDist(dist: any): any;
+    SetHoming(homing: any): any;
+    SetLaunchOffset(offset: any): any;
+    SetOnCaughtFn(fn: any): any;
+    SetOnHitFn(fn: any): any;
+    SetOnMissFn(fn: any): any;
+    SetOnThrownFn(fn: any): any;
+    SetRange(range: any): any;
+    SetSpeed(speed: any): any;
+    SetStimuli(stimuli: any): any;
+    Stop(): any;
+    Throw(owner: any, target: any, attacker: any): any;
   }
 
   interface Propagator {
@@ -6022,18 +6022,18 @@ export namespace Component {
     x: any;
     y: any;
     z: any;
-    OnRemoveFromEntity(): any;
-    SetOnFlashPoint(fn: any): any;
-    Delay(time: any): any;
-    StopUpdating(): any;
-    StartUpdating(): any;
-    StartSpreading(source: any): any;
-    StopSpreading(reset: any, heatpct: any): any;
-    GetHeatResistance(): any;
     AddHeat(amount: any): any;
+    Delay(time: any): any;
     Flash(): any;
-    OnUpdate(dt: any): any;
     GetDebugString(): any;
+    GetHeatResistance(): any;
+    OnRemoveFromEntity(): any;
+    OnUpdate(dt: any): any;
+    SetOnFlashPoint(fn: any): any;
+    StartSpreading(source: any): any;
+    StartUpdating(): any;
+    StopSpreading(reset: any, heatpct: any): any;
+    StopUpdating(): any;
   }
 
   interface Prototyper {
@@ -6044,11 +6044,11 @@ export namespace Component {
     onturnoff: any;
     doers: any;
     onremovedoer: any;
-    OnRemoveFromEntity(): any;
-    TurnOn(doer: any): any;
-    TurnOff(doer: any): any;
-    GetTechTrees(): any;
     Activate(doer: any, recipe: any): any;
+    GetTechTrees(): any;
+    OnRemoveFromEntity(): any;
+    TurnOff(doer: any): any;
+    TurnOn(doer: any): any;
   }
 
   interface RampingSpawner {
@@ -6067,23 +6067,23 @@ export namespace Component {
     spawn: any;
     data: any;
     refs: any;
-    OnRemoveFromEntity(): any;
-    StopTrackingSpawn(spawn: any): any;
-    OnSpawnDeath(spawn: any): any;
-    TrackSpawn(spawn: any): any;
-    GetCurrentWave(): any;
-    GetWaveSize(): any;
     DoWave(): any;
+    GetCurrentWave(): any;
     GetSpawnPos(): any;
     GetSpawnRot(): any;
-    SpawnEntity(): any;
+    GetWaveSize(): any;
     IsActive(): boolean;
+    LoadPostPass(ents: any, data: any): any;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    OnSpawnDeath(spawn: any): any;
+    Reset(): any;
+    SpawnEntity(): any;
     Start(): any;
     Stop(): any;
-    Reset(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    LoadPostPass(ents: any, data: any): any;
+    StopTrackingSpawn(spawn: any): any;
+    TrackSpawn(spawn: any): any;
   }
 
   interface Reader {
@@ -6097,16 +6097,16 @@ export namespace Component {
     stock: any;
     data: any;
     str: string;
-    OnRemoveFromEntity(data: any): any;
-    SetupItem(data: any, start_restock_timer: any): any;
-    RemoveAllStock(allow_restock: any): any;
-    RemoveStock(recipe: any, allow_restock: any): any;
     FullyRestockItem(recipe: any): any;
+    GetDebugString(): any;
     HasAnyStock(): boolean;
     OnItemCrafted(recipe: any): any;
-    OnSave(): any;
     OnLoad(data: any): any;
-    GetDebugString(): any;
+    OnRemoveFromEntity(data: any): any;
+    OnSave(): any;
+    RemoveAllStock(allow_restock: any): any;
+    RemoveStock(recipe: any, allow_restock: any): any;
+    SetupItem(data: any, start_restock_timer: any): any;
   }
 
   interface Repairable {
@@ -6116,8 +6116,8 @@ export namespace Component {
     checkmaterialfn: any;
     success: any;
     reason: any;
-    OnRemoveFromEntity(): any;
     NeedsRepairs(): any;
+    OnRemoveFromEntity(): any;
     Repair(doer: any, repair_item: any): any;
   }
 
@@ -6137,9 +6137,9 @@ export namespace Component {
     active: boolean;
     level: number;
     on: boolean;
-    TurnOn(): any;
-    TurnOff(): any;
     Activate(): any;
+    TurnOff(): any;
+    TurnOn(): any;
   }
 
   interface Resistance {
@@ -6149,14 +6149,14 @@ export namespace Component {
     shouldresistfn: any;
     str: any;
     AddResistance(tag: any): any;
-    RemoveResistance(tag: any): any;
+    GetDebugString(): any;
     HasResistance(attacker: any, weapon: any): boolean;
     HasResistanceToTag(tag: any): boolean;
+    RemoveResistance(tag: any): any;
+    ResistDamage(damage_amount: any): any;
     SetOnResistDamageFn(fn: any): any;
     SetShouldResistFn(fn: any): any;
     ShouldResistDamage(): any;
-    ResistDamage(damage_amount: any): any;
-    GetDebugString(): any;
   }
 
   interface Reticule {
@@ -6186,14 +6186,14 @@ export namespace Component {
     x0: any;
     y0: any;
     z0: any;
+    Blip(): any;
     CreateReticule(): any;
     DestroyReticule(): any;
-    PingReticuleAt(pos: any): any;
-    Blip(): any;
+    OnCameraUpdate(dt: any): any;
     OnUpdate(dt: any): any;
+    PingReticuleAt(pos: any): any;
     UpdateColour(): any;
     UpdatePosition(dt: any): any;
-    OnCameraUpdate(dt: any): any;
   }
 
   interface RevivableCorpse {
@@ -6204,15 +6204,15 @@ export namespace Component {
     canberevivedbyfn: any;
     tagmults: any;
     mult: any;
-    SetCanBeRevivedByFn(fn: any): any;
     CanBeRevivedBy(reviver: any): boolean;
+    GetReviveHealthPercent(): any;
+    GetReviveSpeedMult(reviver: any): any;
+    Revive(reviver: any): any;
+    SetCanBeRevivedByFn(fn: any): any;
+    SetCorpse(corpse: any): any;
+    SetReviveHealthPercent(percent: any): any;
     SetReviveSpeedMult(mult: any): any;
     SetReviveSpeedMultForTag(tag: any, mult: any): any;
-    GetReviveSpeedMult(reviver: any): any;
-    SetCorpse(corpse: any): any;
-    Revive(reviver: any): any;
-    SetReviveHealthPercent(percent: any): any;
-    GetReviveHealthPercent(): any;
   }
 
   interface Rideable {
@@ -6227,20 +6227,20 @@ export namespace Component {
     pt: any;
     oldrider: any;
     data: any;
-    OnRemoveFromEntity(): any;
-    TimeSinceLastRide(): any;
-    SetRequiredObedience(required: any): any;
-    TestObedience(): any;
-    SetSaddle(doer: any, newsaddle: any): any;
-    SetSaddleable(saddleable: any): any;
-    IsSaddled(): boolean;
-    SetRider(rider: any): any;
+    Buck(gentle: any): any;
+    GetDebugString(): any;
     GetRider(): any;
     IsBeingRidden(): boolean;
-    Buck(gentle: any): any;
-    OnSaveDomesticatable(): any;
+    IsSaddled(): boolean;
     OnLoadDomesticatable(data: any): any;
-    GetDebugString(): any;
+    OnRemoveFromEntity(): any;
+    OnSaveDomesticatable(): any;
+    SetRequiredObedience(required: any): any;
+    SetRider(rider: any): any;
+    SetSaddle(doer: any, newsaddle: any): any;
+    SetSaddleable(saddleable: any): any;
+    TestObedience(): any;
+    TimeSinceLastRide(): any;
   }
 
   interface Rider {
@@ -6260,17 +6260,17 @@ export namespace Component {
     canbepinned: boolean;
     ex_mount: any;
     data: any;
+    ActualDismount(): any;
+    Dismount(): any;
+    GetMount(): any;
+    GetSaddle(): any;
+    IsRiding(): boolean;
+    Mount(target: any, instant: any): any;
+    OnLoad(data: any): any;
     OnRemoveFromEntity(): any;
+    OnSave(): any;
     StartTracking(mount: any): any;
     StopTracking(mount: any): any;
-    GetSaddle(): any;
-    Mount(target: any, instant: any): any;
-    Dismount(): any;
-    ActualDismount(): any;
-    IsRiding(): boolean;
-    GetMount(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
   }
 
   interface Saddler {
@@ -6280,12 +6280,12 @@ export namespace Component {
     bonusdamage: any;
     speedmult: any;
     discardedcb: any;
-    SetSwaps(build: any, symbol: any): any;
-    SetBonusDamage(damage: any): any;
-    SetBonusSpeedMult(mult: any): any;
     GetBonusDamage(target: any): any;
     GetBonusSpeedMult(): any;
+    SetBonusDamage(damage: any): any;
+    SetBonusSpeedMult(mult: any): any;
     SetDiscardedCallback(cb: any): any;
+    SetSwaps(build: any, symbol: any): any;
   }
 
   interface SaltLicker {
@@ -6293,13 +6293,13 @@ export namespace Component {
     salted: boolean;
     saltedduration: any;
     uses_per_lick: any;
+    GetDebugString(): any;
+    LoadPostPass(): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    SetSalted(salted: any): any;
     SetUp(uses_per_lick: any): any;
     Stop(): any;
-    OnRemoveFromEntity(): any;
-    SetSalted(salted: any): any;
-    OnSave(): any;
-    LoadPostPass(): any;
-    GetDebugString(): any;
   }
 
   interface Sanity {
@@ -6344,32 +6344,32 @@ export namespace Component {
     mount: any;
     aura_val: any;
     ghost_delta: any;
-    IsSane(): boolean;
-    IsInsane(): boolean;
-    IsEnlightened(): boolean;
-    IsCrazy(): boolean;
-    SetSanityMode(mode: any): any;
-    IsInsanityMode(): boolean;
-    IsLunacyMode(): boolean;
-    GetSanityMode(): any;
     AddSanityPenalty(key: any, mod: any): any;
-    RemoveSanityPenalty(key: any): any;
-    RecalculatePenalty(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
+    DoDelta(delta: any, overtime: any): any;
+    GetDebugString(): any;
+    GetMaxWithPenalty(): any;
     GetPenaltyPercent(): any;
     GetPercent(): any;
     GetPercentWithPenalty(): any;
-    SetPercent(per: any, overtime: any): any;
-    GetDebugString(): any;
-    SetMax(amount: any): any;
-    GetMaxWithPenalty(): any;
     GetRateScale(): any;
-    SetInducedInsanity(src: any, val: any): any;
-    DoDelta(delta: any, overtime: any): any;
+    GetSanityMode(): any;
+    IsCrazy(): boolean;
+    IsEnlightened(): boolean;
+    IsInsane(): boolean;
+    IsInsanityMode(): boolean;
+    IsLunacyMode(): boolean;
+    IsSane(): boolean;
+    OnLoad(data: any): any;
+    OnSave(): any;
     OnUpdate(dt: any): any;
-    RecalcGhostDrain(): any;
     Recalc(dt: any): any;
+    RecalcGhostDrain(): any;
+    RecalculatePenalty(): any;
+    RemoveSanityPenalty(key: any): any;
+    SetInducedInsanity(src: any, val: any): any;
+    SetMax(amount: any): any;
+    SetPercent(per: any, overtime: any): any;
+    SetSanityMode(mode: any): any;
   }
 
   interface SanityAura {
@@ -6378,15 +6378,15 @@ export namespace Component {
     aurafn: any;
     aura_val: number;
     distsq: any;
-    OnRemoveFromEntity(): any;
     GetAura(observer: any): any;
+    OnRemoveFromEntity(): any;
   }
 
   interface SavedRotation {
     inst: any;
     rot: any;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnSave(): any;
   }
 
   interface SavedScale {
@@ -6396,16 +6396,16 @@ export namespace Component {
     sz: any;
     data: any;
     scale: any;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnSave(): any;
   }
 
   interface Scaler {
     inst: any;
     scale: number;
     ApplyScale(): any;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnSave(): any;
     SetScale(scale: any): any;
   }
 
@@ -6415,12 +6415,12 @@ export namespace Component {
     script: any;
     hasrunonce: boolean;
     data: any;
+    ClearScenario(): any;
     OnLoad(data: any): any;
     OnSave(): any;
-    SetScript(name: any): any;
-    Run(): any;
-    ClearScenario(): any;
     Reset(): any;
+    Run(): any;
+    SetScript(name: any): any;
   }
 
   interface SelfStacker {
@@ -6430,8 +6430,8 @@ export namespace Component {
     num: any;
     to_combine: any;
     CanSelfStack(): boolean;
-    FindItemToStackWith(): any;
     DoStack(): any;
+    FindItemToStackWith(): any;
     OnEntityWake(): any;
   }
 
@@ -6442,15 +6442,15 @@ export namespace Component {
     say_task: any;
     warnlevel: number;
     waslow: boolean;
-    SetOwner(owner: any): any;
-    OnFinishedWork(target: any, action: any): any;
-    OnBeavernessDelta(old: any, _new: any): any;
-    OnBecomeHuman(): any;
-    OnBecomeBeaver(): any;
-    Say(list: any, sound_override: any, delay: any): any;
-    ShouldMakeConversation(): any;
-    ScheduleConversation(delay: any): any;
     MakeConversation(): any;
+    OnBeavernessDelta(old: any, _new: any): any;
+    OnBecomeBeaver(): any;
+    OnBecomeHuman(): any;
+    OnFinishedWork(target: any, action: any): any;
+    Say(list: any, sound_override: any, delay: any): any;
+    ScheduleConversation(delay: any): any;
+    SetOwner(owner: any): any;
+    ShouldMakeConversation(): any;
   }
 
   interface Sewing {
@@ -6489,10 +6489,10 @@ export namespace Component {
     z: any;
     num: any;
     speed: number;
+    DoMultiShed(max: any, random: any): any;
+    DoSingleShed(): any;
     StartShedding(interval: any): any;
     StopShedding(): any;
-    DoSingleShed(): any;
-    DoMultiShed(max: any, random: any): any;
   }
 
   interface Shelf {
@@ -6506,9 +6506,9 @@ export namespace Component {
     prevslot: any;
     prevcontainer: any;
     OnRemoveFromEntity(): any;
+    PutItemOnShelf(item: any): any;
     SetOnShelfItem(fn: any): any;
     SetOnTakeItem(fn: any): any;
-    PutItemOnShelf(item: any): any;
     TakeItem(taker: any): any;
   }
 
@@ -6523,12 +6523,12 @@ export namespace Component {
     y: any;
     z: any;
     ents: any;
+    GetDebugString(): any;
     OnRemoveFromEntity(): any;
+    OnUpdate(dt: any): any;
+    SetSheltered(issheltered: any): any;
     Start(): any;
     Stop(): any;
-    SetSheltered(issheltered: any): any;
-    OnUpdate(dt: any): any;
-    GetDebugString(): any;
   }
 
   interface Shop {
@@ -6539,9 +6539,9 @@ export namespace Component {
     y: any;
     z: any;
     physcsPT: any;
+    DeliverItems(items: any): any;
     SetStartTab(tab: any): any;
     SetTitle(title: any): any;
-    DeliverItems(items: any): any;
   }
 
   interface SinkholeSpawner {
@@ -6560,17 +6560,17 @@ export namespace Component {
     towarn: any;
     toattack: any;
     s: any;
+    DoTargetAttack(targetinfo: any): any;
+    DoTargetWarning(targetinfo: any): any;
+    GetDebugString(): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
+    OnUpdate(dt: any): any;
+    PushRemoteTargets(): any;
+    SpawnSinkhole(spawnpt: any): any;
     StartSinkholes(): any;
     StopSinkholes(): any;
     UpdateTarget(targetinfo: any): any;
-    DoTargetWarning(targetinfo: any): any;
-    DoTargetAttack(targetinfo: any): any;
-    SpawnSinkhole(spawnpt: any): any;
-    PushRemoteTargets(): any;
-    OnUpdate(dt: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    GetDebugString(): any;
   }
 
   interface SizeTweener {
@@ -6584,8 +6584,8 @@ export namespace Component {
     cb: any;
     s: any;
     EndTween(): any;
-    StartTween(size: any, time: any, callback: any): any;
     OnUpdate(dt: any): any;
+    StartTween(size: any, time: any, callback: any): any;
   }
 
   interface Skinner {
@@ -6596,17 +6596,17 @@ export namespace Component {
     base_skin: string;
     skin_data: any;
     skin_prefab: any;
-    GetSkinMode(): any;
-    SetSkinMode(skintype: any, default_build: any): any;
-    SetupNonPlayerData(): any;
-    SetSkinName(skin_name: any): any;
-    SetClothing(name: any): any;
-    GetClothing(): any;
-    HideAllClothing(anim_state: any): any;
     ClearAllClothing(): any;
     ClearClothing(type: any): any;
-    OnSave(): any;
+    GetClothing(): any;
+    GetSkinMode(): any;
+    HideAllClothing(anim_state: any): any;
     OnLoad(data: any): any;
+    OnSave(): any;
+    SetClothing(name: any): any;
+    SetSkinMode(skintype: any, default_build: any): any;
+    SetSkinName(skin_name: any): any;
+    SetupNonPlayerData(): any;
   }
 
   interface Sleeper {
@@ -6627,30 +6627,30 @@ export namespace Component {
     diminishingtask: any;
     wasasleep: any;
     testtime: any;
-    OnRemoveFromEntity(): any;
-    SetDefaultTests(): any;
-    StopTesting(): any;
-    SetNocturnal(b: any): any;
-    SetWakeTest(fn: any, time: any): any;
-    SetSleepTest(fn: any): any;
-    OnEntitySleep(): any;
-    OnEntityWake(): any;
-    SetResistance(resist: any): any;
-    StartTesting(time: any): any;
+    AddSleepiness(sleepiness: any, sleeptime: any): any;
+    GetDebugString(): any;
+    GetSleepTimeMultiplier(): any;
+    GetTimeAsleep(): any;
+    GetTimeAwake(): any;
+    GoToSleep(sleeptime: any): any;
     IsAsleep(): boolean;
     IsHibernating(): boolean;
     IsInDeepSleep(): boolean;
-    GetTimeAwake(): any;
-    GetTimeAsleep(): any;
-    GetDebugString(): any;
-    AddSleepiness(sleepiness: any, sleeptime: any): any;
-    SetExtraResist(resist: any): any;
-    GetSleepTimeMultiplier(): any;
-    GoToSleep(sleeptime: any): any;
-    SetTest(fn: any, time: any): any;
-    WakeUp(): any;
-    OnSave(): any;
+    OnEntitySleep(): any;
+    OnEntityWake(): any;
     OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    SetDefaultTests(): any;
+    SetExtraResist(resist: any): any;
+    SetNocturnal(b: any): any;
+    SetResistance(resist: any): any;
+    SetSleepTest(fn: any): any;
+    SetTest(fn: any, time: any): any;
+    SetWakeTest(fn: any, time: any): any;
+    StartTesting(time: any): any;
+    StopTesting(): any;
+    WakeUp(): any;
   }
 
   interface SleepingBag {
@@ -6675,8 +6675,8 @@ export namespace Component {
   interface SoulEater {
     inst: any;
     oneatsoulfn: any;
-    SetOnEatSoulFn(fn: any): any;
     EatSoul(soul: any): any;
+    SetOnEatSoulFn(fn: any): any;
   }
 
   interface Spawner {
@@ -6702,25 +6702,25 @@ export namespace Component {
     z: any;
     start_angle: any;
     offset: any;
-    OnRemoveFromEntity(): any;
+    CancelSpawning(): any;
+    Configure(childname: any, delay: any, startdelay: any): any;
     GetDebugString(): any;
+    GoHome(child: any): any;
+    IsOccupied(): boolean;
+    IsSpawnPending(): boolean;
+    LoadPostPass(newents: any, savedata: any): any;
+    OnChildKilled(child: any): any;
+    OnLoad(data: any, newents: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    ReleaseChild(): any;
     SetOnOccupiedFn(fn: any): any;
     SetOnVacateFn(fn: any): any;
-    SetWaterSpawning(spawn_in_water: any, spawn_on_boats: any): any;
     SetOnlySpawnOffscreen(offscreen: any): any;
-    Configure(childname: any, delay: any, startdelay: any): any;
-    SpawnWithDelay(delay: any): any;
-    IsSpawnPending(): boolean;
     SetQueueSpawning(queued: any, retryperiod: any): any;
-    CancelSpawning(): any;
-    OnSave(): any;
-    OnLoad(data: any, newents: any): any;
+    SetWaterSpawning(spawn_in_water: any, spawn_on_boats: any): any;
+    SpawnWithDelay(delay: any): any;
     TakeOwnership(child: any): any;
-    LoadPostPass(newents: any, savedata: any): any;
-    IsOccupied(): boolean;
-    ReleaseChild(): any;
-    GoHome(child: any): any;
-    OnChildKilled(child: any): any;
   }
 
   interface SpawnFader {
@@ -6728,9 +6728,9 @@ export namespace Component {
     fadeval: number;
     updating: boolean;
     k: any;
-    OnRemoveFromEntity(): any;
-    FadeIn(): any;
     Cancel(): any;
+    FadeIn(): any;
+    OnRemoveFromEntity(): any;
     OnUpdate(dt: any): any;
   }
 
@@ -6769,17 +6769,17 @@ export namespace Component {
     variables: any;
     data: any;
     timeleft: any;
-    OnStart(): any;
-    OnFinish(): any;
-    OnUpdate(dt: any): any;
-    OnTarget(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
     LoadPostPass(newents: any, data: any): any;
-    StartSpell(): any;
+    OnFinish(): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
+    OnStart(): any;
+    OnTarget(): any;
+    OnUpdate(dt: any): any;
     ResumeSpell(): any;
-    SetVariables(variables: any): any;
     SetTarget(target: any): any;
+    SetVariables(variables: any): any;
+    StartSpell(): any;
   }
 
   interface SpellCaster {
@@ -6799,11 +6799,11 @@ export namespace Component {
     px: any;
     py: any;
     pz: any;
-    OnRemoveFromEntity(): any;
-    SetSpellFn(fn: any): any;
-    SetOnSpellCastFn(fn: any): any;
-    CastSpell(target: any, pos: any): any;
     CanCast(doer: any, target: any, pos: any): boolean;
+    CastSpell(target: any, pos: any): any;
+    OnRemoveFromEntity(): any;
+    SetOnSpellCastFn(fn: any): any;
+    SetSpellFn(fn: any): any;
   }
 
   interface Spooked {
@@ -6823,9 +6823,9 @@ export namespace Component {
     y: any;
     z: any;
     fx: any;
+    GetDebugString(): any;
     ShouldSpook(): any;
     Spook(source: any): any;
-    GetDebugString(): any;
   }
 
   interface SquadMember {
@@ -6834,12 +6834,12 @@ export namespace Component {
     others: any;
     k: any;
     str: any;
-    IsInSquad(): boolean;
-    GetSquadName(): any;
+    GetDebugString(): any;
     GetOtherMembers(): any;
+    GetSquadName(): any;
+    IsInSquad(): boolean;
     JoinSquad(squadname: any): any;
     LeaveSquad(): any;
-    GetDebugString(): any;
   }
 
   interface Stackable {
@@ -6856,16 +6856,16 @@ export namespace Component {
     oldsize: any;
     newsize: any;
     numberadded: any;
-    IsStack(): boolean;
-    StackSize(): any;
+    Get(num: any): any;
     IsFull(): boolean;
-    OnSave(): any;
+    IsStack(): boolean;
     OnLoad(data: any): any;
+    OnSave(): any;
+    Put(item: any, source_pos: any): any;
+    RoomLeft(): any;
     SetOnDeStack(fn: any): any;
     SetStackSize(sz: any): any;
-    Get(num: any): any;
-    RoomLeft(): any;
-    Put(item: any, source_pos: any): any;
+    StackSize(): any;
   }
 
   interface SteeringWheel {
@@ -6874,12 +6874,12 @@ export namespace Component {
     onstartfn: any;
     onstopfn: any;
     sailor: any;
+    GetDebugString(): any;
+    OnRemoveFromEntity(): any;
     SetOnStartSteeringFn(fn: any): any;
     SetOnStopSteeringFn(fn: any): any;
     StartSteering(sailor: any): any;
     StopSteering(sailor: any): any;
-    OnRemoveFromEntity(): any;
-    GetDebugString(): any;
   }
 
   interface SteeringWheelUser {
@@ -6900,11 +6900,11 @@ export namespace Component {
     player_pos_x: any;
     player_pos_y: any;
     player_pos_z: any;
+    GetBoat(): any;
+    OnUpdate(dt: any): any;
     SetSteeringWheel(steering_wheel: any): any;
     Steer(pos_x: any, pos_z: any): any;
     SteerInDir(dir_x: any, dir_z: any): any;
-    GetBoat(): any;
-    OnUpdate(dt: any): any;
   }
 
   interface Stewer {
@@ -6930,21 +6930,21 @@ export namespace Component {
     recipe: any;
     stacksize: any;
     spoilpercent: any;
-    OnRemoveFromEntity(): any;
-    IsDone(): boolean;
-    IsSpoiling(): boolean;
-    IsCooking(): boolean;
+    CanCook(): boolean;
+    GetDebugString(): any;
+    GetRecipeForProduct(): any;
     GetTimeToCook(): any;
     GetTimeToSpoil(): any;
-    CanCook(): boolean;
-    GetRecipeForProduct(): any;
+    Harvest(harvester: any): any;
+    IsCooking(): boolean;
+    IsDone(): boolean;
+    IsSpoiling(): boolean;
+    LongUpdate(dt: any): any;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
     StartCooking(): any;
     StopCooking(reason: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    GetDebugString(): any;
-    Harvest(harvester: any): any;
-    LongUpdate(dt: any): any;
   }
 
   interface StormWatcher {
@@ -6953,11 +6953,11 @@ export namespace Component {
     sandstormspeedmult: number;
     delay: any;
     level: any;
-    ToggleSandstorms(active: any): any;
+    OnUpdate(dt: any): any;
     SetSandstormSpeedMultiplier(mult: any): any;
+    ToggleSandstorms(active: any): any;
     UpdateSandstormLevel(): any;
     UpdateSandstormWalkSpeed(): any;
-    OnUpdate(dt: any): any;
   }
 
   interface Stretcher {
@@ -6970,12 +6970,12 @@ export namespace Component {
     diff: any;
     scale: any;
     widthscale: any;
-    SetRestingLength(length: any): any;
-    SetWidthRatio(ratio: any): any;
-    SetStretchTarget(inst: any): any;
     OnEntitySleep(): any;
     OnEntityWake(): any;
     OnUpdate(dt: any): any;
+    SetRestingLength(length: any): any;
+    SetStretchTarget(inst: any): any;
+    SetWidthRatio(ratio: any): any;
   }
 
   interface Stunnable {
@@ -6989,9 +6989,9 @@ export namespace Component {
     valid_stun_time: number;
     totaldamage: number;
     toremove: any;
+    GetDamageInPeriod(): any;
     Stun(): any;
     TakeDamage(damage: any): any;
-    GetDamageInPeriod(): any;
   }
 
   interface Talkable {
@@ -7011,12 +7011,10 @@ export namespace Component {
     chatter: any;
     health: any;
     lines: any;
-    SetOffsetFn(fn: any): any;
-    MakeChatter(): any;
     Chatter(strtbl: any, strid: any, time: any, forcetext: any): any;
-    OnRemoveFromEntity(): any;
     IgnoreAll(source: any): any;
-    StopIgnoringAll(source: any): any;
+    MakeChatter(): any;
+    OnRemoveFromEntity(): any;
     Say(
       script: any,
       time: any,
@@ -7025,7 +7023,9 @@ export namespace Component {
       nobroadcast: any,
       colour: any
     ): any;
+    SetOffsetFn(fn: any): any;
     ShutUp(): any;
+    StopIgnoringAll(source: any): any;
   }
 
   interface Teacher {
@@ -7056,12 +7056,12 @@ export namespace Component {
     mypos: any;
     orders: any;
     GetDebugString(): any;
-    SearchForTeam(): any;
+    LeaveTeam(): any;
     OnEntitySleep(): any;
     OnEntityWake(): any;
-    ShouldGoHome(): any;
-    LeaveTeam(): any;
     OnUpdate(dt: any): any;
+    SearchForTeam(): any;
+    ShouldGoHome(): any;
   }
 
   interface TeamLeader {
@@ -7101,30 +7101,30 @@ export namespace Component {
     steps: any;
     temp: any;
     successfulorders: number;
-    GetTeamSize(): any;
-    SetUp(target: any, first_member: any): any;
-    OrganizeTeams(): any;
-    IsTeamFull(): boolean;
-    ValidMember(member: any): any;
-    DisbandTeam(): any;
-    TeamSizeControl(): any;
-    NewTeammate(member: any): any;
+    AllInState(state: any): any;
     BroadcastDistress(member: any): any;
-    OnLostTeammate(member: any): any;
     CanAttack(): boolean;
     CenterLeader(): any;
+    DisbandTeam(): any;
     GetFormationPositions(): any;
+    GetTeamSize(): any;
+    GetTheta(dt: any): any;
     GiveOrders(order: any, num: any): any;
     GiveOrdersToAllWithOrder(order: any, oldorder: any): any;
-    AllInState(state: any): any;
     IsTeamEmpty(): boolean;
-    SetNewThreat(threat: any): any;
-    GetTheta(dt: any): any;
-    SetAttackGrpSize(val: any): any;
-    NumberToAttack(): any;
+    IsTeamFull(): boolean;
     ManageChase(dt: any): any;
-    ValidateTeam(): any;
+    NewTeammate(member: any): any;
+    NumberToAttack(): any;
+    OnLostTeammate(member: any): any;
     OnUpdate(dt: any): any;
+    OrganizeTeams(): any;
+    SetAttackGrpSize(val: any): any;
+    SetNewThreat(threat: any): any;
+    SetUp(target: any, first_member: any): any;
+    TeamSizeControl(): any;
+    ValidMember(member: any): any;
+    ValidateTeam(): any;
   }
 
   interface Teleporter {
@@ -7145,22 +7145,22 @@ export namespace Component {
     pt: any;
     angle: any;
     targEnt: any;
-    OnRemoveFromEntity(): any;
+    Activate(doer: any): any;
+    GetDebugString(): any;
     IsActive(): boolean;
     IsBusy(): boolean;
     IsTargetBusy(): boolean;
-    RegisterTeleportee(doer: any): any;
-    UnregisterTeleportee(doer: any): any;
-    Activate(doer: any): any;
-    Teleport(obj: any): any;
+    LoadPostPass(newents: any, savedata: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
     PushDoneTeleporting(obj: any): any;
     ReceiveItem(item: any): any;
     ReceivePlayer(doer: any): any;
-    Target(otherTeleporter: any): any;
+    RegisterTeleportee(doer: any): any;
     SetEnabled(enabled: any): any;
-    OnSave(): any;
-    LoadPostPass(newents: any, savedata: any): any;
-    GetDebugString(): any;
+    Target(otherTeleporter: any): any;
+    Teleport(obj: any): any;
+    UnregisterTeleportee(doer: any): any;
   }
 
   interface Temperature {
@@ -7199,26 +7199,26 @@ export namespace Component {
     z: any;
     ents: any;
     overflow: any;
-    SetFreezingHurtRate(rate: any): any;
-    SetOverheatHurtRate(rate: any): any;
     DoDelta(delta: any): any;
-    SetTemperatureInBelly(delta: any, duration: any): any;
-    OnRemoveFromEntity(): any;
     GetCurrent(): any;
-    GetMax(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    IgnoreTags(): any;
-    SetTemp(temp: any): any;
-    SetTemperature(value: any): any;
     GetDebugString(): any;
+    GetInsulation(): any;
+    GetMax(): any;
+    GetMoisturePenalty(): any;
+    IgnoreTags(): any;
     IsFreezing(): boolean;
     IsOverheating(): boolean;
-    SetModifier(name: any, value: any): any;
-    RemoveModifier(name: any): any;
-    GetInsulation(): any;
-    GetMoisturePenalty(): any;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
     OnUpdate(dt: any, applyhealthdelta: any): any;
+    RemoveModifier(name: any): any;
+    SetFreezingHurtRate(rate: any): any;
+    SetModifier(name: any, value: any): any;
+    SetOverheatHurtRate(rate: any): any;
+    SetTemp(temp: any): any;
+    SetTemperature(value: any): any;
+    SetTemperatureInBelly(delta: any, duration: any): any;
   }
 
   interface Terraformer {
@@ -7248,9 +7248,17 @@ export namespace Component {
     timers: any;
     str: string;
     data: any;
-    OnRemoveFromEntity(): any;
     GetDebugString(): any;
-    TimerExists(name: any): any;
+    GetTimeElapsed(name: any): any;
+    GetTimeLeft(name: any): any;
+    IsPaused(name: any): boolean;
+    LongUpdate(dt: any): any;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    PauseTimer(name: any): any;
+    ResumeTimer(name: any): any;
+    SetTimeLeft(name: any, time: any): any;
     StartTimer(
       name: any,
       time: any,
@@ -7258,24 +7266,16 @@ export namespace Component {
       initialtime_override: any
     ): any;
     StopTimer(name: any): any;
-    IsPaused(name: any): boolean;
-    PauseTimer(name: any): any;
-    ResumeTimer(name: any): any;
-    GetTimeLeft(name: any): any;
-    SetTimeLeft(name: any, time: any): any;
-    GetTimeElapsed(name: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    LongUpdate(dt: any): any;
+    TimerExists(name: any): any;
   }
 
   interface Tool {
     inst: any;
     actions: any;
-    OnRemoveFromEntity(): any;
-    GetEffectiveness(action: any): any;
-    SetAction(action: any, effectiveness: any): any;
     CanDoAction(action: any): boolean;
+    GetEffectiveness(action: any): any;
+    OnRemoveFromEntity(): any;
+    SetAction(action: any, effectiveness: any): any;
   }
 
   interface TouchStoneTracker {
@@ -7284,11 +7284,11 @@ export namespace Component {
     used_foreign: any;
     str: string;
     data: any;
-    OnRemoveFromEntity(): any;
     GetDebugString(): any;
     IsUsed(touchstone: any): boolean;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
   }
 
   interface Tradable {
@@ -7304,16 +7304,16 @@ export namespace Component {
     test: any;
     abletoaccepttest: any;
     act: any;
-    OnRemoveFromEntity(): any;
-    IsTryingToTradeWithMe(inst: any): boolean;
-    Enable(): any;
-    Disable(): any;
-    SetAcceptTest(fn: any): any;
-    SetAbleToAcceptTest(fn: any): any;
     AbleToAccept(item: any, giver: any): any;
-    WantsToAccept(item: any, giver: any): any;
     AcceptGift(giver: any, item: any, count: any): any;
+    Disable(): any;
+    Enable(): any;
     GetDebugString(): any;
+    IsTryingToTradeWithMe(inst: any): boolean;
+    OnRemoveFromEntity(): any;
+    SetAbleToAcceptTest(fn: any): any;
+    SetAcceptTest(fn: any): any;
+    WantsToAccept(item: any, giver: any): any;
   }
 
   interface Transformer {
@@ -7339,25 +7339,25 @@ export namespace Component {
     refs: any;
     tar: any;
     GetDebugString(): any;
-    SetOnTransformFn(fn: any): any;
-    SetOnRevertFn(fn: any): any;
-    SetObjectData(data: any): any;
     GetObjectData(): any;
+    LoadPostPass(ents: any, data: any): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
     RemoveSleepEvents(): any;
-    SetRevertEvent(event: any, target: any): any;
-    SetTransformEvent(event: any, target: any): any;
-    SetRevertWorldEvent(event: any, value: any): any;
-    SetTransformWorldEvent(event: any, value: any): any;
-    SetOnLoadCheck(check: any): any;
-    Transform(): any;
-    TransformOnSleep(): any;
-    StartTransform(): any;
     Revert(): any;
     RevertOnSleep(): any;
+    SetObjectData(data: any): any;
+    SetOnLoadCheck(check: any): any;
+    SetOnRevertFn(fn: any): any;
+    SetOnTransformFn(fn: any): any;
+    SetRevertEvent(event: any, target: any): any;
+    SetRevertWorldEvent(event: any, value: any): any;
+    SetTransformEvent(event: any, target: any): any;
+    SetTransformWorldEvent(event: any, value: any): any;
     StartRevert(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    LoadPostPass(ents: any, data: any): any;
+    StartTransform(): any;
+    Transform(): any;
+    TransformOnSleep(): any;
   }
 
   interface TransparentOnSanity {
@@ -7402,33 +7402,33 @@ export namespace Component {
     pos: any;
     inventory: any;
     trap: any;
-    OnRemoveFromEntity(): any;
-    SetOnHarvestFn(fn: any): any;
-    SetOnSpringFn(fn: any): any;
+    AcceptingBait(): any;
+    BaitTaken(eater: any): any;
+    DoSpring(): any;
     GetDebugString(): any;
-    SetOnBaitedFn(fn: any): any;
-    IsFree(): boolean;
+    Harvest(doer: any): any;
     IsBaited(): boolean;
-    Reset(sprung: any): any;
-    Set(): any;
-    StopUpdating(): any;
-    StartUpdate(): any;
+    IsFree(): boolean;
+    IsSprung(): boolean;
+    LoadPostPass(newents: any, savedata: any): any;
     OnEntitySleep(): any;
     OnEntityWake(): any;
-    OnUpdate(dt: any): any;
-    OnTrappedStarve(): any;
-    StartStarvation(): any;
-    StopStarvation(): any;
-    DoSpring(): any;
-    IsSprung(): boolean;
-    Harvest(doer: any): any;
-    RemoveBait(): any;
-    SetBait(bait: any): any;
-    BaitTaken(eater: any): any;
-    AcceptingBait(): any;
-    OnSave(): any;
     OnLoad(data: any): any;
-    LoadPostPass(newents: any, savedata: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    OnTrappedStarve(): any;
+    OnUpdate(dt: any): any;
+    RemoveBait(): any;
+    Reset(sprung: any): any;
+    Set(): any;
+    SetBait(bait: any): any;
+    SetOnBaitedFn(fn: any): any;
+    SetOnHarvestFn(fn: any): any;
+    SetOnSpringFn(fn: any): any;
+    StartStarvation(): any;
+    StartUpdate(): any;
+    StopStarvation(): any;
+    StopUpdating(): any;
   }
 
   interface Tributable {
@@ -7442,11 +7442,11 @@ export namespace Component {
     data: any;
     GetDebugString(): any;
     HasPendingReward(): boolean;
-    OnGivenReward(): any;
     OnAccept(value: any, tributer: any): any;
+    OnGivenReward(): any;
+    OnLoad(data: any): any;
     OnRefuse(): any;
     OnSave(): any;
-    OnLoad(data: any): any;
   }
 
   interface UIAnim {
@@ -7488,13 +7488,12 @@ export namespace Component {
     a: any;
     rot: any;
     rot_whendonefn: any;
-    FinishCurrentTint(): any;
-    TintTo(start: any, dest: any, duration: any, whendone: any): any;
-    FinishCurrentScale(): any;
-    ScaleTo(start: any, dest: any, duration: any, whendone: any): any;
     CancelMoveTo(run_complete_fn: any): any;
-    MoveTo(start: any, dest: any, duration: any, whendone: any): any;
     CancelRotateTo(run_complete_fn: any): any;
+    FinishCurrentScale(): any;
+    FinishCurrentTint(): any;
+    MoveTo(start: any, dest: any, duration: any, whendone: any): any;
+    OnWallUpdate(dt: any): any;
     RotateTo(
       start: any,
       dest: any,
@@ -7502,7 +7501,8 @@ export namespace Component {
       whendone: any,
       infinite: any
     ): any;
-    OnWallUpdate(dt: any): any;
+    ScaleTo(start: any, dest: any, duration: any, whendone: any): any;
+    TintTo(start: any, dest: any, duration: any, whendone: any): any;
   }
 
   interface UnevenGround {
@@ -7512,30 +7512,30 @@ export namespace Component {
     detectradius: number;
     detectperiod: number;
     detecttask: any;
+    Disable(): any;
+    Enable(): any;
+    OnEntityWake(): any;
     Start(): any;
     Stop(): any;
-    Enable(): any;
-    Disable(): any;
-    OnEntityWake(): any;
   }
 
   interface UniqueID {
     inst: any;
     id: any;
     task: any;
-    OnSave(): any;
-    OnLoad(data: any): any;
     GetDebugString(): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
   }
 
   interface UniquePrefabIDs {
     inst: any;
     topprefabids: any;
     s: string;
-    GetNextID(prefabname: any): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
     GetDebugString(): any;
+    GetNextID(prefabname: any): any;
+    OnLoad(data: any): any;
+    OnSave(): any;
   }
 
   interface Unsaddler {}
@@ -7551,25 +7551,25 @@ export namespace Component {
     doerpos: any;
     offset: any;
     creator: any;
-    SetOnWrappedFn(fn: any): any;
-    SetOnUnwrappedFn(fn: any): any;
-    WrapItems(items: any, doer: any): any;
-    Unwrap(doer: any): any;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnSave(): any;
+    SetOnUnwrappedFn(fn: any): any;
+    SetOnWrappedFn(fn: any): any;
+    Unwrap(doer: any): any;
+    WrapItems(items: any, doer: any): any;
   }
 
   interface UpdateLooper {
     inst: any;
     onupdatefns: any;
     longupdatefns: any;
-    OnRemoveFromEntity(): any;
-    AddOnUpdateFn(fn: any): any;
-    RemoveOnUpdateFn(fn: any): any;
     AddLongUpdateFn(fn: any): any;
-    RemoveLongUpdateFn(fn: any): any;
-    OnUpdate(dt: any): any;
+    AddOnUpdateFn(fn: any): any;
     LongUpdate(dt: any): any;
+    OnRemoveFromEntity(): any;
+    OnUpdate(dt: any): any;
+    RemoveLongUpdateFn(fn: any): any;
+    RemoveOnUpdateFn(fn: any): any;
   }
 
   interface Upgradeable {
@@ -7582,12 +7582,12 @@ export namespace Component {
     upgradesperstage: number;
     numupgrades: number;
     data: any;
-    SetStage(num: any): any;
     AdvanceStage(): any;
     CanUpgrade(): boolean;
-    Upgrade(obj: any): any;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnSave(): any;
+    SetStage(num: any): any;
+    Upgrade(obj: any): any;
   }
 
   interface Upgrader {
@@ -7603,10 +7603,10 @@ export namespace Component {
     onstopusefn: any;
     inuse: boolean;
     stopuseevents: any;
-    OnRemoveFromEntity(): any;
-    SetOnUseFn(fn: any): any;
-    SetOnStopUseFn(fn: any): any;
     CanInteract(): boolean;
+    OnRemoveFromEntity(): any;
+    SetOnStopUseFn(fn: any): any;
+    SetOnUseFn(fn: any): any;
     StartUsingItem(): any;
     StopUsingItem(): any;
   }
@@ -7615,11 +7615,11 @@ export namespace Component {
     inst: any;
     deleteitemonaccept: boolean;
     enabled: boolean;
-    OnRemoveFromEntity(): any;
-    Enable(): any;
-    Disable(): any;
     Decorate(giver: any, item: any): any;
+    Disable(): any;
+    Enable(): any;
     GetDebugString(): any;
+    OnRemoveFromEntity(): any;
   }
 
   interface VaseDecoration {}
@@ -7658,40 +7658,40 @@ export namespace Component {
     platform_z: any;
     bias: number;
     platform_radius_sq: any;
-    OnUpdate(dt: any): any;
     CanBeWalkedOn(): boolean;
-    DestroyObjectsOnPlatform(): any;
-    GetEntitiesOnPlatform(must_have_tags: any, ignore_tags: any): any;
-    GetEmbarkPosition(embarker_x: any, embarker_z: any): any;
-    UpdatePositions(): any;
     CollectEntitiesOnPlatform(check_previous_objects: any): any;
+    DestroyObjectsOnPlatform(): any;
+    GetEmbarkPosition(embarker_x: any, embarker_z: any): any;
+    GetEntitiesOnPlatform(must_have_tags: any, ignore_tags: any): any;
+    OnUpdate(dt: any): any;
     TriggerEvents(): any;
+    UpdatePositions(): any;
   }
 
   interface WalkablePlatformManager {
     inst: any;
     walkable_platforms: any;
     AddPlatform(platform: any): any;
-    RemovePlatform(platform: any): any;
     PostUpdate(dt: any): any;
+    RemovePlatform(platform: any): any;
   }
 
   interface WalkingPlank {
     inst: any;
     doer: any;
-    OnRemoveFromEntity(): any;
-    Extend(): any;
-    Retract(): any;
-    MountPlank(doer: any): any;
-    StopMounting(): any;
     AbandonShip(doer: any): any;
+    Extend(): any;
+    MountPlank(doer: any): any;
+    OnRemoveFromEntity(): any;
+    Retract(): any;
+    StopMounting(): any;
   }
 
   interface WalkingPlankUser {
     inst: any;
     current_plank: any;
-    SetCurrentPlank(plank: any): any;
     Dismount(): any;
+    SetCurrentPlank(plank: any): any;
   }
 
   interface Wardrobe {
@@ -7710,21 +7710,21 @@ export namespace Component {
     onclosewardrobe: any;
     wasclosed: any;
     toend: any;
-    SetCanUseAction(canuseaction: any): any;
-    SetCanBeDressed(canbedressed: any): any;
-    Enable(enable: any): any;
-    SetCanBeShared(canbeshared: any): any;
-    SetRange(range: any): any;
-    SetChangeInDelay(delay: any): any;
-    CanBeginChanging(doer: any): boolean;
-    BeginChanging(doer: any): any;
-    EndChanging(doer: any): any;
-    EndAllChanging(): any;
     ActivateChanging(doer: any, skins: any): any;
-    ApplyTargetSkins(target: any, doer: any, skins: any): any;
     ApplySkins(doer: any, diff: any): any;
-    OnUpdate(dt: any): any;
+    ApplyTargetSkins(target: any, doer: any, skins: any): any;
+    BeginChanging(doer: any): any;
+    CanBeginChanging(doer: any): boolean;
+    Enable(enable: any): any;
+    EndAllChanging(): any;
+    EndChanging(doer: any): any;
     OnRemoveFromEntity(): any;
+    OnUpdate(dt: any): any;
+    SetCanBeDressed(canbedressed: any): any;
+    SetCanBeShared(canbeshared: any): any;
+    SetCanUseAction(canuseaction: any): any;
+    SetChangeInDelay(delay: any): any;
+    SetRange(range: any): any;
   }
 
   interface WaterPhysics {
@@ -7735,8 +7735,8 @@ export namespace Component {
   interface WaterProofer {
     inst: any;
     effectiveness: number;
-    OnRemoveFromEntity(): any;
     GetEffectiveness(): any;
+    OnRemoveFromEntity(): any;
     SetEffectiveness(val: any): any;
   }
 
@@ -7754,6 +7754,7 @@ export namespace Component {
     y: any;
     z: any;
     AddIgnoreTag(tag: any): any;
+    SpreadProtection(inst: any, dist: any, noextinguish: any): any;
     SpreadProtectionAtPoint(
       x: any,
       y: any,
@@ -7761,7 +7762,6 @@ export namespace Component {
       dist: any,
       noextinguish: any
     ): any;
-    SpreadProtection(inst: any, dist: any, noextinguish: any): any;
   }
 
   interface WaveManager {
@@ -7785,14 +7785,14 @@ export namespace Component {
     row_radius: any;
     col_radius: any;
     radius: any;
+    OnLoad(data: any): any;
+    OnSave(): any;
     OnUpdate(dt: any): any;
     SetWaveSettings(
       shimmer_per_sec: any,
       ripple_per_sec: any,
       camera_per_sec: any
     ): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
   }
 
   interface Weapon {
@@ -7806,18 +7806,18 @@ export namespace Component {
     stimuli: string;
     overridestimulifn: any;
     proj: any;
+    CanRangedAttack(): boolean;
+    LaunchProjectile(attacker: any, target: any): any;
+    OnAttack(attacker: any, target: any, projectile: any): any;
     OnRemoveFromEntity(): any;
+    SetAttackCallback(fn: any): any;
     SetDamage(dmg: any): any;
-    SetRange(attack: any, hit: any): any;
+    SetElectric(): any;
     SetOnAttack(fn: any): any;
     SetOnProjectileLaunch(fn: any): any;
-    SetProjectile(projectile: any): any;
-    SetElectric(): any;
     SetOverrideStimuliFn(fn: any): any;
-    CanRangedAttack(): boolean;
-    SetAttackCallback(fn: any): any;
-    OnAttack(attacker: any, target: any, projectile: any): any;
-    LaunchProjectile(attacker: any, target: any): any;
+    SetProjectile(projectile: any): any;
+    SetRange(attack: any, hit: any): any;
   }
 
   interface WereBeast {
@@ -7828,18 +7828,18 @@ export namespace Component {
     triggerlimit: any;
     triggeramount: any;
     remaining: any;
-    OnRemoveFromEntity(): any;
-    SetOnWereFn(fn: any): any;
-    SetOnNormalFn(fn: any): any;
-    SetTriggerLimit(limit: any): any;
-    TriggerDelta(amount: any): any;
-    ResetTriggers(): any;
-    SetWere(time: any): any;
-    SetNormal(): any;
-    IsInWereState(): boolean;
-    OnSave(): any;
-    OnLoad(data: any): any;
     GetDebugString(): any;
+    IsInWereState(): boolean;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    ResetTriggers(): any;
+    SetNormal(): any;
+    SetOnNormalFn(fn: any): any;
+    SetOnWereFn(fn: any): any;
+    SetTriggerLimit(limit: any): any;
+    SetWere(time: any): any;
+    TriggerDelta(amount: any): any;
   }
 
   interface Winter_TreeSeed {
@@ -7853,8 +7853,8 @@ export namespace Component {
     previousgiftday: any;
     GetDaysSinceLastGift(): any;
     OnGiftGiven(): any;
-    OnSave(): any;
     OnLoad(data: any): any;
+    OnSave(): any;
   }
 
   interface Wisecracker {
@@ -7886,22 +7886,22 @@ export namespace Component {
     t: any;
     data: any;
     s: any;
-    OnRemoveFromEntity(): any;
-    Enable(enable: any): any;
-    IsWithered(): boolean;
-    IsProtected(): boolean;
-    CanWither(): boolean;
     CanRejuvenate(): boolean;
-    ForceWither(): any;
-    ForceRejuvenate(): any;
-    DelayWither(delay: any): any;
+    CanWither(): boolean;
     DelayRejuvenate(delay: any): any;
+    DelayWither(delay: any): any;
+    Enable(enable: any): any;
+    ForceRejuvenate(): any;
+    ForceWither(): any;
+    GetDebugString(): any;
+    IsProtected(): boolean;
+    IsWithered(): boolean;
+    OnLoad(data: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
     Protect(duration: any): any;
     Start(): any;
     Stop(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    GetDebugString(): any;
   }
 
   interface Workable {
@@ -7917,36 +7917,36 @@ export namespace Component {
     lastworktime: any;
     isplant: any;
     pos: any;
-    OnRemoveFromEntity(): any;
-    GetDebugString(): any;
-    SetWorkAction(act: any): any;
-    GetWorkAction(): any;
-    Destroy(destroyer: any): any;
-    SetWorkable(able: any): any;
-    SetWorkLeft(work: any): any;
     CanBeWorked(): boolean;
-    SetOnLoadFn(fn: any): any;
-    SetMaxWork(work: any): any;
-    OnSave(): any;
+    Destroy(destroyer: any): any;
+    GetDebugString(): any;
+    GetWorkAction(): any;
     OnLoad(data: any): any;
-    WorkedBy(worker: any, numworks: any): any;
-    SetOnWorkCallback(fn: any): any;
+    OnRemoveFromEntity(): any;
+    OnSave(): any;
+    SetMaxWork(work: any): any;
     SetOnFinishCallback(fn: any): any;
+    SetOnLoadFn(fn: any): any;
+    SetOnWorkCallback(fn: any): any;
+    SetWorkAction(act: any): any;
+    SetWorkLeft(work: any): any;
+    SetWorkable(able: any): any;
+    WorkedBy(worker: any, numworks: any): any;
   }
 
   interface Worker {
     inst: any;
     actions: any;
+    CanDoAction(action: any): boolean;
     GetEffectiveness(action: any): any;
     SetAction(action: any, effectiveness: any): any;
-    CanDoAction(action: any): boolean;
   }
 
   interface WorkMultiplier {
     inst: any;
     actions: any;
-    GetMultiplier(action: any): any;
     AddMultiplier(action: any, multiplier: any, source: any): any;
+    GetMultiplier(action: any): any;
     RemoveMultiplier(action: any, source: any): any;
   }
 
@@ -7963,23 +7963,23 @@ export namespace Component {
     id: any;
     linkedWorld: any;
     receivedPortal: any;
-    SetDestinationWorld(world: any, permanent: any): any;
-    SetEnabled(t: any): any;
-    SetReceivedPortal(fromworld: any, fromportal: any): any;
-    GetStatusString(): any;
-    ValidateAndPushEvents(): any;
-    IsBound(): boolean;
-    SetID(id: any): any;
-    IsDestinationForPortal(otherWorld: any, otherPortal: any): boolean;
-    IsAvailableForLinking(): boolean;
-    IsLinked(): boolean;
-    IsActive(): boolean;
-    IsFull(): boolean;
     Activate(doer: any): any;
     ActivatedByOther(): any;
-    OnSave(): any;
-    OnLoad(data: any): any;
     GetDebugString(): any;
+    GetStatusString(): any;
+    IsActive(): boolean;
+    IsAvailableForLinking(): boolean;
+    IsBound(): boolean;
+    IsDestinationForPortal(otherWorld: any, otherPortal: any): boolean;
+    IsFull(): boolean;
+    IsLinked(): boolean;
+    OnLoad(data: any): any;
+    OnSave(): any;
+    SetDestinationWorld(world: any, permanent: any): any;
+    SetEnabled(t: any): any;
+    SetID(id: any): any;
+    SetReceivedPortal(fromworld: any, fromportal: any): any;
+    ValidateAndPushEvents(): any;
   }
 
   interface WorldOverseer {
@@ -8012,28 +8012,28 @@ export namespace Component {
     client_table: any;
     current_players: any;
     resumed_from_suspend: any;
-    OnCyclesChanged(cycles: any): any;
-    OnClockTick(data: any): any;
-    RecordPlayerJoined(player: any): any;
-    RecordPlayerLeft(player: any): any;
     CalcIndividualPlayerStats(player: any): any;
     CalcPlayerStats(): any;
     DumpIndividualPlayerStats(stat: any, event: any): any;
     DumpPlayerStats(): any;
-    OnPlayerDeath(player: any, data: any): any;
-    OnPlayerChangedSkin(player: any, data: any): any;
-    OnItemCrafted(player: any, data: any): any;
-    OnEquipSkinnedItem(player: any, data: any): any;
-    OnUnequipSkinnedItem(player: any, data: any): any;
-    GetWorldRecipeItems(): any;
     DumpSessionStats(): any;
-    OnPlayerJoined(src: any, player: any): any;
-    OnPlayerLeft(src: any, player: any): any;
+    GetWorldRecipeItems(): any;
     Heartbeat(): any;
     HeartbeatPoll(): any;
+    OnClockTick(data: any): any;
+    OnCyclesChanged(cycles: any): any;
+    OnEquipSkinnedItem(player: any, data: any): any;
+    OnItemCrafted(player: any, data: any): any;
+    OnPlayerChangedSkin(player: any, data: any): any;
+    OnPlayerDeath(player: any, data: any): any;
+    OnPlayerJoined(src: any, player: any): any;
+    OnPlayerLeft(src: any, player: any): any;
+    OnUnequipSkinnedItem(player: any, data: any): any;
     QuitAll(): any;
-    SendClientJoin(userid: any, data: any): any;
+    RecordPlayerJoined(player: any): any;
+    RecordPlayerLeft(player: any): any;
     SendClientHeartBeat(userid: any, data: any): any;
+    SendClientJoin(userid: any, data: any): any;
     SendClientQuit(userid: any, data: any): any;
   }
 
@@ -8042,12 +8042,12 @@ export namespace Component {
     velocity: number;
     angle: any;
     timeToWindChange: number;
-    Start(): any;
-    Stop(): any;
+    GetDebugString(): any;
     GetWindAngle(): any;
     GetWindVelocity(): any;
-    GetDebugString(): any;
     OnUpdate(dt: any): any;
+    Start(): any;
+    Stop(): any;
   }
 
   interface Writeable {
@@ -8061,17 +8061,17 @@ export namespace Component {
     netid: any;
     ClientObjs: any;
     getspecialdescription: any;
-    OnSave(): any;
-    OnLoad(data: any): any;
-    GetText(viewer: any): any;
-    SetText(text: any): any;
     BeginWriting(doer: any): any;
-    IsWritten(): boolean;
-    IsBeingWritten(): boolean;
-    Write(doer: any, text: any): any;
     EndWriting(): any;
-    OnUpdate(dt: any): any;
+    GetText(viewer: any): any;
+    IsBeingWritten(): boolean;
+    IsWritten(): boolean;
+    OnLoad(data: any): any;
     OnRemoveFromEntity(): any;
+    OnSave(): any;
+    OnUpdate(dt: any): any;
+    SetText(text: any): any;
+    Write(doer: any, text: any): any;
   }
 }
 

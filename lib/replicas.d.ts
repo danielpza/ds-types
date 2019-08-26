@@ -12,36 +12,36 @@ export namespace Replica {
     has_tech: boolean;
     inventory: any;
     overflow: any;
-    OnRemoveFromEntity(): any;
-    AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    SetScienceBonus(sciencebonus: any): any;
-    ScienceBonus(): any;
-    SetMagicBonus(magicbonus: any): any;
-    MagicBonus(): any;
-    SetAncientBonus(ancientbonus: any): any;
-    AncientBonus(): any;
-    SetShadowBonus(shadowbonus: any): any;
-    ShadowBonus(): any;
-    SetIngredientMod(ingredientmod: any): any;
-    IngredientMod(): any;
-    SetIsFreeBuildMode(isfreebuildmode: any): any;
-    SetTechTrees(techlevels: any): any;
-    GetTechTrees(): any;
     AddRecipe(recipename: any): any;
-    RemoveRecipe(recipename: any): any;
+    AncientBonus(): any;
+    AttachClassified(classified: any): any;
     BufferBuild(recipename: any): any;
-    SetIsBuildBuffered(recipename: any, isbuildbuffered: any): any;
-    IsBuildBuffered(recipename: any): boolean;
+    CanBuild(recipename: any): boolean;
+    CanBuildAtPoint(pt: any, recipe: any, rot: any): boolean;
+    CanLearn(recipename: any): boolean;
+    DetachClassified(): any;
+    GetTechTrees(): any;
     HasCharacterIngredient(ingredient: any): boolean;
     HasTechIngredient(ingredient: any): boolean;
-    KnowsRecipe(recipename: any): boolean;
-    CanBuild(recipename: any): boolean;
-    CanLearn(recipename: any): boolean;
-    CanBuildAtPoint(pt: any, recipe: any, rot: any): boolean;
-    MakeRecipeFromMenu(recipe: any, skin: any): any;
-    MakeRecipeAtPoint(recipe: any, pt: any, rot: any, skin: any): any;
+    IngredientMod(): any;
+    IsBuildBuffered(recipename: any): boolean;
     IsBusy(): boolean;
+    KnowsRecipe(recipename: any): boolean;
+    MagicBonus(): any;
+    MakeRecipeAtPoint(recipe: any, pt: any, rot: any, skin: any): any;
+    MakeRecipeFromMenu(recipe: any, skin: any): any;
+    OnRemoveFromEntity(): any;
+    RemoveRecipe(recipename: any): any;
+    ScienceBonus(): any;
+    SetAncientBonus(ancientbonus: any): any;
+    SetIngredientMod(ingredientmod: any): any;
+    SetIsBuildBuffered(recipename: any, isbuildbuffered: any): any;
+    SetIsFreeBuildMode(isfreebuildmode: any): any;
+    SetMagicBonus(magicbonus: any): any;
+    SetScienceBonus(sciencebonus: any): any;
+    SetShadowBonus(shadowbonus: any): any;
+    SetTechTrees(techlevels: any): any;
+    ShadowBonus(): any;
   }
 
   interface Combat {
@@ -57,30 +57,30 @@ export namespace Replica {
     leader: any;
     combat: any;
     sanity: any;
-    OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    SetTarget(target: any): any;
-    GetTarget(): any;
-    SetLastTarget(target: any): any;
-    IsRecentTarget(target: any): boolean;
-    SetIsPanic(ispanic: any): any;
-    SetAttackRange(attackrange: any): any;
-    GetAttackRangeWithWeapon(): any;
-    GetWeapon(): any;
-    SetMinAttackPeriod(minattackperiod: any): any;
-    MinAttackPeriod(): any;
-    SetCanAttack(canattack: any): any;
-    StartAttack(): any;
-    CancelAttack(): any;
     CanAttack(target: any): boolean;
-    CanExtinguishTarget(target: any, weapon: any): boolean;
-    CanLightTarget(target: any, weapon: any): boolean;
-    CanHitTarget(target: any): boolean;
-    IsValidTarget(target: any): boolean;
-    CanTarget(target: any): boolean;
-    IsAlly(guy: any): boolean;
     CanBeAttacked(attacker: any): boolean;
+    CanExtinguishTarget(target: any, weapon: any): boolean;
+    CanHitTarget(target: any): boolean;
+    CanLightTarget(target: any, weapon: any): boolean;
+    CanTarget(target: any): boolean;
+    CancelAttack(): any;
+    DetachClassified(): any;
+    GetAttackRangeWithWeapon(): any;
+    GetTarget(): any;
+    GetWeapon(): any;
+    IsAlly(guy: any): boolean;
+    IsRecentTarget(target: any): boolean;
+    IsValidTarget(target: any): boolean;
+    MinAttackPeriod(): any;
+    OnRemoveFromEntity(): any;
+    SetAttackRange(attackrange: any): any;
+    SetCanAttack(canattack: any): any;
+    SetIsPanic(ispanic: any): any;
+    SetLastTarget(target: any): any;
+    SetMinAttackPeriod(minattackperiod: any): any;
+    SetTarget(target: any): any;
+    StartAttack(): any;
   }
 
   interface ConstructionSite {
@@ -93,14 +93,14 @@ export namespace Replica {
       persists: boolean;
     };
     ondetachclassified: any;
-    OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
     DetachClassified(): any;
+    GetIngredients(): any;
+    GetSlotCount(slot: any): any;
+    IsBuilder(guy: any): boolean;
+    OnRemoveFromEntity(): any;
     SetBuilder(builder: any): any;
     SetSlotCount(slot: any, num: any): any;
-    IsBuilder(guy: any): boolean;
-    GetSlotCount(slot: any): any;
-    GetIngredients(): any;
   }
 
   interface Container {
@@ -141,110 +141,110 @@ export namespace Replica {
     };
     ondetachclassified: any;
     inv: any;
-    OnRemoveFromEntity(): any;
+    AcceptsStacks(): boolean;
+    AddAllOfActiveItemToSlot(slot: any): any;
+    AddOneOfActiveItemToSlot(slot: any): any;
     AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    WidgetSetup(prefab: any, data: any): any;
-    GetWidget(): any;
-    SetNumSlots(numslots: any): any;
-    GetNumSlots(): any;
-    SetCanBeOpened(canbeopened: any): any;
     CanBeOpened(): boolean;
     CanTakeItemInSlot(item: any, slot: any): boolean;
-    GetSpecificSlotForItem(item: any): any;
-    AcceptsStacks(): boolean;
-    IsSideWidget(): boolean;
-    SetOpener(opener: any): any;
-    IsOpenedBy(guy: any): boolean;
-    IsHolding(item: any, checkcontainer: any): boolean;
+    Close(): any;
+    DetachClassified(): any;
     GetItemInSlot(slot: any): any;
     GetItems(): any;
+    GetNumSlots(): any;
+    GetSpecificSlotForItem(item: any): any;
+    GetWidget(): any;
+    Has(prefab: any, amount: any): boolean;
+    IsBusy(): boolean;
     IsEmpty(): boolean;
     IsFull(): boolean;
-    Has(prefab: any, amount: any): boolean;
-    Open(doer: any): any;
-    Close(): any;
-    IsBusy(): boolean;
-    PutOneOfActiveItemInSlot(slot: any): any;
-    PutAllOfActiveItemInSlot(slot: any): any;
-    TakeActiveItemFromHalfOfSlot(slot: any): any;
-    TakeActiveItemFromAllOfSlot(slot: any): any;
-    AddOneOfActiveItemToSlot(slot: any): any;
-    AddAllOfActiveItemToSlot(slot: any): any;
-    SwapActiveItemWithSlot(slot: any): any;
+    IsHolding(item: any, checkcontainer: any): boolean;
+    IsOpenedBy(guy: any): boolean;
+    IsSideWidget(): boolean;
     MoveItemFromAllOfSlot(slot: any, container: any): any;
     MoveItemFromHalfOfSlot(slot: any, container: any): any;
+    OnRemoveFromEntity(): any;
+    Open(doer: any): any;
+    PutAllOfActiveItemInSlot(slot: any): any;
+    PutOneOfActiveItemInSlot(slot: any): any;
+    SetCanBeOpened(canbeopened: any): any;
+    SetNumSlots(numslots: any): any;
+    SetOpener(opener: any): any;
+    SwapActiveItemWithSlot(slot: any): any;
+    TakeActiveItemFromAllOfSlot(slot: any): any;
+    TakeActiveItemFromHalfOfSlot(slot: any): any;
+    WidgetSetup(prefab: any, data: any): any;
   }
 
   interface Equippable {
     inst: any;
     restrictedtag: any;
-    SetEquipSlot(eslot: any): any;
     EquipSlot(): any;
     IsEquipped(): boolean;
     IsRestricted(target: any): boolean;
+    SetEquipSlot(eslot: any): any;
   }
 
   interface FishingRod {
     inst: any;
-    SetTarget(target: any): any;
     GetTarget(): any;
-    SetHookedFish(hookedfish: any): any;
+    HasCaughtFish(): boolean;
     HasHookedFish(): boolean;
     SetCaughtFish(caughtfish: any): any;
-    HasCaughtFish(): boolean;
+    SetHookedFish(hookedfish: any): any;
+    SetTarget(target: any): any;
   }
 
   interface Follower {
     inst: any;
-    SetLeader(leader: any): any;
     GetLeader(): any;
+    SetLeader(leader: any): any;
   }
 
   interface Health {
     inst: any;
     classified: any;
     ondetachclassified: any;
-    OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
+    CanHeal(): boolean;
+    CanMurder(): boolean;
     DetachClassified(): any;
-    SetCurrent(current: any): any;
-    SetMax(max: any): any;
-    SetPenalty(penalty: any): any;
-    Max(): any;
-    MaxWithPenalty(): any;
-    GetPercent(): any;
     GetCurrent(): any;
     GetPenaltyPercent(): any;
-    IsHurt(): boolean;
-    SetIsFull(isfull: any): any;
-    IsFull(): boolean;
-    SetIsDead(isdead: any): any;
+    GetPercent(): any;
     IsDead(): boolean;
-    SetIsTakingFireDamage(istakingfiredamage: any): any;
+    IsFull(): boolean;
+    IsHurt(): boolean;
     IsTakingFireDamage(): boolean;
-    SetIsTakingFireDamageLow(istakingfiredamagelow: any): any;
-    IsTakingFireDamageLow(): boolean;
     IsTakingFireDamageFull(): boolean;
+    IsTakingFireDamageLow(): boolean;
+    Max(): any;
+    MaxWithPenalty(): any;
+    OnRemoveFromEntity(): any;
     SetCanHeal(canheal: any): any;
-    CanHeal(): boolean;
     SetCanMurder(canmurder: any): any;
-    CanMurder(): boolean;
+    SetCurrent(current: any): any;
+    SetIsDead(isdead: any): any;
+    SetIsFull(isfull: any): any;
+    SetIsTakingFireDamage(istakingfiredamage: any): any;
+    SetIsTakingFireDamageLow(istakingfiredamagelow: any): any;
+    SetMax(max: any): any;
+    SetPenalty(penalty: any): any;
   }
 
   interface Hunger {
     inst: any;
     classified: any;
     ondetachclassified: any;
-    OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
     DetachClassified(): any;
+    GetCurrent(): any;
+    GetPercent(): any;
+    IsStarving(): boolean;
+    Max(): any;
+    OnRemoveFromEntity(): any;
     SetCurrent(current: any): any;
     SetMax(max: any): any;
-    Max(): any;
-    GetPercent(): any;
-    GetCurrent(): any;
-    IsStarving(): boolean;
   }
 
   interface Inventory {
@@ -282,7 +282,7 @@ export namespace Replica {
       EquipActiveItem: any;
       EquipActionItem: any;
       SwapEquipWithActiveItem: any;
-      TakeActiveItemFromEquipSlots: any;
+      TakeActiveItemFromEquipSlot: any;
       MoveItemFromAllOfSlot: any;
       MoveItemFromHalfOfSlot: any;
       QueueRefresh: any;
@@ -299,52 +299,52 @@ export namespace Replica {
     rebuild_pending: boolean;
     rebuild_snapping: boolean;
     containers: any;
-    OnRemoveEntity(): any;
-    AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    OnOpen(): any;
-    OnClose(): any;
-    OnShow(): any;
-    OnHide(): any;
-    SetHeavyLifting(heavylifting: any): any;
-    GetNumSlots(): number;
-    CanTakeItemInSlot(item: any, slot: number): boolean;
     AcceptsStacks(): boolean;
-    IgnoresCanGoInContainer(): any;
+    AddAllOfActiveItemToSlot(slot: number): any;
+    AddOneOfActiveItemToSlot(slot: number): any;
+    AttachClassified(classified: any): any;
+    CanTakeItemInSlot(item: any, slot: number): boolean;
+    ControllerUseItemOnItemFromInvTile(item: any, active_item: any): any;
+    ControllerUseItemOnSceneFromInvTile(item: any): any;
+    ControllerUseItemOnSelfFromInvTile(item: any): any;
+    DetachClassified(): any;
+    DropItemFromInvTile(item: any, single: any): any;
+    EquipActionItem(item: any): any;
+    EquipActiveItem(): any;
     EquipHasTag(tag: any): any;
-    IsHeavyLifting(): boolean;
-    IsVisible(): boolean;
-    IsOpenedBy(guy: any): boolean;
-    IsHolding(item: any, checkcontainer: any): boolean;
     GetActiveItem(): Item;
-    GetItemInSlot(slot: number): Item;
     GetEquippedItem(eslot: GLOBAL.EQUIPSLOTS): Item;
-    GetItems(): any;
     GetEquips(): any;
+    GetItemInSlot(slot: number): Item;
+    GetItems(): any;
+    GetNumSlots(): number;
     GetOpenContainers(): any;
     GetOverflowContainer(): any;
-    IsFull(): boolean;
     Has(prefab: any, amount: number): boolean;
-    ReturnActiveItem(): Item;
-    PutOneOfActiveItemInSlot(slot: number): any;
-    PutAllOfActiveItemInSlot(slot: number): any;
-    TakeActiveItemFromHalfOfSlot(slot: number): any;
-    TakeActiveItemFromAllOfSlot(slot: number): any;
-    AddOneOfActiveItemToSlot(slot: number): any;
-    AddAllOfActiveItemToSlot(slot: number): any;
-    SwapActiveItemWithSlot(slot: number): any;
-    UseItemFromInvTile(item: any): any;
-    ControllerUseItemOnItemFromInvTile(item: any, active_item: any): any;
-    ControllerUseItemOnSelfFromInvTile(item: any): any;
-    ControllerUseItemOnSceneFromInvTile(item: any): any;
+    IgnoresCanGoInContainer(): any;
     InspectItemFromInvTile(item: any): any;
-    DropItemFromInvTile(item: any, single: any): any;
-    EquipActiveItem(): any;
-    EquipActionItem(item: any): any;
-    SwapEquipWithActiveItem(): any;
-    TakeActiveItemFromEquipSlots(eslot: GLOBAL.EQUIPSLOTS): any;
+    IsFull(): boolean;
+    IsHeavyLifting(): boolean;
+    IsHolding(item: any, checkcontainer: any): boolean;
+    IsOpenedBy(guy: any): boolean;
+    IsVisible(): boolean;
     MoveItemFromAllOfSlot(slot: number, container: any): any;
     MoveItemFromHalfOfSlot(slot: number, container: any): any;
+    OnClose(): any;
+    OnHide(): any;
+    OnOpen(): any;
+    OnRemoveEntity(): any;
+    OnShow(): any;
+    PutAllOfActiveItemInSlot(slot: number): any;
+    PutOneOfActiveItemInSlot(slot: number): any;
+    ReturnActiveItem(): Item;
+    SetHeavyLifting(heavylifting: any): any;
+    SwapActiveItemWithSlot(slot: number): any;
+    SwapEquipWithActiveItem(): any;
+    TakeActiveItemFromAllOfSlot(slot: number): any;
+    TakeActiveItemFromEquipSlots(eslot: GLOBAL.EQUIPSLOTS): any;
+    TakeActiveItemFromHalfOfSlot(slot: number): any;
+    UseItemFromInvTile(item: any): any;
   }
 
   interface InventoryItem {
@@ -385,53 +385,53 @@ export namespace Replica {
     percentusedcomponent: any;
     restrictedtag: any;
     x: number;
-    OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
-    DetachClassified(): any;
-    SetCanBePickedUp(canbepickedup: any): any;
+    AttackRange(): any;
     CanBePickedUp(): boolean;
-    SetCanGoInContainer(cangoincontainer: any): any;
+    CanDeploy(pt: any, mouseover: any, deployer: any): boolean;
     CanGoInContainer(): boolean;
-    SetCanOnlyGoInPocket(canonlygoinpocket: any): any;
     CanOnlyGoInPocket(): boolean;
-    SetImage(imagename: any): any;
-    GetImage(): any;
-    SetAtlas(atlasname: any): any;
+    DeploySpacingRadius(): any;
+    DeserializeUsage(): any;
+    DetachClassified(): any;
     GetAtlas(): any;
-    SetOwner(owner: any): any;
+    GetDeployPlacerName(): any;
+    GetEquipRestrictedTag(): any;
+    GetImage(): any;
+    GetMoisture(): any;
+    GetPickupPos(): any;
+    GetWalkSpeedMult(): any;
+    IsDeployable(deployer: any): boolean;
+    IsGrandOwner(guy: any): boolean;
     IsHeld(): boolean;
     IsHeldBy(guy: any): boolean;
-    IsGrandOwner(guy: any): boolean;
-    SetPickupPos(pos: any): any;
-    GetPickupPos(): any;
+    IsWeapon(): boolean;
+    IsWet(): boolean;
+    OnRemoveFromEntity(): any;
     SerializeUsage(): any;
-    DeserializeUsage(): any;
+    SetAtlas(atlasname: any): any;
+    SetAttackRange(attackrange: any): any;
+    SetCanBePickedUp(canbepickedup: any): any;
+    SetCanGoInContainer(cangoincontainer: any): any;
+    SetCanOnlyGoInPocket(canonlygoinpocket: any): any;
     SetChargeTime(t: any): any;
     SetDeployMode(deploymode: any): any;
-    IsDeployable(deployer: any): boolean;
-    SetDeploySpacing(deployspacing: any): any;
-    DeploySpacingRadius(): any;
     SetDeployRestrictedTag(restrictedtag: any): any;
-    CanDeploy(pt: any, mouseover: any, deployer: any): boolean;
-    SetUseGridPlacer(usegridplacer: any): any;
-    GetDeployPlacerName(): any;
-    SetAttackRange(attackrange: any): any;
-    AttackRange(): any;
-    IsWeapon(): boolean;
-    SetWalkSpeedMult(walkspeedmult: any): any;
-    GetWalkSpeedMult(): any;
+    SetDeploySpacing(deployspacing: any): any;
     SetEquipRestrictedTag(restrictedtag: any): any;
-    GetEquipRestrictedTag(): any;
-    SetMoistureLevel(moisture: any): any;
-    GetMoisture(): any;
+    SetImage(imagename: any): any;
     SetIsWet(iswet: any): any;
-    IsWet(): boolean;
+    SetMoistureLevel(moisture: any): any;
+    SetOwner(owner: any): any;
+    SetPickupPos(pos: any): any;
+    SetUseGridPlacer(usegridplacer: any): any;
+    SetWalkSpeedMult(walkspeedmult: any): any;
   }
 
   interface Moisture {
     inst: any;
-    SetIsWet(iswet: any): any;
     IsWet(): boolean;
+    SetIsWet(iswet: any): any;
   }
 
   interface Named {
@@ -446,73 +446,73 @@ export namespace Replica {
     actionbuttonoverride: any;
     old: any;
     mount: any;
-    OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
     DetachClassified(): any;
-    SetActionFilter(riding: any): any;
-    OnIsRiding(riding: any): any;
-    SetRiding(riding: any): any;
-    IsRiding(): boolean;
-    OnMountHealth(pct: any): any;
-    IsMountHurt(): boolean;
-    SetMount(mount: any): any;
     GetMount(): any;
-    GetMountRunSpeed(): any;
     GetMountFasterOnRoad(): any;
-    SetSaddle(saddle: any): any;
+    GetMountRunSpeed(): any;
     GetSaddle(): any;
+    IsMountHurt(): boolean;
+    IsRiding(): boolean;
+    OnIsRiding(riding: any): any;
+    OnMountHealth(pct: any): any;
+    OnRemoveFromEntity(): any;
+    SetActionFilter(riding: any): any;
+    SetMount(mount: any): any;
+    SetRiding(riding: any): any;
+    SetSaddle(saddle: any): any;
   }
 
   interface Sanity {
     inst: any;
     classified: any;
     ondetachclassified: any;
-    OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
     DetachClassified(): any;
-    SetCurrent(current: any): any;
-    SetMax(max: any): any;
-    SetPenalty(penalty: any): any;
-    Max(): any;
-    MaxWithPenalty(): any;
+    GetCurrent(): any;
+    GetPenaltyPercent(): any;
     GetPercent(): any;
     GetPercentNetworked(): any;
-    GetCurrent(): any;
     GetPercentWithPenalty(): any;
-    GetPenaltyPercent(): any;
-    SetRateScale(ratescale: any): any;
     GetRateScale(): any;
-    SetSanityMode(mode: any): any;
-    SetIsSane(sane: any): any;
-    IsSane(): boolean;
-    IsInsane(): boolean;
-    IsEnlightened(): boolean;
-    IsCrazy(): boolean;
     GetSanityMode(): any;
+    IsCrazy(): boolean;
+    IsEnlightened(): boolean;
+    IsGhostDrain(): boolean;
+    IsInsane(): boolean;
     IsInsanityMode(): boolean;
     IsLunacyMode(): boolean;
+    IsSane(): boolean;
+    Max(): any;
+    MaxWithPenalty(): any;
+    OnRemoveFromEntity(): any;
+    SetCurrent(current: any): any;
     SetGhostDrainMult(ghostdrainmult: any): any;
-    IsGhostDrain(): boolean;
+    SetIsSane(sane: any): any;
+    SetMax(max: any): any;
+    SetPenalty(penalty: any): any;
+    SetRateScale(ratescale: any): any;
+    SetSanityMode(mode: any): any;
   }
 
   interface Sheltered {
     inst: any;
+    CheckShade(): any;
+    IsSheltered(): boolean;
     OnRemoveFromEntity(): any;
+    OnUpdate(dt: any): any;
     StartSheltered(): any;
     StopSheltered(): any;
-    IsSheltered(): boolean;
-    CheckShade(): any;
-    OnUpdate(dt: any): any;
   }
 
   interface Stackable {
     inst: any;
-    SetStackSize(stacksize: any): any;
-    SetMaxSize(maxsize: any): any;
-    StackSize(): any;
-    MaxSize(): any;
-    IsStack(): boolean;
     IsFull(): boolean;
+    IsStack(): boolean;
+    MaxSize(): any;
+    SetMaxSize(maxsize: any): any;
+    SetStackSize(stacksize: any): any;
+    StackSize(): any;
   }
 
   interface Writeable {
@@ -521,13 +521,13 @@ export namespace Replica {
     opentask: any;
     classified: { inst: any; OnEntityReplicated: any; persists: boolean };
     ondetachclassified: any;
-    OnRemoveFromEntity(): any;
     AttachClassified(classified: any): any;
-    DetachClassified(): any;
     BeginWriting(doer: any): any;
-    Write(doer: any, text: any): any;
+    DetachClassified(): any;
     EndWriting(): any;
+    OnRemoveFromEntity(): any;
     SetWriter(writer: any): any;
+    Write(doer: any, text: any): any;
   }
 }
 
