@@ -2,8 +2,6 @@
 type Component = import("./components").Component;
 type Replica = import("./replicas").Replica;
 type Entity = import("./entity").Entity;
-// import { Entity } from "./entity";
-// import { Replica } from "./replicas";
 
 type Slot = "head" | "body" | "hands";
 
@@ -11,11 +9,6 @@ type EnsureProps<T, P extends keyof T = never> = {
   [K in P]: T[K];
 } &
   { [K in Exclude<keyof T, P>]?: T[K] };
-
-type ComponentBundle<P extends keyof Component = never> = EnsureProps<
-  Component,
-  P
->;
 
 interface Prefab<
   K extends keyof Component = never,
@@ -31,7 +24,8 @@ interface Prefab<
   ) => void;
 }
 
-interface Player extends Prefab<"inventory"> {}
+type Player = Prefab<never, "inventory">;
+type Item = Prefab<never, "inventoryitem">;
 
 declare namespace Module {
   /** @customConstructor GLOBAL.require("widget/widget") */
@@ -84,6 +78,7 @@ declare namespace GLOBAL {
     DIG
   }
   enum EQUIPSLOTS {
+    HANDS,
     HEAD,
     BODY
   }

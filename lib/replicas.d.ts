@@ -282,7 +282,7 @@ export namespace Replica {
       EquipActiveItem: any;
       EquipActionItem: any;
       SwapEquipWithActiveItem: any;
-      TakeActiveItemFromEquipSlot: any;
+      TakeActiveItemFromEquipSlots: any;
       MoveItemFromAllOfSlot: any;
       MoveItemFromHalfOfSlot: any;
       QueueRefresh: any;
@@ -307,8 +307,8 @@ export namespace Replica {
     OnShow(): any;
     OnHide(): any;
     SetHeavyLifting(heavylifting: any): any;
-    GetNumSlots(): any;
-    CanTakeItemInSlot(item: any, slot: any): boolean;
+    GetNumSlots(): number;
+    CanTakeItemInSlot(item: any, slot: number): boolean;
     AcceptsStacks(): boolean;
     IgnoresCanGoInContainer(): any;
     EquipHasTag(tag: any): any;
@@ -316,23 +316,23 @@ export namespace Replica {
     IsVisible(): boolean;
     IsOpenedBy(guy: any): boolean;
     IsHolding(item: any, checkcontainer: any): boolean;
-    GetActiveItem(): any;
-    GetItemInSlot(slot: any): any;
-    GetEquippedItem(eslot: any): any;
+    GetActiveItem(): Item;
+    GetItemInSlot(slot: number): Item;
+    GetEquippedItem(eslot: GLOBAL.EQUIPSLOTS): Item;
     GetItems(): any;
     GetEquips(): any;
     GetOpenContainers(): any;
     GetOverflowContainer(): any;
     IsFull(): boolean;
-    Has(prefab: any, amount: any): boolean;
-    ReturnActiveItem(): any;
-    PutOneOfActiveItemInSlot(slot: any): any;
-    PutAllOfActiveItemInSlot(slot: any): any;
-    TakeActiveItemFromHalfOfSlot(slot: any): any;
-    TakeActiveItemFromAllOfSlot(slot: any): any;
-    AddOneOfActiveItemToSlot(slot: any): any;
-    AddAllOfActiveItemToSlot(slot: any): any;
-    SwapActiveItemWithSlot(slot: any): any;
+    Has(prefab: any, amount: number): boolean;
+    ReturnActiveItem(): Item;
+    PutOneOfActiveItemInSlot(slot: number): any;
+    PutAllOfActiveItemInSlot(slot: number): any;
+    TakeActiveItemFromHalfOfSlot(slot: number): any;
+    TakeActiveItemFromAllOfSlot(slot: number): any;
+    AddOneOfActiveItemToSlot(slot: number): any;
+    AddAllOfActiveItemToSlot(slot: number): any;
+    SwapActiveItemWithSlot(slot: number): any;
     UseItemFromInvTile(item: any): any;
     ControllerUseItemOnItemFromInvTile(item: any, active_item: any): any;
     ControllerUseItemOnSelfFromInvTile(item: any): any;
@@ -342,9 +342,9 @@ export namespace Replica {
     EquipActiveItem(): any;
     EquipActionItem(item: any): any;
     SwapEquipWithActiveItem(): any;
-    TakeActiveItemFromEquipSlot(eslot: any): any;
-    MoveItemFromAllOfSlot(slot: any, container: any): any;
-    MoveItemFromHalfOfSlot(slot: any, container: any): any;
+    TakeActiveItemFromEquipSlots(eslot: GLOBAL.EQUIPSLOTS): any;
+    MoveItemFromAllOfSlot(slot: number, container: any): any;
+    MoveItemFromHalfOfSlot(slot: number, container: any): any;
   }
 
   interface InventoryItem {
