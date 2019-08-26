@@ -2,7 +2,12 @@
   "name": "ds-types",
   "version": "0.1.0",
   "description": "Generate Don't Starve types definitions for typescript",
-  "keywords": ["ds", "dst", "don't starve", "types"],
+  "keywords": [
+    "don't starve",
+    "ds",
+    "dst",
+    "types"
+  ],
   "homepage": "https://github.com/danielpza/ds-types#readme",
   "bugs": {
     "url": "https://github.com/danielpza/ds-types/issues"
@@ -17,13 +22,9 @@
     "lib"
   ],
   "types": "lib/index.d.ts",
-  "directories": {
-    "lib": "lib",
-    "test": "tests"
-  },
   "scripts": {
-    "prepublishOnly": "npm run build",
-    "build": "ts-node -T src/index.ts && echo 'Formatting' && prettier --loglevel silent --write 'lib/*.ts'"
+    "build": "ts-node -T src/index.ts && echo 'Formatting' && prettier --loglevel warn --write 'lib/*.ts'",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {},
   "devDependencies": {

@@ -1,108 +1,41 @@
 import * as Lua from "luaparse";
-import assert from "assert";
+import {
+  inferType,
+  inferTypeFromIdentifier,
+  getBase,
+  mergeArrays
+} from "./utils";
 
-export class Builder {
-  definitions: Record<
-    string,
-    { properties: Record<string, string>; methods: Record<string, string> }
-  > = {};
-  constructor(public ns: string, public files: Lua.Chunk[]) {}
-  public analyze() {
-    for (const ast of this.files) {
-      ast.body.forEach(statement => this.visitStatement(statement));
-    }
-  }
-  public getInterfacePropertiesDefinition(interfaceName: string) {
-    assert(
-      this.definitions[interfaceName],
-      `Class "${interfaceName}" doesn't exist`
-    );
-    const { properties, methods } = this.definitions[interfaceName];
-    return `
-${Object.entries(properties)
-  .map(([name, value]) => `${name}: ${value};`)
-  .join("\n")}
-${Object.entries(methods)
-  .map(([name, value]) => `${name}${value};`)
-  .join("\n")}
-`;
-  }
-  public getInterfaceDefinition(interfaceName: string) {
-    return `
-interface ${interfaceName} {
-${this.getInterfacePropertiesDefinition(interfaceName)}
-}
-`;
-  }
-  public getDefinitions() {
-    return `\
-declare namespace ${this.ns} {
-${Object.keys(this.definitions)
-  .map(key => this.getInterfaceDefinition(key))
-  .join("\n")}
-}
+const RESERVED_WORDS = ["new", "var", "default"];
 
-declare interface ${this.ns} {
-${Object.keys(this.definitions)
-  .map(name => `${name.toLowerCase()}: ${this.ns}.${name};`)
-  .join("\n")}
-}
-`;
-  }
-  protected ensure(intefaceName: string) {
-    if (!this.definitions[intefaceName]) {
-      this.definitions[intefaceName] = { properties: {}, methods: {} };
-    }
-  }
-  protected addProperty(intefaceName: string, name: string, type: string) {
-    this.ensure(intefaceName);
-    if (
-      this.definitions[intefaceName].properties[name] !== undefined &&
-      this.definitions[intefaceName].properties[name] !== "any"
-    )
+export class Definition {
+  properties = {} as Record<string, string>;
+  methods = {} as Record<string, string>;
+  setMethod(name: string, type: string) {
+    if (this.methods[name] !== undefined && this.methods[name] !== "any")
       return;
-    this.definitions[intefaceName].properties[name] = type;
+    this.methods[name] = type;
   }
-  protected addMethod(
-    intefaceName: string,
-    name: string,
-    parameters: string[],
-    retType?: string
-  ) {
-    const reservedWords = ["new", "var", "default"];
-    this.ensure(intefaceName);
-    this.definitions[intefaceName].methods[name] = `(${parameters
-      .map(p => `${reservedWords.includes(p) ? `_${p}` : p}: any`)
-      .join(", ")})${retType ? `: ${retType}` : ""}`;
+  setProperty(name: string, type: string) {
+    if (this.properties[name] !== undefined && this.properties[name] !== "any")
+      return;
+    this.properties[name] = type;
   }
-  protected inferTypeFromIdentifier(id: string) {
-    const match = id.match(/^[A-Z][a-z]+/);
-    if (
-      match &&
-      ["is", "has", "can", "accepts", "knows"].includes(match[0].toLowerCase())
-    )
-      return "boolean";
-    return null;
-  }
-  protected inferType(node: Lua.ExpressionKind, intefaceName?: string) {
-    if (node.type === "NumericLiteral") return "number";
-    if (node.type === "StringLiteral") return "string";
-    if (node.type === "BooleanLiteral") return "boolean";
-    return null;
-  }
-  protected visitIntefaceStatement(
-    intefaceName: string,
-    node: Lua.StatementKind
-  ) {
+}
+
+function analyseMethod(
+  definition: Definition,
+  statements: Lua.StatementKind[]
+) {
+  for (const node of statements) {
     if (node.type === "LocalStatement") {
       const variables = mergeArrays(node.variables, node.init);
       variables.forEach(([variable, init]) => {
         if (variable.type === "Identifier") {
-          this.addProperty(
-            intefaceName,
+          definition.setProperty(
             variable.name,
-            (init && this.inferType(init)) ||
-              this.inferTypeFromIdentifier(variable.name) ||
+            (init && inferType(init)) ||
+              inferTypeFromIdentifier(variable.name) ||
               "any"
           );
         }
@@ -112,13 +45,12 @@ ${Object.keys(this.definitions)
       const variables = mergeArrays(node.variables, node.init);
       variables.forEach(([variable, init]) => {
         if (variable.type === "MemberExpression") {
-          const base = this.getBase(variable);
+          const base = getBase(variable);
           if (base && base.name === "self") {
-            this.addProperty(
-              intefaceName,
+            definition.setProperty(
               variable.identifier.name,
-              (init && this.inferType(init)) ||
-                this.inferTypeFromIdentifier(variable.identifier.name) ||
+              (init && inferType(init)) ||
+                inferTypeFromIdentifier(variable.identifier.name) ||
                 "any"
             );
           }
@@ -126,10 +58,15 @@ ${Object.keys(this.definitions)
       });
     }
   }
+}
 
-  protected visitStatement(node: Lua.StatementKind) {
+export function analyseClassDefinition(
+  ast: Lua.Chunk,
+  definitions: Record<string, Definition> = {}
+) {
+  for (const node of ast.body) {
     if (node.type === "LocalStatement") {
-      const iden = node.variables[0];
+      const interfaceName = node.variables[0].name;
       const init = node.init[0];
       if (
         init &&
@@ -139,19 +76,9 @@ ${Object.keys(this.definitions)
       ) {
         const firstArgument = init.arguments[0];
         if (firstArgument.type === "FunctionDeclaration") {
-          // It is a inteface declaration!!!
-          // constructor
-          // const parameters = firstArgument.parameters
-          //   .filter(
-          //     (p): p is Lua.Identifier =>
-          //       p.type === "Identifier" && p.name !== "self"
-          //   )
-          //   .map(p => p.name);
-          // this.addMethod(iden.name, "constructor", parameters);
-          // body
-          firstArgument.body.forEach(statement =>
-            this.visitIntefaceStatement(iden.name, statement)
-          );
+          if (!definitions[interfaceName])
+            definitions[interfaceName] = new Definition();
+          analyseMethod(definitions[interfaceName], firstArgument.body);
         }
       }
     } else if (
@@ -161,30 +88,25 @@ ${Object.keys(this.definitions)
       node.identifier.base.type === "Identifier" &&
       node.identifier.indexer === ":"
     ) {
-      // inteface method
-      const intefaceName = node.identifier.base.name;
+      // interface method
+      const interfaceName = node.identifier.base.name;
       const parameters = node.parameters
         .filter((p): p is Lua.Identifier => p.type === "Identifier")
         .map(p => p.name);
-      this.addMethod(
-        intefaceName,
+
+      if (!definitions[interfaceName])
+        definitions[interfaceName] = new Definition();
+      const paramsType = `${parameters
+        .map(p => `${RESERVED_WORDS.includes(p) ? `_${p}` : p}: any`)
+        .join(", ")}`;
+      const retType =
+        inferTypeFromIdentifier(node.identifier.identifier.name) || "any";
+      definitions[interfaceName].setMethod(
         node.identifier.identifier.name,
-        parameters,
-        this.inferTypeFromIdentifier(node.identifier.identifier.name) || "any"
+        `(${paramsType}): ${retType}`
       );
-      // body
-      node.body.forEach(statement =>
-        this.visitIntefaceStatement(intefaceName, statement)
-      );
+      analyseMethod(definitions[interfaceName], node.body);
     }
   }
-  protected getBase(node: Lua.MemberExpression): Lua.Identifier | undefined {
-    if (node.base.type === "Identifier") return node.base;
-    if (node.base.type === "MemberExpression") return this.getBase(node.base);
-    return undefined;
-  }
-}
-
-export function mergeArrays<A, B>(a: A[], b: B[]): [A, B][] {
-  return a.map((va, i) => [va, b[i]]);
+  return definitions;
 }

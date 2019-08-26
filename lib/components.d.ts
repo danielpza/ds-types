@@ -2230,7 +2230,7 @@ declare namespace Component {
     GetLevelRadius(level: any): any;
     UpdateRadius(): any;
     SetPercentInLevel(percent: any): any;
-    SetLevel(lev: any): any;
+    SetLevel(lev: any, immediate: any): any;
     Extinguish(): any;
     OnEntitySleep(): any;
     OnEntityWake(): any;
@@ -6901,6 +6901,8 @@ declare namespace Component {
     GetDebugString(): any;
   }
 
+  interface Unsaddler {}
+
   interface Unwrappable {
     inst: any;
     itemdata: any;
@@ -6979,6 +6981,8 @@ declare namespace Component {
     Decorate(giver: any, item: any): any;
     GetDebugString(): any;
   }
+
+  interface VaseDecoration {}
 
   interface WalkablePlatform {
     inst: any;
@@ -7714,12 +7718,14 @@ declare interface Component {
   unevenground: Component.UnevenGround;
   uniqueid: Component.UniqueID;
   uniqueprefabids: Component.UniquePrefabIDs;
+  unsaddler: Component.Unsaddler;
   unwrappable: Component.Unwrappable;
   updatelooper: Component.UpdateLooper;
   upgradeable: Component.Upgradeable;
   upgrader: Component.Upgrader;
   useableitem: Component.UseableItem;
   vase: Component.Vase;
+  vasedecoration: Component.VaseDecoration;
   walkableplatform: Component.WalkablePlatform;
   walkableplatformmanager: Component.WalkablePlatformManager;
   walkingplank: Component.WalkingPlank;
