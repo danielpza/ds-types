@@ -118,6 +118,7 @@ ${getProperties(def)}
 function getProperties(def: Definition) {
   return `\
 ${Object.entries(def.properties)
+  .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : a.length - b.length))
   .map(([name, value]) => `${name}: ${value};`)
   .join("\n")}
 ${Object.entries(def.methods)

@@ -1,10 +1,10 @@
 export namespace Component {
   interface Activatable {
-    inst: any;
     OnActivate: any;
     inactive: boolean;
-    standingaction: boolean;
+    inst: any;
     quickaction: boolean;
+    standingaction: boolean;
     CanActivate(doer: any): boolean;
     DoActivate(doer: any): any;
     OnRemoveFromEntity(): any;
@@ -12,10 +12,10 @@ export namespace Component {
 
   interface Age {
     inst: any;
-    saved_age: number;
-    paused_time: number;
-    spawntime: any;
     last_pause_time: any;
+    paused_time: number;
+    saved_age: number;
+    spawntime: any;
     CancelPeriodicSync(): any;
     GetAge(): any;
     GetAgeInDays(): any;
@@ -30,10 +30,10 @@ export namespace Component {
   }
 
   interface Amorphous {
-    inst: any;
-    forms: any;
     currentform: any;
     form: any;
+    forms: any;
+    inst: any;
     numforms: any;
     AddForm(form: any): any;
     CheckForMorph(): any;
@@ -47,20 +47,20 @@ export namespace Component {
   }
 
   interface AmphibiousCreature {
-    inst: any;
-    tile: any;
-    tileinfo: any;
-    ontilechangefn: any;
+    enterwaterfn: any;
+    exitwaterfn: any;
     in_water: boolean;
-    onwaterchangefn: any;
+    inst: any;
+    is_on_land: any;
     land_bank: any;
     ocean_bank: any;
+    ontilechangefn: any;
+    onwaterchangefn: any;
+    tile: any;
+    tileinfo: any;
     x: any;
     y: any;
     z: any;
-    is_on_land: any;
-    enterwaterfn: any;
-    exitwaterfn: any;
     OnEnterOcean(): any;
     OnEntitySleep(): any;
     OnEntityWake(): any;
@@ -75,25 +75,25 @@ export namespace Component {
   }
 
   interface Anchor {
-    inst: any;
-    is_anchor_lowered: boolean;
-    drag: any;
-    max_velocity_mod: any;
-    raisers: any;
-    numberofraisers: number;
-    raiseunits: number;
+    autolowerunits: number;
+    boat: any;
     bottomunits: number;
     currentraiseunits: number;
-    autolowerunits: number;
     data: any;
     depth: any;
-    ground: any;
-    tile: any;
     depthcategory: any;
-    boat: any;
+    drag: any;
+    ground: any;
+    inst: any;
+    is_anchor_lowered: boolean;
     is_anchor_transitioning: boolean;
+    max_velocity_mod: any;
+    numberofraisers: number;
+    raisers: any;
+    raiseunits: number;
     rasing: boolean;
     speed: any;
+    tile: any;
     AddAnchorRaiser(doer: any): any;
     AnchorLowered(): any;
     AnchorRaised(): any;
@@ -112,12 +112,12 @@ export namespace Component {
   }
 
   interface AOETargeting {
+    alwaysvalid: boolean;
+    enabled: any;
     inst: any;
+    range: number;
     reticule: any;
     targetprefab: any;
-    alwaysvalid: boolean;
-    range: number;
-    enabled: any;
     GetRange(): any;
     IsEnabled(): boolean;
     SetAlwaysValid(val: any): any;
@@ -130,8 +130,8 @@ export namespace Component {
 
   interface AreaTrigger {
     inst: any;
-    stories: any;
     retune: any;
+    stories: any;
     CheckTrigger(area: any): any;
     DoOverride(overrides: any): any;
     RegisterTriggers(stories: any): any;
@@ -147,17 +147,17 @@ export namespace Component {
   }
 
   interface AreaAware {
-    inst: any;
+    checkpositiontask: any;
     current_area: any;
     current_area_data: any;
+    inst: any;
     lastpt: any;
-    updatedistsq: number;
-    x: any;
-    z: any;
-    y: any;
     node: any;
     s: any;
-    checkpositiontask: any;
+    updatedistsq: number;
+    x: any;
+    y: any;
+    z: any;
     CurrentlyInTag(tag: any): any;
     GetCurrentArea(): any;
     GetDebugString(): any;
@@ -169,14 +169,14 @@ export namespace Component {
   }
 
   interface Armor {
-    inst: any;
+    absorb_percent: any;
     condition: number;
+    damage: number;
+    indestructible: boolean;
+    inst: any;
     maxcondition: number;
     tags: any;
     weakness: any;
-    absorb_percent: any;
-    indestructible: boolean;
-    damage: number;
     AddWeakness(tag: any, bonus_damage: any): any;
     CanResist(attacker: any, weapon: any): boolean;
     GetAbsorption(attacker: any, weapon: any): any;
@@ -196,22 +196,22 @@ export namespace Component {
   }
 
   interface Attunable {
-    inst: any;
+    attunable_tag: any;
     attuned_players: any;
     attuned_userids: any;
-    attunable_tag: any;
+    available_players: any;
+    inst: any;
     onattunecostfn: any;
     onlinkfn: any;
-    onunlinkfn: any;
     onplayerattuned: any;
-    onplayerremoved: any;
     onplayerjoined: any;
-    toremove: any;
-    success: any;
+    onplayerremoved: any;
+    onunlinkfn: any;
     reason: any;
-    userids: any;
-    available_players: any;
     str: string;
+    success: any;
+    toremove: any;
+    userids: any;
     CanAttune(player: any): boolean;
     GetAttunableTag(): any;
     GetDebugString(): any;
@@ -228,9 +228,9 @@ export namespace Component {
   }
 
   interface Attuner {
+    attuned: any;
     inst: any;
     ismastersim: any;
-    attuned: any;
     str: string;
     GetAttunedTarget(tag: any): any;
     GetDebugString(): any;
@@ -241,16 +241,16 @@ export namespace Component {
   }
 
   interface Aura {
+    active: boolean;
+    applied: any;
+    applying: boolean;
+    auraexcludetags: any;
+    auratestfn: any;
     inst: any;
     radius: number;
-    tickperiod: number;
-    active: boolean;
-    applying: boolean;
-    auratestfn: any;
-    auraexcludetags: any;
     str: any;
     task: any;
-    applied: any;
+    tickperiod: number;
     Enable(val: any): any;
     GetDebugString(): any;
     OnTick(): any;
@@ -265,8 +265,8 @@ export namespace Component {
   }
 
   interface BalloonMaker {
-    inst: any;
     balloon: any;
+    inst: any;
     MakeBalloon(x: any, y: any, z: any): any;
   }
 
@@ -277,9 +277,9 @@ export namespace Component {
   }
 
   interface BathBombable {
+    canbebathbombedfn: any;
     inst: any;
     onbathbombedfn: any;
-    canbebathbombedfn: any;
     CanBeBathBombed(bathbomb_inst: any): boolean;
     OnBathBombed(bathbomb_inst: any): any;
     OnRemoveFromEntity(): any;
@@ -289,16 +289,16 @@ export namespace Component {
   }
 
   interface BatSpawner {
-    inst: any;
-    bats: any;
-    timetospawn: number;
     batcap: number;
-    spawntime: any;
+    bats: any;
     battypes: any;
-    theta: any;
-    radius: any;
     ground: any;
+    inst: any;
+    radius: any;
     result_offset: any;
+    spawntime: any;
+    theta: any;
+    timetospawn: number;
     GetDebugString(): any;
     GetSpawnPoint(pt: any): any;
     SetMaxBats(max: any): any;
@@ -307,18 +307,18 @@ export namespace Component {
   }
 
   interface Beard {
-    inst: any;
-    daysgrowth: number;
-    callbacks: any;
-    prize: any;
     bits: number;
+    callbacks: any;
+    daysgrowth: number;
+    inst: any;
     insulation_factor: number;
-    pause: any;
-    onreset: any;
     isgrowing: boolean;
-    pass: any;
-    reason: any;
     nextevent: any;
+    onreset: any;
+    pass: any;
+    pause: any;
+    prize: any;
+    reason: any;
     AddCallback(day: any, cb: any): any;
     EnableGrowth(enable: any): any;
     GetDebugString(): any;
@@ -332,12 +332,12 @@ export namespace Component {
   }
 
   interface Beaverness {
+    current: number;
     inst: any;
     max: number;
-    current: number;
-    time_effect_multiplier: number;
-    task: any;
     old: any;
+    task: any;
+    time_effect_multiplier: number;
     DoDelta(delta: any, overtime: any): any;
     GetDebugString(): any;
     GetPercent(): any;
@@ -369,11 +369,11 @@ export namespace Component {
   }
 
   interface BlinkStaff {
-    inst: any;
-    onblinkfn: any;
+    backfx: any;
     blinktask: any;
     frontfx: any;
-    backfx: any;
+    inst: any;
+    onblinkfn: any;
     x: any;
     y: any;
     z: any;
@@ -383,12 +383,12 @@ export namespace Component {
   }
 
   interface Bloomer {
-    inst: any;
+    bloom: any;
     bloomstack: any;
     children: any;
     fx: any;
+    inst: any;
     oldfx: any;
-    bloom: any;
     str: string;
     AttachChild(child: any): any;
     DetachChild(child: any): any;
@@ -402,26 +402,26 @@ export namespace Component {
   }
 
   interface BlowInWind {
+    averageSpeed: any;
+    curr_speed: any;
+    currentAngle: number;
+    currentVector: any;
     inst: any;
     maxSpeedMult: number;
     minSpeedMult: number;
-    averageSpeed: any;
+    mult: any;
+    soundName: any;
+    soundParameter: any;
+    soundspeed: any;
     speed: number;
+    speedVarPeriod: any;
+    speedVarTime: number;
+    speedvar: any;
+    velocMult: any;
+    velocity: any;
+    walkspeed: any;
     windAngle: number;
     windVector: any;
-    currentAngle: number;
-    currentVector: any;
-    velocity: any;
-    speedVarTime: number;
-    speedVarPeriod: any;
-    soundParameter: any;
-    soundName: any;
-    velocMult: any;
-    curr_speed: any;
-    speedvar: any;
-    mult: any;
-    soundspeed: any;
-    walkspeed: any;
     ChangeDirection(ang: any, vel: any): any;
     GetDebugString(): any;
     GetSpeed(): any;
@@ -439,21 +439,21 @@ export namespace Component {
   }
 
   interface BoatAI {
+    entities: any;
     inst: any;
     my_position: any;
-    entities: any;
     OnUpdate(dt: any): any;
   }
 
   interface BoatLeak {
-    inst: any;
-    has_leaks: boolean;
-    leak_build: string;
-    repair_state: string;
-    patch_type: any;
     anim_state: any;
-    current_state: any;
     boat: any;
+    current_state: any;
+    has_leaks: boolean;
+    inst: any;
+    leak_build: string;
+    patch_type: any;
+    repair_state: string;
     ChangeToRepaired(repair_build_name: any): any;
     Repair(doer: any, patch_item: any): any;
     SetBoat(boat: any): any;
@@ -468,52 +468,52 @@ export namespace Component {
   }
 
   interface BoatPhysics {
-    inst: any;
-    velocity_x: number;
-    velocity_z: number;
-    has_speed: boolean;
-    damageable_velocity: number;
-    max_velocity: any;
-    rudder_turn_speed: any;
-    masts: any;
+    MAX_ALLOWED_VELOCITY: number;
+    TOLLERANCE: number;
+    accel: any;
     anchor_cmps: any;
-    lastzoomtime: any;
-    lastzoomwasout: boolean;
-    target_rudder_direction_x: number;
-    target_rudder_direction_z: number;
-    rudder_direction_x: number;
-    rudder_direction_z: number;
-    turn_vel: number;
-    turn_acc: any;
-    data: any;
-    sinking: boolean;
-    max_vel: number;
-    mast_maxes: any;
-    mult: number;
-    total_anchor_drag: number;
-    velocity_length: any;
-    speed: number;
     boat_pos_x: any;
     boat_pos_y: any;
     boat_pos_z: any;
-    stop: boolean;
-    p1_angle: any;
-    p2_angle: any;
-    target_vel: any;
-    newangle: any;
-    TOLLERANCE: number;
-    raised_sail_count: number;
-    sail_force: number;
-    accel: any;
-    min_velocity: number;
+    damageable_velocity: number;
+    data: any;
     drag: any;
     dragged_velocity_length: any;
-    MAX_ALLOWED_VELOCITY: number;
+    has_speed: boolean;
+    inst: any;
+    lastzoomtime: any;
+    lastzoomwasout: boolean;
+    mast_maxes: any;
+    masts: any;
+    max_vel: number;
+    max_velocity: any;
     maxx: any;
     maxz: any;
+    min_velocity: number;
+    mult: number;
     new_speed_is_scary: any;
-    time: any;
+    newangle: any;
+    p1_angle: any;
+    p2_angle: any;
+    raised_sail_count: number;
+    rudder_direction_x: number;
+    rudder_direction_z: number;
+    rudder_turn_speed: any;
+    sail_force: number;
     should_zoom_out: any;
+    sinking: boolean;
+    speed: number;
+    stop: boolean;
+    target_rudder_direction_x: number;
+    target_rudder_direction_z: number;
+    target_vel: any;
+    time: any;
+    total_anchor_drag: number;
+    turn_acc: any;
+    turn_vel: number;
+    velocity_length: any;
+    velocity_x: number;
+    velocity_z: number;
     AddAnchorCmp(anchor_cmp: any): any;
     AddMast(mast: any): any;
     ApplyForce(dir_x: any, dir_z: any, force: any): any;
@@ -534,35 +534,35 @@ export namespace Component {
   }
 
   interface BoatTrail {
-    inst: any;
+    angle_apart: number;
     anim_idx: number;
+    dir_x: any;
+    dir_z: any;
+    distance_traveled: any;
+    effect_spawn_rate: number;
     fx: any;
+    inst: any;
+    last_dir_x: any;
+    last_dir_z: any;
+    last_x: any;
+    last_z: any;
     radius: number;
     total_distance_traveled: number;
     x: any;
     y: any;
     z: any;
-    last_x: any;
-    last_z: any;
-    effect_spawn_rate: number;
-    dir_x: any;
-    dir_z: any;
-    distance_traveled: any;
-    angle_apart: number;
-    last_dir_x: any;
-    last_dir_z: any;
     OnUpdate(dt: any): any;
     SpawnEffectPrefab(x: any, y: any, z: any, dir_x: any, dir_z: any): any;
   }
 
   interface BoatTrailMover {
-    inst: any;
-    track_boat_time: number;
+    acceleration: any;
     dir_x: any;
     dir_z: any;
+    inst: any;
     rudder_angle: any;
+    track_boat_time: number;
     velocity: any;
-    acceleration: any;
     x: any;
     y: any;
     z: any;
@@ -580,15 +580,15 @@ export namespace Component {
   }
 
   interface Brushable {
-    inst: any;
-    prize: any;
-    max: number;
-    cyclesperprize: number;
-    lastbrushcycle: number;
     brushable: boolean;
-    onbrushfn: any;
+    cyclesperprize: number;
     elapsed: any;
+    inst: any;
+    lastbrushcycle: number;
+    max: number;
     numprizes: number;
+    onbrushfn: any;
+    prize: any;
     Brush(doer: any, brush: any): any;
     CalculateNumPrizes(): any;
     GetDebugString(): any;
@@ -599,47 +599,47 @@ export namespace Component {
   }
 
   interface Builder {
-    inst: any;
-    recipes: any;
-    station_recipes: any;
-    accessible_tech_trees: any;
-    current_prototyper: any;
-    buffered_builds: any;
-    bonus_tech_level: number;
-    science_bonus: number;
-    magic_bonus: number;
-    ancient_bonus: number;
-    shadow_bonus: number;
-    ingredientmod: number;
-    freebuildmode: boolean;
-    exclude_tags: any;
-    hungrytime: any;
-    last_hungry_build: any;
-    pos: any;
-    ents: any;
-    old_accessible_tech_trees: any;
-    old_station_recipes: any;
-    old_prototyper: any;
-    prototyper_active: boolean;
-    SCIENCE: any;
-    MAGIC: any;
     ANCIENT: any;
+    MAGIC: any;
+    SCIENCE: any;
     SHADOW: any;
-    trees_changed: boolean;
-    recipe: any;
-    wetness: any;
-    totalWetness: number;
-    totalItems: number;
-    ingredients: any;
-    current: any;
-    penalty: any;
-    level: any;
+    accessible_tech_trees: any;
+    ancient_bonus: number;
+    bonus_tech_level: number;
     buffaction: any;
-    wetlevel: any;
-    materials: any;
-    t: any;
-    prod: any;
+    buffered_builds: any;
+    current: any;
+    current_prototyper: any;
+    ents: any;
+    exclude_tags: any;
+    freebuildmode: boolean;
     has_tech: boolean;
+    hungrytime: any;
+    ingredientmod: number;
+    ingredients: any;
+    inst: any;
+    last_hungry_build: any;
+    level: any;
+    magic_bonus: number;
+    materials: any;
+    old_accessible_tech_trees: any;
+    old_prototyper: any;
+    old_station_recipes: any;
+    penalty: any;
+    pos: any;
+    prod: any;
+    prototyper_active: boolean;
+    recipe: any;
+    recipes: any;
+    science_bonus: number;
+    shadow_bonus: number;
+    station_recipes: any;
+    t: any;
+    totalItems: number;
+    totalWetness: number;
+    trees_changed: boolean;
+    wetlevel: any;
+    wetness: any;
     ActivateCurrentResearchMachine(recipe: any): any;
     AddRecipe(recname: any): any;
     BufferBuild(recname: any): any;
@@ -667,9 +667,9 @@ export namespace Component {
   }
 
   interface BundleMaker {
-    inst: any;
-    bundlingprefab: any;
     bundledprefab: any;
+    bundlingprefab: any;
+    inst: any;
     onstartbundlingfn: any;
     OnStartBundling(doer: any): any;
     SetBundlingPrefabs(bundling: any, bundled: any): any;
@@ -677,20 +677,20 @@ export namespace Component {
   }
 
   interface Bundler {
-    inst: any;
-    bundlinginst: any;
-    itemprefab: any;
-    wrappedprefab: any;
-    persists: boolean;
     bundling: boolean;
-    pos: any;
-    item: any;
-    wrapped: any;
-    items: any;
-    data: any;
+    bundlinginst: any;
+    currentbundling: any;
     currentitem: any;
     currentwrapped: any;
-    currentbundling: any;
+    data: any;
+    inst: any;
+    item: any;
+    itemprefab: any;
+    items: any;
+    persists: boolean;
+    pos: any;
+    wrapped: any;
+    wrappedprefab: any;
     CanStartBundling(): boolean;
     FinishBundling(): any;
     IsBundling(bundlinginst: any): boolean;
@@ -702,30 +702,30 @@ export namespace Component {
   }
 
   interface Burnable {
-    inst: any;
-    flammability: number;
-    fxdata: any;
-    fxlevel: number;
-    fxchildren: any;
-    fxoffset: any;
     burning: boolean;
     burntime: any;
+    canlight: boolean;
     extinguishimmediately: boolean;
-    smoldertimeremaining: any;
-    smoldering: boolean;
-    onignite: any;
-    onextinguish: any;
+    flammability: number;
+    follower: any;
+    fxchildren: any;
+    fxdata: any;
+    fxlevel: number;
+    fxoffset: any;
+    fxprefab: any;
+    inst: any;
+    largestRadius: any;
+    lightningimmune: boolean;
     onburnt: any;
+    onextinguish: any;
+    onignite: any;
     onsmoldering: any;
     onstopsmoldering: any;
-    canlight: boolean;
-    lightningimmune: boolean;
-    task: any;
-    smolder_task: any;
-    fxprefab: any;
-    largestRadius: any;
     smoke: any;
-    follower: any;
+    smolder_task: any;
+    smoldering: boolean;
+    smoldertimeremaining: any;
+    task: any;
     xoffs: any;
     yoffs: any;
     zoffs: any;
@@ -768,16 +768,16 @@ export namespace Component {
   }
 
   interface CarefulWalker {
-    inst: any;
     careful: boolean;
     carefulwalkingspeedmult: number;
-    targets: any;
+    checkcareful: any;
     data: any;
+    inst: any;
+    targets: any;
+    toremove: any;
     x: any;
     y: any;
     z: any;
-    checkcareful: any;
-    toremove: any;
     IsCarefulWalking(): boolean;
     OnRemoveFromEntity(): any;
     OnUpdate(dt: any): any;
@@ -787,11 +787,11 @@ export namespace Component {
   }
 
   interface Catcher {
-    inst: any;
-    enabled: boolean;
     actiondistance: number;
-    catchdistance: number;
     canact: boolean;
+    catchdistance: number;
+    enabled: boolean;
+    inst: any;
     watchlist: any;
     CanCatch(): boolean;
     OnRemoveFromEntity(): any;
@@ -804,9 +804,9 @@ export namespace Component {
   }
 
   interface Channelable {
-    inst: any;
-    enabled: boolean;
     channeler: any;
+    enabled: boolean;
+    inst: any;
     onchannelingfn: any;
     onstopchannelingfn: any;
     stopchanneling: boolean;
@@ -820,52 +820,52 @@ export namespace Component {
   }
 
   interface ChildSpawner {
-    inst: any;
-    childrenoutside: any;
-    childreninside: number;
-    numchildrenoutside: number;
-    maxchildren: number;
+    child: any;
     childname: string;
-    rarechild: any;
-    rarechildchance: number;
-    onvacate: any;
-    onoccupied: any;
-    onspawned: any;
-    ongohome: any;
-    spawning: boolean;
-    timetonextspawn: number;
-    spawnperiod: number;
-    spawnvariance: number;
-    regening: boolean;
-    timetonextregen: number;
-    regenperiod: number;
-    regenvariance: number;
-    spawnoffscreen: boolean;
-    task: any;
+    childreninside: number;
+    childrenoutside: any;
+    data: any;
+    dt: any;
     emergencychildname: any;
-    emergencychildrenperplayer: number;
-    maxemergencychildren: number;
-    maxemergencycommit: number;
-    emergencydetectionradius: number;
     emergencychildreninside: number;
     emergencychildrenoutside: any;
-    numemergencychildrenoutside: number;
+    emergencychildrenperplayer: number;
+    emergencydetectionradius: number;
+    ents: any;
+    inst: any;
+    maxchildren: number;
+    maxemergencychildren: number;
+    maxemergencycommit: number;
     missingchildren: any;
     missingemergencychildren: any;
-    dt: any;
-    onchildkilledfn: any;
-    onaddchild: any;
-    vacantchildren: number;
-    data: any;
-    references: any;
-    str: any;
     num_children: any;
+    numchildrenoutside: number;
+    numemergencychildrenoutside: number;
+    offset: any;
+    onaddchild: any;
+    onchildkilledfn: any;
+    ongohome: any;
+    onoccupied: any;
+    onspawned: any;
+    onvacate: any;
+    rarechild: any;
+    rarechildchance: number;
+    references: any;
+    regening: boolean;
+    regenperiod: number;
+    regenvariance: number;
+    spawning: boolean;
+    spawnoffscreen: boolean;
+    spawnperiod: number;
+    spawnvariance: number;
+    str: any;
+    task: any;
+    timetonextregen: number;
+    timetonextspawn: number;
+    vacantchildren: number;
     x: any;
     y: any;
     z: any;
-    offset: any;
-    child: any;
-    ents: any;
     AddChildrenInside(count: any): any;
     AddEmergencyChildrenInside(count: any): any;
     CanEmergencySpawn(): boolean;
@@ -911,25 +911,25 @@ export namespace Component {
   }
 
   interface Circler {
-    inst: any;
-    scale: number;
-    speed: any;
+    angleRad: any;
     circleTarget: any;
-    minSpeed: number;
+    direction: any;
+    distance: any;
+    facingAngle: any;
+    inst: any;
+    maxDist: number;
+    maxScale: number;
     maxSpeed: number;
     minDist: number;
-    maxDist: number;
     minScale: number;
-    maxScale: number;
-    onaccelerate: any;
+    minSpeed: number;
     numAccelerates: number;
-    sineMod: any;
-    sine: number;
-    distance: any;
-    angleRad: any;
     offset: any;
-    facingAngle: any;
-    direction: any;
+    onaccelerate: any;
+    scale: number;
+    sine: number;
+    sineMod: any;
+    speed: any;
     x: any;
     y: any;
     z: any;
@@ -946,17 +946,17 @@ export namespace Component {
   }
 
   interface CircuitNode {
-    inst: any;
-    range: number;
-    numnodes: number;
     connectsacrossplatforms: boolean;
-    ondisconnectfn: any;
+    inst: any;
+    my_platform: any;
     nodes: any;
+    numnodes: number;
+    onconnectfn: any;
+    ondisconnectfn: any;
+    range: number;
     x: any;
     y: any;
     z: any;
-    my_platform: any;
-    onconnectfn: any;
     AddNode(node: any): any;
     ConnectTo(tag: any): any;
     Disconnect(): any;
@@ -972,14 +972,14 @@ export namespace Component {
   }
 
   interface ColourAdder {
-    inst: any;
-    colourstack: any;
+    a: number;
+    b: number;
     children: any;
     colour: any;
-    r: number;
+    colourstack: any;
     g: number;
-    b: number;
-    a: number;
+    inst: any;
+    r: number;
     str: any;
     AttachChild(child: any): any;
     CalculateCurrentColour(): any;
@@ -993,21 +993,21 @@ export namespace Component {
   }
 
   interface ColourTweener {
-    inst: any;
-    i_colour_r: any;
-    i_colour_g: any;
-    i_colour_b: any;
-    i_alpha: any;
-    t_colour_r: any;
-    t_colour_g: any;
-    t_colour_b: any;
-    t_alpha: any;
     callback: any;
+    i_alpha: any;
+    i_colour: any;
+    i_colour_b: any;
+    i_colour_g: any;
+    i_colour_r: any;
+    inst: any;
+    t: any;
+    t_alpha: any;
+    t_colour_b: any;
+    t_colour_g: any;
+    t_colour_r: any;
     time: any;
     timepassed: number;
     tweening: boolean;
-    i_colour: any;
-    t: any;
     EndTween(): any;
     IsTweening(): boolean;
     OnUpdate(dt: any): any;
@@ -1015,82 +1015,82 @@ export namespace Component {
   }
 
   interface Combat {
-    inst: any;
-    nextbattlecrytime: any;
-    battlecryenabled: boolean;
-    attackrange: number;
-    hitrange: number;
-    areahitrange: any;
+    areahitcheck: any;
     areahitdamagepercent: any;
+    areahitdisabled: any;
+    areahitrange: any;
+    atkrange: any;
+    attackrange: number;
+    basedamage: any;
+    basemultiplier: any;
+    battlecryenabled: boolean;
+    blanktask: any;
+    blocked: boolean;
+    bonus: any;
+    bonusdamagefn: any;
+    canattack: boolean;
+    cause: any;
+    cry: any;
+    damageredirecttarget: any;
+    damageresolved: number;
     defaultdamage: number;
+    dist: any;
+    dmg: any;
+    ents: any;
     externaldamagemultipliers: any;
     externaldamagetakenmultipliers: any;
-    min_attack_period: number;
-    onhitfn: any;
-    onhitotherfn: any;
-    laststartattacktime: number;
-    lastwasattackedtime: number;
+    forcechange: any;
+    forcefacing: boolean;
+    hitcount: number;
+    hiteffectsymbol: string;
+    hitrange: number;
+    hitsound: string;
+    hurtsound: any;
+    inst: any;
+    is_attacking: any;
+    item: any;
     keeptargetfn: any;
     keeptargettimeout: number;
-    hiteffectsymbol: string;
-    canattack: boolean;
+    lastattacker: any;
+    lastdoattacktime: any;
+    laststartattacktime: number;
     lasttargetGUID: any;
-    target: any;
+    lastwasattackedtime: number;
+    losetargetcallback: any;
+    min_attack_period: number;
+    mount: any;
+    mult: any;
+    newtarget: any;
+    nextbattlecrytime: any;
+    num_helpers: number;
+    oldtarget: any;
+    onhitfn: any;
+    onhitotherfn: any;
     panic_thresh: any;
-    forcefacing: boolean;
-    bonusdamagefn: any;
+    playermultiplier: any;
     playerstunlock: any;
-    areahitcheck: any;
-    areahitdisabled: any;
-    blanktask: any;
+    projectile: any;
+    pvpmultiplier: any;
+    range: any;
+    redirect_combat: any;
+    reflect_list: any;
+    reflected_dmg: number;
+    retargetperiod: any;
+    retargettask: any;
+    saddle: any;
+    str: any;
+    strid: any;
+    t: any;
+    target: any;
+    targetfn: any;
+    targetpos: any;
+    tgtinv: any;
+    tgttype: any;
+    weapon: any;
+    weaponmod: any;
     x: any;
     y: any;
     z: any;
-    ents: any;
-    num_helpers: number;
-    newtarget: any;
-    forcechange: any;
-    targetfn: any;
-    retargetperiod: any;
-    retargettask: any;
-    losetargetcallback: any;
-    oldtarget: any;
-    str: any;
-    dist: any;
-    atkrange: any;
-    strid: any;
-    t: any;
-    cry: any;
-    hurtsound: any;
-    blocked: boolean;
-    damageredirecttarget: any;
-    damageresolved: number;
-    lastattacker: any;
-    cause: any;
-    redirect_combat: any;
-    hitsound: string;
-    weaponmod: any;
-    tgtinv: any;
-    tgttype: any;
-    is_attacking: any;
-    item: any;
-    basedamage: any;
-    basemultiplier: any;
-    bonus: any;
-    playermultiplier: any;
-    pvpmultiplier: any;
-    mount: any;
-    saddle: any;
-    weapon: any;
-    range: any;
-    targetpos: any;
-    projectile: any;
-    reflected_dmg: number;
-    reflect_list: any;
-    mult: any;
-    dmg: any;
-    lastdoattacktime: any;
-    hitcount: number;
     BattleCry(): any;
     BlankOutAttacks(fortime: any): any;
     CalcAttackRangeSq(target: any): any;
@@ -1185,11 +1185,11 @@ export namespace Component {
 
   interface Commander {
     inst: any;
-    soldiers: any;
+    k: any;
     numsoldiers: number;
+    soldiers: any;
     trackingdist: number;
     trackingperiod: number;
-    k: any;
     AddSoldier(ent: any): any;
     AlertAllSoldiers(): any;
     DropAllSoldierTargets(): any;
@@ -1208,43 +1208,43 @@ export namespace Component {
   }
 
   interface ComplexProjectile {
-    inst: any;
-    velocity: any;
-    gravity: any;
-    horizontalSpeed: number;
-    launchoffset: any;
-    targetoffset: any;
-    owningweapon: any;
+    angle: any;
+    angleA: any;
+    angleB: any;
     attacker: any;
-    onlaunchfn: any;
-    onhitfn: any;
-    onmissfn: any;
-    onupdatefn: any;
-    usehigharc: boolean;
-    speedSq: any;
-    g: any;
+    attacker_platform: any;
+    cosangleXspeed: any;
+    discriminant: any;
+    discriminantSqrt: any;
     dx: any;
     dy: any;
     dz: any;
-    rangeSq: any;
-    range: any;
-    discriminant: any;
-    angle: any;
-    discriminantSqrt: any;
-    gXrange: any;
-    angleA: any;
-    angleB: any;
-    cosangleXspeed: any;
-    x: number;
-    z: number;
-    y: number;
-    pos: any;
-    offset: any;
     facing_angle: any;
-    attacker_platform: any;
+    g: any;
+    gXrange: any;
+    gravity: any;
+    horizontalSpeed: number;
+    inst: any;
+    launchoffset: any;
+    offset: any;
+    onhitfn: any;
+    onlaunchfn: any;
+    onmissfn: any;
+    onupdatefn: any;
+    owningweapon: any;
+    pos: any;
+    range: any;
+    rangeSq: any;
+    speedSq: any;
+    targetoffset: any;
+    usehigharc: boolean;
+    velocity: any;
     vx: any;
     vy: any;
     vz: any;
+    x: number;
+    y: number;
+    z: number;
     CalculateTrajectory(startPos: any, endPos: any, speed: any): any;
     GetDebugString(): any;
     Hit(target: any): any;
@@ -1261,15 +1261,15 @@ export namespace Component {
   }
 
   interface ConstructionBuilder {
-    inst: any;
+    constructing: boolean;
     constructioninst: any;
     constructionsite: any;
-    persists: boolean;
-    constructing: boolean;
-    pos: any;
-    items: any;
     currentconstructing: any;
     currenttarget: any;
+    inst: any;
+    items: any;
+    persists: boolean;
+    pos: any;
     CanStartConstruction(): boolean;
     FinishConstruction(): any;
     IsConstructing(constructioninst: any): boolean;
@@ -1293,10 +1293,10 @@ export namespace Component {
   }
 
   interface ConstructionPlans {
-    inst: any;
-    targetprefabs: any;
     constructionprefab: any;
+    inst: any;
     product: any;
+    targetprefabs: any;
     AddTargetPrefab(prefab: any, constructionprefab: any): any;
     OnRemoveFromEntity(): any;
     RemoveTargetPrefab(prefab: any): any;
@@ -1304,19 +1304,19 @@ export namespace Component {
   }
 
   interface ConstructionSite {
-    inst: any;
-    materials: any;
     builder: any;
     constructionprefab: any;
+    delta: any;
+    inst: any;
+    material: any;
+    materials: any;
+    onconstructedfn: any;
     onstartconstructionfn: any;
     onstopconstructionfn: any;
-    onconstructedfn: any;
+    str: any;
     x: any;
     y: any;
     z: any;
-    material: any;
-    delta: any;
-    str: any;
     AddMaterial(prefab: any, num: any): any;
     GetDebugString(): any;
     GetMaterialCount(prefab: any): any;
@@ -1335,38 +1335,38 @@ export namespace Component {
   }
 
   interface Container {
-    inst: any;
-    slots: any;
-    numslots: number;
-    canbeopened: boolean;
     acceptsstacks: boolean;
-    usespecificslotsforitems: boolean;
-    issidewidget: boolean;
-    type: any;
-    widget: any;
-    itemtestfn: any;
-    opener: any;
-    ignoresound: boolean;
-    num: number;
-    items: number;
-    item: any;
+    active_item: any;
+    canbeopened: boolean;
     containers: any;
-    pos: any;
-    other_item: any;
-    in_slot: any;
-    inventory: any;
-    doer: any;
-    num_found: number;
-    total_num_found: number;
     data: any;
+    dec: any;
+    doer: any;
+    halfstack: any;
+    ignoresound: boolean;
+    in_slot: any;
+    inst: any;
+    inventory: any;
+    issidewidget: boolean;
+    item: any;
+    items: number;
+    itemtestfn: any;
+    leftovers: any;
+    num: number;
+    num_found: number;
+    numslots: number;
+    opener: any;
+    other_item: any;
+    pos: any;
+    prevslot: any;
     references: any;
     refs: any;
-    prevslot: any;
-    dec: any;
-    active_item: any;
-    halfstack: any;
-    leftovers: any;
+    slots: any;
     targetslot: any;
+    total_num_found: number;
+    type: any;
+    usespecificslotsforitems: boolean;
+    widget: any;
     AcceptsStacks(): boolean;
     AddAllOfActiveItemToSlot(slot: any): any;
     AddOneOfActiveItemToSlot(slot: any): any;
@@ -1415,10 +1415,10 @@ export namespace Component {
 
   interface Cookable {
     inst: any;
-    product: any;
+    new_percent: any;
     oncooked: any;
     prod: any;
-    new_percent: any;
+    product: any;
     Cook(cooker: any, chef: any): any;
     OnRemoveFromEntity(): any;
     SetOnCookedFn(fn: any): any;
@@ -1434,14 +1434,14 @@ export namespace Component {
   }
 
   interface Cooldown {
-    inst: any;
     charged: boolean;
-    cooldown_duration: any;
-    startchargingfn: any;
-    onchargedfn: any;
-    task: any;
     cooldown_deadline: any;
+    cooldown_duration: any;
+    inst: any;
+    onchargedfn: any;
+    startchargingfn: any;
     t: any;
+    task: any;
     FinishCharging(): any;
     GetDebugString(): any;
     GetTimeToCharged(): any;
@@ -1469,16 +1469,16 @@ export namespace Component {
   }
 
   interface CritterTraits {
-    inst: any;
-    traitscore: any;
-    dominanttrait: any;
-    dominanttraitlocked: any;
-    owner: any;
     best_trait: any;
-    metricsdata: any;
     data: any;
     dominant: any;
+    dominanttrait: any;
+    dominanttraitlocked: any;
+    inst: any;
+    metricsdata: any;
+    owner: any;
     str: any;
+    traitscore: any;
     DecayTraits(): any;
     GetDebugString(): any;
     IncTracker(name: any, multiplier: any): any;
@@ -1492,25 +1492,25 @@ export namespace Component {
   }
 
   interface Crop {
-    inst: any;
-    product_prefab: string;
+    cantgrowtime: number;
+    dt: number;
+    grower: any;
     growthpercent: number;
-    rate: number;
-    task: any;
+    inst: any;
     matured: boolean;
+    onharvest: any;
     onmatured: any;
     onwithered: any;
-    onharvest: any;
-    cantgrowtime: number;
+    product: any;
+    product_prefab: string;
+    rate: number;
     shouldgrow: any;
+    task: any;
+    temp: any;
+    temp_rate: any;
     x: any;
     y: any;
     z: any;
-    temp_rate: any;
-    dt: number;
-    grower: any;
-    product: any;
-    temp: any;
     DoGrow(dt: any, nowither: any): any;
     Fertilize(fertilizer: any, doer: any): any;
     GetDebugString(): any;
@@ -1531,9 +1531,9 @@ export namespace Component {
   }
 
   interface DamageReflect {
+    defaultdamage: number;
     inst: any;
     reflectdamagefn: any;
-    defaultdamage: number;
     GetReflectedDamage(
       attacker: any,
       damage: any,
@@ -1545,11 +1545,11 @@ export namespace Component {
   }
 
   interface DamageTracker {
-    inst: any;
     damage_done: number;
     damage_threshold: number;
     damage_threshold_fn: any;
     enabled: boolean;
+    inst: any;
     old: any;
     OnHealthDelta(data: any): any;
     Start(): any;
@@ -1559,10 +1559,10 @@ export namespace Component {
   interface Debuff {
     inst: any;
     name: any;
-    target: any;
     onattachedfn: any;
     ondetachedfn: any;
     onextendedfn: any;
+    target: any;
     AttachTo(name: any, target: any, followsymbol: any, followoffset: any): any;
     Extend(followsymbol: any, followoffset: any): any;
     OnDetach(): any;
@@ -1573,20 +1573,20 @@ export namespace Component {
   }
 
   interface Debuffable {
-    inst: any;
-    enable: boolean;
-    followsymbol: string;
-    followoffset: any;
+    data: any;
+    debuff: any;
     debuffs: any;
+    enable: boolean;
+    ent: any;
+    followoffset: any;
+    followsymbol: string;
+    inst: any;
     k: any;
+    str: any;
     toremove: any;
     x: any;
     y: any;
     z: any;
-    debuff: any;
-    ent: any;
-    data: any;
-    str: any;
     AddDebuff(name: any, prefab: any): any;
     Enable(enable: any): any;
     GetDebuff(name: any): any;
@@ -1601,10 +1601,10 @@ export namespace Component {
   }
 
   interface Debugger {
-    inst: any;
     debugger: any;
-    z: number;
     debuggerdraws: any;
+    inst: any;
+    z: number;
     OnUpdate(): any;
     SetAll(key: any, origin: any, tar: any, colour: any): any;
     SetColour(key: any, r: any, g: any, b: any, a: any): any;
@@ -1614,53 +1614,53 @@ export namespace Component {
   }
 
   interface Decay {
+    currenthealth: number;
+    decayrate: number;
+    deltatask: any;
     inst: any;
     maxhealth: number;
-    decayrate: number;
-    currenthealth: number;
     oldhealth: any;
-    deltatask: any;
     DoDelta(amount: any): any;
     SetTimeDelta(amount: any, pause: any, num: any): any;
   }
 
   interface DeciduousTreeUpdater {
-    inst: any;
-    monster: boolean;
-    monster_target: any;
-    last_monster_target: any;
-    last_attack_time: number;
-    root: any;
-    starttask: any;
+    angle: any;
     drakespawntask: any;
     ignitedrakespawntask: any;
-    sleeptask: any;
-    time_to_passive_drake: number;
-    num_passive_drakes: number;
-    monster_start_time: any;
-    monster_duration: any;
+    ignitenumdrakes: any;
+    inst: any;
+    last_attack_time: number;
+    last_monster_target: any;
+    mdistsq: any;
+    monster: boolean;
     monsterFreq: any;
     monsterTime: any;
-    spawneddrakes: boolean;
-    monster_stop_task: any;
+    monster_duration: any;
     monster_start_task: any;
-    passive_drakes_spawned: number;
-    passdrake: any;
-    pos: any;
-    passoffset: any;
-    targdist: any;
-    x: any;
-    y: any;
-    z: any;
+    monster_start_time: any;
+    monster_stop_task: any;
+    monster_target: any;
     mx: any;
     my: any;
     mz: any;
-    mdistsq: any;
-    targdistsq: any;
-    rootpos: any;
-    angle: any;
+    num_passive_drakes: number;
     numdrakes: any;
-    ignitenumdrakes: any;
+    passdrake: any;
+    passive_drakes_spawned: number;
+    passoffset: any;
+    pos: any;
+    root: any;
+    rootpos: any;
+    sleeptask: any;
+    spawneddrakes: boolean;
+    starttask: any;
+    targdist: any;
+    targdistsq: any;
+    time_to_passive_drake: number;
+    x: any;
+    y: any;
+    z: any;
     OnEntitySleep(): any;
     OnEntityWake(): any;
     OnUpdate(dt: any): any;
@@ -1670,41 +1670,41 @@ export namespace Component {
   }
 
   interface DeerHerding {
-    inst: any;
+    activedeer: any;
+    alerttargets: any;
+    alldeer: any;
+    center: any;
+    closest: any;
+    closest_dist: number;
+    count: number;
+    curtime: any;
+    data: any;
+    deflected: any;
+    facing: number;
+    grazetimer: any;
+    grazing_time: any;
+    herd_center: any;
+    herdheading: number;
     herdhomelocation: any;
     herdlocation: any;
-    herdheading: number;
     herdspawner: any;
-    lastupdate: number;
-    grazetimer: any;
+    inst: any;
     isgrazing: boolean;
-    keepheading: boolean;
-    grazing_time: any;
-    roaming_time: any;
-    alerttargets: any;
-    valid_area_check: any;
-    activedeer: any;
-    count: number;
-    center: any;
-    facing: number;
-    max_dist: number;
-    result_offset: any;
-    result_angle: any;
-    deflected: any;
-    herd_center: any;
-    alldeer: any;
-    curtime: any;
-    was_spooked: any;
     isspooked: any;
+    keepheading: boolean;
+    lastupdate: number;
+    max_dist: number;
+    result_angle: any;
+    result_offset: any;
+    roaming_time: any;
+    s: string;
+    spookdir: any;
+    threats: any;
+    valid_area_check: any;
+    was_spooked: any;
     x: any;
     y: any;
     z: any;
-    threats: any;
-    spookdir: any;
-    closest: any;
-    closest_dist: number;
-    data: any;
-    s: string;
     CalcHerdCenterPoint(detailedinfo: any): any;
     CalcIsHerdSpooked(): any;
     GetClosestHerdAlertTarget(deer: any): any;
@@ -1727,15 +1727,15 @@ export namespace Component {
 
   interface Deployable {
     inst: any;
+    inventoryitem: any;
+    isplant: any;
     mode: any;
+    ondeploy: any;
     spacing: any;
     usegridplacer: boolean;
-    ondeploy: any;
-    inventoryitem: any;
     x: any;
     y: any;
     z: any;
-    isplant: any;
     CanDeploy(pt: any, mouseover: any, deployer: any): boolean;
     Deploy(pt: any, deployer: any, rot: any): any;
     DeploySpacingRadius(): any;
@@ -1747,10 +1747,10 @@ export namespace Component {
   }
 
   interface DeployHelper {
+    delay: number;
     inst: any;
     onenablehelper: any;
     recipefilters: any;
-    delay: number;
     AddRecipeFilter(recipename: any): any;
     OnEntitySleep(): any;
     OnEntityWake(): any;
@@ -1760,27 +1760,27 @@ export namespace Component {
   }
 
   interface Digester {
-    inst: any;
     digesttime: number;
-    itemstodigestfn: any;
-    task: any;
     helditems: any;
+    inst: any;
+    itemstodigestfn: any;
     rnd: any;
+    task: any;
     TryDigest(): any;
   }
 
   interface Disappears {
-    inst: any;
-    delay: number;
-    disappearsFn: any;
-    sound: any;
     anim: string;
-    disappeartask: any;
-    tasktotime: any;
-    isdisappear: boolean;
-    persists: boolean;
     canbepickedup: boolean;
     canbepickedupalive: boolean;
+    delay: number;
+    disappearsFn: any;
+    disappeartask: any;
+    inst: any;
+    isdisappear: boolean;
+    persists: boolean;
+    sound: any;
+    tasktotime: any;
     Disappear(): any;
     GetDebugString(): any;
     PrepareDisappear(): any;
@@ -1788,11 +1788,11 @@ export namespace Component {
   }
 
   interface Discoverable {
-    inst: any;
-    discovered: boolean;
-    undiscoveredIcon: any;
-    discoveredIcon: any;
     data: any;
+    discovered: boolean;
+    discoveredIcon: any;
+    inst: any;
+    undiscoveredIcon: any;
     Discover(): any;
     Hide(): any;
     OnLoad(data: any): any;
@@ -1801,14 +1801,14 @@ export namespace Component {
   }
 
   interface Diseaseable {
-    inst: any;
-    onDiseasedFn: any;
     diseased: boolean;
     ent: any;
+    ents: any;
+    inst: any;
+    onDiseasedFn: any;
     x: any;
     y: any;
     z: any;
-    ents: any;
     Disease(): any;
     GetDebugString(): any;
     IsBecomingDiseased(): boolean;
@@ -1822,27 +1822,27 @@ export namespace Component {
   }
 
   interface DistanceTracker {
-    previous_pos: any;
+    distance: number;
     inst: any;
     mypos: any;
-    distance: number;
+    previous_pos: any;
     OnUpdate(dt: any): any;
   }
 
   interface Domesticatable {
-    inst: any;
+    decaytask: any;
     domesticated: boolean;
     domestication: number;
     domestication_latch: boolean;
-    lastdomesticationgain: number;
     domestication_triggerfn: any;
-    obedience: number;
-    minobedience: number;
-    maxobedience: number;
     domesticationdecaypaused: boolean;
-    tendencies: any;
-    decaytask: any;
+    inst: any;
+    lastdomesticationgain: number;
+    maxobedience: number;
+    minobedience: number;
+    obedience: number;
     s: any;
+    tendencies: any;
     BecomeDomesticated(): any;
     CancelTask(): any;
     CheckAndStartTask(): any;
@@ -1866,12 +1866,12 @@ export namespace Component {
   }
 
   interface Drawable {
-    inst: any;
+    atlasname: any;
+    bgatlasname: any;
+    bgimagename: any;
     candraw: boolean;
     imagename: any;
-    atlasname: any;
-    bgimagename: any;
-    bgatlasname: any;
+    inst: any;
     ondrawnfn: any;
     CanDraw(): boolean;
     GetAtlas(): any;
@@ -1893,13 +1893,13 @@ export namespace Component {
   }
 
   interface DrawingTool {
+    atlas: any;
+    bgatlas: any;
+    bgimage: any;
+    ent: any;
+    image: any;
     inst: any;
     ondrawfn: any;
-    ent: any;
-    atlas: any;
-    bgimage: any;
-    bgatlas: any;
-    image: any;
     Draw(
       target: any,
       image: any,
@@ -1913,31 +1913,31 @@ export namespace Component {
   }
 
   interface Drownable {
-    inst: any;
-    enabled: any;
-    ontakedrowningdamage: any;
-    customtuningsfn: any;
-    x: any;
-    y: any;
-    z: any;
-    target_x: any;
-    target_y: any;
-    target_z: any;
-    radius: any;
-    pt: any;
     angle: any;
-    offset: any;
-    src_x: any;
-    src_y: any;
-    src_z: any;
+    customtuningsfn: any;
+    delta: any;
     dest_x: any;
     dest_y: any;
     dest_z: any;
-    inv: any;
+    enabled: any;
     handitem: any;
-    tunings: any;
-    delta: any;
+    inst: any;
+    inv: any;
+    offset: any;
+    ontakedrowningdamage: any;
+    pt: any;
+    radius: any;
+    src_x: any;
+    src_y: any;
+    src_z: any;
+    target_x: any;
+    target_y: any;
+    target_z: any;
     to_drop: any;
+    tunings: any;
+    x: any;
+    y: any;
+    z: any;
     DropInventory(): any;
     GiveupAndDrown(): any;
     OnFallInOcean(shore_x: any, shore_y: any, shore_z: any): any;
@@ -1950,10 +1950,10 @@ export namespace Component {
   }
 
   interface Dryable {
+    buildfile: any;
+    drytime: any;
     inst: any;
     product: any;
-    drytime: any;
-    buildfile: any;
     GetBuildFile(): any;
     GetDryTime(): any;
     GetProduct(): any;
@@ -1964,21 +1964,21 @@ export namespace Component {
   }
 
   interface Dryer {
-    inst: any;
-    ingredient: any;
-    product: any;
     buildfile: any;
     foodtype: any;
-    remainingtime: any;
-    tasktotime: any;
-    task: any;
-    onstartdrying: any;
+    ingredient: any;
+    ingredientperish: any;
+    inst: any;
+    loot: any;
     ondonedrying: any;
     onharvest: any;
+    onstartdrying: any;
+    product: any;
     protectedfromrain: any;
+    remainingtime: any;
+    task: any;
+    tasktotime: any;
     watchingrain: any;
-    ingredientperish: any;
-    loot: any;
     CanDry(dryable: any): boolean;
     DropItem(): any;
     GetDebugString(): any;
@@ -2002,27 +2002,27 @@ export namespace Component {
   }
 
   interface Eater {
-    inst: any;
-    eater: boolean;
-    strongstomach: boolean;
-    preferseating: any;
+    base_mult: any;
+    cacheedibletags: any;
     caneat: any;
-    oneatfn: any;
-    lasteattime: any;
-    ignoresspoilage: boolean;
+    delta: any;
+    eater: boolean;
     eatwholestack: boolean;
     healthabsorption: number;
     hungerabsorption: number;
-    sanityabsorption: number;
-    preferseatingtags: any;
-    tags: any;
-    cacheedibletags: any;
-    stack_mult: any;
+    ignoresspoilage: boolean;
+    inst: any;
     iswoodiness: boolean;
-    delta: any;
-    base_mult: any;
+    lasteattime: any;
+    oneatfn: any;
     owner: any;
     preferred: boolean;
+    preferseating: any;
+    preferseatingtags: any;
+    sanityabsorption: number;
+    stack_mult: any;
+    strongstomach: boolean;
+    tags: any;
     CanEat(inst: any): boolean;
     DoFoodEffects(food: any): any;
     Eat(food: any, feeder: any): any;
@@ -2044,29 +2044,29 @@ export namespace Component {
   }
 
   interface Edible {
-    inst: any;
-    healthvalue: number;
-    hungervalue: number;
-    sanityvalue: number;
-    woodiness: any;
-    foodtype: any;
-    oneaten: any;
-    degrades_with_spoilage: boolean;
-    gethealthfn: any;
-    temperaturedelta: number;
-    temperatureduration: number;
     chill: number;
-    stale_hunger: any;
-    stale_health: any;
-    spoiled_hunger: any;
-    spoiled_health: any;
-    spice: any;
-    ignore_spoilage: any;
-    multiplier: number;
-    spice_source: any;
+    degrades_with_spoilage: boolean;
     delta_multiplier: number;
     duration_multiplier: number;
+    foodtype: any;
+    gethealthfn: any;
+    healthvalue: number;
+    hungervalue: number;
+    ignore_spoilage: any;
+    inst: any;
+    multiplier: number;
+    oneaten: any;
+    sanityvalue: number;
+    spice: any;
+    spice_source: any;
+    spoiled_health: any;
+    spoiled_hunger: any;
     stacksize: any;
+    stale_health: any;
+    stale_hunger: any;
+    temperaturedelta: number;
+    temperatureduration: number;
+    woodiness: any;
     AddChill(delta: any): any;
     DiluteChill(item: any, count: any): any;
     GetDebugString(): any;
@@ -2089,28 +2089,28 @@ export namespace Component {
   }
 
   interface Embarker {
-    inst: any;
-    embarkable: any;
-    start_x: any;
-    start_y: any;
-    start_z: any;
+    delta_dist: any;
+    delta_x: any;
+    delta_z: any;
+    disembark_x: any;
+    disembark_z: any;
     embark_speed: number;
-    last_embark_x: any;
-    last_embark_z: any;
     embark_x: any;
     embark_z: any;
+    embarkable: any;
+    hopping: boolean;
+    inst: any;
+    last_embark_x: any;
+    last_embark_z: any;
     my_x: any;
     my_y: any;
     my_z: any;
-    delta_x: any;
-    delta_z: any;
-    delta_dist: any;
+    start_x: any;
+    start_y: any;
+    start_z: any;
     travel_dist: any;
-    disembark_x: any;
-    disembark_z: any;
     x: any;
     z: any;
-    hopping: boolean;
     Cancel(): any;
     Embark(): any;
     GetEmbarkPosition(): any;
@@ -2124,29 +2124,29 @@ export namespace Component {
   }
 
   interface Emitter {
-    inst: any;
     area_emitter: any;
     config: any;
-    max_lifetime: number;
-    ground_height: number;
-    particles_per_tick: number;
-    num_particles_to_emit: number;
     density_factor: number;
-    effect: any;
-    emitter: any;
-    tick_time: any;
     desired_particles_per_second: any;
+    effect: any;
     emit_fn: any;
+    emitter: any;
+    ground_height: number;
+    inst: any;
+    max_lifetime: number;
+    num_particles_to_emit: number;
+    particles_per_tick: number;
+    tick_time: any;
     updateFunc: any;
     Emit(): any;
   }
 
   interface EntityTracker {
-    inst: any;
     entities: any;
-    str: string;
     ents: any;
+    inst: any;
     refs: any;
+    str: string;
     ForgetEntity(name: any): any;
     GetDebugString(): any;
     GetEntity(name: any): any;
@@ -2157,36 +2157,36 @@ export namespace Component {
   }
 
   interface EpicScare {
+    defaultduration: number;
+    ents: any;
     inst: any;
     range: number;
-    defaultduration: number;
-    scaremusttags: any;
     scareexcludetags: any;
+    scaremusttags: any;
     scareoneoftags: any;
     x: any;
     y: any;
     z: any;
-    ents: any;
     Scare(duration: any): any;
     SetDefaultDuration(duration: any): any;
     SetRange(range: any): any;
   }
 
   interface Equippable {
-    inst: any;
-    isequipped: boolean;
-    equipslot: any;
-    onequipfn: any;
-    onunequipfn: any;
-    onpocketfn: any;
-    equipstack: boolean;
-    walkspeedmult: any;
-    dapperness: number;
     dapperfn: any;
-    insulated: boolean;
+    dapperness: number;
     equippedmoisture: number;
-    maxequippedmoisture: number;
+    equipslot: any;
+    equipstack: boolean;
+    inst: any;
+    insulated: boolean;
     inventoryitem: any;
+    isequipped: boolean;
+    maxequippedmoisture: number;
+    onequipfn: any;
+    onpocketfn: any;
+    onunequipfn: any;
+    walkspeedmult: any;
     Equip(owner: any): any;
     GetDapperness(owner: any): any;
     GetEquippedMoisture(): any;
@@ -2203,30 +2203,30 @@ export namespace Component {
   }
 
   interface Explosive {
-    inst: any;
-    explosiverange: number;
-    explosivedamage: number;
     buildingdamage: number;
+    ents: any;
+    explosivedamage: number;
+    explosiverange: number;
+    inst: any;
     lightonexplode: boolean;
     onexplodefn: any;
     stacksize: any;
     totaldamage: any;
+    world: any;
     x: any;
     y: any;
     z: any;
-    ents: any;
-    world: any;
     OnBurnt(): any;
     SetOnExplodeFn(fn: any): any;
   }
 
   interface ExplosiveResist {
-    inst: any;
-    resistance: number;
-    maxresistdamage: any;
-    decaytime: any;
     decaydelay: any;
+    decaytime: any;
     delayremaining: number;
+    inst: any;
+    maxresistdamage: any;
+    resistance: number;
     DoDelta(delta: any): any;
     GetDebugString(): any;
     GetResistance(): any;
@@ -2239,9 +2239,9 @@ export namespace Component {
 
   interface Fader {
     inst: any;
-    values: any;
     numvals: number;
     rate: any;
+    values: any;
     Fade(
       startval: any,
       endval: any,
@@ -2255,10 +2255,10 @@ export namespace Component {
   }
 
   interface Fan {
-    inst: any;
     canusefn: any;
-    onusefn: any;
+    inst: any;
     onchannelingfn: any;
+    onusefn: any;
     overridesymbol: any;
     Channel(target: any): any;
     Fan(target: any): any;
@@ -2271,36 +2271,36 @@ export namespace Component {
   }
 
   interface Fertilizer {
-    inst: any;
+    cost: number;
+    fertilize_sound: string;
     fertilizervalue: number;
+    inst: any;
+    planthealth: any;
     soil_cycles: number;
     withered_cycles: number;
-    fertilize_sound: string;
-    planthealth: any;
-    cost: number;
     Heal(target: any): any;
     OnRemoveFromEntity(): any;
     SetHealingAmount(health: any): any;
   }
 
   interface Fillable {
-    inst: any;
-    filledprefab: any;
-    filleditem: any;
-    owner: any;
     container: any;
+    filleditem: any;
+    filledprefab: any;
+    inst: any;
     item: any;
+    owner: any;
     Fill(): any;
   }
 
   interface FiniteUses {
-    inst: any;
-    total: number;
-    current: number;
     consumption: any;
-    was_positive: any;
-    uses: any;
+    current: number;
+    inst: any;
     onfinished: any;
+    total: number;
+    uses: any;
+    was_positive: any;
     GetDebugString(): any;
     GetPercent(): any;
     GetUses(): any;
@@ -2316,13 +2316,13 @@ export namespace Component {
   }
 
   interface Firebug {
-    inst: any;
-    time_to_fire: number;
-    time_interval: number;
-    time_variance: number;
-    sanity_threshold: any;
-    prefab: any;
     enabled: boolean;
+    inst: any;
+    prefab: any;
+    sanity_threshold: any;
+    time_interval: number;
+    time_to_fire: number;
+    time_variance: number;
     Disable(): any;
     Enable(enable: any): any;
     GetDebugString(): any;
@@ -2330,29 +2330,29 @@ export namespace Component {
   }
 
   interface FireDetector {
-    inst: any;
-    range: any;
     detectPeriod: any;
-    onfindfire: any;
-    onbeginemergency: any;
-    onendemergency: any;
-    onbeginwarning: any;
-    onupdatewarning: any;
-    onendwarning: any;
-    detectedItems: any;
     detectTask: any;
+    detectedItems: any;
+    emergency: boolean;
+    emergencyBurnt: any;
+    emergencyLevel: number;
+    emergencyLevelFireThreshold: any;
+    emergencyLevelMax: any;
     emergencyResponsePeriod: any;
     emergencyShutdownPeriod: any;
-    emergencyLevelMax: any;
-    emergencyLevelFireThreshold: any;
-    emergencyLevel: number;
-    emergency: boolean;
-    emergencyWatched: any;
-    emergencyBurnt: any;
     emergencyShutdownTask: any;
     emergencyShutdownTime: any;
-    warningStartTime: any;
+    emergencyWatched: any;
+    inst: any;
+    onbeginemergency: any;
+    onbeginwarning: any;
+    onendemergency: any;
+    onendwarning: any;
+    onfindfire: any;
+    onupdatewarning: any;
+    range: any;
     t: any;
+    warningStartTime: any;
     Activate(randomizedStartTime: any): any;
     ActivateEmergencyMode(randomizedStartTime: any): any;
     Deactivate(): any;
@@ -2374,31 +2374,31 @@ export namespace Component {
   }
 
   interface FireFX {
+    bigignitesoundthresh: number;
+    current_radius: number;
+    extinguishsound: any;
+    flicker: any;
+    highval_i: any;
+    highval_r: any;
     inst: any;
+    isday: any;
     level: any;
+    levels: any;
+    light: any;
+    lightsound: any;
+    lowval_i: any;
+    lowval_r: number;
+    old: any;
+    params: any;
+    percent: number;
+    playignitesound: boolean;
     playingsound: any;
     playingsoundintensity: any;
-    percent: number;
-    levels: any;
-    playignitesound: boolean;
-    bigignitesoundthresh: number;
-    usedayparamforsound: boolean;
-    current_radius: number;
-    lightsound: any;
-    extinguishsound: any;
-    light: any;
-    old: any;
-    time: any;
-    isday: any;
-    highval_r: any;
-    lowval_r: number;
-    lowval_i: any;
-    highval_i: any;
-    params: any;
-    flicker: any;
     rad: any;
-    val: any;
     should_play_extinguish: any;
+    time: any;
+    usedayparamforsound: boolean;
+    val: any;
     AttachLightTo(target: any): any;
     Extinguish(): any;
     GetLevelRadius(level: any): any;
@@ -2412,17 +2412,17 @@ export namespace Component {
   }
 
   interface Fishable {
-    inst: any;
     fish: any;
-    maxfish: number;
     fishleft: number;
-    hookedfish: any;
-    fishrespawntime: any;
-    respawntask: any;
-    frozen: boolean;
-    str: any;
-    getfishfn: any;
     fishprefab: any;
+    fishrespawntime: any;
+    frozen: boolean;
+    getfishfn: any;
+    hookedfish: any;
+    inst: any;
+    maxfish: number;
+    respawntask: any;
+    str: any;
     AddFish(prefab: any): any;
     Freeze(): any;
     GetDebugString(): any;
@@ -2447,48 +2447,48 @@ export namespace Component {
   }
 
   interface FishingNetVisualizer {
-    inst: any;
-    velocity: number;
-    retrieve_velocity: number;
-    collect_radius: number;
-    collect_velocity: number;
-    retrieve_distance: number;
-    distance_to_play_open_anim: number;
-    has_played_throw_pst: boolean;
-    max_captured_entity_collect_distance: number;
     captured_entities: any;
     captured_entities_collect_distance: any;
+    collect_radius: number;
+    collect_velocity: number;
+    delta_x: any;
+    delta_z: any;
+    dir_length: any;
+    dir_x: any;
+    dir_x_normalized: any;
+    dir_z: any;
+    dir_z_normalized: any;
+    distance_remaining: number;
+    distance_to_play_open_anim: number;
+    distance_traveled: any;
+    entities: any;
+    has_played_throw_pst: boolean;
+    idx: number;
+    initial_delay: number;
+    inst: any;
+    last_dir_x: any;
+    last_dir_z: any;
+    max_captured_entity_collect_distance: number;
+    my_x: any;
+    my_y: any;
+    my_z: any;
+    retrieve_distance: number;
     retrieve_distance_traveled: number;
+    retrieve_velocity: number;
+    spawn_distance: number;
+    target_x: any;
+    target_z: any;
     thrower: any;
     thrower_x: any;
     thrower_y: any;
     thrower_z: any;
+    time_between_drops: number;
+    total_distance: any;
     travel_vec_x: any;
     travel_vec_z: any;
-    spawn_distance: number;
-    distance_remaining: number;
-    total_distance: any;
-    dir_x: any;
-    dir_z: any;
-    target_x: any;
-    target_z: any;
-    my_x: any;
-    my_y: any;
-    my_z: any;
-    distance_traveled: any;
-    y: any;
+    velocity: number;
     x_intersect: any;
-    entities: any;
-    time_between_drops: number;
-    initial_delay: number;
-    idx: number;
-    dir_length: any;
-    dir_x_normalized: any;
-    dir_z_normalized: any;
-    delta_x: any;
-    delta_z: any;
-    last_dir_x: any;
-    last_dir_z: any;
+    y: any;
     BeginCast(thrower: any, target_x: any, target_z: any): any;
     BeginFinalPickup(): any;
     BeginOpening(): any;
@@ -2501,24 +2501,24 @@ export namespace Component {
   }
 
   interface FishingRod {
-    inst: any;
-    target: any;
-    fisherman: any;
-    hookedfish: any;
     caughtfish: any;
-    minwaittime: number;
+    fisherman: any;
+    fishleft: any;
+    fishtask: any;
+    hookedfish: any;
+    inst: any;
+    loserodtime: any;
+    maxstraintime: number;
     maxwaittime: number;
     minstraintime: number;
-    maxstraintime: number;
-    fishtask: any;
-    str: any;
-    fishleft: any;
+    minwaittime: number;
     nibbletime: any;
-    roddurability: any;
-    loserodtime: any;
-    spawnPos: any;
     offset: any;
     persists: boolean;
+    roddurability: any;
+    spawnPos: any;
+    str: any;
+    target: any;
     CancelFishTask(): any;
     Collect(): any;
     FishIsBiting(): any;
@@ -2538,14 +2538,14 @@ export namespace Component {
   }
 
   interface FishSchool {
-    inst: any;
-    max_fish_level: number;
     fish_level: number;
     fish_prefab_name: any;
-    replenish_task: any;
+    inst: any;
+    max_fish_level: number;
     net_x: any;
     net_y: any;
     net_z: any;
+    replenish_task: any;
     OnPreNet(net: any): any;
     Replenish(): any;
     SetNettedPrefab(fishing_net_prefab: any): any;
@@ -2554,30 +2554,30 @@ export namespace Component {
   }
 
   interface Floater {
+    anim: any;
+    back_fx: any;
+    bank: any;
+    bob_percent: number;
+    do_bank_swap: boolean;
+    float_index: number;
+    front_fx: any;
     inst: any;
+    my_x: any;
+    my_y: any;
+    my_z: any;
+    pos_x: any;
+    pos_y: any;
+    pos_z: any;
+    should_parent_effect: boolean;
+    showing_effect: boolean;
     size: string;
+    skin_build: any;
+    swap_data: any;
+    symbol: any;
     vert_offset: any;
     xscale: number;
     yscale: number;
     zscale: number;
-    should_parent_effect: boolean;
-    do_bank_swap: boolean;
-    float_index: number;
-    swap_data: any;
-    showing_effect: boolean;
-    bob_percent: number;
-    pos_x: any;
-    pos_y: any;
-    pos_z: any;
-    my_x: any;
-    my_y: any;
-    my_z: any;
-    symbol: any;
-    skin_build: any;
-    front_fx: any;
-    back_fx: any;
-    bank: any;
-    anim: any;
     AttachEffect(effect: any): any;
     IsFloating(): boolean;
     OnLandedClient(): any;
@@ -2596,18 +2596,18 @@ export namespace Component {
   }
 
   interface FocalPoint {
-    inst: any;
-    targets: any;
+    best_dist_sq: any;
+    best_focus: any;
+    best_priority: any;
     current_focus: any;
-    sourcetbl: any;
+    fn: any;
+    inst: any;
     params: any;
     parent: any;
-    best_focus: any;
-    best_dist_sq: any;
-    best_priority: any;
-    toremove: any;
-    fn: any;
+    sourcetbl: any;
     str: any;
+    targets: any;
+    toremove: any;
     CameraUpdate(dt: any): any;
     GetDebugString(): any;
     PushTempFocus(
@@ -2630,20 +2630,20 @@ export namespace Component {
   }
 
   interface Follower {
-    inst: any;
-    leader: any;
-    targettime: any;
-    maxfollowtime: any;
-    canaccepttarget: boolean;
     OnLeaderRemoved: any;
-    str: any;
-    porttask: any;
-    task: any;
-    timeLeft: any;
+    canaccepttarget: boolean;
     currentTime: any;
-    time: any;
-    othercmp: any;
+    inst: any;
     keepleaderonattacked: boolean;
+    leader: any;
+    maxfollowtime: any;
+    othercmp: any;
+    porttask: any;
+    str: any;
+    targettime: any;
+    task: any;
+    time: any;
+    timeLeft: any;
     time_left: any;
     AddLoyaltyTime(time: any): any;
     GetDebugString(): any;
@@ -2663,12 +2663,12 @@ export namespace Component {
   }
 
   interface FoodMemory {
-    inst: any;
+    count: any;
     duration: any;
     foods: any;
+    inst: any;
     mults: any;
     rec: any;
-    count: any;
     GetBaseFood(prefab: any): any;
     GetFoodMultiplier(prefab: any): any;
     GetMemoryCount(prefab: any): any;
@@ -2681,24 +2681,24 @@ export namespace Component {
   }
 
   interface Freezable {
-    inst: any;
-    state: any;
-    resistance: number;
-    coldness: number;
-    wearofftime: number;
-    damagetotal: number;
-    damagetobreak: number;
-    fxlevel: number;
-    fxdata: any;
-    wearofftask: any;
-    r: any;
-    g: any;
-    b: any;
     a: any;
-    percent: any;
-    extraresist: any;
+    b: any;
+    coldness: number;
+    damagetobreak: number;
+    damagetotal: number;
     diminishingtask: any;
+    extraresist: any;
+    fxdata: any;
+    fxlevel: number;
+    g: any;
+    inst: any;
+    percent: any;
     prevState: any;
+    r: any;
+    resistance: number;
+    state: any;
+    wearofftask: any;
+    wearofftime: number;
     AddColdness(coldness: any, freezetime: any, nofreeze: any): any;
     AddShatterFX(prefab: any, offset: any, followsymbol: any): any;
     Freeze(freezetime: any): any;
@@ -2723,13 +2723,13 @@ export namespace Component {
   }
 
   interface FrostyBreather {
-    inst: any;
     breath: any;
+    breathevent: any;
+    enabled: boolean;
+    facing: any;
+    inst: any;
     offset: any;
     offset_fn: any;
-    enabled: boolean;
-    breathevent: any;
-    facing: any;
     x: any;
     y: any;
     z: any;
@@ -2746,9 +2746,9 @@ export namespace Component {
   }
 
   interface Fuel {
-    inst: any;
-    fuelvalue: number;
     fueltype: any;
+    fuelvalue: number;
+    inst: any;
     ontaken: any;
     OnRemoveFromEntity(): any;
     SetOnTakenFn(fn: any): any;
@@ -2756,34 +2756,34 @@ export namespace Component {
   }
 
   interface Fueled {
-    inst: any;
+    accepting: boolean;
+    bonusmult: number;
     consuming: boolean;
-    maxfuel: number;
     currentfuel: number;
+    depleted: any;
+    firstperiod: any;
+    firstperioddt: any;
+    firstperiodfull: any;
+    fueltype: any;
+    fuelvalue: number;
+    inst: any;
+    masterymult: any;
+    maxfuel: number;
+    newsection: any;
+    no_sewing: any;
+    oldsection: any;
+    ontakefuelfn: any;
+    period: number;
     rate: number;
     rate_modifiers: any;
-    no_sewing: any;
-    accepting: boolean;
-    fueltype: any;
     secondaryfueltype: any;
-    sections: number;
-    sectionfn: any;
-    period: number;
-    bonusmult: number;
-    depleted: any;
-    ontakefuelfn: any;
-    oldsection: any;
-    wetmult: any;
-    masterymult: any;
-    fuelvalue: number;
-    updatefn: any;
     section: any;
+    sectionfn: any;
+    sections: number;
     target: any;
-    firstperiod: any;
-    firstperiodfull: any;
     task: any;
-    firstperioddt: any;
-    newsection: any;
+    updatefn: any;
+    wetmult: any;
     AddThreshold(percent: any, fn: any): any;
     CanAcceptFuelItem(item: any): boolean;
     ChangeSection(amount: any): any;
@@ -2813,18 +2813,18 @@ export namespace Component {
   }
 
   interface FuelMaster {
-    inst: any;
-    bonusmult: number;
     bonusfn: any;
+    bonusmult: number;
+    inst: any;
     GetBonusMult(item: any, target: any): any;
     SetBonusFn(fn: any): any;
     SetBonusMult(mult: any): any;
   }
 
   interface GiftReceiver {
-    inst: any;
     giftcount: number;
     giftmachine: any;
+    inst: any;
     old: any;
     HasGift(): boolean;
     OnStartOpenGift(): any;
@@ -2835,19 +2835,19 @@ export namespace Component {
   }
 
   interface Grogginess {
-    inst: any;
-    resistance: number;
-    grog_amount: number;
-    knockouttime: number;
-    knockoutduration: number;
-    wearofftime: number;
-    wearoffduration: any;
-    decayrate: any;
-    knockouttestfn: any;
     cometotestfn: any;
+    decayrate: any;
+    grog_amount: number;
+    inst: any;
+    knockoutduration: number;
+    knockouttestfn: any;
+    knockouttime: number;
+    onwearofffn: any;
+    resistance: number;
+    wearoffduration: any;
+    wearofftime: number;
     whilegroggyfn: any;
     whilewearingofffn: any;
-    onwearofffn: any;
     AddGrogginess(grogginess: any, knockoutduration: any): any;
     ComeTo(): any;
     ExtendKnockout(knockoutduration: any): any;
@@ -2867,33 +2867,33 @@ export namespace Component {
   }
 
   interface GroundPounder {
-    inst: any;
-    numRings: number;
-    ringDelay: number;
-    initialRadius: number;
-    radiusStepDistance: number;
-    pointDensity: number;
-    damageRings: number;
-    destructionRings: number;
-    platformPushingRings: number;
-    noTags: any;
-    destroyer: boolean;
+    breakobjectsRadius: any;
+    breakobjectsRadiusSQ: any;
     burner: boolean;
+    damageRings: number;
+    delay: number;
+    destroyer: boolean;
+    destructionRings: number;
+    dodamageRadius: any;
+    ents: any;
+    getEnts: any;
+    groundpoundFn: any;
+    groundpounddamagemult: number;
     groundpoundfx: string;
     groundpoundringfx: string;
-    groundpounddamagemult: number;
-    groundpoundFn: any;
+    initialRadius: number;
+    inst: any;
+    map: any;
+    noTags: any;
+    numRings: number;
+    platformEnts: any;
+    platformPushRadius: any;
+    platformPushingRings: number;
+    pointDensity: number;
     points: any;
     radius: any;
-    getEnts: any;
-    map: any;
-    delay: number;
-    breakobjectsRadius: any;
-    dodamageRadius: any;
-    breakobjectsRadiusSQ: any;
-    ents: any;
-    platformPushRadius: any;
-    platformEnts: any;
+    radiusStepDistance: number;
+    ringDelay: number;
     DestroyPoints(
       points: any,
       breakobjects: any,
@@ -2907,17 +2907,17 @@ export namespace Component {
   }
 
   interface GroundShadowHandler {
-    inst: any;
     ground_shadow: any;
-    original_width: any;
+    inst: any;
+    max_lerp_height: number;
+    max_scale: number;
+    min_scale: number;
     original_height: any;
+    original_width: any;
+    percent: any;
     pos_x: any;
     pos_y: any;
     pos_z: any;
-    max_lerp_height: number;
-    min_scale: number;
-    max_scale: number;
-    percent: any;
     scale: any;
     OnRemove(): any;
     OnUpdate(dt: any): any;
@@ -2925,23 +2925,23 @@ export namespace Component {
   }
 
   interface GroupTargeter {
-    inst: any;
-    targets: any;
-    total_weight: number;
-    weight_change: number;
-    num_targets: number;
-    min_chance: number;
-    max_chance: number;
     chance_delta: number;
     current_chance: number;
-    totalWeight: number;
+    inst: any;
     loss: any;
-    weighting: number;
-    targetThreat: any;
-    target: any;
-    selection_weight: any;
+    max_chance: number;
+    min_chance: number;
+    num_targets: number;
     selected_target: any;
+    selection_weight: any;
+    target: any;
+    targetThreat: any;
+    targets: any;
+    totalWeight: number;
+    total_weight: number;
     weight: number;
+    weight_change: number;
+    weighting: number;
     AddTarget(target: any): any;
     GetTargets(): any;
     GetTotalWeight(): any;
@@ -2956,21 +2956,21 @@ export namespace Component {
   }
 
   interface Growable {
-    inst: any;
-    stages: any;
-    stage: number;
-    loopstages: boolean;
+    data: any;
     growonly: boolean;
-    springgrowth: boolean;
+    inst: any;
+    loopstages: boolean;
     magicgrowable: boolean;
-    timeToGrow: number;
-    targettime: any;
-    task: any;
     pausedremaining: any;
     remainingtime: any;
-    data: any;
-    time_from_now: any;
+    springgrowth: boolean;
+    stage: number;
+    stages: any;
+    targettime: any;
+    task: any;
     time: any;
+    timeToGrow: number;
+    time_from_now: any;
     DoGrowth(): any;
     ExtendGrowTime(extra_time: any): any;
     GetCurrentStageData(): any;
@@ -2990,18 +2990,18 @@ export namespace Component {
   }
 
   interface Grower {
-    inst: any;
-    crops: any;
-    level: number;
     croppoints: any;
-    growrate: number;
+    crops: any;
     cycles_left: number;
-    max_cycles_left: number;
-    isempty: boolean;
     data: any;
-    was_fertile: any;
-    prefab: any;
+    growrate: number;
+    inst: any;
+    isempty: boolean;
+    level: number;
+    max_cycles_left: number;
     pos: any;
+    prefab: any;
+    was_fertile: any;
     Fertilize(obj: any, doer: any): any;
     GetDebugString(): any;
     GetFertilePercent(): any;
@@ -3017,17 +3017,17 @@ export namespace Component {
   }
 
   interface Grue {
-    inst: any;
-    soundevent: any;
-    warndelay: number;
-    level: number;
     immunity: any;
     inittask: any;
+    inst: any;
+    level: number;
     nextHitTime: any;
     nextSoundTime: any;
-    soundwarn: any;
-    soundattack: any;
     resistance: any;
+    soundattack: any;
+    soundevent: any;
+    soundwarn: any;
+    warndelay: number;
     AddImmunity(source: any): any;
     CheckForStart(): any;
     OnRemoveFromEntity(): any;
@@ -3041,20 +3041,20 @@ export namespace Component {
   }
 
   interface Guardian {
-    inst: any;
-    prefab: any;
-    guardian: any;
-    onsummonfn: any;
-    onguardiandeathfn: any;
-    threshold: number;
-    summons: number;
-    decaytime: number;
-    decaytask: any;
-    old: any;
-    guard: any;
     cause: any;
     data: any;
+    decaytask: any;
+    decaytime: number;
+    guard: any;
+    guardian: any;
+    inst: any;
+    old: any;
+    onguardiandeathfn: any;
+    onsummonfn: any;
+    prefab: any;
     refs: any;
+    summons: number;
+    threshold: number;
     Call(d: any): any;
     Decay(d: any): any;
     DismissGuardian(): any;
@@ -3073,19 +3073,19 @@ export namespace Component {
   }
 
   interface Harvestable {
-    inst: any;
-    produce: number;
-    growtime: any;
-    product: any;
-    ongrowfn: any;
-    maxproduce: number;
-    onharvestfn: any;
     data: any;
-    time: any;
-    str: any;
-    task: any;
-    targettime: any;
+    growtime: any;
+    inst: any;
+    maxproduce: number;
+    ongrowfn: any;
+    onharvestfn: any;
     pos: any;
+    produce: number;
+    product: any;
+    str: any;
+    targettime: any;
+    task: any;
+    time: any;
     CanBeHarvested(): boolean;
     GetDebugString(): any;
     Grow(): any;
@@ -3103,24 +3103,24 @@ export namespace Component {
   }
 
   interface Hatchable {
-    inst: any;
-    progress: number;
-    discomfort: number;
-    state: string;
     cracktime: number;
-    hatchtime: number;
-    hatchfailtime: number;
-    heater_prefs: any;
+    data: any;
     delay: boolean;
-    onstatefn: any;
-    task: any;
+    discomfort: number;
     dt: any;
     has_heater: any;
-    wants_heater: any;
-    toohot: boolean;
-    toocold: boolean;
+    hatchfailtime: number;
+    hatchtime: number;
+    heater_prefs: any;
+    inst: any;
     oldstate: any;
-    data: any;
+    onstatefn: any;
+    progress: number;
+    state: string;
+    task: any;
+    toocold: boolean;
+    toohot: boolean;
+    wants_heater: any;
     Delay(time: any): any;
     GetDebugString(): any;
     GetHeaterPref(phase: any): any;
@@ -3138,19 +3138,19 @@ export namespace Component {
   }
 
   interface Hauntable {
-    inst: any;
-    onhaunt: any;
-    onunhaunt: any;
-    haunted: boolean;
-    hauntvalue: any;
-    no_wipe_value: boolean;
-    cooldowntimer: number;
     cooldown: any;
     cooldown_on_successful_haunt: boolean;
+    cooldowntimer: number;
+    flicker: string;
+    haunted: boolean;
+    hauntvalue: any;
+    inst: any;
+    no_wipe_value: boolean;
+    onhaunt: any;
+    onunhaunt: any;
     panic: boolean;
     panictimer: number;
     usefx: boolean;
-    flicker: string;
     AdvanceFlickerState(): any;
     DoHaunt(doer: any): any;
     OnRemoveFromEntity(): any;
@@ -3166,50 +3166,50 @@ export namespace Component {
   }
 
   interface Healer {
-    inst: any;
     health: any;
+    inst: any;
     Heal(target: any): any;
     SetHealthAmount(health: any): any;
   }
 
   interface Health {
-    inst: any;
-    maxhealth: number;
-    minhealth: number;
-    currenthealth: any;
-    invincible: boolean;
-    takingfiredamage: boolean;
-    takingfiredamagetime: number;
-    fire_damage_scale: number;
-    externalfiredamagemultipliers: any;
-    fire_timestart: number;
-    firedamageinlastsecond: number;
-    firedamagecaptimer: number;
-    nofadeout: boolean;
-    penalty: number;
     absorb: number;
-    playerabsorb: number;
-    externalabsorbmodifiers: any;
-    destroytime: any;
-    canmurder: boolean;
-    canheal: boolean;
-    haspenalty: any;
-    mult: any;
-    time: any;
-    takingfiredamagestarttime: any;
-    takingfiredamagelow: boolean;
-    lastfiredamagetime: any;
-    regen: any;
     amount: any;
-    period: any;
-    task: any;
-    s: any;
-    old_health: any;
+    canheal: boolean;
+    canmurder: boolean;
+    currenthealth: any;
+    destroytime: any;
+    externalabsorbmodifiers: any;
+    externalfiredamagemultipliers: any;
+    fire_damage_scale: number;
+    fire_timestart: number;
+    firedamagecaptimer: number;
+    firedamageinlastsecond: number;
+    haspenalty: any;
+    inst: any;
+    invincible: boolean;
+    lastfiredamagetime: any;
     max_health: any;
+    maxhealth: number;
     min_health: any;
-    persists: boolean;
-    old_percent: any;
+    minhealth: number;
+    mult: any;
     new_percent: any;
+    nofadeout: boolean;
+    old_health: any;
+    old_percent: any;
+    penalty: number;
+    period: any;
+    persists: boolean;
+    playerabsorb: number;
+    regen: any;
+    s: any;
+    takingfiredamage: boolean;
+    takingfiredamagelow: boolean;
+    takingfiredamagestarttime: any;
+    takingfiredamagetime: number;
+    task: any;
+    time: any;
     DeltaPenalty(delta: any): any;
     DoDelta(
       amount: any,
@@ -3249,32 +3249,32 @@ export namespace Component {
   }
 
   interface HealthBar {
-    inst: any;
     bar_atlas: string;
-    bar_image: string;
-    bar_width: number;
-    bar_height: number;
     bar_border: number;
     bar_colour: any;
-    bg_colour: any;
-    bar_world_offset: any;
+    bar_height: number;
+    bar_image: string;
     bar_ui_offset: any;
-    label_ui_offset: any;
+    bar_width: number;
+    bar_world_offset: any;
+    bg_colour: any;
     enabled: boolean;
-    newwidth: any;
     hp: any;
+    inst: any;
+    label_ui_offset: any;
+    newwidth: any;
     Enable(enable: any): any;
     SetValue(percent: any): any;
   }
 
   interface HealthSyncer {
-    inst: any;
     corrosives: any;
-    hots: any;
-    val: any;
     down: any;
-    up: any;
+    hots: any;
+    inst: any;
     status: any;
+    up: any;
+    val: any;
     GetOverTime(): any;
     GetPercent(): any;
     OnUpdate(dt: any): any;
@@ -3282,24 +3282,24 @@ export namespace Component {
 
   interface HealthTrigger {
     inst: any;
-    triggers: any;
     totrigger: any;
+    triggers: any;
     AddTrigger(amount: any, fn: any): any;
     OnHealthDelta(data: any): any;
     OnRemoveFromEntity(): any;
   }
 
   interface Heater {
-    inst: any;
-    heat: any;
-    heatfn: any;
-    equippedheat: any;
-    equippedheatfn: any;
     carriedheat: any;
     carriedheatfn: any;
     carriedheatmultiplier: number;
-    exothermic: boolean;
     endothermic: boolean;
+    equippedheat: any;
+    equippedheatfn: any;
+    exothermic: boolean;
+    heat: any;
+    heatfn: any;
+    inst: any;
     GetCarriedHeat(observer: any): any;
     GetDebugString(): any;
     GetEquippedHeat(observer: any): any;
@@ -3311,18 +3311,18 @@ export namespace Component {
   }
 
   interface HeavyObstaclePhysics {
-    inst: any;
-    maxradius: any;
     currentradius: any;
-    physicsstate: any;
+    inst: any;
     ischaracterpassthrough: any;
     issmall: boolean;
-    task: any;
-    onphysicsstatechangedfn: any;
+    maxradius: any;
     onchangetoitemfn: any;
     onchangetoobstaclefn: any;
+    onphysicsstatechangedfn: any;
     onstartfallingfn: any;
     onstopfallingfn: any;
+    physicsstate: any;
+    task: any;
     AddFallingStates(): any;
     GetPhysicsState(): any;
     IsFalling(): boolean;
@@ -3339,29 +3339,29 @@ export namespace Component {
   }
 
   interface Herd {
+    addmember: any;
+    data: any;
+    ents: any;
+    gatherrange: any;
+    herdPos: any;
     inst: any;
     maxsize: number;
-    members: any;
     membercount: number;
+    members: any;
     membertag: any;
-    gatherrange: any;
-    updaterange: any;
     onempty: any;
     onfull: any;
-    addmember: any;
+    str: any;
+    task: any;
+    toremove: any;
+    updatedPos: any;
     updatepos: boolean;
     updateposincombat: boolean;
-    task: any;
+    updaterange: any;
+    validMembers: number;
     x: any;
     y: any;
     z: any;
-    ents: any;
-    str: any;
-    updatedPos: any;
-    validMembers: number;
-    toremove: any;
-    herdPos: any;
-    data: any;
     AddMember(inst: any): any;
     GatherNearbyMembers(): any;
     GetDebugString(): any;
@@ -3382,10 +3382,10 @@ export namespace Component {
   }
 
   interface HerdMember {
-    inst: any;
     enabled: boolean;
     herd: any;
     herdprefab: string;
+    inst: any;
     task: any;
     CreateHerd(): any;
     Enable(enabled: any): any;
@@ -3397,26 +3397,26 @@ export namespace Component {
   }
 
   interface Hideout {
+    child: any;
+    data: any;
+    dt: any;
     inst: any;
-    storedcreatures: any;
     numstoredcreatures: number;
-    onvacate: any;
+    offset: any;
+    ongohome: any;
     onoccupied: any;
     onspawned: any;
-    ongohome: any;
-    timetonextspawn: number;
+    onvacate: any;
+    pos: any;
+    references: any;
+    spawnoffscreen: boolean;
     spawnperiod: number;
     spawnvariance: number;
-    spawnoffscreen: boolean;
-    task: any;
-    dt: any;
-    references: any;
-    data: any;
-    pos: any;
-    offset: any;
-    child: any;
-    success: any;
+    storedcreatures: any;
     str: string;
+    success: any;
+    task: any;
+    timetonextspawn: number;
     CanRelease(): boolean;
     DoReleaseChild(target: any, child: any, radius: any): any;
     GetDebugString(): any;
@@ -3439,24 +3439,24 @@ export namespace Component {
   }
 
   interface Highlight {
-    inst: any;
-    base_add_colour_red: any;
-    base_add_colour_green: any;
+    b: any;
     base_add_colour_blue: any;
+    base_add_colour_green: any;
+    base_add_colour_red: any;
+    flash_val: any;
     flashadd: any;
+    flashing: boolean;
     flashtimein: any;
     flashtimeout: any;
-    t: number;
-    flashing: boolean;
-    goingin: boolean;
-    flash_val: any;
-    r: any;
     g: any;
-    b: any;
-    highlit: boolean;
-    highlight_add_colour_red: any;
-    highlight_add_colour_green: any;
+    goingin: boolean;
     highlight_add_colour_blue: any;
+    highlight_add_colour_green: any;
+    highlight_add_colour_red: any;
+    highlit: boolean;
+    inst: any;
+    r: any;
+    t: number;
     ApplyColour(): any;
     Flash(toadd: any, timein: any, timeout: any): any;
     Highlight(r: any, g: any, b: any): any;
@@ -3467,10 +3467,10 @@ export namespace Component {
   }
 
   interface HomeSeeker {
+    bufferedaction: any;
+    home: any;
     inst: any;
     onhomeremoved: any;
-    home: any;
-    bufferedaction: any;
     GetDebugString(): any;
     GetHomePos(): any;
     GoHome(shouldrun: any): any;
@@ -3479,9 +3479,9 @@ export namespace Component {
   }
 
   interface Hull {
+    boat_lip: any;
     inst: any;
     plank: any;
-    boat_lip: any;
     radius: any;
     AttachEntityToBoat(
       obj: any,
@@ -3497,43 +3497,43 @@ export namespace Component {
   }
 
   interface HullHealth {
-    inst: any;
-    leak_point_count: number;
-    leak_radius: number;
-    leak_radius_variance: number;
-    leak_angle_variance: any;
-    leak_damage: any;
-    leak_indicators: any;
-    small_leak_dmg: number;
-    med_leak_dmg: number;
-    hull_dmg: number;
-    hull_damage: number;
     angle: any;
+    boat_physics: any;
+    boat_to_hit_x: any;
+    boat_to_hit_z: any;
     boat_x: any;
     boat_y: any;
     boat_z: any;
-    pos_x: any;
-    pos_z: any;
-    leak_indicator: any;
-    leak_x: any;
-    leak_z: any;
+    damage: any;
+    damage_applied: any;
+    damage_bias: number;
+    delta_angle: any;
+    health_damage: any;
+    hit_angle: any;
     hit_pos_x: any;
     hit_pos_z: any;
-    boat_to_hit_x: any;
-    boat_to_hit_z: any;
-    hit_angle: any;
-    speed_damage_factor: any;
-    damage_bias: number;
-    damage: any;
-    delta_angle: any;
-    leak_idx: number;
-    boat_physics: any;
-    leakdamagetest: any;
+    hull_damage: number;
+    hull_dmg: number;
+    inst: any;
+    leak_angle_variance: any;
+    leak_damage: any;
     leak_dmg: any;
-    damage_applied: any;
-    max_health_damage: number;
-    health_damage: any;
+    leak_idx: number;
+    leak_indicator: any;
+    leak_indicators: any;
+    leak_point_count: number;
+    leak_radius: number;
+    leak_radius_variance: number;
+    leak_x: any;
+    leak_z: any;
+    leakdamagetest: any;
     leaks: any;
+    max_health_damage: number;
+    med_leak_dmg: number;
+    pos_x: any;
+    pos_z: any;
+    small_leak_dmg: number;
+    speed_damage_factor: any;
     GetLeakAngle(idx: any): any;
     GetLeakPosition(idx: any): any;
     OnCollide(data: any): any;
@@ -3544,17 +3544,17 @@ export namespace Component {
   }
 
   interface Hunger {
-    inst: any;
-    max: number;
-    current: any;
-    hungerrate: number;
-    hurtrate: number;
-    overridestarvefn: any;
     burning: boolean;
     burnrate: number;
     burnratemodifiers: any;
-    period: number;
+    current: any;
+    hungerrate: number;
+    hurtrate: number;
+    inst: any;
+    max: number;
     old: any;
+    overridestarvefn: any;
+    period: number;
     DoDec(dt: any, ignore_damage: any): any;
     DoDelta(delta: any, overtime: any, ignore_invincible: any): any;
     GetDebugString(): any;
@@ -3574,17 +3574,17 @@ export namespace Component {
   }
 
   interface IncrementalProducer {
-    inst: any;
-    producefn: any;
+    count: any;
     countfn: any;
+    increment: number;
+    incrementdelay: number;
+    incrementfn: any;
+    inst: any;
+    lastproduction: number;
     maxcount: number;
     maxcountfn: any;
-    increment: number;
-    incrementfn: any;
-    incrementdelay: number;
+    producefn: any;
     toproduce: number;
-    lastproduction: number;
-    count: any;
     CanProduce(): boolean;
     DoProduce(): any;
     GetDebugString(): any;
@@ -3592,11 +3592,11 @@ export namespace Component {
   }
 
   interface Inspectable {
-    inst: any;
+    desc: any;
     description: any;
     getspecialdescription: any;
+    inst: any;
     recordview: any;
-    desc: any;
     GetDescription(viewer: any): any;
     GetStatus(viewer: any): any;
     OnRemoveFromEntity(): any;
@@ -3605,14 +3605,14 @@ export namespace Component {
   }
 
   interface Instrument {
+    ents: any;
     inst: any;
-    range: number;
     onheard: any;
     onplayed: any;
+    range: number;
     x: any;
     y: any;
     z: any;
-    ents: any;
     Play(musician: any): any;
     SetOnHeardFn(fn: any): any;
     SetOnPlayedFn(fn: any): any;
@@ -3631,77 +3631,77 @@ export namespace Component {
   }
 
   interface Inventory {
-    inst: any;
-    isopen: boolean;
-    isvisible: boolean;
-    ignoreoverflow: boolean;
-    ignorefull: boolean;
-    silentfull: boolean;
-    ignoresound: boolean;
-    itemslots: any;
-    maxslots: any;
-    equipslots: any;
-    heavylifting: boolean;
-    activeitem: any;
-    acceptsstacks: boolean;
-    ignorescangoincontainer: boolean;
-    opencontainers: any;
-    dropondeath: boolean;
-    num: number;
-    inv: any;
-    data: any;
-    references: any;
-    refs: any;
-    isloading: boolean;
-    item: any;
-    active_item: any;
-    doerownsobject: any;
-    initialtargetowner: any;
-    absorbers: any;
-    absorbed_percent: number;
-    total_absorption: number;
     absorbed_damage: any;
-    leftover_damage: any;
-    olditem: any;
-    newitem: any;
-    invitem: any;
-    handitem: any;
-    leftovers: any;
-    overflow: any;
-    items: any;
-    dropped: any;
-    prefabname: any;
-    prefabskinname: any;
-    empty: any;
-    stacksize: any;
+    absorbed_percent: number;
+    absorbers: any;
     acceptcount: number;
-    eslot: any;
-    new_item: any;
-    objectDestroyed: any;
+    acceptsstacks: boolean;
+    act: any;
+    actions: any;
+    active_item: any;
+    activeitem: any;
+    buffaction: any;
     can_use_suggested_slot: boolean;
     container: any;
-    itemInSlot: any;
-    heavyitem: any;
-    prevslot: any;
+    containers: any;
+    count: number;
+    data: any;
     dec: any;
+    doerownsobject: any;
+    dropondeath: boolean;
+    dropped: any;
+    empty: any;
+    equipslots: any;
+    eslot: any;
+    halfstack: any;
+    handitem: any;
+    heavyitem: any;
+    heavylifting: boolean;
+    ignorefull: boolean;
+    ignoreoverflow: boolean;
+    ignorescangoincontainer: boolean;
+    ignoresound: boolean;
+    initialtargetowner: any;
+    inst: any;
+    inv: any;
+    invitem: any;
+    isloading: boolean;
+    isopen: boolean;
+    isvisible: boolean;
+    item: any;
+    itemInSlot: any;
+    items: any;
+    itemslots: any;
+    leftover_damage: any;
+    leftovers: any;
+    max: number;
+    maxslots: any;
+    moisture: number;
+    new_item: any;
+    newitem: any;
+    num: number;
     num_found: number;
+    objectDestroyed: any;
+    olditem: any;
+    opencontainers: any;
+    overflow: any;
     overflow_enough: any;
     overflow_found: any;
-    total_num_found: number;
     overflow_items: any;
-    containers: any;
-    s: string;
-    count: number;
-    rebuild_snapping: boolean;
-    halfstack: any;
     owner: any;
-    actions: any;
-    act: any;
-    buffaction: any;
+    prefabname: any;
+    prefabskinname: any;
+    prevslot: any;
+    rebuild_snapping: boolean;
+    references: any;
+    refs: any;
+    s: string;
+    silentfull: boolean;
     stack: any;
+    stacksize: any;
     targetslot: any;
-    moisture: number;
-    max: number;
+    total_absorption: number;
+    total_num_found: number;
     waterproofness: number;
     AcceptsStacks(): boolean;
     AddAllOfActiveItemToSlot(slot: any): any;
@@ -3800,38 +3800,38 @@ export namespace Component {
   }
 
   interface InventoryItem {
-    inst: any;
-    owner: any;
+    angle: any;
+    atlasname: any;
     canbepickedup: boolean;
     canbepickedupalive: boolean;
-    onpickupfn: any;
-    isnew: boolean;
-    nobounce: boolean;
     cangoincontainer: boolean;
     canonlygoinpocket: boolean;
-    keepondeath: boolean;
-    atlasname: any;
-    imagename: any;
-    onactiveitemfn: any;
-    trappable: boolean;
-    sinks: boolean;
-    pushlandedevents: boolean;
-    ondropfn: any;
-    onputininventoryfn: any;
     ct: any;
-    x: any;
-    y: any;
-    z: any;
     heavy: any;
-    speed: any;
-    angle: any;
+    imagename: any;
+    inst: any;
     is_landed: any;
+    isnew: boolean;
+    keepondeath: boolean;
+    nobounce: boolean;
+    onactiveitemfn: any;
+    ondropfn: any;
+    onpickupfn: any;
+    onputininventoryfn: any;
+    owner: any;
+    pushlandedevents: boolean;
     px: any;
     pz: any;
+    sinks: boolean;
+    speed: any;
+    trappable: boolean;
     vely: number;
     vx: any;
     vy: any;
     vz: any;
+    x: any;
+    y: any;
+    z: any;
     AddMoisture(delta: any): any;
     ChangeImageName(newname: any): any;
     ClearOwner(owner: any): any;
@@ -3869,22 +3869,22 @@ export namespace Component {
   }
 
   interface InventoryItemMoisture {
-    inst: any;
-    dryingSpeed: number;
+    data: any;
     dryingResistance: number;
-    wetnessSpeed: number;
-    wetnessResistance: number;
-    wetnessThreshold: any;
+    dryingSpeed: number;
     drynessThreshold: any;
+    dt: any;
+    inst: any;
+    iswet: boolean;
     lastUpdate: any;
     moisture: number;
-    iswet: boolean;
-    stacksize: any;
     owner: any;
+    stacksize: any;
     t: any;
-    dt: any;
     targetMoisture: any;
-    data: any;
+    wetnessResistance: number;
+    wetnessSpeed: number;
+    wetnessThreshold: any;
     AttachReplica(replica: any): any;
     DiluteMoisture(item: any, count: any): any;
     DoDelta(delta: any): any;
@@ -3902,8 +3902,8 @@ export namespace Component {
   interface Key {
     inst: any;
     keytype: any;
-    onused: any;
     onremoved: any;
+    onused: any;
     OnRemoveFromEntity(): any;
     OnRemoved(lock: any, doer: any): any;
     OnUsed(lock: any, doer: any): any;
@@ -3920,22 +3920,22 @@ export namespace Component {
   }
 
   interface KlausSackLock {
+    consumed: any;
+    fail_msg: any;
     inst: any;
     onusekeyfn: any;
     success: any;
-    fail_msg: any;
-    consumed: any;
     OnRemoveFromEntity(): any;
     SetOnUseKey(onusekeyfn: any): any;
     UseKey(key: any, doer: any): any;
   }
 
   interface KnownLocations {
+    data: any;
     inst: any;
     locations: any;
-    str: string;
     locs: any;
-    data: any;
+    str: string;
     DeserializeLocations(data: any): any;
     ForgetLocation(name: any): any;
     GetDebugString(): any;
@@ -3947,11 +3947,11 @@ export namespace Component {
   }
 
   interface LavaArenaMobTracker {
-    inst: any;
-    ents: any;
     count: number;
-    ret: any;
     dists: any;
+    ents: any;
+    inst: any;
+    ret: any;
     FindMobs(
       x: any,
       y: any,
@@ -3969,10 +3969,10 @@ export namespace Component {
   }
 
   interface Leader {
-    inst: any;
-    followers: any;
-    numfollowers: number;
     count: number;
+    followers: any;
+    inst: any;
+    numfollowers: number;
     AddFollower(follower: any): any;
     CountFollowers(tag: any): any;
     GetDebugString(): any;
@@ -3998,27 +3998,27 @@ export namespace Component {
   }
 
   interface LightTweener {
-    inst: any;
-    light: any;
+    I_colour_r: any;
+    callback: any;
+    i_colour: any;
+    i_colour_b: any;
+    i_colour_g: any;
+    i_colour_r: any;
     i_falloff: any;
     i_intensity: any;
     i_radius: any;
-    I_colour_r: any;
-    i_colour_g: any;
-    i_colour_b: any;
+    inst: any;
+    light: any;
+    t: any;
+    t_colour_b: any;
+    t_colour_g: any;
+    t_colour_r: any;
     t_falloff: any;
     t_intensity: any;
     t_radius: any;
-    t_colour_r: any;
-    t_colour_g: any;
-    t_colour_b: any;
-    callback: any;
     time: any;
     timepassed: number;
     tweening: boolean;
-    i_colour: any;
-    i_colour_r: any;
-    t: any;
     EndTween(): any;
     OnUpdate(dt: any): any;
     StartTween(
@@ -4034,13 +4034,13 @@ export namespace Component {
 
   interface Lock {
     inst: any;
-    onlocked: any;
-    onunlocked: any;
-    unlocktest: any;
     islocked: boolean;
     isstuck: boolean;
     key: any;
     locktype: any;
+    onlocked: any;
+    onunlocked: any;
+    unlocktest: any;
     CompatableKey(keytype: any): any;
     GetDebugString(): any;
     IsLocked(): boolean;
@@ -4065,147 +4065,147 @@ export namespace Component {
   }
 
   interface LocoMotor {
-    inst: any;
-    ismastersim: any;
-    RunSpeed: any;
-    FasterOnRoad: any;
     ExternalSpeedMultiplier: any;
+    FasterOnRoad: any;
     GetSpeedMultiplier: any;
-    dest: any;
-    atdestfn: any;
-    bufferedaction: any;
-    arrive_step_dist: any;
-    arrive_dist: any;
-    walkspeed: any;
-    runspeed: any;
-    throttle: number;
-    lastpos: any;
-    slowmultiplier: number;
-    fastmultiplier: number;
-    groundspeedmultiplier: number;
-    enablegroundspeedmultiplier: boolean;
-    isrunning: boolean;
-    externalspeedmultiplier: number;
-    wasoncreep: boolean;
-    triggerscreep: boolean;
-    is_prediction_enabled: boolean;
-    hop_distance: number;
-    hopping: boolean;
-    time_before_next_hop_is_allowed: number;
-    isupdating: boolean;
-    m: number;
-    src_params: any;
-    tempgroundspeedmultiplier: any;
-    tempgroundspeedmulttime: any;
-    tempgroundtile: any;
-    ground: any;
-    x: any;
-    y: any;
-    z: any;
-    oncreep: any;
-    t: any;
-    wantstomoveforward: boolean;
-    wantstorun: boolean;
-    path: any;
+    RunSpeed: any;
+    act_pos: any;
     action_pos: any;
-    idle_anim: any;
-    success: any;
-    reason: any;
-    pos: any;
-    extra_arrive_dist: any;
-    last_platform_visited: any;
-    lastdesttile: any;
-    pathtile_x: any;
-    pathtile_y: any;
-    tile_x: any;
-    tile_y: any;
-    speed: any;
     allow_platform_hopping: any;
-    pt_x: any;
-    pt_z: any;
-    platform: any;
-    is_water: any;
-    radius: any;
+    angle: any;
+    arrive_dist: any;
+    arrive_step_dist: any;
+    atdestfn: any;
+    blocked: boolean;
+    bufferedaction: any;
+    can_hop: boolean;
+    cur_speed: any;
+    currentstep: number;
+    desired_speed: any;
+    dest: any;
+    dest_dir_x: any;
+    dest_dir_z: any;
+    dest_dot_forward: number;
+    destpos_x: any;
+    destpos_y: any;
+    destpos_z: any;
+    desttile_x: any;
+    desttile_y: any;
+    dir_length: any;
+    dir_x: any;
+    dir_z: any;
+    dist: any;
+    dsq: any;
     edge_range: number;
+    embarker: any;
+    enablegroundspeedmultiplier: boolean;
+    externalspeedmultiplier: number;
+    extra_arrive_dist: any;
+    facepos_x: any;
+    facepos_y: any;
+    facepos_z: any;
+    fastmultiplier: number;
+    forward_angle_span: number;
+    forward_x: any;
+    forward_z: any;
+    found_platform: any;
+    foundpath: any;
+    ground: any;
+    groundspeedmultiplier: number;
+    handle: any;
+    hop_distance: number;
+    hop_x: any;
+    hop_z: any;
+    hopping: boolean;
+    idle_anim: any;
+    inst: any;
+    invalid: any;
     is_at_edge: any;
     is_first_hop_point: boolean;
-    step_count: any;
+    is_moving: any;
+    is_prediction_enabled: boolean;
+    is_running: any;
+    is_water: any;
+    isle0: any;
+    isle1: any;
+    ismastersim: any;
+    isrunning: boolean;
+    isupdating: boolean;
+    last_platform_visited: any;
+    lastdesttile: any;
+    lastpos: any;
+    m: number;
+    map: any;
+    my_platform: any;
     my_x: any;
     my_y: any;
     my_z: any;
-    dir_x: any;
-    dir_z: any;
-    dir_length: any;
-    can_hop: boolean;
-    px: any;
-    pz: any;
-    found_platform: any;
-    blocked: boolean;
+    mypos_x: any;
+    mypos_y: any;
+    mypos_z: any;
+    oncreep: any;
+    other_platform: any;
+    p0: any;
+    p1: any;
+    p_length: any;
+    path: any;
     path_x: any;
     path_z: any;
-    p_length: any;
+    pathstatus: any;
+    pathtile_x: any;
+    pathtile_y: any;
+    platform: any;
     platform_dir_x: any;
     platform_dir_z: any;
     platform_x: any;
     platform_z: any;
-    embarker: any;
-    tx: any;
-    ty: any;
-    destpos_x: any;
-    destpos_y: any;
-    destpos_z: any;
-    mypos_x: any;
-    mypos_y: any;
-    mypos_z: any;
+    pos: any;
+    pt_x: any;
+    pt_z: any;
+    px: any;
+    pz: any;
+    radius: any;
     reached_dest: any;
-    invalid: any;
-    dsq: any;
+    reason: any;
+    rotation: any;
     run_dist: any;
-    act_pos: any;
-    pathstatus: any;
-    foundpath: any;
-    steps: any;
-    currentstep: number;
-    handle: any;
-    facepos_x: any;
-    facepos_y: any;
-    facepos_z: any;
+    runspeed: any;
+    should_locomote: boolean;
+    slowmultiplier: number;
+    speed: any;
+    speed_mult: any;
+    src_params: any;
     step: any;
+    step_count: any;
+    step_distsq: any;
     steppos_x: any;
     steppos_y: any;
     steppos_z: any;
-    step_distsq: any;
-    angle: any;
-    should_locomote: boolean;
-    is_moving: any;
-    is_running: any;
-    cur_speed: any;
-    rotation: any;
-    forward_x: any;
-    forward_z: any;
-    dest_dot_forward: number;
-    map: any;
-    my_platform: any;
-    dest_dir_x: any;
-    dest_dir_z: any;
-    dist: any;
-    other_platform: any;
-    forward_angle_span: number;
-    hop_x: any;
-    hop_z: any;
+    steps: any;
+    success: any;
+    t: any;
     target_platform: any;
-    too_early_top_hop: any;
+    temp_platform: any;
     temp_x: any;
     temp_z: any;
-    temp_platform: any;
-    speed_mult: any;
-    desired_speed: any;
-    p0: any;
-    p1: any;
-    desttile_x: any;
-    desttile_y: any;
-    isle0: any;
-    isle1: any;
+    tempgroundspeedmultiplier: any;
+    tempgroundspeedmulttime: any;
+    tempgroundtile: any;
+    throttle: number;
+    tile_x: any;
+    tile_y: any;
+    time_before_next_hop_is_allowed: number;
+    too_early_top_hop: any;
+    triggerscreep: boolean;
+    tx: any;
+    ty: any;
+    walkspeed: any;
+    wantstomoveforward: boolean;
+    wantstorun: boolean;
+    wasoncreep: boolean;
+    x: any;
+    y: any;
+    z: any;
     CheckEdge(
       my_platform: any,
       map: any,
@@ -4290,42 +4290,42 @@ export namespace Component {
   }
 
   interface LootDropper {
-    inst: any;
-    numrandomloot: any;
-    randomloot: any;
-    chancerandomloot: any;
-    totalrandomweight: number;
+    angle: any;
     chanceloot: any;
-    ifnotchanceloot: any;
-    droppingchanceloot: boolean;
-    loot: any;
     chanceloottable: any;
-    trappable: boolean;
-    lootfn: any;
+    chancerandomloot: any;
+    cosangle: any;
+    droppingchanceloot: boolean;
     flingtargetpos: any;
     flingtargetvariance: any;
-    lootsetupfn: any;
-    randomhauntedloot: any;
-    totalhauntedrandomweight: number;
-    rnd: any;
-    percent: number;
-    loots: any;
+    ifnotchanceloot: any;
+    inst: any;
+    isstructure: any;
+    loot: any;
     loot_table: any;
+    lootfn: any;
+    loots: any;
+    lootsetupfn: any;
+    max_speed: any;
+    min_speed: any;
+    num_decor_loot: any;
+    numrandomloot: any;
+    percent: number;
+    prefabname: any;
+    prefabs: any;
+    radius: any;
+    randomhauntedloot: any;
+    randomloot: any;
     recipe: any;
     recipeloot: any;
-    min_speed: any;
-    max_speed: any;
+    rnd: any;
+    sinangle: any;
+    speed: any;
+    totalhauntedrandomweight: number;
+    totalrandomweight: number;
+    trappable: boolean;
     y_speed: any;
     y_speed_variance: any;
-    angle: any;
-    speed: any;
-    radius: any;
-    sinangle: any;
-    cosangle: any;
-    prefabs: any;
-    isstructure: any;
-    prefabname: any;
-    num_decor_loot: any;
     AddChanceLoot(prefab: any, chance: any): any;
     AddIfNotChanceLoot(prefab: any): any;
     AddRandomHauntedLoot(prefab: any, weight: any): any;
@@ -4343,13 +4343,13 @@ export namespace Component {
   }
 
   interface Machine {
-    inst: any;
-    turnonfn: any;
-    turnofffn: any;
-    ison: boolean;
     cooldowntime: number;
-    oncooldown: boolean;
     data: any;
+    inst: any;
+    ison: boolean;
+    oncooldown: boolean;
+    turnofffn: any;
+    turnonfn: any;
     CanInteract(): boolean;
     GetDebugString(): any;
     IsOn(): boolean;
@@ -4362,12 +4362,12 @@ export namespace Component {
 
   interface MadScienceLab {
     inst: any;
-    task: any;
     product: any;
-    stages: any;
     result: any;
     stage: any;
+    stages: any;
     str: string;
+    task: any;
     GetDebugString(): any;
     IsMakingScience(): boolean;
     LongUpdate(dt: any): any;
@@ -4379,24 +4379,24 @@ export namespace Component {
   }
 
   interface Map {
-    valid_tile: any;
     entities: any;
-    tile: any;
-    valid_water_tile: any;
-    min_spacing_sq: any;
-    x: any;
-    y: any;
-    z: any;
-    min_distance_from_boat: any;
-    radius: any;
-    min_distance_from_land: any;
-    mast_min_distance: number;
     is_valid_ground: boolean;
+    map: any;
+    mast_min_distance: number;
+    min_distance_from_boat: any;
+    min_distance_from_land: any;
+    min_spacing_sq: any;
     pt_x: any;
     pt_y: any;
     pt_z: any;
+    radius: any;
     test_increment: any;
-    map: any;
+    tile: any;
+    valid_tile: any;
+    valid_water_tile: any;
+    x: any;
+    y: any;
+    z: any;
     CanDeployAtPoint(pt: any, inst: any, mouseover: any): boolean;
     CanDeployAtPointInWater(
       pt: any,
@@ -4453,16 +4453,16 @@ export namespace Component {
   }
 
   interface MapRecorder {
-    inst: any;
-    mapdata: any;
-    mapsession: any;
-    maplocation: any;
-    mapauthor: any;
-    mapday: any;
-    onteachfn: any;
-    ondatachangedfn: any;
     MapExplorer: any;
     dirty: boolean;
+    inst: any;
+    mapauthor: any;
+    mapdata: any;
+    mapday: any;
+    maplocation: any;
+    mapsession: any;
+    ondatachangedfn: any;
+    onteachfn: any;
     ClearMap(): any;
     HasData(): boolean;
     IsCurrentWorld(): boolean;
@@ -4475,15 +4475,15 @@ export namespace Component {
   }
 
   interface MapRevealable {
+    icon: any;
+    iconname: any;
+    iconprefab: string;
+    iconpriority: any;
     inst: any;
     refreshperiod: number;
-    iconname: any;
-    iconpriority: any;
-    iconprefab: string;
-    icon: any;
-    task: any;
-    revealsources: any;
     restriction: any;
+    revealsources: any;
+    task: any;
     toremove: any;
     AddRevealSource(source: any, restriction: any): any;
     OnRemoveFromEntity(): any;
@@ -4509,29 +4509,29 @@ export namespace Component {
   }
 
   interface Mast {
+    autounfurlunits: number;
+    boat: any;
+    boat_physics: any;
+    furlers: any;
+    furlunits: any;
+    furlunits_max: number;
+    has_speed: boolean;
     inst: any;
     is_sail_raised: boolean;
-    sail_force: any;
-    has_speed: boolean;
-    lowered_anchor_count: number;
-    boat: any;
-    rudder: any;
-    max_velocity_mod: any;
-    max_velocity: any;
-    rudder_turn_drag: any;
-    furlunits_max: number;
-    furlunits: any;
-    autounfurlunits: number;
-    furlers: any;
-    sinking: boolean;
     is_sail_transitioning: boolean;
-    total_strength: number;
+    lowered_anchor_count: number;
     mast_x: any;
     mast_y: any;
     mast_z: any;
-    boat_physics: any;
+    max_velocity: any;
+    max_velocity_mod: any;
+    rudder: any;
     rudder_direction_x: any;
     rudder_direction_z: any;
+    rudder_turn_drag: any;
+    sail_force: any;
+    sinking: boolean;
+    total_strength: number;
     AddSailFurler(doer: any, strength: any): any;
     GetCurrentFurlUnits(): any;
     GetFurled0to1(): any;
@@ -4549,23 +4549,23 @@ export namespace Component {
   }
 
   interface MaxHealer {
-    inst: any;
     healamount: any;
+    inst: any;
     Heal(target: any): any;
     SetHealthAmount(health: any): any;
   }
 
   interface MaxLightSpawner {
-    inst: any;
-    lights: any;
-    numlights: number;
-    maxlights: number;
     angleoffset: number;
-    radius: number;
-    lightname: string;
     data: any;
+    inst: any;
     light: any;
+    lightname: string;
+    lights: any;
+    maxlights: number;
+    numlights: number;
     pt: any;
+    radius: number;
     theta: any;
     LoadPostPass(newents: any, savedata: any): any;
     OnLoad(data: any): any;
@@ -4576,15 +4576,15 @@ export namespace Component {
   }
 
   interface MaxwellTalker {
-    inst: any;
-    speech: any;
-    speeches: any;
     canskip: boolean;
     defaultvoice: string;
     inputhandlers: any;
-    wilson: any;
-    pt: any;
+    inst: any;
     length: any;
+    pt: any;
+    speech: any;
+    speeches: any;
+    wilson: any;
     DoTalk(): any;
     Initialize(): any;
     IsTalking(): boolean;
@@ -4596,31 +4596,31 @@ export namespace Component {
   }
 
   interface MeteorShower {
-    inst: any;
+    cooldown: any;
+    cost: any;
     dt: any;
-    spawn_mod: any;
-    medium_remaining: any;
+    duration: any;
+    fan_offset: any;
+    inst: any;
     large_remaining: any;
+    level: any;
+    level_params: any;
+    map: any;
+    medium_remaining: any;
+    met: any;
+    peripheral: any;
+    radius: any;
+    rand: any;
+    rate: any;
+    remaining_time: any;
     retries_remaining: any;
+    spawn_mod: any;
     task: any;
     tasktotime: any;
-    level: any;
+    theta: any;
     x: any;
     y: any;
     z: any;
-    theta: any;
-    radius: any;
-    map: any;
-    fan_offset: any;
-    met: any;
-    peripheral: any;
-    rand: any;
-    cost: any;
-    level_params: any;
-    duration: any;
-    rate: any;
-    cooldown: any;
-    remaining_time: any;
     GetDebugString(): any;
     IsCoolingDown(): boolean;
     IsShowering(): boolean;
@@ -4633,19 +4633,19 @@ export namespace Component {
   }
 
   interface Mine {
+    alignment: string;
+    inactive: boolean;
     inst: any;
-    radius: any;
+    issprung: boolean;
+    next_test_time: any;
+    ondeactivate: any;
     onexplode: any;
     onreset: any;
     onsetsprung: any;
-    testtimefn: any;
+    radius: any;
     target: any;
-    inactive: boolean;
-    issprung: boolean;
     testtask: any;
-    alignment: string;
-    ondeactivate: any;
-    next_test_time: any;
+    testtimefn: any;
     Deactivate(): any;
     Explode(target: any): any;
     GetTarget(): any;
@@ -4669,18 +4669,18 @@ export namespace Component {
   }
 
   interface Minigame {
-    inst: any;
-    active: boolean;
     activate_fn: any;
-    deactivate_fn: any;
-    spectator_dist: number;
-    participator_dist: number;
+    active: boolean;
     active_pulse: any;
+    deactivate_fn: any;
+    inst: any;
+    participator_dist: number;
+    participators: any;
+    spectator_dist: number;
+    spectators: any;
     x: any;
     y: any;
     z: any;
-    spectators: any;
-    participators: any;
     Activate(): any;
     Deactivate(): any;
     DoActivePulse(): any;
@@ -4692,11 +4692,11 @@ export namespace Component {
   }
 
   interface MinigameParticipator {
+    expireytime: any;
     inst: any;
     minigame: any;
-    updatecheck: any;
     onminigameover: any;
-    expireytime: any;
+    updatecheck: any;
     GetDebugString(): any;
     GetMinigame(): any;
     OnRemoveFromEntity(): any;
@@ -4714,36 +4714,36 @@ export namespace Component {
   }
 
   interface MinionSpawner {
-    inst: any;
-    miniontype: string;
-    maxminions: number;
-    minionspawntime: any;
-    minions: any;
-    numminions: number;
-    distancemodifier: number;
-    onspawnminionfn: any;
-    onlostminionfn: any;
-    onminionattacked: any;
-    onminionattack: any;
-    spawninprogress: boolean;
-    nextspawninfo: any;
-    shouldspawn: boolean;
-    minionpositions: any;
-    validtiletypes: any;
-    freepositions: any;
     data: any;
+    distancemodifier: number;
+    freepositions: any;
+    ground: any;
     guidtable: any;
+    inst: any;
+    maxminions: number;
+    maxpositions: any;
+    minion: any;
+    minionpositions: any;
+    minions: any;
+    minionspawntime: any;
+    miniontype: string;
+    nextspawninfo: any;
+    num: any;
+    numminions: number;
+    onlostminionfn: any;
+    onminionattack: any;
+    onminionattacked: any;
+    onspawnminionfn: any;
+    pos: any;
+    possiblespawns: any;
+    shouldspawn: boolean;
+    spawninprogress: boolean;
+    task: any;
+    useablepositions: any;
+    validtiletypes: any;
     x: any;
     y: any;
     z: any;
-    ground: any;
-    maxpositions: any;
-    useablepositions: any;
-    pos: any;
-    num: any;
-    minion: any;
-    task: any;
-    possiblespawns: any;
     AddPosition(num: any, tbl: any): any;
     CheckTileCompatibility(tile: any): any;
     GetDebugString(): any;
@@ -4767,41 +4767,41 @@ export namespace Component {
   }
 
   interface Moisture {
-    inst: any;
-    maxmoisture: number;
-    moisture: number;
-    numSegs: number;
     baseDryingRate: number;
-    maxDryingRate: number;
-    minDryingRate: number;
-    maxPlayerTempDrying: number;
-    minPlayerTempDrying: number;
-    maxMoistureRate: number;
-    minMoistureRate: number;
+    current: any;
+    delta: any;
+    dryingrate: any;
+    equippedmoisturerate: any;
+    forceddrymodifiers: any;
+    full: any;
+    heaterPower: any;
     inherentWaterproofness: number;
-    waterproofnessmodifiers: any;
-    waterproofinventory: boolean;
+    inst: any;
+    max: any;
+    maxDryingRate: number;
+    maxMoistureRate: number;
+    maxPlayerTempDrying: number;
+    maxmoisture: number;
+    minDryingRate: number;
+    minMoistureRate: number;
+    minPlayerTempDrying: number;
+    moisture: number;
+    moisturerate: any;
+    newSegs: any;
+    num: any;
+    numSegs: number;
+    oldLevel: any;
+    oldSegs: any;
     optimalDryingTemp: number;
     rate: number;
     ratescale: any;
-    wet: boolean;
-    forceddrymodifiers: any;
-    str: any;
     sleepingbagdryingrate: any;
-    moisturerate: any;
-    dryingrate: any;
-    equippedmoisturerate: any;
-    oldLevel: any;
-    oldSegs: any;
-    newSegs: any;
-    delta: any;
-    current: any;
-    max: any;
+    str: any;
     target: any;
-    num: any;
-    full: any;
+    waterproofinventory: boolean;
     waterproofmult: any;
-    heaterPower: any;
+    waterproofnessmodifiers: any;
+    wet: boolean;
     AnnounceMoisture(oldSegs: any, newSegs: any): any;
     DoDelta(num: any, no_announce: any): any;
     ForceDry(force: any, source: any): any;
@@ -4829,20 +4829,20 @@ export namespace Component {
   }
 
   interface Mood {
-    inst: any;
-    enabled: boolean;
-    moodtimeindays: any;
-    isinmood: boolean;
+    active: boolean;
     daystomoodchange: any;
+    enabled: boolean;
+    firstseasonadded: boolean;
+    inst: any;
+    isinmood: boolean;
+    length: any;
+    moodseasons: any;
+    moodtimeindays: any;
     onentermood: any;
     onleavemood: any;
-    moodseasons: any;
-    firstseasonadded: boolean;
-    length: any;
-    wait: any;
-    seasonmood: boolean;
-    active: boolean;
     season: any;
+    seasonmood: boolean;
+    wait: any;
     CheckForMoodChange(): any;
     Enable(enabled: any): any;
     GetDebugString(): any;
@@ -4859,17 +4859,17 @@ export namespace Component {
   }
 
   interface MoonBeastSpawner {
-    inst: any;
-    started: boolean;
-    range: number;
-    period: number;
-    maxspawns: number;
-    task: any;
     cc: any;
+    ents: any;
+    inst: any;
+    maxspawns: number;
+    period: number;
+    range: number;
+    started: boolean;
+    task: any;
     x: any;
     y: any;
     z: any;
-    ents: any;
     ForcePetrify(): any;
     OnRemoveFromEntity(): any;
     Start(): any;
@@ -4881,11 +4881,11 @@ export namespace Component {
   }
 
   interface MoonTrader {
-    inst: any;
     canaccept: any;
+    inst: any;
     onaccept: any;
-    success: any;
     reason: any;
+    success: any;
     AcceptOffering(giver: any, item: any): any;
     SetCanAcceptFn(fn: any): any;
     SetOnAcceptFn(fn: any): any;
@@ -4893,9 +4893,9 @@ export namespace Component {
 
   interface Named {
     inst: any;
-    possiblenames: any;
-    nameformat: any;
     name: any;
+    nameformat: any;
+    possiblenames: any;
     OnLoad(data: any): any;
     OnSave(): any;
     PickNewName(): any;
@@ -4903,15 +4903,15 @@ export namespace Component {
   }
 
   interface NIS {
-    inst: any;
-    playing: boolean;
-    skippable: boolean;
-    data: any;
-    name: string;
-    inputhandlers: any;
-    script: any;
-    init: any;
     cancel: any;
+    data: any;
+    init: any;
+    inputhandlers: any;
+    inst: any;
+    name: string;
+    playing: boolean;
+    script: any;
+    skippable: boolean;
     task: any;
     Cancel(): any;
     OnClick(): any;
@@ -4925,30 +4925,30 @@ export namespace Component {
   }
 
   interface Oar {
-    inst: any;
-    fail_idx: number;
-    fail_string_count: number;
-    fail_wetness: number;
-    doer_x: any;
-    doer_y: any;
-    doer_z: any;
-    platform: any;
     boat_physics: any;
-    row_dir_x: any;
-    row_dir_z: any;
     boat_x: any;
     boat_y: any;
     boat_z: any;
+    doer_x: any;
+    doer_y: any;
+    doer_z: any;
     ents: any;
+    fail_idx: number;
+    fail_string_count: number;
+    fail_wetness: number;
+    inst: any;
+    platform: any;
+    row_dir_x: any;
+    row_dir_z: any;
     Row(doer: any, pos: any): any;
     RowFail(doer: any): any;
   }
 
   interface Oasis {
-    inst: any;
-    radius: number;
     distsq: any;
+    inst: any;
     maxradius: any;
+    radius: number;
     GetProximityLevel(ent: any, range: any): any;
     IsEntityInOasis(ent: any): boolean;
   }
@@ -4987,9 +4987,9 @@ export namespace Component {
   }
 
   interface Ocean {
-    inst: any;
     currentAngle: number;
     currentSpeed: number;
+    inst: any;
     GetCurrentAngle(): any;
     GetCurrentSpeed(): any;
     GetCurrentVec3(): any;
@@ -4997,18 +4997,18 @@ export namespace Component {
   }
 
   interface OceanColor {
-    inst: any;
-    start_color: any;
-    current_color: any;
-    end_color: any;
-    start_ocean_texture_blend: any;
-    current_ocean_texture_blend: any;
-    end_ocean_texture_blend: any;
-    lerp: number;
-    lerp_delay: number;
     blend_delay: any;
     blend_speed: any;
+    current_color: any;
+    current_ocean_texture_blend: any;
+    end_color: any;
+    end_ocean_texture_blend: any;
+    inst: any;
+    lerp: number;
+    lerp_delay: number;
     map: any;
+    start_color: any;
+    start_ocean_texture_blend: any;
     target_color: any;
     Initialize(has_ocean: any): any;
     OnPhaseChanged(src: any, phase: any): any;
@@ -5016,25 +5016,25 @@ export namespace Component {
   }
 
   interface PeriodicSpawner {
-    inst: any;
     basetime: number;
-    randtime: number;
-    prefab: any;
-    range: any;
-    density: any;
-    spacing: any;
-    onspawn: any;
-    spawntest: any;
-    spawnoffscreen: boolean;
-    x: any;
-    y: any;
-    z: any;
-    ents: any;
     count: number;
+    density: any;
+    ents: any;
+    inst: any;
+    onspawn: any;
+    prefab: any;
+    randtime: number;
+    range: any;
+    spacing: any;
+    spawnoffscreen: boolean;
+    spawntest: any;
     t: any;
     target_time: any;
     task: any;
     time_to_wait: any;
+    x: any;
+    y: any;
+    z: any;
     ForceNextSpawn(): any;
     GetDebugString(): any;
     LongUpdate(dt: any): any;
@@ -5051,22 +5051,22 @@ export namespace Component {
   }
 
   interface Perishable {
-    inst: any;
-    perishfn: any;
-    perishtime: any;
-    frozenfiremult: boolean;
-    targettime: any;
-    perishremainingtime: any;
-    updatetask: any;
-    dt: any;
-    onperishreplacement: any;
-    localPerishMultiplyer: number;
-    percent: any;
     cur: any;
+    dt: any;
+    frozenfiremult: boolean;
     goop: any;
-    owner: any;
     holder: any;
+    inst: any;
+    localPerishMultiplyer: number;
+    onperishreplacement: any;
+    owner: any;
+    percent: any;
+    perishfn: any;
+    perishremainingtime: any;
+    perishtime: any;
     slot: any;
+    targettime: any;
+    updatetask: any;
     x: any;
     y: any;
     z: any;
@@ -5094,17 +5094,17 @@ export namespace Component {
   }
 
   interface PetHealthBar {
+    corrosives: any;
+    down: any;
+    hots: any;
     inst: any;
     ismastersim: any;
-    corrosives: any;
-    hots: any;
-    val: any;
     k: any;
     pet: any;
-    task: any;
-    down: any;
-    up: any;
     status: any;
+    task: any;
+    up: any;
+    val: any;
     GetMaxHealth(): any;
     GetOverTime(): any;
     GetPercent(): any;
@@ -5116,16 +5116,16 @@ export namespace Component {
   }
 
   interface PetLeash {
+    data: any;
     inst: any;
-    petprefab: any;
-    pets: any;
     maxpets: number;
     numpets: number;
-    onspawnfn: any;
     ondespawnfn: any;
+    onspawnfn: any;
     pet: any;
+    petprefab: any;
+    pets: any;
     toremove: any;
-    data: any;
     DespawnAllPets(): any;
     DespawnPet(pet: any): any;
     GetMaxPets(): any;
@@ -5158,40 +5158,40 @@ export namespace Component {
   }
 
   interface Pickable {
-    inst: any;
-    canbepicked: boolean;
-    regentime: any;
     baseregentime: any;
-    product: any;
-    onregenfn: any;
-    onpickedfn: any;
+    canbepicked: boolean;
+    caninteractwith: boolean;
+    cycles_left: number;
+    data: any;
+    dropheight: any;
+    droppicked: any;
+    fertilize_cycles: number;
+    inst: any;
+    jostlepick: boolean;
+    loot: any;
+    makebarrenfn: any;
     makeemptyfn: any;
     makefullfn: any;
-    cycles_left: number;
     max_cycles: any;
-    transplanted: boolean;
-    caninteractwith: boolean;
+    num: any;
     numtoharvest: number;
-    quickpick: boolean;
-    jostlepick: boolean;
-    wildfirestarter: boolean;
-    droppicked: any;
-    dropheight: any;
-    paused: boolean;
+    onpickedfn: any;
+    onregenfn: any;
     pause_time: number;
-    targettime: any;
+    paused: boolean;
+    product: any;
     protected_cycles: any;
+    pt: any;
+    quickpick: boolean;
+    regentime: any;
+    str: string;
+    targettime: any;
     task: any;
     time: any;
     time_to_pickable: any;
-    str: string;
-    makebarrenfn: any;
-    fertilize_cycles: number;
-    data: any;
+    transplanted: boolean;
     wasempty: any;
-    loot: any;
-    num: any;
-    pt: any;
+    wildfirestarter: boolean;
     CanBeFertilized(): boolean;
     CanBePicked(): boolean;
     ChangeProduct(newProduct: any): any;
@@ -5219,22 +5219,22 @@ export namespace Component {
   }
 
   interface Pinnable {
-    inst: any;
-    canbepinned: boolean;
-    stuck: boolean;
-    wearofftime: any;
-    wearofftask: any;
     attacks_since_pinned: number;
-    last_unstuck_time: number;
-    last_stuck_time: number;
-    fxlevel: number;
-    fxdata: any;
-    ratio: any;
-    index: any;
+    canbepinned: boolean;
     fx: any;
+    fxdata: any;
+    fxlevel: number;
+    index: any;
+    inst: any;
+    last_stuck_time: number;
+    last_unstuck_time: number;
     mintime: any;
     prevState: any;
+    ratio: any;
     remaining: any;
+    stuck: boolean;
+    wearofftask: any;
+    wearofftime: any;
     IsStuck(): boolean;
     IsValidPinTarget(): boolean;
     OnRemoveFromEntity(): any;
@@ -5248,26 +5248,26 @@ export namespace Component {
   }
 
   interface Placer {
-    inst: any;
+    action: any;
+    builder: any;
     can_build: boolean;
+    inst: any;
+    invobject: any;
+    linked: any;
     mouse_blocked: boolean;
-    testfn: any;
-    radius: number;
-    selected_pos: any;
-    onupdatetransform: any;
+    offset: number;
     oncanbuild: any;
     oncannotbuild: any;
-    linked: any;
-    offset: number;
-    builder: any;
-    recipe: any;
-    invobject: any;
-    action: any;
+    onupdatetransform: any;
     pt: any;
+    radius: number;
+    recipe: any;
+    rot: any;
+    selected_pos: any;
+    testfn: any;
     x: any;
     y: any;
     z: any;
-    rot: any;
     GetDeployAction(): any;
     LinkEntity(ent: any): any;
     OnUpdate(dt: any): any;
@@ -5276,27 +5276,27 @@ export namespace Component {
   }
 
   interface Plantable {
-    inst: any;
     growtime: number;
+    inst: any;
     product: any;
   }
 
   interface PlantRegrowth {
-    inst: any;
-    regrowthrate: any;
-    product: any;
-    searchtag: any;
-    nextregrowth: number;
     area: any;
+    data: any;
+    ents: any;
+    fiveradius: any;
+    inst: any;
+    nextregrowth: number;
+    offspring: any;
+    product: any;
+    regrowthrate: any;
+    searchtag: any;
+    spawnpoint: any;
+    targetradius: any;
     x: any;
     y: any;
     z: any;
-    fiveradius: any;
-    spawnpoint: any;
-    targetradius: any;
-    ents: any;
-    offspring: any;
-    data: any;
     GetDebugString(): any;
     OnLoad(data: any): any;
     OnRemoveEntity(): any;
@@ -5310,38 +5310,38 @@ export namespace Component {
   }
 
   interface PlayerActionPicker {
-    inst: any;
-    map: any;
-    containers: any;
-    leftclickoverride: any;
-    rightclickoverride: any;
-    pointspecialactionsfn: any;
-    actionfilterstack: any;
     actionfilter: any;
-    num: any;
-    topfilter: any;
-    ret: any;
+    actionfilterstack: any;
     actions: any;
-    sorted_acts: any;
-    player_pos: any;
+    cansee: any;
+    containers: any;
+    disable_right_click: boolean;
+    equipitem: any;
+    inst: any;
+    isaoetargeting: boolean;
+    ispassable: any;
+    leftclickoverride: any;
+    lmb: any;
+    lmbs: any;
+    map: any;
+    num: any;
     player_platform: any;
+    player_pos: any;
+    pointspecialactionsfn: any;
+    ret: any;
+    rightclickoverride: any;
+    rmb: any;
+    rmbs: any;
+    sorted_acts: any;
+    steering_actions: any;
     target_platform: any;
+    topfilter: any;
     usedefault: any;
     useitem: any;
-    equipitem: any;
-    ispassable: any;
-    disable_right_click: boolean;
-    steering_actions: any;
-    isaoetargeting: boolean;
     wantsaoetargeting: boolean;
-    cansee: any;
     x: any;
     y: any;
     z: any;
-    lmb: any;
-    rmb: any;
-    lmbs: any;
-    rmbs: any;
     DoGetMouseActions(position: any, target: any): any;
     GetEquippedItemActions(target: any, useitem: any, right: any): any;
     GetInventoryActions(useitem: any, right: any): any;
@@ -5362,24 +5362,24 @@ export namespace Component {
   }
 
   interface PlayerAvatarData {
-    inst: any;
-    allowemptyname: any;
     allowburnt: any;
-    hasdata: boolean;
-    savestrings: any;
-    strings: any;
-    saveskins: any;
-    skins: any;
+    allowemptyname: any;
     base_skin: any;
     body_skin: any;
-    hand_skin: any;
-    legs_skin: any;
+    data: any;
+    equip: any;
     feet_skin: any;
-    savenumbers: any;
+    hand_skin: any;
+    hasdata: boolean;
+    inst: any;
+    legs_skin: any;
     numbers: any;
     saveequip: any;
-    equip: any;
-    data: any;
+    savenumbers: any;
+    saveskins: any;
+    savestrings: any;
+    skins: any;
+    strings: any;
     temp: any;
     AddAgeData(save: any): any;
     AddBaseSkinData(save: any): any;
@@ -5396,174 +5396,174 @@ export namespace Component {
   }
 
   interface PlayerController {
-    inst: any;
-    map: any;
-    ismastersim: any;
-    locomotor: any;
     HasItemSlots: any;
-    attack_buffer: any;
-    controller_attack_override: any;
-    remote_vector: any;
-    remote_controls: any;
-    bufferedcastaoe: any;
-    dragwalking: boolean;
-    directwalking: boolean;
-    predictwalking: boolean;
-    predictionsent: boolean;
-    draggingonground: boolean;
-    is_hopping: boolean;
-    startdragtestpos: any;
-    startdragtime: any;
-    isclientcontrollerattached: boolean;
-    mousetimeout: number;
-    time_direct_walking: number;
-    controller_target: any;
-    controller_target_age: number;
-    controller_attack_target: any;
-    controller_attack_target_ally_cd: any;
-    controller_targeting_modifier_down: boolean;
-    controller_targeting_lock_timer: number;
-    controller_targeting_lock_target: boolean;
-    controller_targeting_targets: any;
-    controller_targeting_target_index: number;
-    reticule: any;
-    terraformer: any;
-    deploy_mode: boolean;
-    deployplacer: any;
-    placer: any;
-    placer_recipe: any;
-    placer_recipe_skin: any;
-    placer_cached: any;
     LMBaction: any;
     RMBaction: any;
-    handler: any;
-    actionbuttonoverride: any;
-    is_map_enabled: boolean;
-    can_use_map: boolean;
-    classified: any;
-    ondetachclassified: any;
-    inv_obj: any;
-    code: number;
-    bit: number;
-    item: any;
-    obj: any;
+    ROT_REPEAT: number;
+    ZOOM_REPEAT: number;
     act: any;
-    lmb: any;
-    rmb: any;
-    isspecial: any;
-    rider: any;
-    chainattack_cb: any;
-    overridedest: any;
-    slot: any;
-    container: any;
-    rotamount: number;
-    testfn: any;
-    combat: any;
-    x: any;
-    y: number;
-    z: any;
-    attackrange: any;
-    rad: any;
-    has_weapon: any;
-    inventory: any;
-    tool: any;
-    inventoryitem: any;
-    reach: any;
-    nearby_ents: any;
-    nearest_dist: any;
-    force_attack: any;
-    target: any;
-    buffaction: any;
-    usedefault: any;
-    force_target_distsq: any;
-    pickup_tags: any;
-    ents: any;
     action: any;
-    actioncode: any;
     action_mod_name: any;
-    noforce: any;
-    client_obj: any;
-    isenabled: any;
-    ishudblocking: any;
-    highlight_guy: any;
-    controller_mode: any;
-    new_highlight: any;
-    new_highlight_guy: any;
-    placer_item: any;
-    placer_name: any;
-    placer_skin: any;
-    terraform: boolean;
-    hidespecialactionreticule: boolean;
-    now: any;
-    isbusy: any;
-    isidle: any;
-    fn: any;
+    actionbuttonoverride: any;
+    actioncode: any;
+    attack_buffer: any;
     attack_control: boolean;
-    retarget: any;
-    heading_angle: any;
+    attackrange: any;
+    bit: number;
+    buffaction: any;
+    bufferedcastaoe: any;
+    can_use_map: boolean;
+    chainattack_cb: any;
+    classified: any;
+    client_obj: any;
+    code: number;
+    combat: any;
+    container: any;
+    controller_attack_override: any;
+    controller_attack_target: any;
+    controller_attack_target_ally_cd: any;
+    controller_mode: any;
+    controller_target: any;
+    controller_target_age: number;
+    controller_targeting_lock_target: boolean;
+    controller_targeting_lock_timer: number;
+    controller_targeting_modifier_down: boolean;
+    controller_targeting_target_index: number;
+    controller_targeting_targets: any;
+    controlmods: any;
+    currentbuffaction: any;
+    deploy_mode: boolean;
+    deployplacer: any;
+    dir: any;
+    directwalking: boolean;
     dirx: any;
     dirz: any;
-    num_targets: any;
+    disembark_x: any;
+    disembark_z: any;
+    distancetotargetsq: any;
+    draggingonground: boolean;
+    dragwalking: boolean;
+    embarker: any;
+    entity_under_mouse: any;
+    ents: any;
+    equipitem: any;
+    equippable: any;
+    fn: any;
+    force_attack: any;
+    force_target_distsq: any;
+    handler: any;
+    has_weapon: any;
+    heading_angle: any;
+    hidespecialactionreticule: boolean;
+    highlight_guy: any;
+    hop_dir_dot_platform_velocity: any;
+    hop_dir_x: any;
+    hop_dir_z: any;
+    hop_distance: any;
+    hop_distance_sq: any;
+    hop_rubber_band_distance: any;
+    hop_rubber_band_distance_sq: any;
+    inst: any;
+    inv_obj: any;
+    inventory: any;
+    inventoryitem: any;
+    is_hopping: boolean;
+    is_map_enabled: boolean;
+    isaoetargeting: any;
+    isbusy: any;
+    isclientcontrollerattached: boolean;
+    isenabled: any;
+    ishudblocking: any;
+    isidle: any;
+    islocal: any;
+    ismastersim: any;
+    isspecial: any;
+    item: any;
+    itempos: any;
+    lastrottime: any;
+    lastzoomtime: any;
+    lmb: any;
+    locomotor: any;
+    map: any;
+    mouseover: any;
+    mousetimeout: number;
     my_x: any;
     my_y: any;
     my_z: any;
-    target_x: any;
-    target_y: number;
-    target_z: any;
-    platform_for_velocity_calculation: any;
-    hop_dir_x: any;
-    hop_dir_z: any;
-    hop_distance_sq: any;
-    target_velocity_rubber_band_distance: number;
-    platform_velocity_x: number;
-    platform_velocity_z: number;
-    platform_physics: any;
-    hop_distance: any;
+    nearby_ents: any;
+    nearest_dist: any;
+    new_highlight: any;
+    new_highlight_guy: any;
+    noforce: any;
     normalized_hop_dir_x: any;
     normalized_hop_dir_z: any;
-    velocity: any;
     normalized_platform_velocity_x: any;
     normalized_platform_velocity_z: any;
-    hop_dir_dot_platform_velocity: any;
-    hop_rubber_band_distance: any;
-    hop_rubber_band_distance_sq: any;
+    now: any;
+    num_targets: any;
+    obj: any;
+    ondetachclassified: any;
+    overridedest: any;
+    pickup_tags: any;
+    placer: any;
+    placer_cached: any;
+    placer_item: any;
+    placer_name: any;
+    placer_recipe: any;
+    placer_recipe_skin: any;
+    placer_skin: any;
     platform: any;
-    pos_x: any;
-    pos_z: any;
-    embarker: any;
-    disembark_x: any;
-    disembark_z: any;
-    target_platform: any;
-    pt: any;
-    x0: any;
-    y0: any;
-    z0: any;
-    distancetotargetsq: any;
-    stopdistancesq: number;
-    dir: any;
-    steeringwheeluser: any;
-    t: any;
-    ROT_REPEAT: number;
-    ZOOM_REPEAT: number;
-    time: any;
-    lastrottime: any;
-    lastzoomtime: any;
-    currentbuffaction: any;
-    equippable: any;
-    entity_under_mouse: any;
-    mouseover: any;
-    position: any;
-    controlmods: any;
-    relative_x: any;
-    relative_z: any;
+    platform_for_velocity_calculation: any;
+    platform_physics: any;
+    platform_velocity_x: number;
+    platform_velocity_z: number;
     platform_x: any;
     platform_y: any;
     platform_z: any;
-    itempos: any;
-    islocal: any;
-    equipitem: any;
-    isaoetargeting: any;
+    pos_x: any;
+    pos_z: any;
+    position: any;
+    predictionsent: boolean;
+    predictwalking: boolean;
+    pt: any;
+    rad: any;
+    reach: any;
+    relative_x: any;
+    relative_z: any;
+    remote_controls: any;
+    remote_vector: any;
+    retarget: any;
+    reticule: any;
+    rider: any;
+    rmb: any;
+    rotamount: number;
     skin_index: any;
+    slot: any;
+    startdragtestpos: any;
+    startdragtime: any;
+    steeringwheeluser: any;
+    stopdistancesq: number;
+    t: any;
+    target: any;
+    target_platform: any;
+    target_velocity_rubber_band_distance: number;
+    target_x: any;
+    target_y: number;
+    target_z: any;
+    terraform: boolean;
+    terraformer: any;
+    testfn: any;
+    time: any;
+    time_direct_walking: number;
+    tool: any;
+    usedefault: any;
+    velocity: any;
+    x: any;
+    x0: any;
+    y: number;
+    y0: any;
+    z: any;
+    z0: any;
     Activate(): any;
     AttachClassified(classified: any): any;
     CanLocomote(): boolean;
@@ -5756,8 +5756,8 @@ export namespace Component {
   }
 
   interface PlayerHearing {
-    inst: any;
     dsptables: any;
+    inst: any;
     GetDSPTables(): any;
     UpdateDSPTables(): any;
   }
@@ -5767,8 +5767,8 @@ export namespace Component {
   }
 
   interface PlayerLightningTarget {
-    inst: any;
     hitchance: number;
+    inst: any;
     onstrikefn: any;
     DoStrike(): any;
     GetHitChance(): any;
@@ -5782,19 +5782,19 @@ export namespace Component {
   }
 
   interface PlayerProx {
-    inst: any;
-    near: number;
-    far: number;
-    isclose: boolean;
-    period: any;
-    onnear: any;
-    onfar: any;
-    task: any;
-    target: any;
-    losttargetfn: any;
     alivemode: any;
+    far: number;
+    inst: any;
+    isclose: boolean;
+    losttargetfn: any;
+    near: number;
+    onfar: any;
+    onnear: any;
     originaltargetmode: any;
+    period: any;
+    target: any;
     targetmode: any;
+    task: any;
     ForceUpdate(): any;
     GetDebugString(): any;
     IsPlayerClose(): boolean;
@@ -5812,12 +5812,12 @@ export namespace Component {
   }
 
   interface PlayerTargetIndicator {
+    checked: any;
     inst: any;
     max_range: any;
     offScreenPlayers: any;
     onScreenPlayersLastTick: any;
     onplayerexited: any;
-    checked: any;
     OnRemoveFromEntity(): any;
     OnUpdate(): any;
     ShouldRemoveIndicator(target: any): any;
@@ -5825,18 +5825,18 @@ export namespace Component {
   }
 
   interface PlayerVision {
-    inst: any;
+    ccphasefn: any;
+    cctable: any;
+    currentccphasefn: any;
+    currentcctable: any;
+    forcegogglevision: boolean;
+    forcenightvision: boolean;
     ghostvision: boolean;
+    gogglevision: boolean;
+    inst: any;
     nightmarevision: boolean;
     nightvision: boolean;
-    forcenightvision: boolean;
-    gogglevision: boolean;
-    forcegogglevision: boolean;
     overridecctable: any;
-    currentcctable: any;
-    currentccphasefn: any;
-    cctable: any;
-    ccphasefn: any;
     ForceGoggleVision(force: any): any;
     ForceNightVision(force: any): any;
     GetCCPhaseFn(): any;
@@ -5852,8 +5852,8 @@ export namespace Component {
   }
 
   interface PlayerVoter {
-    inst: any;
     classified: any;
+    inst: any;
     ondetachclassified: any;
     onvoteselectiondirty: any;
     AttachClassified(classified: any): any;
@@ -5869,18 +5869,18 @@ export namespace Component {
   }
 
   interface Pollinator {
-    inst: any;
-    flowers: any;
-    distance: number;
-    maxdensity: number;
     collectcount: number;
-    target: any;
-    parentFlower: any;
+    distance: number;
     flower: any;
+    flowers: any;
+    inst: any;
+    maxdensity: number;
+    nearbyentities: any;
+    parentFlower: any;
+    target: any;
     x: any;
     y: any;
     z: any;
-    nearbyentities: any;
     CanPollinate(flower: any): boolean;
     CheckFlowerDensity(): any;
     CreateFlower(): any;
@@ -5898,32 +5898,32 @@ export namespace Component {
   }
 
   interface PossessedAxe {
-    inst: any;
-    revert_prefab: string;
-    revert_uses: any;
-    revert_fx: any;
-    revert_time: any;
-    transform_fx: any;
-    player: any;
-    userid: any;
-    currentowner: any;
-    oncontainerpickedup: any;
+    axe: any;
     checkownertask: any;
+    container: any;
+    currentowner: any;
+    data: any;
+    fx: any;
+    inst: any;
+    oncontainerpickedup: any;
+    onplayerdied: any;
+    onplayerjoined: any;
+    onplayerpossessedaxe: any;
+    onplayerremoved: any;
+    owner: any;
+    player: any;
+    revert_fx: any;
+    revert_prefab: string;
+    revert_time: any;
+    revert_uses: any;
+    slot: any;
+    transform_fx: any;
+    userid: any;
     waittask: any;
     waittotime: any;
-    onplayerdied: any;
-    onplayerremoved: any;
-    onplayerpossessedaxe: any;
-    onplayerjoined: any;
-    owner: any;
-    axe: any;
-    container: any;
     x: any;
     y: any;
     z: any;
-    fx: any;
-    slot: any;
-    data: any;
     Drop(): any;
     GetDebugString(): any;
     LinkToPlayer(player: any): any;
@@ -5935,35 +5935,35 @@ export namespace Component {
   }
 
   interface Projectile {
-    inst: any;
-    owner: any;
-    target: any;
-    start: any;
-    dest: any;
+    angle: any;
+    attacker: any;
     cancatch: boolean;
-    speed: any;
+    delaypos: any;
+    delaytask: any;
+    dest: any;
+    direction: any;
+    dozeOffTask: any;
+    facing_angle: any;
     hitdist: number;
     homing: boolean;
-    range: any;
-    onthrown: any;
+    inst: any;
+    launchoffset: any;
+    oncaught: any;
     onhit: any;
     onmiss: any;
-    oncaught: any;
+    onthrown: any;
+    owner: any;
+    pos: any;
+    range: any;
+    rot: any;
+    speed: any;
+    start: any;
     stimuli: any;
-    dozeOffTask: any;
-    delaytask: any;
-    launchoffset: any;
+    target: any;
+    weapon: any;
     x: any;
     y: any;
     z: any;
-    facing_angle: any;
-    attacker: any;
-    delaypos: any;
-    weapon: any;
-    pos: any;
-    rot: any;
-    direction: any;
-    angle: any;
     Catch(catcher: any): any;
     DelayVisibility(duration: any): any;
     GetDebugString(): any;
@@ -5993,32 +5993,32 @@ export namespace Component {
   }
 
   interface Propagator {
-    inst: any;
-    flashpoint: number;
-    currentheat: number;
-    decayrate: number;
-    propagaterange: number;
-    heatoutput: number;
-    damages: boolean;
-    damagerange: number;
-    pvp_damagemod: any;
     acceptsheat: boolean;
-    spreading: boolean;
-    delay: any;
-    onflashpoint: any;
-    task: any;
-    dt: number;
-    source: any;
-    pauseheating: boolean;
-    tile: any;
+    currentheat: number;
+    damagerange: number;
+    damages: boolean;
     data: any;
-    pos: any;
-    prop_range: any;
-    ents: any;
+    decayrate: number;
+    delay: any;
     dmg_range: any;
     dmg_range_sq: any;
-    prop_range_sq: any;
+    dt: number;
+    ents: any;
+    flashpoint: number;
+    heatoutput: number;
+    inst: any;
     isendothermic: any;
+    onflashpoint: any;
+    pauseheating: boolean;
+    pos: any;
+    prop_range: any;
+    prop_range_sq: any;
+    propagaterange: number;
+    pvp_damagemod: any;
+    source: any;
+    spreading: boolean;
+    task: any;
+    tile: any;
     x: any;
     y: any;
     z: any;
@@ -6037,13 +6037,13 @@ export namespace Component {
   }
 
   interface Prototyper {
-    inst: any;
-    trees: any;
-    on: boolean;
-    onturnon: any;
-    onturnoff: any;
     doers: any;
+    inst: any;
+    on: boolean;
     onremovedoer: any;
+    onturnoff: any;
+    onturnon: any;
+    trees: any;
     Activate(doer: any, recipe: any): any;
     GetTechTrees(): any;
     OnRemoveFromEntity(): any;
@@ -6052,21 +6052,21 @@ export namespace Component {
   }
 
   interface RampingSpawner {
-    inst: any;
-    spawn_prefab: string;
-    spawns: any;
-    num_spawns: number;
-    current_wave: number;
-    wave_num: number;
-    min_wave: number;
-    max_wave: number;
-    waves_to_max: number;
-    wave_time: number;
-    spawning_on: boolean;
     SpawnTask: any;
-    spawn: any;
+    current_wave: number;
     data: any;
+    inst: any;
+    max_wave: number;
+    min_wave: number;
+    num_spawns: number;
     refs: any;
+    spawn: any;
+    spawn_prefab: string;
+    spawning_on: boolean;
+    spawns: any;
+    wave_num: number;
+    wave_time: number;
+    waves_to_max: number;
     DoWave(): any;
     GetCurrentWave(): any;
     GetSpawnPos(): any;
@@ -6093,9 +6093,9 @@ export namespace Component {
   }
 
   interface RecipeStockpile {
+    data: any;
     inst: any;
     stock: any;
-    data: any;
     str: string;
     FullyRestockItem(recipe: any): any;
     GetDebugString(): any;
@@ -6110,33 +6110,33 @@ export namespace Component {
   }
 
   interface Repairable {
-    inst: any;
-    repairmaterial: any;
-    noannounce: any;
     checkmaterialfn: any;
-    success: any;
+    inst: any;
+    noannounce: any;
     reason: any;
+    repairmaterial: any;
+    success: any;
     NeedsRepairs(): any;
     OnRemoveFromEntity(): any;
     Repair(doer: any, repair_item: any): any;
   }
 
   interface Repairer {
-    inst: any;
-    workrepairvalue: number;
-    healthrepairvalue: number;
     healthrepairpercent: number;
+    healthrepairvalue: number;
+    inst: any;
     perishrepairpercent: number;
     repairmaterial: any;
+    workrepairvalue: number;
     OnRemoveFromEntity(): any;
   }
 
   interface ResearchPointConverter {
-    inst: any;
-    val: number;
     active: boolean;
+    inst: any;
     level: number;
     on: boolean;
+    val: number;
     Activate(): any;
     TurnOff(): any;
     TurnOn(): any;
@@ -6144,10 +6144,10 @@ export namespace Component {
 
   interface Resistance {
     inst: any;
-    tags: any;
     onresistdamage: any;
     shouldresistfn: any;
     str: any;
+    tags: any;
     AddResistance(tag: any): any;
     GetDebugString(): any;
     HasResistance(attacker: any, weapon: any): boolean;
@@ -6160,31 +6160,31 @@ export namespace Component {
   }
 
   interface Reticule {
-    inst: any;
-    targetpos: any;
-    ease: boolean;
-    smoothing: number;
-    targetfn: any;
-    mousetargetfn: any;
-    updatepositionfn: any;
-    reticuleprefab: string;
-    reticule: any;
-    validcolour: any;
-    invalidcolour: any;
-    currentcolour: any;
-    mouseenabled: boolean;
-    followhandler: any;
-    fadealpha: number;
+    a: any;
     blipalpha: number;
+    currentcolour: any;
+    ease: boolean;
+    fadealpha: number;
+    followhandler: any;
+    inst: any;
+    invalidcolour: any;
+    mouseenabled: boolean;
+    mousetargetfn: any;
+    ping: any;
     pingprefab: any;
     pos: any;
-    ping: any;
-    a: any;
+    reticule: any;
+    reticuleprefab: string;
+    smoothing: number;
+    targetfn: any;
+    targetpos: any;
+    updatepositionfn: any;
+    validcolour: any;
     x: any;
-    y: any;
-    z: any;
     x0: any;
+    y: any;
     y0: any;
+    z: any;
     z0: any;
     Blip(): any;
     CreateReticule(): any;
@@ -6197,13 +6197,13 @@ export namespace Component {
   }
 
   interface RevivableCorpse {
+    canberevivedbyfn: any;
     inst: any;
     ismastersim: any;
+    mult: any;
     revive_health_percet: number;
     revivespeedmult: number;
-    canberevivedbyfn: any;
     tagmults: any;
-    mult: any;
     CanBeRevivedBy(reviver: any): boolean;
     GetReviveHealthPercent(): any;
     GetReviveSpeedMult(reviver: any): any;
@@ -6216,17 +6216,17 @@ export namespace Component {
   }
 
   interface Rideable {
-    inst: any;
-    saddleable: boolean;
     canride: boolean;
-    saddle: any;
-    rider: any;
-    requiredobedience: any;
-    lastridetime: any;
-    riddentask: any;
-    pt: any;
-    oldrider: any;
     data: any;
+    inst: any;
+    lastridetime: any;
+    oldrider: any;
+    pt: any;
+    requiredobedience: any;
+    riddentask: any;
+    rider: any;
+    saddle: any;
+    saddleable: boolean;
     Buck(gentle: any): any;
     GetDebugString(): any;
     GetRider(): any;
@@ -6244,22 +6244,22 @@ export namespace Component {
   }
 
   interface Rider {
+    canbepinned: boolean;
+    data: any;
+    ex_mount: any;
     inst: any;
     mount: any;
-    saddle: any;
+    redirectdamagefn: any;
     rideable: any;
+    riding: boolean;
+    saddle: any;
     saddler: any;
-    x: any;
-    y: any;
-    z: any;
     tx: any;
     ty: any;
     tz: any;
-    riding: boolean;
-    redirectdamagefn: any;
-    canbepinned: boolean;
-    ex_mount: any;
-    data: any;
+    x: any;
+    y: any;
+    z: any;
     ActualDismount(): any;
     Dismount(): any;
     GetMount(): any;
@@ -6274,12 +6274,12 @@ export namespace Component {
   }
 
   interface Saddler {
-    inst: any;
-    swapsymbol: any;
-    swapbuild: any;
     bonusdamage: any;
-    speedmult: any;
     discardedcb: any;
+    inst: any;
+    speedmult: any;
+    swapbuild: any;
+    swapsymbol: any;
     GetBonusDamage(target: any): any;
     GetBonusSpeedMult(): any;
     SetBonusDamage(damage: any): any;
@@ -6303,47 +6303,47 @@ export namespace Component {
   }
 
   interface Sanity {
-    inst: any;
-    max: number;
+    aura_delta: number;
+    aura_val: any;
     current: any;
-    mode: any;
-    rate: number;
-    ratescale: any;
-    rate_modifier: number;
-    sane: boolean;
-    fxtime: number;
+    custom_rate_fn: any;
+    dapper_delta: any;
     dapperness: number;
+    dapperness_mult: number;
+    delta: any;
+    ents: any;
     externalmodifiers: any;
+    fxtime: number;
+    ghost_delta: any;
+    ghost_drain_mult: number;
+    group_resist: any;
     inducedinsanity: any;
     inducedinsanity_sources: any;
-    night_drain_mult: number;
-    neg_aura_mult: number;
-    neg_aura_absorb: number;
-    dapperness_mult: number;
-    penalty: number;
-    sanity_penalties: any;
-    ghost_drain_mult: number;
-    custom_rate_fn: any;
-    target: any;
-    delta: any;
-    percent_ignoresinduced: any;
-    num_ghosts: any;
-    num_alive: any;
-    group_resist: any;
-    total_dapperness: any;
-    dapper_delta: any;
-    moisture_delta: any;
-    light_sanity_drain: any;
+    inst: any;
     light_delta: any;
+    light_sanity_drain: any;
     lightval: any;
-    aura_delta: number;
+    max: number;
+    mode: any;
+    moisture_delta: any;
+    mount: any;
+    neg_aura_absorb: number;
+    neg_aura_mult: number;
+    night_drain_mult: number;
+    num_alive: any;
+    num_ghosts: any;
+    penalty: number;
+    percent_ignoresinduced: any;
+    rate: number;
+    rate_modifier: number;
+    ratescale: any;
+    sane: boolean;
+    sanity_penalties: any;
+    target: any;
+    total_dapperness: any;
     x: any;
     y: any;
     z: any;
-    ents: any;
-    mount: any;
-    aura_val: any;
-    ghost_delta: any;
     AddSanityPenalty(key: any, mod: any): any;
     DoDelta(delta: any, overtime: any): any;
     GetDebugString(): any;
@@ -6373,11 +6373,11 @@ export namespace Component {
   }
 
   interface SanityAura {
-    inst: any;
     aura: number;
-    aurafn: any;
     aura_val: number;
+    aurafn: any;
     distsq: any;
+    inst: any;
     GetAura(observer: any): any;
     OnRemoveFromEntity(): any;
   }
@@ -6390,12 +6390,12 @@ export namespace Component {
   }
 
   interface SavedScale {
+    data: any;
     inst: any;
+    scale: any;
     sx: any;
     sy: any;
     sz: any;
-    data: any;
-    scale: any;
     OnLoad(data: any): any;
     OnSave(): any;
   }
@@ -6410,11 +6410,11 @@ export namespace Component {
   }
 
   interface ScenarioRunner {
-    inst: any;
-    scriptname: any;
-    script: any;
-    hasrunonce: boolean;
     data: any;
+    hasrunonce: boolean;
+    inst: any;
+    script: any;
+    scriptname: any;
     ClearScenario(): any;
     OnLoad(data: any): any;
     OnSave(): any;
@@ -6425,9 +6425,9 @@ export namespace Component {
 
   interface SelfStacker {
     inst: any;
+    num: any;
     searchradius: number;
     stackpartner: any;
-    num: any;
     to_combine: any;
     CanSelfStack(): boolean;
     DoStack(): any;
@@ -6436,9 +6436,9 @@ export namespace Component {
   }
 
   interface SentientAxe {
+    convo_task: any;
     inst: any;
     owner: any;
-    convo_task: any;
     say_task: any;
     warnlevel: number;
     waslow: boolean;
@@ -6460,8 +6460,8 @@ export namespace Component {
   }
 
   interface ShadowSubmissive {
-    inst: any;
     forgetattackertime: number;
+    inst: any;
     OnRemoveFromEntity(): any;
     ShouldSubmitToTarget(target: any): any;
     TargetHasDominance(target: any): any;
@@ -6480,15 +6480,15 @@ export namespace Component {
 
   interface Shedder {
     inst: any;
-    shedItemPrefab: any;
-    shedHeight: number;
-    shedTask: any;
     item: any;
+    num: any;
+    shedHeight: number;
+    shedItemPrefab: any;
+    shedTask: any;
+    speed: number;
     x: any;
     y: any;
     z: any;
-    num: any;
-    speed: number;
     DoMultiShed(max: any, random: any): any;
     DoSingleShed(): any;
     StartShedding(interval: any): any;
@@ -6496,15 +6496,15 @@ export namespace Component {
   }
 
   interface Shelf {
-    inst: any;
+    cantakeitem: boolean;
     cantakeitemfn: any;
+    inst: any;
     itemonshelf: any;
     onitemtakenfn: any;
-    cantakeitem: boolean;
     onshelfitemfn: any;
     ontakeitemfn: any;
-    prevslot: any;
     prevcontainer: any;
+    prevslot: any;
     OnRemoveFromEntity(): any;
     PutItemOnShelf(item: any): any;
     SetOnShelfItem(fn: any): any;
@@ -6513,16 +6513,16 @@ export namespace Component {
   }
 
   interface Sheltered {
+    announcecooldown: number;
+    ents: any;
     inst: any;
-    stoptime: any;
     presheltered: boolean;
     sheltered: boolean;
-    announcecooldown: number;
+    stoptime: any;
     waterproofness: any;
     x: any;
     y: any;
     z: any;
-    ents: any;
     GetDebugString(): any;
     OnRemoveFromEntity(): any;
     OnUpdate(dt: any): any;
@@ -6533,33 +6533,33 @@ export namespace Component {
 
   interface Shop {
     inst: any;
+    physcsPT: any;
     tab: string;
     title: string;
     x: any;
     y: any;
     z: any;
-    physcsPT: any;
     DeliverItems(items: any): any;
     SetStartTab(tab: any): any;
     SetTitle(title: any): any;
   }
 
   interface SinkholeSpawner {
-    inst: any;
-    targets: any;
-    weighted_players: any;
-    num_players: number;
-    target_players: any;
-    year_length: any;
     base_num_attacks: any;
-    x: any;
-    z: any;
-    offset: any;
-    sinkhole: any;
     data: any;
-    towarn: any;
-    toattack: any;
+    inst: any;
+    num_players: number;
+    offset: any;
     s: any;
+    sinkhole: any;
+    target_players: any;
+    targets: any;
+    toattack: any;
+    towarn: any;
+    weighted_players: any;
+    x: any;
+    year_length: any;
+    z: any;
     DoTargetAttack(targetinfo: any): any;
     DoTargetWarning(targetinfo: any): any;
     GetDebugString(): any;
@@ -6574,28 +6574,28 @@ export namespace Component {
   }
 
   interface SizeTweener {
-    inst: any;
-    i_size: any;
-    t_size: any;
     callback: any;
+    cb: any;
+    i_size: any;
+    inst: any;
+    s: any;
+    t_size: any;
     time: any;
     timepassed: number;
     tweening: boolean;
-    cb: any;
-    s: any;
     EndTween(): any;
     OnUpdate(dt: any): any;
     StartTween(size: any, time: any, callback: any): any;
   }
 
   interface Skinner {
-    inst: any;
-    skin_name: string;
-    clothing: any;
-    skintype: string;
     base_skin: string;
+    clothing: any;
+    inst: any;
     skin_data: any;
+    skin_name: string;
     skin_prefab: any;
+    skintype: string;
     ClearAllClothing(): any;
     ClearClothing(type: any): any;
     GetClothing(): any;
@@ -6610,23 +6610,23 @@ export namespace Component {
   }
 
   interface Sleeper {
+    diminishingtask: any;
+    extraresist: any;
+    hibernate: boolean;
     inst: any;
     isasleep: boolean;
-    testperiod: number;
-    lasttransitiontime: any;
     lasttesttime: any;
-    sleeptestfn: any;
-    waketestfn: any;
+    lasttransitiontime: any;
     resistance: number;
     sleepiness: number;
-    wearofftime: number;
-    hibernate: boolean;
+    sleeptestfn: any;
+    testperiod: number;
     testtask: any;
-    wearofftask: any;
-    extraresist: any;
-    diminishingtask: any;
-    wasasleep: any;
     testtime: any;
+    waketestfn: any;
+    wasasleep: any;
+    wearofftask: any;
+    wearofftime: number;
     AddSleepiness(sleepiness: any, sleeptime: any): any;
     GetDebugString(): any;
     GetSleepTimeMultiplier(): any;
@@ -6654,12 +6654,12 @@ export namespace Component {
   }
 
   interface SleepingBag {
-    inst: any;
-    healthsleep: boolean;
     dryingrate: any;
-    sleeper: any;
+    healthsleep: boolean;
+    inst: any;
     onsleep: any;
     onwake: any;
+    sleeper: any;
     DoSleep(doer: any): any;
     DoWakeUp(nostatechange: any): any;
   }
@@ -6680,28 +6680,28 @@ export namespace Component {
   }
 
   interface Spawner {
-    inst: any;
     child: any;
+    childname: any;
+    data: any;
     delay: number;
+    inst: any;
+    nextspawntime: any;
+    offset: any;
     onoccupied: any;
     onvacate: any;
-    spawnoffscreen: boolean;
-    task: any;
-    nextspawntime: any;
     queue_spawn: boolean;
+    rad: any;
+    refs: any;
     retry_period: any;
+    retryperiod: any;
     spawn_in_water: any;
     spawn_on_boats: any;
-    childname: any;
-    retryperiod: any;
-    data: any;
-    refs: any;
-    rad: any;
+    spawnoffscreen: boolean;
+    start_angle: any;
+    task: any;
     x: any;
     y: any;
     z: any;
-    start_angle: any;
-    offset: any;
     CancelSpawning(): any;
     Configure(childname: any, delay: any, startdelay: any): any;
     GetDebugString(): any;
@@ -6724,10 +6724,10 @@ export namespace Component {
   }
 
   interface SpawnFader {
-    inst: any;
     fadeval: number;
-    updating: boolean;
+    inst: any;
     k: any;
+    updating: boolean;
     Cancel(): any;
     FadeIn(): any;
     OnRemoveFromEntity(): any;
@@ -6735,40 +6735,40 @@ export namespace Component {
   }
 
   interface SpectatorCorpse {
+    active: boolean;
     inst: any;
     lasttarget: any;
-    str: any;
     maxrange: number;
-    startspeed: number;
     priority: number;
-    active: boolean;
+    rangesq: any;
+    startspeed: number;
+    str: any;
+    target: any;
     updating: boolean;
     x: any;
     y: any;
     z: any;
-    rangesq: any;
-    target: any;
     OnUpdate(): any;
   }
 
   interface Spell {
-    inst: any;
     active: boolean;
-    spellname: string;
-    onstartfn: any;
-    onfinishfn: any;
-    ontargetfn: any;
-    fn: any;
-    resumefn: any;
-    target: any;
-    duration: number;
-    lifetime: number;
-    period: any;
-    timer: any;
-    removeonfinish: boolean;
-    variables: any;
     data: any;
+    duration: number;
+    fn: any;
+    inst: any;
+    lifetime: number;
+    onfinishfn: any;
+    onstartfn: any;
+    ontargetfn: any;
+    period: any;
+    removeonfinish: boolean;
+    resumefn: any;
+    spellname: string;
+    target: any;
     timeleft: any;
+    timer: any;
+    variables: any;
     LoadPostPass(newents: any, data: any): any;
     OnFinish(): any;
     OnLoad(data: any): any;
@@ -6783,22 +6783,22 @@ export namespace Component {
   }
 
   interface SpellCaster {
-    inst: any;
-    onspellcast: any;
-    canusefrominventory: boolean;
-    canuseontargets: boolean;
-    canonlyuseonrecipes: boolean;
+    canonlyuseoncombat: boolean;
     canonlyuseonlocomotors: boolean;
     canonlyuseonlocomotorspvp: boolean;
+    canonlyuseonrecipes: boolean;
     canonlyuseonworkable: boolean;
-    canonlyuseoncombat: boolean;
+    canusefrominventory: boolean;
     canuseonpoint: boolean;
     canuseonpoint_water: boolean;
-    spell: any;
-    quickcast: boolean;
+    canuseontargets: boolean;
+    inst: any;
+    onspellcast: any;
     px: any;
     py: any;
     pz: any;
+    quickcast: boolean;
+    spell: any;
     CanCast(doer: any, target: any, pos: any): boolean;
     CastSpell(target: any, pos: any): any;
     OnRemoveFromEntity(): any;
@@ -6807,22 +6807,22 @@ export namespace Component {
   }
 
   interface Spooked {
+    agefactor: any;
+    anim: any;
+    fx: any;
     inst: any;
+    k: any;
+    lastspooktime: any;
+    maxspookage: any;
+    maxspookdelta: number;
+    maxspookedlevel: number;
     spookedlevel: number;
     spookedthreshold: number;
-    maxspookedlevel: number;
-    maxspookdelta: number;
-    maxspookage: any;
-    lastspooktime: any;
-    k: any;
-    t: any;
-    agefactor: any;
     stage: any;
-    anim: any;
+    t: any;
     x: any;
     y: any;
     z: any;
-    fx: any;
     GetDebugString(): any;
     ShouldSpook(): any;
     Spook(source: any): any;
@@ -6830,9 +6830,9 @@ export namespace Component {
 
   interface SquadMember {
     inst: any;
-    squad: string;
-    others: any;
     k: any;
+    others: any;
+    squad: string;
     str: any;
     GetDebugString(): any;
     GetOtherMembers(): any;
@@ -6844,18 +6844,18 @@ export namespace Component {
 
   interface Stackable {
     inst: any;
-    stacksize: number;
-    maxsize: any;
-    ondestack: any;
-    old_size: any;
-    num_to_get: any;
     instance: any;
-    ret: any;
-    num_to_add: any;
-    newtotal: any;
-    oldsize: any;
+    maxsize: any;
     newsize: any;
+    newtotal: any;
+    num_to_add: any;
+    num_to_get: any;
     numberadded: any;
+    old_size: any;
+    oldsize: any;
+    ondestack: any;
+    ret: any;
+    stacksize: number;
     Get(num: any): any;
     IsFull(): boolean;
     IsStack(): boolean;
@@ -6883,23 +6883,23 @@ export namespace Component {
   }
 
   interface SteeringWheelUser {
-    inst: any;
-    should_play_left_turn_anim: boolean;
-    wheel_remove_callback: any;
-    onstopturning: any;
-    onboatremoved: any;
-    prev_steering_wheel: any;
-    steering_wheel: any;
     boat: any;
     dir_x: any;
     dir_z: any;
-    x: any;
-    y: any;
-    z: any;
-    right_vec: any;
+    inst: any;
+    onboatremoved: any;
+    onstopturning: any;
     player_pos_x: any;
     player_pos_y: any;
     player_pos_z: any;
+    prev_steering_wheel: any;
+    right_vec: any;
+    should_play_left_turn_anim: boolean;
+    steering_wheel: any;
+    wheel_remove_callback: any;
+    x: any;
+    y: any;
+    z: any;
     GetBoat(): any;
     OnUpdate(dt: any): any;
     SetSteeringWheel(steering_wheel: any): any;
@@ -6908,28 +6908,28 @@ export namespace Component {
   }
 
   interface Stewer {
-    inst: any;
+    canbeopened: boolean;
+    cooktime: number;
+    cooktimemult: number;
     done: any;
-    targettime: any;
-    task: any;
+    ings: any;
+    inst: any;
+    loot: any;
+    prod: any;
     product: any;
     product_spoilage: any;
-    spoiledproduct: string;
-    spoiltime: any;
-    cooktimemult: number;
-    ings: any;
-    cooktime: number;
     productperishtime: any;
-    spoilage_total: number;
-    spoilage_n: number;
-    canbeopened: boolean;
-    prod: any;
-    remainingtime: any;
-    status: any;
-    loot: any;
     recipe: any;
-    stacksize: any;
+    remainingtime: any;
+    spoilage_n: number;
+    spoilage_total: number;
+    spoiledproduct: string;
     spoilpercent: any;
+    spoiltime: any;
+    stacksize: any;
+    status: any;
+    targettime: any;
+    task: any;
     CanCook(): boolean;
     GetDebugString(): any;
     GetRecipeForProduct(): any;
@@ -6948,11 +6948,11 @@ export namespace Component {
   }
 
   interface StormWatcher {
+    delay: any;
     inst: any;
+    level: any;
     sandstormlevel: number;
     sandstormspeedmult: number;
-    delay: any;
-    level: any;
     OnUpdate(dt: any): any;
     SetSandstormSpeedMultiplier(mult: any): any;
     ToggleSandstorms(active: any): any;
@@ -6961,14 +6961,14 @@ export namespace Component {
   }
 
   interface Stretcher {
-    inst: any;
-    target: any;
-    restinglength: number;
-    widthratio: number;
-    targetpos: any;
-    mypos: any;
     diff: any;
+    inst: any;
+    mypos: any;
+    restinglength: number;
     scale: any;
+    target: any;
+    targetpos: any;
+    widthratio: number;
     widthscale: any;
     OnEntitySleep(): any;
     OnEntityWake(): any;
@@ -6979,38 +6979,38 @@ export namespace Component {
   }
 
   interface Stunnable {
-    inst: any;
     damage: any;
-    stun_threshold: number;
-    stun_period: number;
-    stun_duration: number;
-    stun_resist: number;
+    inst: any;
     stun_cooldown: number;
-    valid_stun_time: number;
-    totaldamage: number;
+    stun_duration: number;
+    stun_period: number;
+    stun_resist: number;
+    stun_threshold: number;
     toremove: any;
+    totaldamage: number;
+    valid_stun_time: number;
     GetDamageInPeriod(): any;
     Stun(): any;
     TakeDamage(damage: any): any;
   }
 
   interface Talkable {
-    inst: any;
-    conversation: any;
     conv_index: number;
+    conversation: any;
+    inst: any;
   }
 
   interface Talker {
-    inst: any;
-    task: any;
+    chatter: any;
+    disablefollowtext: any;
+    health: any;
     ignoring: any;
+    inst: any;
+    lines: any;
     mod_str_fn: any;
     offset: any;
     offset_fn: any;
-    disablefollowtext: any;
-    chatter: any;
-    health: any;
-    lines: any;
+    task: any;
     Chatter(strtbl: any, strid: any, time: any, forcetext: any): any;
     IgnoreAll(source: any): any;
     MakeChatter(): any;
@@ -7036,25 +7036,25 @@ export namespace Component {
   }
 
   interface TeamAttacker {
+    destpos: any;
+    ents: any;
+    formationpos: any;
+    homePos: any;
     inst: any;
     inteam: boolean;
-    teamleader: any;
-    formationpos: any;
-    order: any;
-    searchradius: number;
     leashdistance: number;
-    team_type: string;
-    str: any;
+    mypos: any;
+    order: any;
+    orders: any;
     pt: any;
-    ents: any;
-    homePos: any;
+    searchradius: number;
+    str: any;
+    target: any;
+    team_type: string;
+    teamleader: any;
     x: any;
     y: any;
     z: any;
-    target: any;
-    destpos: any;
-    mypos: any;
-    orders: any;
     GetDebugString(): any;
     LeaveTeam(): any;
     OnEntitySleep(): any;
@@ -7065,42 +7065,42 @@ export namespace Component {
   }
 
   interface TeamLeader {
+    attack_grp_size: any;
+    attackinterval: number;
+    chasetime: number;
+    chk_state: boolean;
+    count: number;
+    ents: any;
     inst: any;
-    team_type: string;
-    min_team_size: number;
+    lifetime: number;
     max_team_size: number;
-    team: any;
-    threat: any;
-    searchradius: number;
-    theta: number;
-    thetaincrement: number;
+    maxchasetime: number;
+    maxteam: number;
+    min_team_size: number;
+    oldestteam: number;
+    pt: any;
     radius: number;
     reverse: boolean;
-    timebetweenattacks: number;
-    attackinterval: number;
-    lifetime: number;
-    attack_grp_size: any;
-    chk_state: boolean;
-    maxchasetime: number;
-    chasetime: number;
-    count: number;
+    searchradius: number;
+    sort: any;
+    steps: any;
+    successfulorders: number;
+    target: any;
+    team: any;
+    team_type: string;
     teamattacker: any;
+    teamcount: number;
     teams: any;
+    temp: any;
+    theta: number;
+    thetaincrement: number;
+    threat: any;
+    timebetweenattacks: number;
+    updatedPos: any;
+    validMembers: number;
     x: any;
     y: any;
     z: any;
-    ents: any;
-    oldestteam: number;
-    sort: any;
-    maxteam: number;
-    teamcount: number;
-    updatedPos: any;
-    validMembers: number;
-    target: any;
-    pt: any;
-    steps: any;
-    temp: any;
-    successfulorders: number;
     AllInState(state: any): any;
     BroadcastDistress(member: any): any;
     CanAttack(): boolean;
@@ -7128,23 +7128,23 @@ export namespace Component {
   }
 
   interface Teleporter {
+    angle: any;
+    enabled: boolean;
     inst: any;
-    targetTeleporter: any;
+    numteleporting: number;
+    offset: number;
     onActivate: any;
     onActivateByOther: any;
-    offset: number;
-    enabled: boolean;
-    numteleporting: number;
-    teleportees: any;
+    pt: any;
     saveenabled: boolean;
-    travelcameratime: number;
-    travelarrivetime: number;
+    targEnt: any;
+    targetTeleporter: any;
     target_x: any;
     target_y: any;
     target_z: any;
-    pt: any;
-    angle: any;
-    targEnt: any;
+    teleportees: any;
+    travelarrivetime: number;
+    travelcameratime: number;
     Activate(doer: any): any;
     GetDebugString(): any;
     IsActive(): boolean;
@@ -7164,41 +7164,41 @@ export namespace Component {
   }
 
   interface Temperature {
-    inst: any;
-    settemp: any;
-    current: any;
-    maxtemp: any;
-    mintemp: any;
-    overheattemp: any;
-    hurtrate: any;
-    inherentinsulation: number;
-    inherentsummerinsulation: number;
-    shelterinsulation: any;
+    ambient_temperature: any;
+    bellytask: any;
     bellytemperaturedelta: any;
     bellytime: any;
-    bellytask: any;
-    ignoreheatertags: any;
-    usespawnlight: any;
-    maxmoisturepenalty: any;
-    totalmodifiers: number;
-    externalheaterpower: number;
+    current: any;
     delta: number;
-    rate: number;
-    sheltered: boolean;
-    overheathurtrate: any;
-    world_temp: any;
+    ents: any;
+    externalheaterpower: number;
+    hurtrate: any;
+    ignoreheatertags: any;
+    inherentinsulation: number;
+    inherentsummerinsulation: number;
+    inst: any;
     last: any;
-    temperature_modifiers: any;
     m: any;
-    winterInsulation: any;
-    summerInsulation: any;
-    ambient_temperature: any;
+    maxmoisturepenalty: any;
+    maxtemp: any;
+    mintemp: any;
+    overflow: any;
+    overheathurtrate: any;
+    overheattemp: any;
     owner: any;
+    rate: number;
+    settemp: any;
+    sheltered: boolean;
+    shelterinsulation: any;
+    summerInsulation: any;
+    temperature_modifiers: any;
+    totalmodifiers: number;
+    usespawnlight: any;
+    winterInsulation: any;
+    world_temp: any;
     x: any;
     y: any;
     z: any;
-    ents: any;
-    overflow: any;
     DoDelta(delta: any): any;
     GetCurrent(): any;
     GetDebugString(): any;
@@ -7222,32 +7222,32 @@ export namespace Component {
   }
 
   interface Terraformer {
+    angle: any;
     inst: any;
-    world: any;
+    loot: any;
     map: any;
     original_tile_type: any;
+    world: any;
     x: any;
     y: any;
-    loot: any;
-    angle: any;
     Terraform(pt: any, spawnturf: any): any;
   }
 
   interface Thief {
-    inst: any;
-    stolenitems: any;
-    onstolen: any;
-    item: any;
     direction: any;
+    inst: any;
+    item: any;
+    onstolen: any;
+    stolenitems: any;
     SetOnStolenFn(fn: any): any;
     StealItem(victim: any, itemtosteal: any, attack: any): any;
   }
 
   interface Timer {
-    inst: any;
-    timers: any;
-    str: string;
     data: any;
+    inst: any;
+    str: string;
+    timers: any;
     GetDebugString(): any;
     GetTimeElapsed(name: any): any;
     GetTimeLeft(name: any): any;
@@ -7270,8 +7270,8 @@ export namespace Component {
   }
 
   interface Tool {
-    inst: any;
     actions: any;
+    inst: any;
     CanDoAction(action: any): boolean;
     GetEffectiveness(action: any): any;
     OnRemoveFromEntity(): any;
@@ -7279,11 +7279,11 @@ export namespace Component {
   }
 
   interface TouchStoneTracker {
+    data: any;
     inst: any;
+    str: string;
     used: any;
     used_foreign: any;
-    str: string;
-    data: any;
     GetDebugString(): any;
     IsUsed(touchstone: any): boolean;
     OnLoad(data: any): any;
@@ -7292,18 +7292,18 @@ export namespace Component {
   }
 
   interface Tradable {
-    inst: any;
     goldvalue: number;
+    inst: any;
   }
 
   interface Trader {
-    inst: any;
-    enabled: boolean;
-    deleteitemonaccept: boolean;
-    acceptnontradable: boolean;
-    test: any;
     abletoaccepttest: any;
+    acceptnontradable: boolean;
     act: any;
+    deleteitemonaccept: boolean;
+    enabled: boolean;
+    inst: any;
+    test: any;
     AbleToAccept(item: any, giver: any): any;
     AcceptGift(giver: any, item: any, count: any): any;
     Disable(): any;
@@ -7317,27 +7317,27 @@ export namespace Component {
   }
 
   interface Transformer {
+    c_data: any;
+    data: any;
     inst: any;
-    transformPrefab: string;
     objectData: any;
-    transformEvent: any;
-    transformEventTarget: any;
+    onLoadCheck: any;
+    onRevert: any;
+    onTransform: any;
+    p_data: any;
+    queuedRevert: boolean;
+    queuedTransform: boolean;
+    refs: any;
     revertEvent: any;
     revertEventTarget: any;
-    onTransform: any;
-    onRevert: any;
-    transformed: boolean;
-    transformOffScreen: boolean;
-    queuedTransform: boolean;
-    queuedRevert: boolean;
-    c_data: any;
-    p_data: any;
     sleepRevertEvent: any;
     sleepTransformEvent: any;
-    onLoadCheck: any;
-    data: any;
-    refs: any;
     tar: any;
+    transformEvent: any;
+    transformEventTarget: any;
+    transformOffScreen: boolean;
+    transformPrefab: string;
+    transformed: boolean;
     GetDebugString(): any;
     GetObjectData(): any;
     LoadPostPass(ents: any, data: any): any;
@@ -7361,47 +7361,47 @@ export namespace Component {
   }
 
   interface TransparentOnSanity {
-    inst: any;
-    offset: any;
-    osc_speed: any;
-    osc_amp: number;
     alpha: number;
+    inst: any;
     most_alpha: number;
-    target_alpha: number;
+    offset: any;
+    osc_amp: number;
+    osc_speed: any;
     player: any;
+    target_alpha: number;
     OnUpdate(dt: any): any;
   }
 
   interface Trap {
-    inst: any;
     bait: any;
-    issprung: boolean;
-    isset: boolean;
-    range: number;
-    targettag: string;
     checkperiod: number;
-    onharvest: any;
-    onbaited: any;
-    onspring: any;
-    task: any;
-    str: any;
-    souls: any;
+    ents: any;
+    guy: any;
+    inst: any;
+    inventory: any;
+    ismole: any;
+    isset: boolean;
+    issprung: boolean;
     lootprefabs: any;
     numsouls: any;
+    onbaited: any;
+    onharvest: any;
+    onspring: any;
+    perishTime: any;
+    pos: any;
+    range: number;
+    souls: any;
+    starvedlootprefabs: any;
     starvednumsouls: any;
+    str: any;
     target: any;
-    guy: any;
+    targettag: string;
+    task: any;
     timeintrap: any;
+    trap: any;
     x: any;
     y: any;
     z: any;
-    perishTime: any;
-    starvedlootprefabs: any;
-    ismole: any;
-    ents: any;
-    pos: any;
-    inventory: any;
-    trap: any;
     AcceptingBait(): any;
     BaitTaken(eater: any): any;
     DoSpring(): any;
@@ -7432,14 +7432,14 @@ export namespace Component {
   }
 
   interface Tributable {
-    inst: any;
     currenttributevalue: number;
-    rewardattributevalue: number;
-    numrewardsgiven: number;
-    timegiventribute: any;
+    data: any;
     decaycurrenttributetime: number;
     decaytask: any;
-    data: any;
+    inst: any;
+    numrewardsgiven: number;
+    rewardattributevalue: number;
+    timegiventribute: any;
     GetDebugString(): any;
     HasPendingReward(): boolean;
     OnAccept(value: any, tributer: any): any;
@@ -7450,44 +7450,44 @@ export namespace Component {
   }
 
   interface UIAnim {
+    a: any;
+    b: any;
+    done: boolean;
+    g: any;
     inst: any;
-    val: number;
-    tint_t: number;
-    whendone: any;
-    tint_whendone: any;
-    tint_start: any;
-    tint_dest: any;
-    tint_duration: any;
-    sx: any;
-    sy: any;
-    sz: any;
-    scale_t: number;
-    scale_whendone: any;
-    scale_start: any;
-    scale_dest: any;
-    scale_duration: any;
-    pos_t: number;
-    pos_whendone: any;
-    pos_start: any;
     pos_dest: any;
     pos_duration: any;
-    rot_t: number;
-    rot_whendone: any;
-    rot_start: any;
+    pos_start: any;
+    pos_t: number;
+    pos_whendone: any;
+    pos_whendonefn: any;
+    r: any;
+    rot: any;
     rot_dest: any;
     rot_duration: any;
     rot_infinite: boolean;
-    done: boolean;
+    rot_start: any;
+    rot_t: number;
+    rot_whendone: any;
+    rot_whendonefn: any;
+    scale_dest: any;
+    scale_duration: any;
+    scale_start: any;
+    scale_t: number;
+    scale_whendone: any;
+    sx: any;
+    sy: any;
+    sz: any;
+    tint_dest: any;
+    tint_duration: any;
+    tint_start: any;
+    tint_t: number;
+    tint_whendone: any;
+    val: number;
     valx: any;
     valy: any;
     valz: any;
-    pos_whendonefn: any;
-    r: any;
-    g: any;
-    b: any;
-    a: any;
-    rot: any;
-    rot_whendonefn: any;
+    whendone: any;
     CancelMoveTo(run_complete_fn: any): any;
     CancelRotateTo(run_complete_fn: any): any;
     FinishCurrentScale(): any;
@@ -7506,12 +7506,12 @@ export namespace Component {
   }
 
   interface UnevenGround {
-    inst: any;
-    enabled: boolean;
-    radius: number;
-    detectradius: number;
     detectperiod: number;
+    detectradius: number;
     detecttask: any;
+    enabled: boolean;
+    inst: any;
+    radius: number;
     Disable(): any;
     Enable(): any;
     OnEntityWake(): any;
@@ -7520,8 +7520,8 @@ export namespace Component {
   }
 
   interface UniqueID {
-    inst: any;
     id: any;
+    inst: any;
     task: any;
     GetDebugString(): any;
     OnLoad(data: any): any;
@@ -7530,8 +7530,8 @@ export namespace Component {
 
   interface UniquePrefabIDs {
     inst: any;
-    topprefabids: any;
     s: string;
+    topprefabids: any;
     GetDebugString(): any;
     GetNextID(prefabname: any): any;
     OnLoad(data: any): any;
@@ -7541,16 +7541,16 @@ export namespace Component {
   interface Unsaddler {}
 
   interface Unwrappable {
+    canbeunwrapped: boolean;
+    creator: any;
+    doerpos: any;
     inst: any;
     itemdata: any;
-    canbeunwrapped: boolean;
-    onwrappedfn: any;
+    offset: any;
     onunwrappedfn: any;
+    onwrappedfn: any;
     origin: any;
     pos: any;
-    doerpos: any;
-    offset: any;
-    creator: any;
     OnLoad(data: any): any;
     OnSave(): any;
     SetOnUnwrappedFn(fn: any): any;
@@ -7561,8 +7561,8 @@ export namespace Component {
 
   interface UpdateLooper {
     inst: any;
-    onupdatefns: any;
     longupdatefns: any;
+    onupdatefns: any;
     AddLongUpdateFn(fn: any): any;
     AddOnUpdateFn(fn: any): any;
     LongUpdate(dt: any): any;
@@ -7573,15 +7573,15 @@ export namespace Component {
   }
 
   interface Upgradeable {
+    data: any;
     inst: any;
+    numstages: number;
+    numupgrades: number;
     onstageadvancefn: any;
     onupgradefn: any;
-    upgradetype: any;
     stage: number;
-    numstages: number;
     upgradesperstage: number;
-    numupgrades: number;
-    data: any;
+    upgradetype: any;
     AdvanceStage(): any;
     CanUpgrade(): boolean;
     OnLoad(data: any): any;
@@ -7599,9 +7599,9 @@ export namespace Component {
 
   interface UseableItem {
     inst: any;
-    onusefn: any;
-    onstopusefn: any;
     inuse: boolean;
+    onstopusefn: any;
+    onusefn: any;
     stopuseevents: any;
     CanInteract(): boolean;
     OnRemoveFromEntity(): any;
@@ -7612,9 +7612,9 @@ export namespace Component {
   }
 
   interface Vase {
-    inst: any;
     deleteitemonaccept: boolean;
     enabled: boolean;
+    inst: any;
     Decorate(giver: any, item: any): any;
     Disable(): any;
     Enable(): any;
@@ -7625,39 +7625,39 @@ export namespace Component {
   interface VaseDecoration {}
 
   interface WalkablePlatform {
-    inst: any;
-    player_zoomed_out: boolean;
-    player_zoom_task: any;
-    player_zooms: any;
-    previous_objects_on_platform: any;
-    new_objects_on_platform: any;
-    platform_radius: number;
-    world_position_x: any;
-    world_position_y: any;
-    world_position_z: any;
-    entities: any;
-    filtered_entities: any;
+    bias: number;
+    delta_position_x: any;
+    delta_position_z: any;
     embark_distance_from_edge: number;
+    embark_x: any;
+    embark_z: any;
     embarkable_radius: any;
-    my_x: any;
-    my_y: any;
-    my_z: any;
     embarkable_x: any;
     embarkable_y: any;
     embarkable_z: any;
-    embark_x: any;
-    embark_z: any;
+    entities: any;
+    filtered_entities: any;
+    inst: any;
+    is_master_sim: any;
+    my_x: any;
+    my_y: any;
+    my_z: any;
+    new_objects_on_platform: any;
+    platform_radius: number;
+    platform_radius_sq: any;
+    platform_x: any;
+    platform_z: any;
+    player_zoom_task: any;
+    player_zoomed_out: boolean;
+    player_zooms: any;
+    previous_objects_on_platform: any;
     previous_position_x: any;
     previous_position_y: any;
     previous_position_z: any;
-    is_master_sim: any;
-    delta_position_x: any;
-    delta_position_z: any;
     should_update_pos: any;
-    platform_x: any;
-    platform_z: any;
-    bias: number;
-    platform_radius_sq: any;
+    world_position_x: any;
+    world_position_y: any;
+    world_position_z: any;
     CanBeWalkedOn(): boolean;
     CollectEntitiesOnPlatform(check_previous_objects: any): any;
     DestroyObjectsOnPlatform(): any;
@@ -7677,8 +7677,8 @@ export namespace Component {
   }
 
   interface WalkingPlank {
-    inst: any;
     doer: any;
+    inst: any;
     AbandonShip(doer: any): any;
     Extend(): any;
     MountPlank(doer: any): any;
@@ -7688,28 +7688,28 @@ export namespace Component {
   }
 
   interface WalkingPlankUser {
-    inst: any;
     current_plank: any;
+    inst: any;
     Dismount(): any;
     SetCurrentPlank(plank: any): any;
   }
 
   interface Wardrobe {
-    inst: any;
+    canbedressed: any;
+    canbeshared: any;
+    canuseaction: boolean;
+    changeindelay: number;
     changers: any;
     enabled: boolean;
-    canuseaction: boolean;
-    canbeshared: any;
-    canbedressed: any;
-    range: number;
-    changeindelay: number;
+    inst: any;
     onchangeinfn: any;
-    ondressupfn: any;
-    onopenfn: any;
     onclosefn: any;
     onclosewardrobe: any;
-    wasclosed: any;
+    ondressupfn: any;
+    onopenfn: any;
+    range: number;
     toend: any;
+    wasclosed: any;
     ActivateChanging(doer: any, skins: any): any;
     ApplySkins(doer: any, diff: any): any;
     ApplyTargetSkins(target: any, doer: any, skins: any): any;
@@ -7733,23 +7733,23 @@ export namespace Component {
   }
 
   interface WaterProofer {
-    inst: any;
     effectiveness: number;
+    inst: any;
     GetEffectiveness(): any;
     OnRemoveFromEntity(): any;
     SetEffectiveness(val: any): any;
   }
 
   interface WateryProtection {
-    inst: any;
-    witherprotectiontime: number;
-    temperaturereduction: number;
     addcoldness: number;
     addwetness: number;
+    ents: any;
     extinguish: boolean;
     extinguishheatpercent: number;
     ignoretags: any;
-    ents: any;
+    inst: any;
+    temperaturereduction: number;
+    witherprotectiontime: number;
     x: any;
     y: any;
     z: any;
@@ -7765,26 +7765,26 @@ export namespace Component {
   }
 
   interface WaveManager {
-    inst: any;
-    shimmer: any;
-    ripple_speed: number;
-    ripple_per_sec: number;
-    ripple_idle_time: number;
-    ripple_spawn_rate: number;
-    shimmer_per_sec_mod: number;
-    ripple_per_sec_mod: number;
     camera_per_sec_mod: number;
-    player: any;
-    world: any;
+    col_radius: any;
+    inst: any;
     map: any;
+    mult: any;
     ocean: any;
+    player: any;
     px: any;
     py: any;
     pz: any;
-    mult: any;
-    row_radius: any;
-    col_radius: any;
     radius: any;
+    ripple_idle_time: number;
+    ripple_per_sec: number;
+    ripple_per_sec_mod: number;
+    ripple_spawn_rate: number;
+    ripple_speed: number;
+    row_radius: any;
+    shimmer: any;
+    shimmer_per_sec_mod: number;
+    world: any;
     OnLoad(data: any): any;
     OnSave(): any;
     OnUpdate(dt: any): any;
@@ -7796,16 +7796,16 @@ export namespace Component {
   }
 
   interface Weapon {
-    inst: any;
-    damage: number;
     attackrange: any;
+    damage: number;
     hitrange: any;
+    inst: any;
     onattack: any;
     onprojectilelaunch: any;
-    projectile: any;
-    stimuli: string;
     overridestimulifn: any;
     proj: any;
+    projectile: any;
+    stimuli: string;
     CanRangedAttack(): boolean;
     LaunchProjectile(attacker: any, target: any): any;
     OnAttack(attacker: any, target: any, projectile: any): any;
@@ -7822,12 +7822,12 @@ export namespace Component {
 
   interface WereBeast {
     inst: any;
-    onsetwerefn: any;
     onsetnormalfn: any;
-    weretime: any;
-    triggerlimit: any;
-    triggeramount: any;
+    onsetwerefn: any;
     remaining: any;
+    triggeramount: any;
+    triggerlimit: any;
+    weretime: any;
     GetDebugString(): any;
     IsInWereState(): boolean;
     OnLoad(data: any): any;
@@ -7858,34 +7858,34 @@ export namespace Component {
   }
 
   interface Wisecracker {
-    inst: any;
-    time_in_lightstate: number;
-    inlight: boolean;
     foodbuffname: any;
     foodbuffpriority: any;
+    inlight: boolean;
+    inst: any;
+    is_talker_busy: boolean;
+    nightvision: any;
     soultoofew_time: number;
     soultoomany_time: number;
-    nightvision: any;
-    is_talker_busy: boolean;
+    time_in_lightstate: number;
     OnUpdate(dt: any): any;
   }
 
   interface Witherable {
-    inst: any;
-    enabled: boolean;
-    withered: boolean;
-    wither_temp: any;
-    rejuvenate_temp: any;
-    delay_to_time: any;
-    task_to_time: any;
-    task: any;
-    restore_cycles: any;
-    is_watching_rain: any;
-    protect_to_time: any;
-    protect_task: any;
-    t: any;
     data: any;
+    delay_to_time: any;
+    enabled: boolean;
+    inst: any;
+    is_watching_rain: any;
+    protect_task: any;
+    protect_to_time: any;
+    rejuvenate_temp: any;
+    restore_cycles: any;
     s: any;
+    t: any;
+    task: any;
+    task_to_time: any;
+    wither_temp: any;
+    withered: boolean;
     CanRejuvenate(): boolean;
     CanWither(): boolean;
     DelayRejuvenate(delay: any): any;
@@ -7905,18 +7905,18 @@ export namespace Component {
   }
 
   interface Workable {
-    inst: any;
-    onwork: any;
-    onfinish: any;
-    workleft: number;
-    maxwork: any;
     action: any;
+    inst: any;
+    isplant: any;
+    lastworktime: any;
+    maxwork: any;
+    onfinish: any;
+    onloadfn: any;
+    onwork: any;
+    pos: any;
     savestate: boolean;
     workable: boolean;
-    onloadfn: any;
-    lastworktime: any;
-    isplant: any;
-    pos: any;
+    workleft: number;
     CanBeWorked(): boolean;
     Destroy(destroyer: any): any;
     GetDebugString(): any;
@@ -7935,16 +7935,16 @@ export namespace Component {
   }
 
   interface Worker {
-    inst: any;
     actions: any;
+    inst: any;
     CanDoAction(action: any): boolean;
     GetEffectiveness(action: any): any;
     SetAction(action: any, effectiveness: any): any;
   }
 
   interface WorkMultiplier {
-    inst: any;
     actions: any;
+    inst: any;
     AddMultiplier(action: any, multiplier: any, source: any): any;
     GetMultiplier(action: any): any;
     RemoveMultiplier(action: any, source: any): any;
@@ -7957,10 +7957,10 @@ export namespace Component {
   }
 
   interface WorldMigrator {
-    inst: any;
     auto: boolean;
     enabled: boolean;
     id: any;
+    inst: any;
     linkedWorld: any;
     receivedPortal: any;
     Activate(doer: any): any;
@@ -7983,35 +7983,35 @@ export namespace Component {
   }
 
   interface WorldOverseer {
-    inst: any;
-    data: any;
-    last_heartbeat_poll_time: any;
-    heartbeat_poll_counter: number;
-    playerstats: any;
-    time: any;
+    age: any;
+    clanid: any;
+    client_table: any;
+    clients: any;
+    current_players: any;
     current_skins: any;
+    data: any;
+    found: any;
+    heartbeat_poll_counter: number;
+    hosting: any;
+    initial_clothing: any;
+    inst: any;
+    item: any;
     items: any;
-    toremove: boolean;
+    jsonstats: any;
+    last_heartbeat_poll_time: any;
+    playerstats: any;
+    results: any;
+    resumed_from_suspend: any;
     secondsplayed: number;
+    sendstats: any;
+    time: any;
+    time_now: any;
+    toRemove: any;
+    toremove: boolean;
+    total_crafted_items: any;
     total_worn_items: any;
     totaltime: number;
-    total_crafted_items: any;
-    results: any;
-    toRemove: any;
-    sendstats: any;
-    jsonstats: any;
-    age: any;
     worldAge: any;
-    item: any;
-    found: any;
-    hosting: any;
-    clients: any;
-    clanid: any;
-    initial_clothing: any;
-    time_now: any;
-    client_table: any;
-    current_players: any;
-    resumed_from_suspend: any;
     CalcIndividualPlayerStats(player: any): any;
     CalcPlayerStats(): any;
     DumpIndividualPlayerStats(stat: any, event: any): any;
@@ -8038,10 +8038,10 @@ export namespace Component {
   }
 
   interface WorldWind {
-    inst: any;
-    velocity: number;
     angle: any;
+    inst: any;
     timeToWindChange: number;
+    velocity: number;
     GetDebugString(): any;
     GetWindAngle(): any;
     GetWindVelocity(): any;
@@ -8051,16 +8051,16 @@ export namespace Component {
   }
 
   interface Writeable {
+    ClientObjs: any;
+    data: any;
+    generatorfn: any;
+    getspecialdescription: any;
     inst: any;
+    netid: any;
+    onclosepopups: any;
+    screen: any;
     text: any;
     writer: any;
-    screen: any;
-    onclosepopups: any;
-    generatorfn: any;
-    data: any;
-    netid: any;
-    ClientObjs: any;
-    getspecialdescription: any;
     BeginWriting(doer: any): any;
     EndWriting(): any;
     GetText(viewer: any): any;

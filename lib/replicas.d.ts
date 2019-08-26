@@ -1,17 +1,17 @@
 export namespace Replica {
   interface Builder {
-    inst: any;
     classified: any;
-    ondetachclassified: any;
-    health: any;
     current: any;
-    penalty: any;
-    sanity: any;
-    level: any;
-    recipe: any;
     has_tech: boolean;
+    health: any;
+    inst: any;
     inventory: any;
+    level: any;
+    ondetachclassified: any;
     overflow: any;
+    penalty: any;
+    recipe: any;
+    sanity: any;
     AddRecipe(recipename: any): any;
     AncientBonus(): any;
     AttachClassified(classified: any): any;
@@ -45,18 +45,18 @@ export namespace Replica {
   }
 
   interface Combat {
-    inst: any;
     classified: any;
-    ondetachclassified: any;
-    weapon: any;
-    item: any;
-    rider: any;
-    range: any;
+    combat: any;
     error_threshold: number;
     follower: any;
+    inst: any;
+    item: any;
     leader: any;
-    combat: any;
+    ondetachclassified: any;
+    range: any;
+    rider: any;
     sanity: any;
+    weapon: any;
     AttachClassified(classified: any): any;
     CanAttack(target: any): boolean;
     CanBeAttacked(attacker: any): boolean;
@@ -84,14 +84,14 @@ export namespace Replica {
   }
 
   interface ConstructionSite {
-    inst: any;
     classified: {
-      inst: any;
       GetSlotCount: any;
       OnEntityReplicated: any;
       SetSlotCount: any;
+      inst: any;
       persists: boolean;
     };
+    inst: any;
     ondetachclassified: any;
     AttachClassified(classified: any): any;
     DetachClassified(): any;
@@ -104,43 +104,43 @@ export namespace Replica {
   }
 
   interface Container {
-    inst: any;
     acceptsstacks: boolean;
-    usespecificslotsforitems: boolean;
-    issidewidget: boolean;
-    type: any;
-    widget: any;
-    itemtestfn: any;
-    opentask: any;
     classified: {
-      inst: any;
-      InitializeSlots: any;
-      OnEntityReplicated: any;
-      IsHolding: any;
+      AddAllOfActiveItemToSlot: any;
+      AddOneOfActiveItemToSlot: any;
+      ConsumeByName: any;
       GetItemInSlot: any;
       GetItems: any;
+      Has: any;
+      InitializeSlots: any;
+      IsBusy: any;
       IsEmpty: any;
       IsFull: any;
-      Has: any;
-      ReturnActiveItemToSlot: any;
-      PutOneOfActiveItemInSlot: any;
-      PutAllOfActiveItemInSlot: any;
-      TakeActiveItemFromHalfOfSlot: any;
-      TakeActiveItemFromAllOfSlot: any;
-      AddOneOfActiveItemToSlot: any;
-      AddAllOfActiveItemToSlot: any;
-      SwapActiveItemWithSlot: any;
+      IsHolding: any;
       MoveItemFromAllOfSlot: any;
       MoveItemFromHalfOfSlot: any;
+      OnEntityReplicated: any;
+      PutAllOfActiveItemInSlot: any;
+      PutOneOfActiveItemInSlot: any;
       ReceiveItem: any;
-      ConsumeByName: any;
-      TakeActionItem: any;
-      IsBusy: any;
+      ReturnActiveItemToSlot: any;
       SetSlotItem: any;
+      SwapActiveItemWithSlot: any;
+      TakeActionItem: any;
+      TakeActiveItemFromAllOfSlot: any;
+      TakeActiveItemFromHalfOfSlot: any;
+      inst: any;
       persists: boolean;
     };
-    ondetachclassified: any;
+    inst: any;
     inv: any;
+    issidewidget: boolean;
+    itemtestfn: any;
+    ondetachclassified: any;
+    opentask: any;
+    type: any;
+    usespecificslotsforitems: boolean;
+    widget: any;
     AcceptsStacks(): boolean;
     AddAllOfActiveItemToSlot(slot: any): any;
     AddOneOfActiveItemToSlot(slot: any): any;
@@ -202,8 +202,8 @@ export namespace Replica {
   }
 
   interface Health {
-    inst: any;
     classified: any;
+    inst: any;
     ondetachclassified: any;
     AttachClassified(classified: any): any;
     CanHeal(): boolean;
@@ -233,8 +233,8 @@ export namespace Replica {
   }
 
   interface Hunger {
-    inst: any;
     classified: any;
+    inst: any;
     ondetachclassified: any;
     AttachClassified(classified: any): any;
     DetachClassified(): any;
@@ -248,57 +248,57 @@ export namespace Replica {
   }
 
   interface Inventory {
-    inst: any;
-    opentask: any;
     classified: {
-      inst: any;
-      visible: any;
-      heavylifting: any;
-      OnEntityReplicated: any;
-      IsHolding: any;
-      GetActiveItem: any;
-      GetItemInSlot: any;
-      GetEquippedItem: any;
-      GetItems: any;
-      GetEquips: any;
-      GetOverflowContainer: any;
-      IsFull: any;
-      Has: any;
-      ReturnActiveItem: any;
-      ReturnActiveItemToSlot: any;
-      PutOneOfActiveItemInSlot: any;
-      PutAllOfActiveItemInSlot: any;
-      TakeActiveItemFromHalfOfSlot: any;
-      TakeActiveItemFromAllOfSlot: any;
-      AddOneOfActiveItemToSlot: any;
       AddAllOfActiveItemToSlot: any;
-      SwapActiveItemWithSlot: any;
-      UseItemFromInvTile: any;
+      AddOneOfActiveItemToSlot: any;
       ControllerUseItemOnItemFromInvTile: any;
-      ControllerUseItemOnSelfFromInvTile: any;
       ControllerUseItemOnSceneFromInvTile: any;
-      InspectItemFromInvTile: any;
+      ControllerUseItemOnSelfFromInvTile: any;
       DropItemFromInvTile: any;
-      EquipActiveItem: any;
       EquipActionItem: any;
-      SwapEquipWithActiveItem: any;
-      TakeActiveItemFromEquipSlot: any;
+      EquipActiveItem: any;
+      GetActiveItem: any;
+      GetEquippedItem: any;
+      GetEquips: any;
+      GetItemInSlot: any;
+      GetItems: any;
+      GetOverflowContainer: any;
+      Has: any;
+      InspectItemFromInvTile: any;
+      IsBusy: any;
+      IsFull: any;
+      IsHolding: any;
       MoveItemFromAllOfSlot: any;
       MoveItemFromHalfOfSlot: any;
-      QueueRefresh: any;
+      OnEntityReplicated: any;
       PushNewActiveItem: any;
+      PutAllOfActiveItemInSlot: any;
+      PutOneOfActiveItemInSlot: any;
+      QueueRefresh: any;
       ReceiveItem: any;
       RemoveIngredients: any;
-      IsBusy: any;
+      ReturnActiveItem: any;
+      ReturnActiveItemToSlot: any;
       SetActiveItem: any;
-      SetSlotItem: any;
       SetSlotEquip: any;
+      SetSlotItem: any;
+      SwapActiveItemWithSlot: any;
+      SwapEquipWithActiveItem: any;
+      TakeActiveItemFromAllOfSlot: any;
+      TakeActiveItemFromEquipSlot: any;
+      TakeActiveItemFromHalfOfSlot: any;
+      UseItemFromInvTile: any;
+      heavylifting: any;
+      inst: any;
       persists: boolean;
+      visible: any;
     };
+    containers: any;
+    inst: any;
     ondetachclassified: any;
+    opentask: any;
     rebuild_pending: boolean;
     rebuild_snapping: boolean;
-    containers: any;
     AcceptsStacks(): boolean;
     AddAllOfActiveItemToSlot(slot: number): any;
     AddOneOfActiveItemToSlot(slot: number): any;
@@ -348,42 +348,42 @@ export namespace Replica {
   }
 
   interface InventoryItem {
-    inst: any;
     classified: {
-      inst: any;
-      image: any;
-      atlas: any;
-      cangoincontainer: any;
-      canonlygoinpocket: any;
-      src_pos: any;
-      percentused: any;
-      perish: any;
-      recharge: any;
-      rechargetime: any;
-      deploymode: any;
-      deployspacing: any;
-      deployrestrictedtag: any;
-      usegridplacer: any;
-      attackrange: any;
-      walkspeedmult: any;
-      equiprestrictedtag: any;
-      moisture: any;
       DeserializePercentUsed: any;
       DeserializePerish: any;
       DeserializeRecharge: any;
       DeserializeRechargeTime: any;
+      ForcePerishDirty: any;
       OnEntityReplicated: any;
-      persists: boolean;
       SerializePercentUsed: any;
       SerializePerish: any;
-      ForcePerishDirty: any;
       SerializeRecharge: any;
       SerializeRechargeTime: any;
+      atlas: any;
+      attackrange: any;
+      cangoincontainer: any;
+      canonlygoinpocket: any;
+      deploymode: any;
+      deployrestrictedtag: any;
+      deployspacing: any;
+      equiprestrictedtag: any;
+      image: any;
+      inst: any;
+      moisture: any;
+      percentused: any;
+      perish: any;
+      persists: boolean;
+      recharge: any;
+      rechargetime: any;
+      src_pos: any;
+      usegridplacer: any;
+      walkspeedmult: any;
     };
+    inst: any;
     ondetachclassified: any;
-    src_pos: any;
     percentusedcomponent: any;
     restrictedtag: any;
+    src_pos: any;
     x: number;
     AttachClassified(classified: any): any;
     AttackRange(): any;
@@ -440,12 +440,12 @@ export namespace Replica {
   }
 
   interface Rider {
-    inst: any;
-    classified: any;
-    ondetachclassified: any;
     actionbuttonoverride: any;
-    old: any;
+    classified: any;
+    inst: any;
     mount: any;
+    old: any;
+    ondetachclassified: any;
     AttachClassified(classified: any): any;
     DetachClassified(): any;
     GetMount(): any;
@@ -464,8 +464,8 @@ export namespace Replica {
   }
 
   interface Sanity {
-    inst: any;
     classified: any;
+    inst: any;
     ondetachclassified: any;
     AttachClassified(classified: any): any;
     DetachClassified(): any;
@@ -516,11 +516,11 @@ export namespace Replica {
   }
 
   interface Writeable {
+    classified: { OnEntityReplicated: any; inst: any; persists: boolean };
     inst: any;
-    screen: any;
-    opentask: any;
-    classified: { inst: any; OnEntityReplicated: any; persists: boolean };
     ondetachclassified: any;
+    opentask: any;
+    screen: any;
     AttachClassified(classified: any): any;
     BeginWriting(doer: any): any;
     DetachClassified(): any;
