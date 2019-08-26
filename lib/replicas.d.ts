@@ -1,4 +1,4 @@
-declare namespace Replica {
+export namespace Replica {
   interface Builder {
     inst: any;
     classified: any;
@@ -531,7 +531,7 @@ declare namespace Replica {
   }
 }
 
-declare interface Replica {
+export interface Replica {
   builder: Replica.Builder;
   combat: Replica.Combat;
   constructionsite: Replica.ConstructionSite;

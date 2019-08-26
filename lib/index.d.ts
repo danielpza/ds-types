@@ -1,7 +1,8 @@
-/// <reference path="./components.d.ts" />
-/// <reference path="./replicas.d.ts" />
-/// <reference path="./entity.d.ts" />
 /** @noSelfInFile **/
+import { Component } from "./components";
+import { Entity } from "./entity";
+import { Replica } from "./replicas";
+
 type Slot = "head" | "body" | "hands";
 
 type EnsureProps<T, P extends keyof T = never> = {

@@ -71,7 +71,7 @@ function generateEntity() {
   );
   writeFileSync(
     resolve("lib/entity.d.ts"),
-    getInterface("Entity", definitions["EntityScript"])
+    "export " + getInterface("Entity", definitions["EntityScript"])
   );
 }
 
@@ -90,11 +90,11 @@ function getInterfaceBundle(
   definitions: [string, Definition][]
 ) {
   return `\
-declare namespace ${namespace} {
+export namespace ${namespace} {
 ${definitions.map(([name, def]) => getInterface(name, def)).join("\n")}
 }
 
-declare interface ${namespace} {
+export interface ${namespace} {
 ${definitions
   .map(([name]) => `${name.toLowerCase()}: ${namespace}.${name};`)
   .join("\n")}

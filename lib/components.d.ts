@@ -1,4 +1,4 @@
-declare namespace Component {
+export namespace Component {
   interface Activatable {
     inst: any;
     OnActivate: any;
@@ -8075,7 +8075,7 @@ declare namespace Component {
   }
 }
 
-declare interface Component {
+export interface Component {
   activatable: Component.Activatable;
   age: Component.Age;
   amorphous: Component.Amorphous;

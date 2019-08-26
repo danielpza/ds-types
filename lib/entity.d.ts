@@ -1,4 +1,4 @@
-interface Entity {
+export interface Entity {
   record: any;
   x: any;
   y: any;
