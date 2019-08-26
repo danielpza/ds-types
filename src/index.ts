@@ -47,6 +47,17 @@ function generateReplicas() {
     .map(file => readFileSync(resolve(root, file), "utf8").toString())
     .map(parse)
     .forEach(ast => analyseClassDefinition(ast, definitions));
+
+  console.log(" -Generating Classifieds");
+  const classifiedsDefinitions = generateClassifieds();
+  for (const [name, def] of Object.entries(definitions)) {
+    const classified = `${name.toLowerCase()}_classified`;
+    if (classifiedsDefinitions[classified])
+      def.setProperty(
+        "classified",
+        `{${getProperties(classifiedsDefinitions[classified])}}`
+      );
+  }
   writeFileSync(
     resolve("lib/replicas.d.ts"),
     getInterfaceBundle("Replica", Object.entries(definitions))
@@ -65,17 +76,13 @@ function generateEntity() {
 }
 
 function generateClassifieds() {
-  console.log("Generating Classifieds");
   const files = globby.sync(["prefabs/*_classified.lua"], { cwd: root });
   const definitions = {} as Record<string, Definition>;
   files
     .map(file => readFileSync(resolve(root, file), "utf8").toString())
     .map(parse)
     .forEach(ast => analysePrefabDefinition(ast, definitions));
-  writeFileSync(
-    resolve("lib/classifieds.d.ts"),
-    getInterfaceBundle("Classified", Object.entries(definitions))
-  );
+  return definitions;
 }
 
 function getInterfaceBundle(
@@ -98,13 +105,19 @@ ${definitions
 function getInterface(name: string, def: Definition) {
   return `\
 interface ${name} {
+${getProperties(def)}
+}
+`;
+}
+
+function getProperties(def: Definition) {
+  return `\
 ${Object.entries(def.properties)
   .map(([name, value]) => `${name}: ${value};`)
   .join("\n")}
 ${Object.entries(def.methods)
   .map(([name, value]) => `${name}${value};`)
   .join("\n")}
-}
 `;
 }
 

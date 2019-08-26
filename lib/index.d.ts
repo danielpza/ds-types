@@ -1,7 +1,6 @@
 /// <reference path="./components.d.ts" />
 /// <reference path="./replicas.d.ts" />
 /// <reference path="./entity.d.ts" />
-/// <reference path="./classifieds.d.ts" />
 /** @noSelfInFile **/
 type Slot = "head" | "body" | "hands";
 
