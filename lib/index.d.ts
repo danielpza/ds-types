@@ -54,13 +54,8 @@ declare namespace GLOBAL {
     ismastersim: any;
   };
   const ThePlayer: Player;
-  const TheFrontEnd: {
-    GetActiveScreen: () => any;
-  };
-  const TheInput: {
-    AddKeyDownHandler(keycode: number, cb: () => void): any;
-    AddKeyUpHandler(keycode: number, cb: () => void): any;
-  };
+  const TheFrontEnd: import("./frontend").FrontEnd;
+  const TheInput: import("./input").Input;
   function CreateEntity(): Prefab;
   function IsPaused(): boolean;
   function require(mod: string): void;

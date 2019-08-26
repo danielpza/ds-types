@@ -20,8 +20,9 @@ if (!existsSync(root) || isFileSync(root)) {
 
 generateComponents();
 generateReplicas();
-generateEntity();
-generateClassifieds();
+generateClass("Entity", "entityscript.lua", "EntityScript");
+generateClass("FrontEnd", "frontend.lua");
+generateClass("Input", "input.lua");
 
 function generateComponents() {
   console.log("Generating Components");
@@ -64,14 +65,18 @@ function generateReplicas() {
   );
 }
 
-function generateEntity() {
-  console.log("Generating Entity");
+function generateClass(
+  name: string,
+  file: string,
+  interfaceName: string = name
+) {
+  console.log(`Generating ${name}`);
   const definitions = analyseClassDefinition(
-    parse(readFileSync(resolve(root, "entityscript.lua"), "utf8").toString())
+    parse(readFileSync(resolve(root, file), "utf8").toString())
   );
   writeFileSync(
-    resolve("lib/entity.d.ts"),
-    "export " + getInterface("Entity", definitions["EntityScript"])
+    resolve(`lib/${name.toLowerCase()}.d.ts`),
+    "export " + getInterface(name, definitions[interfaceName])
   );
 }
 
