@@ -25,7 +25,8 @@ export class Definition {
 
 function analyseMethod(
   definition: Definition,
-  statements: Lua.StatementKind[]
+  statements: Lua.StatementKind[],
+  self = "self"
 ) {
   for (const node of statements) {
     if (node.type === "LocalStatement") {
@@ -46,7 +47,7 @@ function analyseMethod(
       variables.forEach(([variable, init]) => {
         if (variable.type === "MemberExpression") {
           const base = getBase(variable);
-          if (base && base.name === "self") {
+          if (base && base.name === self) {
             definition.setProperty(
               variable.identifier.name,
               (init && inferType(init)) ||
@@ -106,6 +107,72 @@ export function analyseClassDefinition(
         `(${paramsType}): ${retType}`
       );
       analyseMethod(definitions[interfaceName], node.body);
+    }
+  }
+  return definitions;
+}
+
+function analyseBindingsAndReturn(statements: Lua.StatementKind[]) {
+  const bindings: Record<
+    string,
+    Lua.ExpressionKind | Lua.FunctionDeclaration
+  > = {};
+  const returns: Lua.ExpressionKind[] = [];
+  for (const node of statements) {
+    if (node.type === "LocalStatement") {
+      const variable = node.variables[0];
+      const init = node.init[0];
+      bindings[variable.name] = init;
+    }
+    if (
+      node.type === "FunctionDeclaration" &&
+      node.identifier.type === "Identifier"
+    ) {
+      bindings[node.identifier.name] = node;
+    } else if (node.type === "ReturnStatement") {
+      for (const call of node.arguments) {
+        returns.push(call);
+      }
+    }
+  }
+  return { bindings, returns };
+}
+
+export function analysePrefabDefinition(
+  ast: Lua.Chunk,
+  definitions: Record<string, Definition> = {}
+) {
+  const { bindings, returns } = analyseBindingsAndReturn(ast.body);
+  for (const ret of returns) {
+    if (
+      ret.type === "CallExpression" &&
+      ret.base.type === "Identifier" &&
+      ret.base.name === "Prefab" &&
+      ret.arguments.length === 2 &&
+      ret.arguments[0].type
+    ) {
+      const name = ret.arguments[0];
+      const fn = ret.arguments[1];
+      if (
+        name.type === "StringLiteral" &&
+        fn.type === "Identifier" &&
+        bindings[fn.name]
+      ) {
+        const interfaceName = name.value;
+        if (!definitions[interfaceName])
+          definitions[interfaceName] = new Definition();
+        const val = bindings[fn.name];
+        if (val.type === "FunctionDeclaration") {
+          const methodAnalysis = analyseBindingsAndReturn(val.body);
+          if (methodAnalysis.returns.length > 0) {
+            const methodRet = methodAnalysis.returns[0];
+            if (methodRet.type === "Identifier") {
+              const self = methodRet.name;
+              analyseMethod(definitions[interfaceName], val.body, self);
+            }
+          }
+        }
+      }
     }
   }
   return definitions;

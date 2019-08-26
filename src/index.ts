@@ -1,7 +1,11 @@
 import globby from "globby";
 import { parse } from "luaparse";
 import { readFileSync } from "fs";
-import { analyseClassDefinition, Definition } from "./builder";
+import {
+  analyseClassDefinition,
+  analysePrefabDefinition,
+  Definition
+} from "./builder";
 import { existsSync, writeFileSync, statSync } from "fs";
 import { resolve } from "path";
 
@@ -17,11 +21,11 @@ if (!existsSync(root) || isFileSync(root)) {
 generateComponents();
 generateReplicas();
 generateEntity();
+generateClassifieds();
 
 function generateComponents() {
   console.log("Generating Components");
-  const componentsGlob = "components/*.lua";
-  const files = globby.sync([componentsGlob], { cwd: root });
+  const files = globby.sync(["components/*.lua"], { cwd: root });
   const definitions = {} as Record<string, Definition>;
   files
     .filter(file => !file.match(/\w+_replica/))
@@ -36,8 +40,7 @@ function generateComponents() {
 
 function generateReplicas() {
   console.log("Generating Replicas");
-  const componentsGlob = "components/*.lua";
-  const files = globby.sync([componentsGlob], { cwd: root });
+  const files = globby.sync(["components/*.lua"], { cwd: root });
   const definitions = {} as Record<string, Definition>;
   files
     .filter(file => file.match(/\w+_replica/))
@@ -58,6 +61,20 @@ function generateEntity() {
   writeFileSync(
     resolve("lib/entity.d.ts"),
     getInterface("Entity", definitions["EntityScript"])
+  );
+}
+
+function generateClassifieds() {
+  console.log("Generating Classifieds");
+  const files = globby.sync(["prefabs/*_classified.lua"], { cwd: root });
+  const definitions = {} as Record<string, Definition>;
+  files
+    .map(file => readFileSync(resolve(root, file), "utf8").toString())
+    .map(parse)
+    .forEach(ast => analysePrefabDefinition(ast, definitions));
+  writeFileSync(
+    resolve("lib/classifieds.d.ts"),
+    getInterfaceBundle("Classified", Object.entries(definitions))
   );
 }
 
