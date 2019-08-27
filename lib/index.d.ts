@@ -24,8 +24,11 @@ interface Prefab<
   ) => void;
 }
 
-type Player = Prefab<never, "inventory">;
-type Item = Prefab<never, "inventoryitem">;
+declare namespace Prefabs {
+  type Player = Prefab<never, "inventory">;
+  type Item = Prefab<never, "inventoryitem">;
+  type Container = Prefab<never, "container">;
+}
 
 declare namespace Module {
   /** @customConstructor GLOBAL.require("widget/widget") */
@@ -53,18 +56,22 @@ declare namespace GLOBAL {
   const TheWorld: {
     ismastersim: any;
   };
-  const ThePlayer: Player;
+  const ThePlayer: Prefabs.Player;
   const TheFrontEnd: import("./frontend").FrontEnd;
   const TheInput: import("./input").Input;
   function CreateEntity(): Prefab;
   function IsPaused(): boolean;
   function require(mod: string): void;
-  function unpack(...args: any[]): any;
   function SpawnPrefab(prefab: string): Prefab;
   function printwrap(msg: string, obj: any): void;
+  function Sleep(time: number): number;
+  function KillThread(task: number): void;
   let string: any;
   let setmetatable: any;
+  let pcall: any;
+  let unpack: any;
 
+  const FRAMES: number;
   enum ACTIONS {
     CHOP,
     MINE,
@@ -88,7 +95,7 @@ declare namespace GLOBAL {
 }
 declare function print(data: any): void;
 declare let GetModConfigData: (key: string) => any;
-declare let AddPlayerPostInit: (cb: (inst: Player) => void) => void;
+declare let AddPlayerPostInit: (cb: (inst: Prefabs.Player) => void) => void;
 declare function AddComponentPostInit<T extends keyof Component>(
   kind: T,
   cb: (comp: Component[T]) => void
