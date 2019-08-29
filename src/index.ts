@@ -18,11 +18,13 @@ if (!existsSync(root) || isFileSync(root)) {
   process.exit(1);
 }
 
+const classifieds = generateClassifieds();
 generateComponents();
 generateReplicas();
 generateClass("Entity", "entityscript.lua", "EntityScript");
 generateClass("FrontEnd", "frontend.lua");
 generateClass("Input", "input.lua");
+generatePlayerClassified();
 
 function generateComponents() {
   console.log("Generating Components");
@@ -49,19 +51,25 @@ function generateReplicas() {
     .map(parse)
     .forEach(ast => analyseClassDefinition(ast, definitions));
 
-  console.log(" -Generating Classifieds");
-  const classifiedsDefinitions = generateClassifieds();
   for (const [name, def] of Object.entries(definitions)) {
     const classified = `${name.toLowerCase()}_classified`;
-    if (classifiedsDefinitions[classified])
+    if (classifieds[classified])
       def.setProperty(
         "classified",
-        `{${getProperties(classifiedsDefinitions[classified])}}`
+        `{${getProperties(classifieds[classified])}}`
       );
   }
   writeFileSync(
     resolve("lib/replicas.d.ts"),
     getInterfaceBundle("Replica", Object.entries(definitions))
+  );
+}
+
+function generatePlayerClassified() {
+  writeFileSync(
+    resolve("lib/player_classified.d.ts"),
+    "export " +
+      getInterface("PlayerClassified", classifieds["player_classified"])
   );
 }
 
@@ -81,6 +89,7 @@ function generateClass(
 }
 
 function generateClassifieds() {
+  console.log("Generating Classifieds");
   const files = globby.sync(["prefabs/*_classified.lua"], { cwd: root });
   const definitions = {} as Record<string, Definition>;
   files

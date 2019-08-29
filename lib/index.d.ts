@@ -25,7 +25,9 @@ interface Prefab<
 }
 
 declare namespace Prefabs {
-  type Player = Prefab<never, "inventory">;
+  type Player = Prefab<never, "inventory" | "combat"> & {
+    player_classified: import("./player_classified").PlayerClassified;
+  };
   type Item = Prefab<never, "inventoryitem">;
   type Container = Prefab<never, "container">;
 }
