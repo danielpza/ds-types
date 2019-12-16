@@ -313,7 +313,7 @@ export namespace Replica {
     EquipActiveItem(): any;
     EquipHasTag(tag: any): any;
     GetActiveItem(): Prefabs.Item | undefined;
-    GetEquippedItem(eslot: GLOBAL.EQUIPSLOTS): Prefabs.Item;
+    GetEquippedItem(eslot: GLOBAL.EQUIPSLOTS): Prefabs.Item | undefined;
     GetEquips(): { [k in GLOBAL.EQUIPSLOTS]?: Prefabs.Item };
     GetItemInSlot(slot: number): Prefabs.Item;
     GetItems(): Record<number, Prefabs.Item>;

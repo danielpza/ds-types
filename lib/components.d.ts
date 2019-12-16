@@ -2004,7 +2004,7 @@ export namespace Component {
   interface Eater {
     base_mult: any;
     cacheedibletags: any;
-    caneat: any;
+    caneat: { name: string; types: string[] }[];
     delta: any;
     eater: boolean;
     eatwholestack: boolean;
@@ -2017,7 +2017,7 @@ export namespace Component {
     oneatfn: any;
     owner: any;
     preferred: boolean;
-    preferseating: any;
+    preferseating: string[];
     preferseatingtags: any;
     sanityabsorption: number;
     stack_mult: any;
@@ -5342,16 +5342,16 @@ export namespace Component {
     x: any;
     y: any;
     z: any;
-    DoGetMouseActions(position: any, target: any): any;
-    GetEquippedItemActions(target: any, useitem: any, right: any): any;
-    GetInventoryActions(useitem: any, right: any): any;
-    GetLeftClickActions(position: any, target: any): any;
-    GetPointActions(pos: any, useitem: any, right: any): any;
-    GetPointSpecialActions(pos: any, useitem: any, right: any): any;
-    GetRightClickActions(position: any, target: any): any;
-    GetSceneActions(useitem: any, right: any): any;
-    GetSteeringActions(inst: any, pos: any, right: any): any;
-    GetUseItemActions(target: any, useitem: any, right: any): any;
+    DoGetMouseActions(position: any, target: any): any[];
+    GetEquippedItemActions(target: any, useitem: any, right: any): any[];
+    GetInventoryActions(useitem: any, right: any): any[];
+    GetLeftClickActions(position: any, target: any): any[];
+    GetPointActions(pos: any, useitem: any, right: any): any[];
+    GetPointSpecialActions(pos: any, useitem: any, right: any): any[];
+    GetRightClickActions(position: any, target: any): any[];
+    GetSceneActions(useitem: any, right: any): any[];
+    GetSteeringActions(inst: any, pos: any, right: any): any[];
+    GetUseItemActions(target: any, useitem: any, right: any): any[];
     HasContainerWidgetAction(): boolean;
     OnUpdateActionFilterStack(): any;
     PopActionFilter(filterfn: any): any;

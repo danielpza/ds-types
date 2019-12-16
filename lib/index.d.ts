@@ -23,6 +23,10 @@ interface Prefab extends Entity {
 
 declare namespace Prefabs {
   interface Player extends Prefab {
+    components: EnsureProps<
+      Component,
+      "playeractionpicker" | "playercontroller"
+    >;
     replica: EnsureProps<Replica, "inventory" | "combat">;
     player_classified: import("./player_classified").PlayerClassified;
   }
@@ -62,13 +66,26 @@ declare namespace GLOBAL {
   const ThePlayer: Prefabs.Player;
   const TheFrontEnd: import("./frontend").FrontEnd;
   const TheInput: import("./input").Input;
+
+  function SendRPCToServer(...params: any[]): any;
+  function BufferedAction(
+    inst: Prefab,
+    target: Prefab | undefined,
+    action: Action,
+    tool?: any | undefined,
+    pos?: any | undefined
+  ): any;
+  interface Thread {
+    id: number;
+  }
+  function StartThread(fn: () => void): Thread;
   function CreateEntity(): Prefab;
   function IsPaused(): boolean;
   function require(mod: string): void;
   function SpawnPrefab(prefab: string): Prefab;
   function printwrap(msg: string, obj: any): void;
   function Sleep(time: number): number;
-  function KillThread(task: number): void;
+  function KillThread(task: Thread): void;
   function FindEntity(
     inst: Prefab,
     radius: number,
@@ -83,6 +100,8 @@ declare namespace GLOBAL {
   let unpack: any;
 
   const FRAMES: number;
+  const CONTROL_PRIMARY: string;
+  const CONTROL_SECONDARY: string;
   enum RPC {
     LeftClick
   }
@@ -117,3 +136,4 @@ declare function AddComponentPostInit<T extends keyof Component>(
   kind: T,
   cb: (comp: Component[T]) => void
 ): void;
+declare function AddGamePostInit(fn: () => void): void;
