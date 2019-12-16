@@ -124,7 +124,7 @@ export interface Entity {
   GetPhysicsRadius(_default: any): any;
   GetPosition(): any;
   GetPositionAdjacentTo(target: any, distance: any): any;
-  GetRotation(): any;
+  GetRotation(): number;
   GetSaveRecord(): any;
   GetSkinBuild(): any;
   GetSkinName(): any;

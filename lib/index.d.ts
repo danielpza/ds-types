@@ -6,16 +6,13 @@ type Entity = import("./entity").Entity;
 type Slot = "head" | "body" | "hands";
 
 type EnsureProps<T, P extends keyof T = never> = {
-  [K in P]: T[K];
+  [K in P]-?: T[K];
 } &
   { [K in Exclude<keyof T, P>]?: T[K] };
 
-interface Prefab<
-  K extends keyof Component = never,
-  L extends keyof Replica = never
-> extends Entity {
-  components: EnsureProps<Component, K>;
-  replica: EnsureProps<Replica, L>;
+interface Prefab extends Entity {
+  components: Partial<Component>;
+  replica: Partial<Replica>;
   prefab: string;
   DoTaskInTime: (time: number, fn: (this: void) => void) => void;
   ListenForEvent: (
@@ -25,11 +22,15 @@ interface Prefab<
 }
 
 declare namespace Prefabs {
-  type Player = Prefab<never, "inventory" | "combat"> & {
+  interface Player extends Prefab {
+    replica: EnsureProps<Replica, "inventory" | "combat">;
     player_classified: import("./player_classified").PlayerClassified;
-  };
-  type Item = Prefab<never, "inventoryitem">;
-  type Container = Prefab<never, "container">;
+  }
+  interface Inventory extends Prefab {
+    replica: EnsureProps<Replica, "inventory">;
+  }
+  type Item = Prefab;
+  type Container = Prefab;
 }
 
 declare namespace Module {
@@ -68,19 +69,32 @@ declare namespace GLOBAL {
   function printwrap(msg: string, obj: any): void;
   function Sleep(time: number): number;
   function KillThread(task: number): void;
+  function FindEntity(
+    inst: Prefab,
+    radius: number,
+    filterFn: (item: Prefab) => boolean,
+    musttags?: string[] | undefined,
+    canttags?: string[] | undefined,
+    mustoneoftags?: string[] | undefined
+  ): Prefab | undefined;
   let string: any;
   let setmetatable: any;
   let pcall: any;
   let unpack: any;
 
   const FRAMES: number;
-  enum ACTIONS {
-    CHOP,
-    MINE,
-    PICK,
-    HAMMER,
-    DIG
+  enum RPC {
+    LeftClick
   }
+  interface Action {
+    code: any;
+    canforce: any;
+    mod_name: any;
+  }
+  const ACTIONS: Record<
+    "WALKTO" | "CHOP" | "MINE" | "PICK" | "HAMMER" | "DIG",
+    Action
+  >;
   enum EQUIPSLOTS {
     HANDS,
     HEAD,
@@ -95,6 +109,7 @@ declare namespace GLOBAL {
     ROUGHAGE
   }
 }
+declare const modname: string;
 declare function print(data: any): void;
 declare let GetModConfigData: (key: string) => any;
 declare let AddPlayerPostInit: (cb: (inst: Prefabs.Player) => void) => void;
