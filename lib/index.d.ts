@@ -27,7 +27,7 @@ declare namespace Prefabs {
       Component,
       "playeractionpicker" | "playercontroller"
     >;
-    replica: EnsureProps<Replica, "inventory" | "combat">;
+    replica: EnsureProps<Replica, "inventory" | "combat" | "builder">;
     player_classified: import("./player_classified").PlayerClassified;
   }
   interface Inventory extends Prefab {
@@ -68,12 +68,15 @@ declare namespace GLOBAL {
   const TheInput: import("./input").Input;
 
   function SendRPCToServer(...params: any[]): any;
+  function RpcMakeRecipeFromMenu(recipe: any): void;
   function BufferedAction(
     inst: Prefab,
-    target: Prefab | undefined,
+    target: Prefab | undefined | null,
     action: Action,
-    tool?: any | undefined,
-    pos?: any | undefined
+    tool?: any | undefined | null,
+    pos?: any | undefined | null,
+    recipeName?: any,
+    last?: any
   ): any;
   interface Thread {
     id: number;
@@ -85,11 +88,15 @@ declare namespace GLOBAL {
   function SpawnPrefab(prefab: string): Prefab;
   function printwrap(msg: string, obj: any): void;
   function Sleep(time: number): number;
+  interface Recipe {
+    name: string;
+  }
+  function GetValidRecipe(name: string): Recipe;
   function KillThread(task: Thread): void;
   function FindEntity(
     inst: Prefab,
     radius: number,
-    filterFn: (item: Prefab) => boolean,
+    filterFn: ((item: Prefab) => boolean | undefined) | undefined,
     musttags?: string[] | undefined,
     canttags?: string[] | undefined,
     mustoneoftags?: string[] | undefined
@@ -102,6 +109,11 @@ declare namespace GLOBAL {
   const FRAMES: number;
   const CONTROL_PRIMARY: string;
   const CONTROL_SECONDARY: string;
+  const CONTROL_: string;
+  const CONTROL_MOVE_UP: string;
+  const CONTROL_MOVE_DOWN: string;
+  const CONTROL_MOVE_LEFT: string;
+  const CONTROL_MOVE_RIGHT: string;
   enum RPC {
     LeftClick
   }
@@ -111,7 +123,7 @@ declare namespace GLOBAL {
     mod_name: any;
   }
   const ACTIONS: Record<
-    "WALKTO" | "CHOP" | "MINE" | "PICK" | "HAMMER" | "DIG",
+    "BUILD" | "WALKTO" | "CHOP" | "MINE" | "PICK" | "PICKUP" | "HAMMER" | "DIG",
     Action
   >;
   enum EQUIPSLOTS {

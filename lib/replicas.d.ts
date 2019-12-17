@@ -29,7 +29,7 @@ export namespace Replica {
     KnowsRecipe(recipename: any): boolean;
     MagicBonus(): any;
     MakeRecipeAtPoint(recipe: any, pt: any, rot: any, skin: any): any;
-    MakeRecipeFromMenu(recipe: any, skin: any): any;
+    MakeRecipeFromMenu(recipe: any, skin?: any): any;
     OnRemoveFromEntity(): any;
     RemoveRecipe(recipename: any): any;
     ScienceBonus(): any;

@@ -657,7 +657,7 @@ export namespace Component {
     LongUpdate(dt: any): any;
     MakeRecipe(recipe: any, pt: any, rot: any, skin: any, onsuccess: any): any;
     MakeRecipeAtPoint(recipe: any, pt: any, rot: any, skin: any): any;
-    MakeRecipeFromMenu(recipe: any, skin: any): any;
+    MakeRecipeFromMenu(recipe: any, skin?: any): any;
     OnLoad(data: any): any;
     OnSave(): any;
     OnUpdate(): any;
@@ -2176,7 +2176,7 @@ export namespace Component {
     dapperfn: any;
     dapperness: number;
     equippedmoisture: number;
-    equipslot: any;
+    equipslot: GLOBAL.EQUIPSLOTS;
     equipstack: boolean;
     inst: any;
     insulated: boolean;
