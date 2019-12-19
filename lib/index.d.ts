@@ -91,6 +91,7 @@ declare namespace GLOBAL {
   interface Recipe {
     name: string;
   }
+  function GetInventoryItemAtlas(name: string): any;
   function GetValidRecipe(name: string): Recipe;
   function KillThread(task: Thread): void;
   function FindEntity(
@@ -139,6 +140,11 @@ declare namespace GLOBAL {
     ELEMENTAL,
     ROUGHAGE
   }
+
+  const ANCHOR_LEFT: any;
+  const ANCHOR_TOP: any;
+  const ANCHOR_MIDDLE: any;
+  const SCALEMODE_PROPORTIONAL: any;
 }
 declare const modname: string;
 declare function print(data: any): void;
@@ -149,3 +155,7 @@ declare function AddComponentPostInit<T extends keyof Component>(
   cb: (comp: Component[T]) => void
 ): void;
 declare function AddGamePostInit(fn: () => void): void;
+declare function AddClassPostConstruct(
+  name: string,
+  fn: (this: any) => void
+): void;
