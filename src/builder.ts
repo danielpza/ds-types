@@ -6,19 +6,21 @@ import {
   mergeArrays
 } from "./utils";
 
-const RESERVED_WORDS = ["new", "var", "default"];
+const RESERVED_WORDS = ["new", "var", "default", "delete"];
 
 export class Definition {
   properties = {} as Record<string, string>;
   methods = {} as Record<string, string>;
   setMethod(name: string, type: string) {
     if (name[0] === "_") return;
+    if (this.properties[name] !== undefined) delete this.properties[name];
     if (this.methods[name] !== undefined && this.methods[name] !== "any")
       return;
     this.methods[name] = type;
   }
   setProperty(name: string, type: string) {
     if (name[0] === "_") return;
+    if (this.methods[name] !== undefined) return;
     if (this.properties[name] !== undefined && this.properties[name] !== "any")
       return;
     this.properties[name] = type;

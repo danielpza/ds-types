@@ -21,6 +21,7 @@ if (!existsSync(root) || isFileSync(root)) {
 const classifieds = generateClassifieds();
 generateComponents();
 generateReplicas();
+generateWidgets();
 generateClass("Entity", "entityscript.lua", "EntityScript");
 generateClass("FrontEnd", "frontend.lua");
 generateClass("Input", "input.lua");
@@ -65,6 +66,21 @@ function generateReplicas() {
   );
 }
 
+function generateWidgets() {
+  console.log("Generating Widgets");
+  const files = globby.sync(["widgets/*.lua"], { cwd: root });
+  const definitions = {} as Record<string, Definition>;
+  files
+    .map(file => readFileSync(resolve(root, file), "utf8").toString())
+    .map(parse)
+    .forEach(ast => analyseClassDefinition(ast, definitions));
+  console.log();
+  writeFileSync(
+    resolve("lib/widgets.d.ts"),
+    getModules(Object.entries(definitions))
+  );
+}
+
 function generatePlayerClassified() {
   writeFileSync(
     resolve("lib/player_classified.d.ts"),
@@ -97,6 +113,18 @@ function generateClassifieds() {
     .map(parse)
     .forEach(ast => analysePrefabDefinition(ast, definitions));
   return definitions;
+}
+
+function getModules(definitions: [string, Definition][]) {
+  return definitions
+    .map(
+      ([name, def]) => `declare module "${name}" {
+${getInterface(name, def)};
+function fn(...params: any[]): ${name};
+export = fn;
+}`
+    )
+    .join("\n");
 }
 
 function getInterfaceBundle(

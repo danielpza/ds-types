@@ -1,4 +1,6 @@
 /** @noSelfInFile **/
+
+/// <reference path="./widgets.d.ts" />
 type Component = import("./components").Component;
 type Replica = import("./replicas").Replica;
 type Entity = import("./entity").Entity;
