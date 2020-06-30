@@ -84,7 +84,7 @@ declare namespace GLOBAL {
   function StartThread(fn: () => void): Thread;
   function CreateEntity(): Prefab;
   function IsPaused(): boolean;
-  function require(mod: string): void;
+  function require(mod: string): any;
   function SpawnPrefab(prefab: string): Prefab;
   function printwrap(msg: string, obj: any): void;
   function Sleep(time: number): number;
