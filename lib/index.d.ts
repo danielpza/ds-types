@@ -39,13 +39,23 @@ declare namespace Prefabs {
 
 declare namespace Module {
   /** @customConstructor GLOBAL.require("widget/widget") */
-  class Widget {}
-  /** @customConstructor GLOBAL.require("widget/image") */
-  class Image {
+  class Widget {
+    AddChild<T>(child: T): T;
+    SetPosition(x: number, y: number, z: number): void;
+    SetOnClick(cb: () => void): void;
+    MoveToFront(): void;
+    SetScale(x: number, y: number, z: number): void;
+    SetText(text: string): void;
+    SetFont(font: string): void;
+    SetTextColour(p1: number, p2: number, p3: number, p4: number): void;
+    SetTextFocusColour(p1: number, p2: number, p3: number, p4: number): void;
+    SetTextSize(size: number): void;
+  }
+  class Image extends Widget {
     constructor(atlas: string, image: string);
   }
-  /** @customConstructor GLOBAL.require("widget/imagebutton") */
-  class ImageButton extends Button {
+  class Button extends Widget {}
+  class ImageButton extends Widget {
     constructor(
       image?: string,
       normal?: string,
@@ -55,11 +65,10 @@ declare namespace Module {
       disabled3?: string
     );
   }
-  /** @customConstructor GLOBAL.require("widget/button") */
-  class Button extends Widget {}
 }
 
 declare namespace GLOBAL {
+  type Klass<T> = (...params: any[]) => T;
   const TheWorld: {
     ismastersim: any;
   };
@@ -84,6 +93,9 @@ declare namespace GLOBAL {
   function StartThread(fn: () => void): Thread;
   function CreateEntity(): Prefab;
   function IsPaused(): boolean;
+  function require(mod: "widgets/image"): Klass<Module.Image>;
+  function require(mod: "widgets/imagebutton"): Klass<Module.ImageButton>;
+  function require(mod: "widgets/button"): Klass<Module.Button>;
   function require(mod: string): any;
   function SpawnPrefab(prefab: string): Prefab;
   function printwrap(msg: string, obj: any): void;
@@ -116,7 +128,7 @@ declare namespace GLOBAL {
   const CONTROL_MOVE_LEFT: string;
   const CONTROL_MOVE_RIGHT: string;
   enum RPC {
-    LeftClick
+    LeftClick,
   }
   interface Action {
     code: any;
@@ -130,7 +142,7 @@ declare namespace GLOBAL {
   enum EQUIPSLOTS {
     HANDS,
     HEAD,
-    BODY
+    BODY,
   }
   enum FOODTYPE {
     MEAT,
@@ -138,7 +150,7 @@ declare namespace GLOBAL {
     HORRIBLE,
     RAW,
     ELEMENTAL,
-    ROUGHAGE
+    ROUGHAGE,
   }
 
   const ANCHOR_LEFT: any;
