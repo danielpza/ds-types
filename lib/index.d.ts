@@ -42,7 +42,7 @@ declare namespace Module {
   class Widget {
     AddChild<T>(child: T): T;
     SetPosition(x: number, y: number, z: number): void;
-    SetOnClick(cb: () => void): void;
+    SetOnClick(cb: (this: any) => void): void;
     MoveToFront(): void;
     SetScale(x: number, y: number, z: number): void;
     SetText(text: string): void;
