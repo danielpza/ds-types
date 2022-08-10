@@ -1,4 +1,3 @@
-/** @noSelfInFile **/
 type Component = import("./components").Component;
 type Replica = import("./replicas").Replica;
 type Entity = import("./entity").Entity;
@@ -7,8 +6,7 @@ type Slot = "head" | "body" | "hands";
 
 type EnsureProps<T, P extends keyof T = never> = {
   [K in P]-?: T[K];
-} &
-  { [K in Exclude<keyof T, P>]?: T[K] };
+} & { [K in Exclude<keyof T, P>]?: T[K] };
 
 interface Prefab extends Entity {
   components: Partial<Component>;
@@ -42,7 +40,7 @@ declare namespace Module {
   class Widget {
     AddChild<T>(child: T): T;
     SetPosition(x: number, y: number, z: number): void;
-    SetOnClick(cb: (this: any) => void): void;
+    SetOnClick(cb: (this: void) => void): void;
     MoveToFront(): void;
     SetScale(x: number, y: number, z: number): void;
     SetText(text: string): void;
