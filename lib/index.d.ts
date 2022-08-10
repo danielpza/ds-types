@@ -88,7 +88,7 @@ declare namespace GLOBAL {
   interface Thread {
     id: number;
   }
-  function StartThread(fn: () => void): Thread;
+  function StartThread(fn: (this: void) => void): Thread;
   function CreateEntity(): Prefab;
   function IsPaused(): boolean;
   function require(mod: "widgets/image"): Klass<Module.Image>;
@@ -107,7 +107,7 @@ declare namespace GLOBAL {
   function FindEntity(
     inst: Prefab,
     radius: number,
-    filterFn: ((item: Prefab) => boolean | undefined) | undefined,
+    filterFn: ((this: void, item: Prefab) => boolean | undefined) | undefined,
     musttags?: string[] | undefined,
     canttags?: string[] | undefined,
     mustoneoftags?: string[] | undefined
@@ -158,13 +158,15 @@ declare namespace GLOBAL {
 }
 declare const modname: string;
 declare function print(data: any): void;
-declare let GetModConfigData: (key: string) => any;
-declare let AddPlayerPostInit: (cb: (inst: Prefabs.Player) => void) => void;
+declare function GetModConfigData(key: string): any;
+declare function AddPlayerPostInit(
+  cb: (this: void, inst: Prefabs.Player) => void
+): void;
 declare function AddComponentPostInit<T extends keyof Component>(
   kind: T,
-  cb: (comp: Component[T]) => void
+  cb: (this: void, comp: Component[T]) => void
 ): void;
-declare function AddGamePostInit(fn: () => void): void;
+declare function AddGamePostInit(fn: (this: void) => void): void;
 declare function AddClassPostConstruct(
   name: string,
   fn: (this: any) => void
