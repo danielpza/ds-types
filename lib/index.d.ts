@@ -74,9 +74,10 @@ declare namespace GLOBAL {
   const TheFrontEnd: import("./frontend").FrontEnd;
   const TheInput: import("./input").Input;
 
-  function SendRPCToServer(...params: any[]): any;
-  function RpcMakeRecipeFromMenu(recipe: any): void;
+  function SendRPCToServer(this: void, ...params: any[]): any;
+  function RpcMakeRecipeFromMenu(this: void, recipe: any): void;
   function BufferedAction(
+    this: void,
     inst: Prefab,
     target: Prefab | undefined | null,
     action: Action,
@@ -88,23 +89,27 @@ declare namespace GLOBAL {
   interface Thread {
     id: number;
   }
-  function StartThread(fn: (this: void) => void): Thread;
-  function CreateEntity(): Prefab;
-  function IsPaused(): boolean;
-  function require(mod: "widgets/image"): Klass<Module.Image>;
-  function require(mod: "widgets/imagebutton"): Klass<Module.ImageButton>;
-  function require(mod: "widgets/button"): Klass<Module.Button>;
-  function require(mod: string): any;
-  function SpawnPrefab(prefab: string): Prefab;
-  function printwrap(msg: string, obj: any): void;
-  function Sleep(time: number): number;
+  function StartThread(this: void, fn: (this: void) => void): Thread;
+  function CreateEntity(this: void): Prefab;
+  function IsPaused(this: void): boolean;
+  function require(this: void, mod: "widgets/image"): Klass<Module.Image>;
+  function require(
+    this: void,
+    mod: "widgets/imagebutton"
+  ): Klass<Module.ImageButton>;
+  function require(this: void, mod: "widgets/button"): Klass<Module.Button>;
+  function require(this: void, mod: string): any;
+  function SpawnPrefab(this: void, prefab: string): Prefab;
+  function printwrap(this: void, msg: string, obj: any): void;
+  function Sleep(this: void, time: number): number;
   interface Recipe {
     name: string;
   }
-  function GetInventoryItemAtlas(name: string): any;
-  function GetValidRecipe(name: string): Recipe;
-  function KillThread(task: Thread): void;
+  function GetInventoryItemAtlas(this: void, name: string): any;
+  function GetValidRecipe(this: void, name: string): Recipe;
+  function KillThread(this: void, task: Thread): void;
   function FindEntity(
+    this: void,
     inst: Prefab,
     radius: number,
     filterFn: ((this: void, item: Prefab) => boolean | undefined) | undefined,
@@ -157,17 +162,20 @@ declare namespace GLOBAL {
   const SCALEMODE_PROPORTIONAL: any;
 }
 declare const modname: string;
-declare function print(data: any): void;
-declare function GetModConfigData(key: string): any;
+declare function print(this: void, data: any): void;
+declare function GetModConfigData(this: void, key: string): any;
 declare function AddPlayerPostInit(
+  this: void,
   cb: (this: void, inst: Prefabs.Player) => void
 ): void;
 declare function AddComponentPostInit<T extends keyof Component>(
+  this: void,
   kind: T,
   cb: (this: void, comp: Component[T]) => void
 ): void;
 declare function AddGamePostInit(fn: (this: void) => void): void;
 declare function AddClassPostConstruct(
+  this: void,
   name: string,
   fn: (this: any) => void
 ): void;
