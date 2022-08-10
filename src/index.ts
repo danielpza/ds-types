@@ -4,7 +4,7 @@ import { readFileSync } from "fs";
 import {
   analyseClassDefinition,
   analysePrefabDefinition,
-  Definition
+  Definition,
 } from "./builder";
 import { existsSync, writeFileSync, statSync } from "fs";
 import { resolve } from "path";
@@ -31,10 +31,10 @@ function generateComponents() {
   const files = globby.sync(["components/*.lua"], { cwd: root });
   const definitions = {} as Record<string, Definition>;
   files
-    .filter(file => !file.match(/\w+_replica/))
-    .map(file => readFileSync(resolve(root, file), "utf8").toString())
+    .filter((file) => !file.match(/\w+_replica/))
+    .map((file) => readFileSync(resolve(root, file), "utf8").toString())
     .map(parse)
-    .forEach(ast => analyseClassDefinition(ast, definitions));
+    .forEach((ast) => analyseClassDefinition(ast, definitions));
   writeFileSync(
     resolve("lib/components.d.ts"),
     getInterfaceBundle("Component", Object.entries(definitions))
@@ -46,10 +46,10 @@ function generateReplicas() {
   const files = globby.sync(["components/*.lua"], { cwd: root });
   const definitions = {} as Record<string, Definition>;
   files
-    .filter(file => file.match(/\w+_replica/))
-    .map(file => readFileSync(resolve(root, file), "utf8").toString())
+    .filter((file) => file.match(/\w+_replica/))
+    .map((file) => readFileSync(resolve(root, file), "utf8").toString())
     .map(parse)
-    .forEach(ast => analyseClassDefinition(ast, definitions));
+    .forEach((ast) => analyseClassDefinition(ast, definitions));
 
   for (const [name, def] of Object.entries(definitions)) {
     const classified = `${name.toLowerCase()}_classified`;
@@ -93,9 +93,9 @@ function generateClassifieds() {
   const files = globby.sync(["prefabs/*_classified.lua"], { cwd: root });
   const definitions = {} as Record<string, Definition>;
   files
-    .map(file => readFileSync(resolve(root, file), "utf8").toString())
+    .map((file) => readFileSync(resolve(root, file), "utf8").toString())
     .map(parse)
-    .forEach(ast => analysePrefabDefinition(ast, definitions));
+    .forEach((ast) => analysePrefabDefinition(ast, definitions));
   return definitions;
 }
 

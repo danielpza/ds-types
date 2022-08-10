@@ -3,7 +3,7 @@ import {
   inferType,
   inferTypeFromIdentifier,
   getBase,
-  mergeArrays
+  mergeArrays,
 } from "./utils";
 
 const RESERVED_WORDS = ["new", "var", "default"];
@@ -96,12 +96,12 @@ export function analyseClassDefinition(
       const interfaceName = node.identifier.base.name;
       const parameters = node.parameters
         .filter((p): p is Lua.Identifier => p.type === "Identifier")
-        .map(p => p.name);
+        .map((p) => p.name);
 
       if (!definitions[interfaceName])
         definitions[interfaceName] = new Definition();
       const paramsType = `${parameters
-        .map(p => `${RESERVED_WORDS.includes(p) ? `_${p}` : p}: any`)
+        .map((p) => `${RESERVED_WORDS.includes(p) ? `_${p}` : p}: any`)
         .join(", ")}`;
       const retType =
         inferTypeFromIdentifier(node.identifier.identifier.name) || "any";
@@ -116,10 +116,8 @@ export function analyseClassDefinition(
 }
 
 function analyseBindingsAndReturn(statements: Lua.StatementKind[]) {
-  const bindings: Record<
-    string,
-    Lua.ExpressionKind | Lua.FunctionDeclaration
-  > = {};
+  const bindings: Record<string, Lua.ExpressionKind | Lua.FunctionDeclaration> =
+    {};
   const returns: Lua.ExpressionKind[] = [];
   for (const node of statements) {
     if (node.type === "LocalStatement") {
