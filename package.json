@@ -23,8 +23,7 @@
   ],
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "ts-node -T src/index.ts && echo 'Formatting' && prettier --loglevel warn --write 'lib/*.ts'",
-    "prepublishOnly": "npm run build"
+    "build": "ts-node -T src/index.ts && echo 'Formatting' && prettier --loglevel warn --write 'lib/*.ts'"
   },
   "dependencies": {},
   "devDependencies": {
