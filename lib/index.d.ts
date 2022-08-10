@@ -66,7 +66,7 @@ declare namespace Module {
 }
 
 declare namespace GLOBAL {
-  type Klass<T> = (...params: any[]) => T;
+  type Klass<T> = (this: void, ...params: any[]) => T;
   const TheWorld: {
     ismastersim: any;
   };
